@@ -1,9 +1,7 @@
 {
   "name": "hero-english-hub",
-  "version": "5.0.0",
+  "version": "9.0.0",
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
     "node-fetch": "^2.6.9"
   }
 }

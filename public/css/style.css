@@ -15,12 +15,12 @@ header p { color: #94a3b8; font-size: 0.9rem; margin-top: 0.25rem; }
 
 .app-layout { display: flex; max-width: 1300px; margin: 1.5rem auto; padding: 0 1rem; gap: 1.5rem; }
 
-.sidebar { width: 320px; background: #ffffff; border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; height: fit-content; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.sidebar { width: 340px; background: #ffffff; border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; height: fit-content; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
 .sidebar-title { font-size: 0.85rem; font-weight: 700; color: #64748b; margin-bottom: 1rem; letter-spacing: 0.5px; border-bottom: 2px solid #f1f5f9; padding-bottom: 0.5rem; }
 .sidebar-menu { display: flex; flex-direction: column; gap: 0.5rem; }
 .sidebar-item { padding: 0.85rem; border-radius: 8px; border: 1px solid var(--border); background: #f8fafc; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; }
 .sidebar-item:hover, .sidebar-item.active { background: #eff6ff; border-color: var(--accent); color: var(--accent); font-weight: 600; }
-.sidebar-item-status { font-size: 0.75rem; color: #64748b; margin-top: 0.25rem; }
+.sidebar-item-date { font-size: 0.82rem; color: #2563eb; font-weight: 700; margin-top: 0.35rem; }
 
 .main-content { flex: 1; }
 .skill-nav { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
@@ -31,6 +31,9 @@ header p { color: #94a3b8; font-size: 0.9rem; margin-top: 0.25rem; }
 .tab-section.active { display: block; }
 
 .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.schedule-banner { background: #eff6ff; border: 1px solid #bfdbfe; border-left: 5px solid #2563eb; padding: 0.85rem 1rem; border-radius: 8px; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; }
+.preply-link-btn { background: #2563eb; color: white; padding: 0.35rem 0.85rem; border-radius: 6px; text-decoration: none; font-size: 0.82rem; font-weight: 700; }
+
 .vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
 .vocab-card { background: #f1f5f9; border-left: 4px solid var(--accent); padding: 1rem; border-radius: 0 8px 8px 0; }
 .vocab-title { font-size: 1.05rem; font-weight: 700; color: var(--accent); }
