@@ -64,7 +64,7 @@ async function fetchLessonsAndRender() {
             }
         }
     } catch (e) {
-        console.warn("Using bulletproof client fallback lessons:", e.message);
+        console.warn("Using bulletproof fallback lessons:", e.message);
     }
     
     renderSidebarMenu();
@@ -75,6 +75,10 @@ async function fetchLessonsAndRender() {
 
 function renderSidebarMenu() {
     const sidebar = document.getElementById('sidebar-lesson-list');
+    if (!globalLessons || globalLessons.length === 0) {
+        sidebar.innerHTML = "<p>No lessons available.</p>";
+        return;
+    }
     sidebar.innerHTML = globalLessons.map(l => `
         <div class="sidebar-item ${l.id === activeLessonId ? 'active' : ''}" onclick="selectLesson(${l.id})">
             <div><strong>Buổi ${l.id < 10 ? '0' + l.id : l.id}:</strong> ${l.title.replace(/^Lesson \d+:\s*/i, '')}</div>
@@ -115,7 +119,7 @@ function selectLesson(id) {
                             <button class="speech-icon-btn" onclick="speakText('${w.word}')">🔊 Phát âm</button>
                         </div>
                         <p style="margin-top: 0.25rem;"><strong>Nghĩa:</strong> ${w.meaning}</p>
-                        <p class="example">"${w.example}" <button class="speech-icon-btn" onclick="speakText('${w.example.replace(/'/g, "\\'")}')">🔊 Đọc câu</button></p>
+                        <p class="example">"${w.example}" <button class="speech-icon-btn" onclick="speakText('${w.example.replace(/'/g, "\\'")}}')">🔊 Đọc câu</button></p>
                     </div>
                 `).join('')}
             </div>
@@ -125,7 +129,7 @@ function selectLesson(id) {
                 <div class="bullet-item">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
                         <strong>"${b.en}"</strong>
-                        <button class="speech-icon-btn" onclick="speakText('${b.en.replace(/'/g, "\\'")}')">🔊 Đọc câu</button>
+                        <button class="speech-icon-btn" onclick="speakText('${b.en.replace(/'/g, "\\'")}}')">🔊 Đọc câu</button>
                     </div>
                     <p style="color: #64748b; font-size: 0.85rem; margin-top: 0.25rem;">(${b.vi})</p>
                 </div>
@@ -137,10 +141,10 @@ function selectLesson(id) {
                     <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.85rem; border-radius: 6px; margin-bottom: 0.5rem;">
                         <div style="display:flex; justify-content:space-between; align-items:center;">
                             <p style="font-weight: 600;">Q: "${q.qEn}"</p>
-                            <button class="speech-icon-btn" onclick="speakText('${q.qEn.replace(/'/g, "\\'")}')">🔊 Đọc câu hỏi</button>
+                            <button class="speech-icon-btn" onclick="speakText('${q.qEn.replace(/'/g, "\\'")}}')">🔊 Đọc câu hỏi</button>
                         </div>
                         <p style="color: #64748b; font-size: 0.85rem;">(${q.qVi})</p>
-                        <p style="color: #2563eb; font-size: 0.85rem; font-style: italic; margin-top: 0.4rem;">👉 Response Hint: ${q.hint} <button class="speech-icon-btn" onclick="speakText('${q.hint.replace(/'/g, "\\'")}')">🔊 Đọc gợi ý</button></p>
+                        <p style="color: #2563eb; font-size: 0.85rem; font-style: italic; margin-top: 0.4rem;">👉 Response Hint: ${q.hint} <button class="speech-icon-btn" onclick="speakText('${q.hint.replace(/'/g, "\\'")}}')">🔊 Đọc gợi ý</button></p>
                     </div>
                 `).join('')}
             ` : ''}
@@ -148,7 +152,7 @@ function selectLesson(id) {
             ${lesson.challengeScenario ? `
                 <div style="background: #fffbebf; border: 1px solid #fef3c7; border-left: 5px solid #f59e0b; padding: 1rem; border-radius: 8px; margin-top: 1.5rem;">
                     <h4 style="color: #b45309; font-size: 1rem; margin-bottom: 0.5rem;">🎯 Part 4: Challenge Scenario for Class with Lorraine</h4>
-                    <p style="font-size: 0.9rem;"><strong>English Context:</strong> ${lesson.challengeScenario.contextEn} <button class="speech-icon-btn" onclick="speakText('${lesson.challengeScenario.contextEn.replace(/'/g, "\\'")}')">🔊 Đọc bối cảnh</button></p>
+                    <p style="font-size: 0.9rem;"><strong>English Context:</strong> ${lesson.challengeScenario.contextEn} <button class="speech-icon-btn" onclick="speakText('${lesson.challengeScenario.contextEn.replace(/'/g, "\\'")}}')">🔊 Đọc bối cảnh</button></p>
                     <p style="color: #64748b; font-size: 0.85rem; margin-top: 0.25rem;"><strong>Dịch Tiếng Việt:</strong> ${lesson.challengeScenario.contextVi}</p>
                     <p style="color: #0f172a; font-weight: 600; font-size: 0.88rem; margin-top: 0.75rem;">👉 Nhiệm vụ trên lớp: ${lesson.challengeScenario.task}</p>
                 </div>
@@ -182,6 +186,6 @@ async function analyzeWriting() {
     box.innerHTML = `
         <h4 style="color: #065f46;">📊 Điểm đánh giá văn bản: ${result.score}/100</h4>
         <p style="margin-top: 0.5rem;"><strong>Gợi ý cải thiện:</strong> ${result.suggestions.join(' ')}</p>
-        <p style="margin-top: 0.5rem;"><strong>Đã nâng cấp từ vựng B2-C1:</strong> <em>"${result.upgradedText}"</em> <button class="speech-icon-btn" onclick="speakText('${result.upgradedText.replace(/'/g, "\\'")}')">🔊 Đọc văn bản nâng cấp</button></p>
+        <p style="margin-top: 0.5rem;"><strong>Đã nâng cấp từ vựng B2-C1:</strong> <em>"${result.upgradedText}"</em> <button class="speech-icon-btn" onclick="speakText('${result.upgradedText.replace(/'/g, "\\'")}}')">🔊 Đọc văn bản nâng cấp</button></p>
     `;
 }
