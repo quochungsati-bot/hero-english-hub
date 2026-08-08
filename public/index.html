@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="doc-title">English Hub</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <h1 id="site-title">English Hub</h1>
+            <span class="status-badge">100% UN-CRASHABLE LIVE</span>
+        </div>
+        <p id="site-subtitle">Hero | Integrated 4 Skills: Listening, Speaking, Reading & Writing</p>
+    </header>
+
+    <div class="dict-bar">
+        <div class="dict-input-wrap">
+            <input type="text" id="dict-search-input" placeholder="🔍 Tra từ điển Anh - Việt chuẩn Oxford (ví dụ: spearhead, milestone, FIDIC)...">
+            <button class="dict-btn" onclick="searchOxfordDict()">Tra từ Oxford</button>
+        </div>
+        <div id="dict-modal-result" class="dict-result-card" style="display:none;"></div>
+    </div>
+
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-title">📑 DANH SÁCH BÀI HỌC</div>
+            <div id="sidebar-lesson-list" class="sidebar-menu">
+                <p>Loading Lesson List...</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <nav class="skill-nav">
+                <button class="nav-btn active" onclick="showSkillTab('lesson-detail-tab')">📚 Nội dung bài học (50 Mins)</button>
+                <button class="nav-btn" onclick="showSkillTab('listening-tab')">🎧 Nghe (Listening)</button>
+                <button class="nav-btn" onclick="showSkillTab('speaking-tab')">🗣️ Nói (Speaking)</button>
+                <button class="nav-btn" onclick="showSkillTab('reading-tab')">📖 Đọc (Reading)</button>
+                <button class="nav-btn" onclick="showSkillTab('writing-tab')">✍️ Viết (Writing)</button>
+            </nav>
+
+            <section id="lesson-detail-tab" class="tab-section active">
+                <div id="active-lesson-display">
+                    <p>Loading Lesson Details...</p>
+                </div>
+            </section>
+
+            <section id="listening-tab" class="tab-section">
+                <div class="card">
+                    <h2>🎧 Exec Listening: Pre-Bid Clarification Meeting</h2>
+                    <div class="audio-box">
+                        <p><strong>Audio Scenario:</strong> Meeting with Client Director on Diaphragm Wall BOQ 
+                            <button class="speech-icon-btn" onclick="speakText('Meeting with Client Director on Diaphragm Wall BOQ')">🔊 Đọc câu</button>
+                        </p>
+                        <button class="action-btn" onclick="toggleTranscript()">Toggle Interactive Transcript</button>
+                        <div id="transcript" class="transcript-box" style="display:none;">
+                            <p><strong>Client Director:</strong> We noticed a $150,000 allowance for ground stabilization. Can Central Cons justify this item? 
+                                <button class="speech-icon-btn" onclick="speakText('We noticed a 150000 dollar allowance for ground stabilization. Can Central Cons justify this item?')">🔊 Đọc</button>
+                            </p>
+                            <p><strong>Hero:</strong> Under FIDIC Clause 13, this allowance serves as a <em>contingency reserve</em> due to unpredictable soil conditions.
+                                <button class="speech-icon-btn" onclick="speakText('Under FIDIC Clause 13, this allowance serves as a contingency reserve due to unpredictable soil conditions.')">🔊 Đọc</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="speaking-tab" class="tab-section">
+                <div class="card">
+                    <h2>🗣️ Exec Speaking & Signposting Frameworks</h2>
+                    <div class="phrase-card">
+                        <span class="phrase-tag">Opening the Pitch</span>
+                        <p class="phrase-text">"As Deputy Head of Tendering, I would like to outline Central Cons' value proposition."
+                            <button class="speech-icon-btn" onclick="speakText('As Deputy Head of Tendering, I would like to outline Central Cons value proposition.')">🔊 Phát âm</button>
+                        </p>
+                    </div>
+                    <div class="phrase-card">
+                        <span class="phrase-tag">Defending BOQ</span>
+                        <p class="phrase-text">"To protect the project budget against market volatility, we incorporate a price adjustment formula under FIDIC Clause 13.8."
+                            <button class="speech-icon-btn" onclick="speakText('To protect the project budget against market volatility, we incorporate a price adjustment formula under FIDIC Clause 13.8.')">🔊 Phát âm</button>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="reading-tab" class="tab-section">
+                <div class="card">
+                    <h2>📖 Exec Reading & Interactive FIDIC Reader</h2>
+                    <h3>FIDIC Red Book Clause 13.8 - Adjustments for Changes in Cost 
+                        <button class="speech-icon-btn" onclick="speakText('FIDIC Red Book Clause 13.8 - Adjustments for Changes in Cost')">🔊 Đọc tiêu đề</button>
+                    </h3>
+                    <p style="background: #f1f5f9; padding: 1rem; border-radius: 6px; margin: 0.75rem 0; line-height: 1.6;">
+                        The Contract Price shall be adjusted for rises or falls in the cost of labor, Goods and other inputs to the Works, by the addition or deduction of the amounts determined by the formulae prescribed in this Sub-Clause.
+                        <button class="speech-icon-btn" onclick="speakText('The Contract Price shall be adjusted for rises or falls in the cost of labor, Goods and other inputs to the Works, by the addition or deduction of the amounts determined by the formulae prescribed in this Sub-Clause.')">🔊 Đọc đoạn</button>
+                    </p>
+                </div>
+            </section>
+
+            <section id="writing-tab" class="tab-section">
+                <div class="card">
+                    <h2>✍️ Bidding Writing Sandbox & AI Analyzer</h2>
+                    <p>Nhập email / thư thương mại đấu thầu để phân tích từ vựng B2-C1:</p>
+                    <textarea id="writing-input" rows="5" placeholder="Dear Client Representative, We would like to propose a Value Engineering alternative under FIDIC Clause 13..."></textarea>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                        <button class="action-btn" onclick="analyzeWriting()">Analyze & Upgrade Vocabulary</button>
+                        <button class="action-btn" style="background: #0f172a;" onclick="speakText(document.getElementById('writing-input').value)">🔊 Đọc bản nháp</button>
+                    </div>
+                    <div id="writing-result" class="feedback-box"></div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

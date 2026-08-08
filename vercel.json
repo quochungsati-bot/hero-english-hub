@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/api/lessons", "destination": "/api/lessons.js" },
+    { "source": "/api/config", "destination": "/api/config.js" },
+    { "source": "/api/dictionary", "destination": "/api/dictionary.js" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

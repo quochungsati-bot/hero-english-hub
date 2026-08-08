@@ -1,0 +1,51 @@
+
+:root { --primary: #0f172a; --accent: #2563eb; --bg: #f8fafc; --card: #ffffff; --border: #e2e8f0; --text: #1e293b; --success: #10b981; }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+body { background: var(--bg); color: var(--text); }
+header { background: var(--primary); color: white; padding: 1.25rem 2rem; }
+.logo-area { display: flex; align-items: center; gap: 1rem; }
+.status-badge { background: var(--success); color: white; font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 12px; font-weight: 700; }
+header p { color: #94a3b8; font-size: 0.9rem; margin-top: 0.25rem; }
+
+.dict-bar { background: #1e293b; padding: 0.75rem 2rem; border-bottom: 1px solid #334155; }
+.dict-input-wrap { display: flex; gap: 0.5rem; max-width: 1200px; margin: 0 auto; }
+.dict-bar input { flex: 1; padding: 0.6rem 1rem; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: white; font-size: 0.9rem; }
+.dict-btn { background: #f59e0b; color: #0f172a; border: none; padding: 0.6rem 1.2rem; border-radius: 6px; font-weight: 700; cursor: pointer; }
+.dict-result-card { max-width: 1200px; margin: 0.75rem auto 0; background: #ffffff; color: var(--text); padding: 1rem; border-radius: 8px; border-left: 5px solid #f59e0b; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+
+.app-layout { display: flex; max-width: 1300px; margin: 1.5rem auto; padding: 0 1rem; gap: 1.5rem; }
+
+.sidebar { width: 320px; background: #ffffff; border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; height: fit-content; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.sidebar-title { font-size: 0.85rem; font-weight: 700; color: #64748b; margin-bottom: 1rem; letter-spacing: 0.5px; border-bottom: 2px solid #f1f5f9; padding-bottom: 0.5rem; }
+.sidebar-menu { display: flex; flex-direction: column; gap: 0.5rem; }
+.sidebar-item { padding: 0.85rem; border-radius: 8px; border: 1px solid var(--border); background: #f8fafc; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; }
+.sidebar-item:hover, .sidebar-item.active { background: #eff6ff; border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.sidebar-item-status { font-size: 0.75rem; color: #64748b; margin-top: 0.25rem; }
+
+.main-content { flex: 1; }
+.skill-nav { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+.nav-btn { background: #ffffff; border: 1px solid var(--border); color: #475569; padding: 0.6rem 1.1rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; border-radius: 6px; }
+.nav-btn.active, .nav-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+
+.tab-section { display: none; }
+.tab-section.active { display: block; }
+
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.vocab-card { background: #f1f5f9; border-left: 4px solid var(--accent); padding: 1rem; border-radius: 0 8px 8px 0; }
+.vocab-title { font-size: 1.05rem; font-weight: 700; color: var(--accent); }
+.phonetic { font-size: 0.85rem; color: #64748b; margin-left: 0.5rem; }
+.example { font-style: italic; font-size: 0.88rem; color: #334155; margin-top: 0.5rem; }
+.bullet-item { background: #f8fafc; border: 1px solid var(--border); padding: 0.85rem; border-radius: 6px; margin-bottom: 0.5rem; font-size: 0.92rem; }
+
+.speech-icon-btn { background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; border-radius: 4px; padding: 0.25rem 0.5rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; margin-left: 0.5rem; transition: all 0.2s; white-space: nowrap; }
+.speech-icon-btn:hover { background: #0284c7; color: white; }
+
+.action-btn { background: var(--accent); color: white; border: none; padding: 0.65rem 1.25rem; border-radius: 6px; font-weight: 600; cursor: pointer; }
+.audio-box, .transcript-box { background: #f1f5f9; padding: 1rem; border-radius: 8px; margin-top: 0.75rem; }
+textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem; margin-top: 0.5rem; }
+.feedback-box { margin-top: 1rem; padding: 1rem; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; display: none; }
+.badge-status { background: #f59e0b; color: white; font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700; }
+.phrase-card { background: #f8fafc; border-left: 4px solid #2563eb; padding: 0.85rem; margin-bottom: 0.5rem; }
+.phrase-tag { font-size: 0.8rem; font-weight: 700; color: #2563eb; }
+.phrase-text { font-weight: 600; margin-top: 0.25rem; }
