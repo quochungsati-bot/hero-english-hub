@@ -5,8 +5,11 @@ const fallbackLessons = [{"id": 1, "title": "Lesson 01: Introduction to Bidding 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+
   try {
-    const docRes = await fetch(DOC_TXT_URL);
+    const liveUrl = DOC_TXT_URL + "&t=" + Date.now();
+    const docRes = await fetch(liveUrl);
     if (docRes.ok) {
       const rawText = await docRes.text();
       const parsed = JSON.parse(rawText);

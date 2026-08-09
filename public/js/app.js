@@ -76,7 +76,7 @@ async function searchOxfordDict() {
 
 async function fetchLessonsAndRender() {
     try {
-        const res = await fetch('/api/lessons');
+        const res = await fetch('/api/lessons?nocache=' + Date.now());
         if (res.ok) {
             const data = await res.json();
             let fetched = [];
@@ -135,7 +135,7 @@ function selectLesson(id) {
                 <span class="badge-status">${lesson.status || 'Scheduled'}</span>
             </div>
             
-            <!-- REAL-TIME PREPLY SCHEDULE BANNER IN ELEGANT EARTH THEME -->
+            <!-- REAL-TIME PREPLY SCHEDULE BANNER -->
             <div class="schedule-banner">
                 <div>
                     <span style="font-size: 1.05rem; color: #C05621; font-weight: 700;">📅 Lịch học Preply: ${scheduleDisplayDate}</span>
