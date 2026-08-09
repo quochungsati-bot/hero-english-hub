@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
       if (lessons.length > 0) return res.status(200).json(lessons);
     }
   } catch (e) {
-    console.error("Live fetch from Doc TXT failed, serving fallback:", e.message);
+    console.error("Live fetch failed, serving fallback:", e.message);
   }
   return res.status(200).json(fallbackLessons);
 };

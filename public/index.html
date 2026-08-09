@@ -3,18 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Hub</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>English Hub - Elegant Earth Theme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+:root {
+  --charcoal-900: #231F20;
+  --charcoal-800: #342E30;
+  --earth-accent: #C05621;
+  --earth-hover: #9C4221;
+  --bg-warm: #F9F8F6;
+  --card-bg: #FFFFFF;
+  --border-warm: #E5E0D8;
+  --text-dark: #231F20;
+  --text-muted: #665E5E;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+body { background-color: var(--bg-warm) !important; color: var(--text-dark) !important; line-height: 1.5; }
+
+header { background-color: var(--charcoal-900) !important; color: #FFFFFF !important; padding: 1.5rem 2rem; border-bottom: 4px solid var(--earth-accent) !important; }
+.header-container { max-width: 1300px; margin: 0 auto; }
+.logo-area { display: flex; align-items: center; gap: 1rem; }
+.logo-area h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.5px; color: #FFFFFF; }
+.status-badge { background-color: var(--earth-accent) !important; color: #FFFFFF !important; font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 9999px; font-weight: 700; letter-spacing: 0.5px; }
+.subtitle { color: #A09898; font-size: 0.92rem; margin-top: 0.3rem; }
+
+.dict-bar { background-color: var(--charcoal-800) !important; padding: 0.85rem 2rem; border-bottom: 1px solid #4A4244; }
+.dict-input-wrap { display: flex; gap: 0.5rem; max-width: 1300px; margin: 0 auto; }
+.dict-bar input { flex: 1; padding: 0.65rem 1rem; border-radius: 6px; border: 1px solid #524B4B; background-color: #231F20; color: #FFFFFF; font-size: 0.92rem; }
+.dict-btn { background-color: var(--earth-accent) !important; color: #FFFFFF !important; border: none; padding: 0.65rem 1.4rem; border-radius: 6px; font-weight: 700; cursor: pointer; }
+.dict-btn:hover { background-color: var(--earth-hover) !important; }
+.dict-result-card { max-width: 1300px; margin: 0.75rem auto 0; background: #FFFFFF; color: var(--text-dark); padding: 1.25rem; border-radius: 8px; border-left: 5px solid var(--earth-accent); box-shadow: 0 4px 12px rgba(35, 31, 32, 0.05); }
+
+.app-layout { display: flex; max-width: 1300px; margin: 1.75rem auto; padding: 0 1rem; gap: 1.75rem; }
+
+.sidebar { width: 340px; background-color: #FFFFFF !important; border: 1px solid var(--border-warm) !important; border-radius: 12px; padding: 1.25rem; height: fit-content; box-shadow: 0 4px 12px rgba(35, 31, 32, 0.03); }
+.sidebar-title { font-size: 0.85rem; font-weight: 700; color: #786E6E; margin-bottom: 1rem; letter-spacing: 0.5px; border-bottom: 2px solid #F3F0EC; padding-bottom: 0.5rem; }
+.sidebar-menu { display: flex; flex-direction: column; gap: 0.6rem; }
+.sidebar-item { padding: 0.9rem 1rem; border-radius: 8px; border: 1px solid var(--border-warm); background-color: #FAF8F5; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; }
+.sidebar-item:hover, .sidebar-item.active { background-color: #FDF6F0 !important; border-color: var(--earth-accent) !important; color: var(--earth-accent) !important; font-weight: 600; }
+.sidebar-item-date { font-size: 0.82rem; color: var(--earth-accent) !important; font-weight: 700; margin-top: 0.35rem; }
+
+.main-content { flex: 1; }
+.skill-nav { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+.nav-btn { background-color: #FFFFFF; border: 1px solid var(--border-warm); color: var(--text-dark); padding: 0.65rem 1.2rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; border-radius: 6px; }
+.nav-btn.active, .nav-btn:hover { background-color: var(--earth-accent) !important; color: #FFFFFF !important; border-color: var(--earth-accent) !important; }
+
+.tab-section { display: none; }
+.tab-section.active { display: block; }
+
+.card { background-color: var(--card-bg) !important; border: 1px solid var(--border-warm) !important; border-radius: 12px; padding: 1.75rem; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(35, 31, 32, 0.03); }
+
+.schedule-banner { background-color: #FDF6F0 !important; border: 1px solid #FBD38D !important; border-left: 5px solid var(--earth-accent) !important; padding: 1rem 1.25rem; border-radius: 10px; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+.preply-link-btn { background-color: var(--earth-accent) !important; color: #FFFFFF !important; padding: 0.45rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.85rem; }
+.preply-link-btn:hover { background-color: var(--earth-hover) !important; }
+
+.vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.vocab-card { background-color: #FAF8F5 !important; border-left: 4px solid var(--earth-accent) !important; padding: 1.1rem; border-radius: 0 8px 8px 0; border-top: 1px solid var(--border-warm); border-right: 1px solid var(--border-warm); border-bottom: 1px solid var(--border-warm); }
+.vocab-title { font-size: 1.05rem; font-weight: 700; color: var(--earth-accent) !important; }
+.phonetic { font-size: 0.85rem; color: #786E6E; margin-left: 0.5rem; }
+.example { font-style: italic; font-size: 0.88rem; color: #4A4244; margin-top: 0.5rem; }
+.bullet-item { background-color: #FAF8F5 !important; border: 1px solid var(--border-warm) !important; padding: 0.9rem 1rem; border-radius: 8px; margin-bottom: 0.6rem; font-size: 0.92rem; }
+
+.speech-icon-btn { background-color: #FDF6F0 !important; color: var(--earth-accent) !important; border: 1px solid #FBD38D !important; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
+.speech-icon-btn:hover { background-color: var(--earth-accent) !important; color: #FFFFFF !important; }
+
+.action-btn { background-color: var(--earth-accent) !important; color: #FFFFFF !important; border: none; padding: 0.65rem 1.25rem; border-radius: 6px; font-weight: 600; cursor: pointer; }
+.action-btn:hover { background-color: var(--earth-hover) !important; }
+.audio-box, .transcript-box { background-color: #FAF8F5 !important; padding: 1.25rem; border-radius: 8px; margin-top: 0.75rem; border: 1px solid var(--border-warm); }
+textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); border-radius: 6px; font-size: 0.95rem; margin-top: 0.5rem; background-color: #FAF8F5; }
+.feedback-box { margin-top: 1rem; padding: 1rem; background-color: #F0FFF4; border: 1px solid #C6F6D5; border-radius: 6px; display: none; }
+.badge-status { background-color: var(--earth-accent) !important; color: #FFFFFF !important; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 700; }
+.phrase-card { background-color: #FAF8F5 !important; border-left: 4px solid var(--earth-accent) !important; padding: 0.9rem; margin-bottom: 0.6rem; border-top: 1px solid var(--border-warm); border-right: 1px solid var(--border-warm); border-bottom: 1px solid var(--border-warm); }
+.phrase-tag { font-size: 0.8rem; font-weight: 700; color: var(--earth-accent) !important; }
+.phrase-text { font-weight: 600; margin-top: 0.25rem; }
+</style>
 </head>
 <body>
 
     <header>
-        <div class="logo-area">
-            <h1>English Hub</h1>
-            <span class="status-badge">📅 PREPLY SCHEDULE LIVE</span>
+        <div class="header-container">
+            <div class="logo-area">
+                <h1>English Hub</h1>
+                <span class="status-badge">ELEGANT EARTH THEME</span>
+            </div>
+            <p class="subtitle">Hero | Integrated 4 Skills, Audio Speech & Oxford Dictionary</p>
         </div>
-        <p>Hero | Integrated 4 Skills & Real-Time Preply Schedule</p>
     </header>
 
     <div class="dict-bar">
@@ -27,7 +101,7 @@
 
     <div class="app-layout">
         <aside class="sidebar">
-            <div class="sidebar-title">📅 PREPLY SCHEDULE (8 SESSIONS)</div>
+            <div class="sidebar-title">📑 DANH SÁCH BÀI HỌC PREPLY</div>
             <div id="sidebar-lesson-list" class="sidebar-menu">
                 <p>Loading Preply Schedule...</p>
             </div>
@@ -35,7 +109,7 @@
 
         <main class="main-content">
             <nav class="skill-nav">
-                <button class="nav-btn active" onclick="showSkillTab('lesson-detail-tab')">📚 Nội dung bài học & Ngày giờ</button>
+                <button class="nav-btn active" onclick="showSkillTab('lesson-detail-tab')">📚 Nội dung bài học (50 Mins)</button>
                 <button class="nav-btn" onclick="showSkillTab('listening-tab')">🎧 Nghe (Listening)</button>
                 <button class="nav-btn" onclick="showSkillTab('speaking-tab')">🗣️ Nói (Speaking)</button>
                 <button class="nav-btn" onclick="showSkillTab('reading-tab')">📖 Đọc (Reading)</button>
@@ -44,7 +118,7 @@
 
             <section id="lesson-detail-tab" class="tab-section active">
                 <div id="active-lesson-display">
-                    <p>Loading Lesson Details & Preply Schedule...</p>
+                    <p>Loading Lesson Details...</p>
                 </div>
             </section>
 
@@ -92,7 +166,7 @@
                     <h3>FIDIC Red Book Clause 13.8 - Adjustments for Changes in Cost 
                         <button class="speech-icon-btn" onclick="speakText('FIDIC Red Book Clause 13.8 - Adjustments for Changes in Cost')">🔊 Đọc tiêu đề</button>
                     </h3>
-                    <p style="background: #f1f5f9; padding: 1rem; border-radius: 6px; margin: 0.75rem 0; line-height: 1.6;">
+                    <p style="background: #FAF8F5; padding: 1rem; border-radius: 6px; margin: 0.75rem 0; line-height: 1.6; border: 1px solid #E5E0D8;">
                         The Contract Price shall be adjusted for rises or falls in the cost of labor, Goods and other inputs to the Works, by the addition or deduction of the amounts determined by the formulae prescribed in this Sub-Clause.
                         <button class="speech-icon-btn" onclick="speakText('The Contract Price shall be adjusted for rises or falls in the cost of labor, Goods and other inputs to the Works, by the addition or deduction of the amounts determined by the formulae prescribed in this Sub-Clause.')">🔊 Đọc đoạn</button>
                     </p>
@@ -106,7 +180,7 @@
                     <textarea id="writing-input" rows="5" placeholder="Dear Client Representative, We would like to propose a Value Engineering alternative under FIDIC Clause 13..."></textarea>
                     <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
                         <button class="action-btn" onclick="analyzeWriting()">Analyze & Upgrade Vocabulary</button>
-                        <button class="action-btn" style="background: #0f172a;" onclick="speakText(document.getElementById('writing-input').value)">🔊 Đọc bản nháp</button>
+                        <button class="action-btn" style="background: #231F20;" onclick="speakText(document.getElementById('writing-input').value)">🔊 Đọc bản nháp</button>
                     </div>
                     <div id="writing-result" class="feedback-box"></div>
                 </div>
@@ -115,6 +189,6 @@
         </main>
     </div>
 
-    <script src="/js/app.js?v=9.0"></script>
+    <script src="/js/app.js?v=20260809_earth_inline"></script>
 </body>
 </html>

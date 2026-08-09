@@ -6,10 +6,6 @@ const preplySchedules = {"1": "Monday, Aug 10, 2026 (22:00 - 22:50)", "2": "Frid
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchLessonsAndRender();
-    
-    document.getElementById('dict-search-input').addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') searchOxfordDict();
-    });
 });
 
 function speakText(text) {
@@ -39,16 +35,16 @@ async function searchOxfordDict() {
             const d = result.data;
             box.innerHTML = `
                 <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <h3 style="color:#0f172a; font-size:1.15rem;">📖 Oxford Standard: <span style="color:#2563eb;">${d.word}</span> <span style="color:#64748b; font-size:0.85rem;">${d.ipa}</span></h3>
+                    <h3 style="color:#231F20; font-size:1.15rem;">📖 Oxford Standard: <span style="color:#C05621;">${d.word}</span> <span style="color:#786E6E; font-size:0.85rem;">${d.ipa}</span></h3>
                     <button class="speech-icon-btn" onclick="speakText('${d.word}')">🔊 Phát âm từ</button>
                 </div>
-                <p style="margin-top:0.4rem;"><strong>Loại từ:</strong> <em style="color:#d97706;">${d.pos}</em> | <strong>Nghĩa VI:</strong> <strong style="color:#065f46;">${d.vi}</strong></p>
-                <p style="margin-top:0.4rem; color:#334155;"><strong>Định nghĩa:</strong> ${d.def}</p>
-                <p style="margin-top:0.4rem; font-style:italic; color:#475569;"><strong>Ví dụ:</strong> "${d.ex}" <button class="speech-icon-btn" onclick="speakText('${d.ex.replace(/'/g, "\\'")}}')">🔊 Đọc ví dụ</button></p>
+                <p style="margin-top:0.4rem;"><strong>Loại từ:</strong> <em style="color:#C05621;">${d.pos}</em> | <strong>Nghĩa VI:</strong> <strong style="color:#276749;">${d.vi}</strong></p>
+                <p style="margin-top:0.4rem; color:#4A4244;"><strong>Định nghĩa:</strong> ${d.def}</p>
+                <p style="margin-top:0.4rem; font-style:italic; color:#524B4B;"><strong>Ví dụ:</strong> "${d.ex}" <button class="speech-icon-btn" onclick="speakText('${d.ex.replace(/'/g, "\\'")}}')">🔊 Đọc ví dụ</button></p>
             `;
         }
     } catch (e) {
-        box.innerHTML = `<p style="color:#ef4444;">Lỗi tra từ: ${e.message}</p>`;
+        box.innerHTML = `<p style="color:#C53030;">Lỗi tra từ: ${e.message}</p>`;
     }
 }
 
@@ -60,19 +56,14 @@ async function fetchLessonsAndRender() {
             let fetched = [];
             if (Array.isArray(data)) fetched = data;
             else if (data && Array.isArray(data.lessons)) fetched = data.lessons;
-            
-            if (fetched.length > 0) {
-                globalLessons = fetched;
-            }
+            if (fetched.length > 0) globalLessons = fetched;
         }
     } catch (e) {
         console.warn("Using bulletproof preply schedule fallback lessons:", e.message);
     }
     
     renderSidebarMenu();
-    if (globalLessons.length > 0) {
-        selectLesson(globalLessons[0].id);
-    }
+    if (globalLessons.length > 0) selectLesson(globalLessons[0].id);
 }
 
 function renderSidebarMenu() {
@@ -101,30 +92,30 @@ function selectLesson(id) {
 
     display.innerHTML = `
         <div class="card">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 0.75rem; margin-bottom: 1rem;">
-                <h2 style="color: #0f172a; font-size: 1.3rem;">${lesson.title}</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #F3F0EC; padding-bottom: 0.75rem; margin-bottom: 1rem;">
+                <h2 style="color: #231F20; font-size: 1.3rem;">${lesson.title}</h2>
                 <span class="badge-status">${lesson.status || 'Scheduled'}</span>
             </div>
             
-            <!-- REAL-TIME PREPLY SCHEDULE BANNER ALWAYS RENDERED -->
-            <div class="schedule-banner" style="background: #eff6ff; border: 1px solid #bfdbfe; border-left: 5px solid #2563eb; padding: 0.85rem 1rem; border-radius: 8px; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+            <!-- REAL-TIME PREPLY SCHEDULE BANNER IN ELEGANT EARTH THEME -->
+            <div class="schedule-banner">
                 <div>
-                    <span style="font-size: 1.05rem; color: #2563eb; font-weight: 700;">📅 Lịch học Preply: ${scheduleDisplayDate}</span>
-                    <p style="font-size: 0.85rem; color: #475569; margin-top: 0.2rem;">Tutor: Lorraine Cora | 50 Minutes Live Session</p>
+                    <span style="font-size: 1.05rem; color: #C05621; font-weight: 700;">📅 Lịch học Preply: ${scheduleDisplayDate}</span>
+                    <p style="font-size: 0.85rem; color: #665E5E; margin-top: 0.2rem;">Tutor: Lorraine Cora | 50 Minutes Live Session</p>
                 </div>
-                <a href="${preplyUrl}" target="_blank" style="background: #2563eb; color: white; padding: 0.35rem 0.85rem; border-radius: 6px; text-decoration: none; font-size: 0.82rem; font-weight: 700;">🔗 Vào lớp Preply</a>
+                <a href="${preplyUrl}" target="_blank" class="preply-link-btn">🔗 Vào lớp Preply</a>
             </div>
 
-            <p style="color: #475569; font-weight: 600; font-size: 0.95rem; margin-bottom: 1.25rem;">📌 Chủ đề: ${lesson.topic}</p>
+            <p style="color: #665E5E; font-weight: 600; font-size: 0.95rem; margin-bottom: 1.25rem;">📌 Chủ đề: ${lesson.topic}</p>
             
             ${lesson.timePlan ? `
-                <div style="background: #f8fafc; border: 1px solid #e2e8f0; color: #0369a1; padding: 0.75rem; border-radius: 6px; font-size: 0.88rem; font-weight: 600; margin-bottom: 1.5rem;">
+                <div style="background-color: #FAF8F5; border: 1px solid #E5E0D8; color: #C05621; padding: 0.85rem 1rem; border-radius: 8px; font-size: 0.88rem; font-weight: 600; margin-bottom: 1.5rem;">
                     ⏱️ Phân bổ 50 Phút Giao tiếp với Coach Lorraine: ${lesson.timePlan}
                 </div>
             ` : ''}
 
             ${lesson.powerWords ? `
-                <h3 style="color: #2563eb; font-size: 1.05rem;">💎 Part 1: Core Power Words (B2 - C1 - C2)</h3>
+                <h3 style="color: #C05621; font-size: 1.05rem;">💎 Part 1: Core Power Words (B2 - C1 - C2)</h3>
                 <div class="vocab-grid">
                     ${lesson.powerWords.map(w => `
                         <div class="vocab-card">
@@ -140,38 +131,38 @@ function selectLesson(id) {
             ` : ''}
 
             ${lesson.bulletPoints ? `
-                <h3 style="color: #2563eb; font-size: 1.05rem; margin-top: 1.75rem; margin-bottom: 0.75rem;">🗣️ Part 2: Speaking Bullet Points (Dàn ý Phản xạ)</h3>
+                <h3 style="color: #C05621; font-size: 1.05rem; margin-top: 1.75rem; margin-bottom: 0.75rem;">🗣️ Part 2: Speaking Bullet Points (Dàn ý Phản xạ)</h3>
                 ${lesson.bulletPoints.map(b => `
                     <div class="bullet-item">
                         <div style="display:flex; justify-content:space-between; align-items:center;">
                             <strong>"${b.en}"</strong>
                             <button class="speech-icon-btn" onclick="speakText('${b.en.replace(/'/g, "\\'")}}')">🔊 Đọc câu</button>
                         </div>
-                        <p style="color: #64748b; font-size: 0.85rem; margin-top: 0.25rem;">(${b.vi})</p>
+                        <p style="color: #665E5E; font-size: 0.85rem; margin-top: 0.25rem;">(${b.vi})</p>
                     </div>
                 `).join('')}
             ` : ''}
 
             ${lesson.anticipatedQA ? `
-                <h3 style="color: #2563eb; font-size: 1.05rem; margin-top: 1.75rem; margin-bottom: 0.75rem;">❓ Part 3: Anticipated Q&A (Client & Consultant)</h3>
+                <h3 style="color: #C05621; font-size: 1.05rem; margin-top: 1.75rem; margin-bottom: 0.75rem;">❓ Part 3: Anticipated Q&A (Client & Consultant)</h3>
                 ${lesson.anticipatedQA.map(q => `
-                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.85rem; border-radius: 6px; margin-bottom: 0.5rem;">
+                    <div style="background-color: #FAF8F5; border: 1px solid #E5E0D8; padding: 0.9rem; border-radius: 8px; margin-bottom: 0.6rem;">
                         <div style="display:flex; justify-content:space-between; align-items:center;">
-                            <p style="font-weight: 600;">Q: "${q.qEn}"</p>
+                            <p style="font-weight: 600; color: #231F20;">Q: "${q.qEn}"</p>
                             <button class="speech-icon-btn" onclick="speakText('${q.qEn.replace(/'/g, "\\'")}}')">🔊 Đọc câu hỏi</button>
                         </div>
-                        <p style="color: #64748b; font-size: 0.85rem;">(${q.qVi})</p>
-                        <p style="color: #2563eb; font-size: 0.85rem; font-style: italic; margin-top: 0.4rem;">👉 Response Hint: ${q.hint} <button class="speech-icon-btn" onclick="speakText('${q.hint.replace(/'/g, "\\'")}}')">🔊 Đọc gợi ý</button></p>
+                        <p style="color: #665E5E; font-size: 0.85rem;">(${q.qVi})</p>
+                        <p style="color: #C05621; font-size: 0.85rem; font-style: italic; margin-top: 0.4rem;">👉 Response Hint: ${q.hint} <button class="speech-icon-btn" onclick="speakText('${q.hint.replace(/'/g, "\\'")}}')">🔊 Đọc gợi ý</button></p>
                     </div>
                 `).join('')}
             ` : ''}
 
             ${lesson.challengeScenario ? `
-                <div style="background: #fffbebf; border: 1px solid #fef3c7; border-left: 5px solid #f59e0b; padding: 1rem; border-radius: 8px; margin-top: 1.5rem;">
-                    <h4 style="color: #b45309; font-size: 1rem; margin-bottom: 0.5rem;">🎯 Part 4: Challenge Scenario for Class with Lorraine</h4>
-                    <p style="font-size: 0.9rem;"><strong>English Context:</strong> ${lesson.challengeScenario.contextEn} <button class="speech-icon-btn" onclick="speakText('${lesson.challengeScenario.contextEn.replace(/'/g, "\\'")}}')">🔊 Đọc bối cảnh</button></p>
-                    <p style="color: #64748b; font-size: 0.85rem; margin-top: 0.25rem;"><strong>Dịch Tiếng Việt:</strong> ${lesson.challengeScenario.contextVi}</p>
-                    <p style="color: #0f172a; font-weight: 600; font-size: 0.88rem; margin-top: 0.75rem;">👉 Nhiệm vụ trên lớp: ${lesson.challengeScenario.task}</p>
+                <div style="background-color: #FFFAF0; border: 1px solid #FBD38D; border-left: 5px solid #DD6B20; padding: 1.1rem; border-radius: 8px; margin-top: 1.5rem;">
+                    <h4 style="color: #C05621; font-size: 1rem; margin-bottom: 0.5rem;">🎯 Part 4: Challenge Scenario for Class with Lorraine</h4>
+                    <p style="font-size: 0.9rem; color: #231F20;"><strong>English Context:</strong> ${lesson.challengeScenario.contextEn} <button class="speech-icon-btn" onclick="speakText('${lesson.challengeScenario.contextEn.replace(/'/g, "\\'")}}')">🔊 Đọc bối cảnh</button></p>
+                    <p style="color: #665E5E; font-size: 0.85rem; margin-top: 0.25rem;"><strong>Dịch Tiếng Việt:</strong> ${lesson.challengeScenario.contextVi}</p>
+                    <p style="color: #231F20; font-weight: 600; font-size: 0.88rem; margin-top: 0.75rem;">👉 Nhiệm vụ trên lớp: ${lesson.challengeScenario.task}</p>
                 </div>
             ` : ''}
         </div>
@@ -201,7 +192,7 @@ async function analyzeWriting() {
     const box = document.getElementById('writing-result');
     box.style.display = 'block';
     box.innerHTML = `
-        <h4 style="color: #065f46;">📊 Điểm đánh giá văn bản: ${result.score}/100</h4>
+        <h4 style="color: #276749;">📊 Điểm đánh giá văn bản: ${result.score}/100</h4>
         <p style="margin-top: 0.5rem;"><strong>Gợi ý cải thiện:</strong> ${result.suggestions.join(' ')}</p>
         <p style="margin-top: 0.5rem;"><strong>Đã nâng cấp từ vựng B2-C1:</strong> <em>"${result.upgradedText}"</em> <button class="speech-icon-btn" onclick="speakText('${result.upgradedText.replace(/'/g, "\\'")}}')">🔊 Đọc văn bản nâng cấp</button></p>
     `;
