@@ -1,6 +1,12 @@
 const oxfordDictDb = {
-  "spearhead": { word: "Spearhead", ipa: "/ˈspɪə.hed/", pos: "verb", vi: "Chủ trì, dẫn đầu gói thầu", def: "To lead or initiate a campaign or commercial bid.", ex: "As Deputy Head, I spearhead high-value commercial bids at Central Cons." },
-  "milestone": { word: "Milestone Schedule", ipa: "/ˈmaɪl.stəʊn/", pos: "noun", vi: "Tiến độ mốc then chốt", def: "An important stage in the development of a construction project.", ex: "We aligned procurement with the Client's milestone schedule." }
+  "bid": { word: "Bid", ipa: "/bɪd/", pos: "noun", vi: "Đề xuất / Hồ sơ chào giá dự thầu", def: "An offer to do a project for a certain price.", ex: "Our company will submit a formal bid tomorrow." },
+  "tender": { word: "Tender", ipa: "/ˈten.dər/", pos: "noun", vi: "Thông báo mời thầu chính thức từ CĐT", def: "A formal request for bids from companies.", ex: "The government opened a tender for the new road." },
+  "proposal": { word: "Proposal", ipa: "/prəˈpəʊ.zəl/", pos: "noun", vi: "Hồ sơ đề xuất phương án & kỹ thuật", def: "A written plan showing how the company will do the project.", ex: "We prepared a proposal with all details." },
+  "client": { word: "Client", ipa: "/ˈklaɪ.ənt/", pos: "noun", vi: "Chủ đầu tư / Khách hàng", def: "The person or company who needs the project done.", ex: "The client asked for a lower price." },
+  "deadline": { word: "Deadline", ipa: "/ˈded.laɪn/", pos: "noun", vi: "Thời hạn chót nộp hồ sơ", def: "The final date to finish something.", ex: "The deadline for the bid is Friday." },
+  "contract": { word: "Contract", ipa: "/ˈkɒn.trækt/", pos: "noun", vi: "Hợp đồng pháp lý", def: "A legal agreement between two parties.", ex: "We signed the contract after winning the bid." },
+  "technical bid": { word: "Technical Bid", ipa: "/ˈtek.nɪ.kəl bɪd/", pos: "noun", vi: "Hồ sơ Kỹ thuật", def: "Explains how the company will do the work (methods, materials, safety).", ex: "Our technical bid explains our construction methods." },
+  "financial bid": { word: "Financial Bid", ipa: "/faɪˈnæn.ʃəl bɪd/", pos: "noun", vi: "Hồ sơ Tài chính", def: "Explains how much the project will cost ($500,000) and payment terms.", ex: "The financial bid outlines the $500,000 total cost." }
 };
 
 module.exports = (req, res) => {
