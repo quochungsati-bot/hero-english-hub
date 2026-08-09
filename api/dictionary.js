@@ -4,9 +4,7 @@ const oxfordDictDb = {
   "proposal": { word: "Proposal", ipa: "/prəˈpəʊ.zəl/", pos: "noun", vi: "Hồ sơ đề xuất phương án & kỹ thuật", def: "A written plan showing how the company will do the project.", ex: "We prepared a proposal with all details." },
   "client": { word: "Client", ipa: "/ˈklaɪ.ənt/", pos: "noun", vi: "Chủ đầu tư / Khách hàng", def: "The person or company who needs the project done.", ex: "The client asked for a lower price." },
   "deadline": { word: "Deadline", ipa: "/ˈded.laɪn/", pos: "noun", vi: "Thời hạn chót nộp hồ sơ", def: "The final date to finish something.", ex: "The deadline for the bid is Friday." },
-  "contract": { word: "Contract", ipa: "/ˈkɒn.trækt/", pos: "noun", vi: "Hợp đồng pháp lý", def: "A legal agreement between two parties.", ex: "We signed the contract after winning the bid." },
-  "technical bid": { word: "Technical Bid", ipa: "/ˈtek.nɪ.kəl bɪd/", pos: "noun", vi: "Hồ sơ Kỹ thuật", def: "Explains how the company will do the work (methods, materials, safety).", ex: "Our technical bid explains our construction methods." },
-  "financial bid": { word: "Financial Bid", ipa: "/faɪˈnæn.ʃəl bɪd/", pos: "noun", vi: "Hồ sơ Tài chính", def: "Explains how much the project will cost ($500,000) and payment terms.", ex: "The financial bid outlines the $500,000 total cost." }
+  "contract": { word: "Contract", ipa: "/ˈkɒn.trækt/", pos: "noun", vi: "Hợp đồng pháp lý", def: "A legal agreement between two parties.", ex: "We signed the contract after winning the bid." }
 };
 
 module.exports = (req, res) => {

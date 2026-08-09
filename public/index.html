@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Hub - Lorraine Johns Lesson 01 Plan</title>
+    <title>English Hub - IPA Pronunciation & Video Guide</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
 :root {
@@ -68,6 +68,17 @@ header { background-color: var(--charcoal-900) !important; color: #FFFFFF !impor
 .preply-link-btn { background-color: var(--earth-accent) !important; color: #FFFFFF !important; padding: 0.45rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.85rem; }
 .preply-link-btn:hover { background-color: var(--earth-hover) !important; }
 
+/* IPA & VIDEO PRONUNCIATION STYLES */
+.video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 1rem; }
+.video-card { background: #FAF8F5; border: 1px solid var(--border-warm); border-radius: 10px; overflow: hidden; }
+.video-card iframe { width: 100%; height: 180px; border: none; }
+.video-info { padding: 0.85rem; }
+.video-title { font-size: 0.9rem; font-weight: 700; color: #231F20; }
+
+.ipa-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.ipa-card { background-color: #FAF8F5; border-left: 4px solid var(--earth-accent); padding: 1rem; border-radius: 0 8px 8px 0; border: 1px solid var(--border-warm); }
+.ipa-symbol { font-size: 1.2rem; font-weight: 700; color: var(--earth-accent); }
+
 .vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
 .vocab-card { background-color: #FAF8F5 !important; border-left: 4px solid var(--earth-accent) !important; padding: 1.1rem; border-radius: 0 8px 8px 0; border-top: 1px solid var(--border-warm); border-right: 1px solid var(--border-warm); border-bottom: 1px solid var(--border-warm); }
 .vocab-title { font-size: 1.05rem; font-weight: 700; color: var(--earth-accent) !important; }
@@ -95,9 +106,9 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
         <div class="header-container">
             <div class="logo-area">
                 <h1>English Hub</h1>
-                <span class="status-badge">ELEGANT EARTH & LORRAINE LESSON 01</span>
+                <span class="status-badge">🗣️ IPA PRONUNCIATION & VIDEO HUB</span>
             </div>
-            <p class="subtitle">Hero | Integrated 4 Skills, Audio Speech & Oxford Dictionary</p>
+            <p class="subtitle">Hero | Integrated 4 Skills, IPA Pronunciation & Oxford Dictionary</p>
         </div>
     </header>
 
@@ -130,11 +141,11 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
         </div>
 
         <div class="metric-card">
-            <div class="metric-icon">⏱️</div>
+            <div class="metric-icon">🗣️</div>
             <div>
-                <span class="metric-label">Thời gian tương tác Coach Lorraine</span>
-                <div class="metric-value">50 Phút Tích lũy</div>
-                <span class="metric-sub">Target: 400 Phút (8 Buổi)</span>
+                <span class="metric-label">Phát âm chuẩn IPA Oxford & BBC</span>
+                <div class="metric-value">44 Âm Chuẩn IPA</div>
+                <span class="metric-sub">Kèm Video Minh Họa Khẩu Hình</span>
             </div>
         </div>
     </div>
@@ -150,6 +161,7 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
         <main class="main-content">
             <nav class="skill-nav">
                 <button class="nav-btn active" onclick="showSkillTab('lesson-detail-tab')">📚 Nội dung bài học (50 Mins)</button>
+                <button class="nav-btn" onclick="showSkillTab('ipa-tab')">🗣️ Luyện Phát Âm IPA (Video Oxford/BBC)</button>
                 <button class="nav-btn" onclick="showSkillTab('listening-tab')">🎧 Nghe (Listening)</button>
                 <button class="nav-btn" onclick="showSkillTab('speaking-tab')">🗣️ Nói (Speaking)</button>
                 <button class="nav-btn" onclick="showSkillTab('reading-tab')">📖 Đọc (Reading)</button>
@@ -159,6 +171,98 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
             <section id="lesson-detail-tab" class="tab-section active">
                 <div id="active-lesson-display">
                     <p>Loading Lesson Details...</p>
+                </div>
+            </section>
+
+            <!-- NEW TAB: IPA PRONUNCIATION PRACTICE & VIDEO HUB -->
+            <section id="ipa-tab" class="tab-section">
+                <div class="card">
+                    <h2 style="color: #231F20; font-size: 1.3rem;">🗣️ Luyện Phát Âm Chuẩn IPA & Video Minh Họa Oxford / BBC</h2>
+                    <p style="color: #665E5E; margin-top: 0.25rem;">Học cách phát âm chuẩn IPA từng âm tiết trong từ vựng đấu thầu qua Video minh họa và công cụ nhận diện giọng nói Micro.</p>
+
+                    <!-- VIDEO EMBEDS SECTION -->
+                    <h3 style="color: #C05621; font-size: 1.1rem; margin-top: 1.25rem;">🎥 Video Minh Họa Phát Âm Chuẩn (BBC Learning English & Oxford)</h3>
+                    <div class="video-grid">
+                        <div class="video-card">
+                            <iframe src="https://www.youtube.com/embed/QxQUapA-2w4" title="Complete Guide to 44 IPA Sounds" allowfullscreen></iframe>
+                            <div class="video-info">
+                                <p class="video-title">Complete Guide to All 44 English IPA Sounds</p>
+                                <p style="font-size:0.8rem; color:#665E5E;">BBC Learning English Pronunciation</p>
+                            </div>
+                        </div>
+                        <div class="video-card">
+                            <iframe src="https://www.youtube.com/embed/TNFKG0yvDx4" title="Short vowel /ɪ/ in bid & client" allowfullscreen></iframe>
+                            <div class="video-info">
+                                <p class="video-title">Short Vowel /ɪ/ in 'Bid', 'Tender' & 'Client'</p>
+                                <p style="font-size:0.8rem; color:#665E5E;">BBC Pronunciation Tips</p>
+                            </div>
+                        </div>
+                        <div class="video-card">
+                            <iframe src="https://www.youtube.com/embed/9WDnVMQIaTs" title="Diphthong /aʊ/ in proposal" allowfullscreen></iframe>
+                            <div class="video-info">
+                                <p class="video-title">Diphthong /aʊ/ & /əʊ/ in 'Proposal'</p>
+                                <p style="font-size:0.8rem; color:#665E5E;">BBC Pronunciation Tips</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- INTERACTIVE IPA CARDS & SPEECH RECOGNITION MIC -->
+                    <h3 style="color: #C05621; font-size: 1.1rem; margin-top: 1.75rem;">🎤 Thử Thách Luyện Phát Âm Qua Micro (Live AI Accuracy Match)</h3>
+                    <p style="font-size: 0.88rem; color: #665E5E; margin-bottom: 0.75rem;">Bấm nút Micro bên dưới từ vựng để thử thách phát âm và kiểm tra độ chính xác:</p>
+
+                    <div class="ipa-grid">
+                        <div class="ipa-card">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <span style="font-size: 1.1rem; font-weight:700; color:#231F20;">Bid</span>
+                                <span class="ipa-symbol">/bɪd/</span>
+                            </div>
+                            <p style="font-size:0.85rem; color:#665E5E; margin-top:0.2rem;">Âm ngắn /ɪ/ trong 'bid' - Khẩu hình thả lỏng, âm gọn.</p>
+                            <div style="display:flex; gap:0.4rem; margin-top:0.6rem;">
+                                <button class="speech-icon-btn" onclick="speakText('bid')">🔊 Chuẩn</button>
+                                <button class="speech-icon-btn" style="background:#FEEBC8; color:#C05621;" onclick="testMic('bid', 'bid-res')">🎤 Thử Micro</button>
+                            </div>
+                            <div id="bid-res" style="margin-top:0.4rem; font-size:0.82rem; font-weight:700; color:#276749;"></div>
+                        </div>
+
+                        <div class="ipa-card">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <span style="font-size: 1.1rem; font-weight:700; color:#231F20;">Proposal</span>
+                                <span class="ipa-symbol">/prəˈpəʊ.zəl/</span>
+                            </div>
+                            <p style="font-size:0.85rem; color:#665E5E; margin-top:0.2rem;">Âm đôi /əʊ/ - Tròn môi từ /ə/ chuyển sang /ʊ/.</p>
+                            <div style="display:flex; gap:0.4rem; margin-top:0.6rem;">
+                                <button class="speech-icon-btn" onclick="speakText('proposal')">🔊 Chuẩn</button>
+                                <button class="speech-icon-btn" style="background:#FEEBC8; color:#C05621;" onclick="testMic('proposal', 'prop-res')">🎤 Thử Micro</button>
+                            </div>
+                            <div id="prop-res" style="margin-top:0.4rem; font-size:0.82rem; font-weight:700; color:#276749;"></div>
+                        </div>
+
+                        <div class="ipa-card">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <span style="font-size: 1.1rem; font-weight:700; color:#231F20;">Contract</span>
+                                <span class="ipa-symbol">/ˈkɒn.trækt/</span>
+                            </div>
+                            <p style="font-size:0.85rem; color:#665E5E; margin-top:0.2rem;">Nhấn trọng âm âm 1 /ˈkɒn/, âm sau là /trækt/.</p>
+                            <div style="display:flex; gap:0.4rem; margin-top:0.6rem;">
+                                <button class="speech-icon-btn" onclick="speakText('contract')">🔊 Chuẩn</button>
+                                <button class="speech-icon-btn" style="background:#FEEBC8; color:#C05621;" onclick="testMic('contract', 'con-res')">🎤 Thử Micro</button>
+                            </div>
+                            <div id="con-res" style="margin-top:0.4rem; font-size:0.82rem; font-weight:700; color:#276749;"></div>
+                        </div>
+
+                        <div class="ipa-card">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <span style="font-size: 1.1rem; font-weight:700; color:#231F20;">Client</span>
+                                <span class="ipa-symbol">/ˈklaɪ.ənt/</span>
+                            </div>
+                            <p style="font-size:0.85rem; color:#665E5E; margin-top:0.2rem;">Âm đôi /aɪ/ mượt mà từ /a/ mở rộng sang /ɪ/.</p>
+                            <div style="display:flex; gap:0.4rem; margin-top:0.6rem;">
+                                <button class="speech-icon-btn" onclick="speakText('client')">🔊 Chuẩn</button>
+                                <button class="speech-icon-btn" style="background:#FEEBC8; color:#C05621;" onclick="testMic('client', 'cli-res')">🎤 Thử Micro</button>
+                            </div>
+                            <div id="cli-res" style="margin-top:0.4rem; font-size:0.82rem; font-weight:700; color:#276749;"></div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -229,6 +333,6 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
         </main>
     </div>
 
-    <script src="/js/app.js?v=20260809_lorraine1"></script>
+    <script src="/js/app.js?v=20260809_ipa_video"></script>
 </body>
 </html>
