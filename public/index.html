@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Hub - Lorraine Johns Lesson 01 Plan & 4-Skills Review Exercises</title>
+    <title>English Hub - International Bidding Pitch & Presentation Trainer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
 :root {
@@ -68,12 +68,11 @@ header { background-color: var(--charcoal-900) !important; color: #FFFFFF !impor
 .preply-link-btn { background-color: var(--earth-accent) !important; color: #FFFFFF !important; padding: 0.45rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.85rem; }
 .preply-link-btn:hover { background-color: var(--earth-hover) !important; }
 
-.vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
-.vocab-card { background-color: #FAF8F5 !important; border-left: 4px solid var(--earth-accent) !important; padding: 1.1rem; border-radius: 0 8px 8px 0; border-top: 1px solid var(--border-warm); border-right: 1px solid var(--border-warm); border-bottom: 1px solid var(--border-warm); }
-.vocab-title { font-size: 1.05rem; font-weight: 700; color: var(--earth-accent) !important; }
-.phonetic { font-size: 0.85rem; color: #786E6E; margin-left: 0.5rem; }
-.example { font-style: italic; font-size: 0.88rem; color: #4A4244; margin-top: 0.5rem; }
-.bullet-item { background-color: #FAF8F5 !important; border: 1px solid var(--border-warm) !important; padding: 0.9rem 1rem; border-radius: 8px; margin-bottom: 0.6rem; font-size: 0.92rem; }
+/* PRESENTATION PITCH STYLES */
+.pitch-card { background-color: #FAF8F5; border: 1px solid var(--border-warm); border-left: 5px solid var(--earth-accent); padding: 1.25rem; border-radius: 10px; margin-bottom: 1.25rem; }
+.pitch-step-tag { font-size: 0.8rem; font-weight: 700; color: var(--earth-accent); text-transform: uppercase; letter-spacing: 0.5px; }
+.pitch-title { font-size: 1.1rem; font-weight: 700; color: #231F20; margin-top: 0.2rem; }
+.pitch-script { background: #FFFFFF; border: 1px solid var(--border-warm); padding: 1rem; border-radius: 8px; margin-top: 0.6rem; font-size: 0.92rem; line-height: 1.6; color: #231F20; font-weight: 500; }
 
 .speech-icon-btn { background-color: #FDF6F0 !important; color: var(--earth-accent) !important; border: 1px solid #FBD38D !important; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
 .speech-icon-btn:hover { background-color: var(--earth-accent) !important; color: #FFFFFF !important; }
@@ -84,9 +83,6 @@ header { background-color: var(--charcoal-900) !important; color: #FFFFFF !impor
 textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); border-radius: 6px; font-size: 0.95rem; margin-top: 0.5rem; background-color: #FAF8F5; }
 .feedback-box { margin-top: 1rem; padding: 1rem; background-color: #F0FFF4; border: 1px solid #C6F6D5; border-radius: 6px; display: none; }
 .badge-status { background-color: var(--earth-accent) !important; color: #FFFFFF !important; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 700; }
-.phrase-card { background-color: #FAF8F5 !important; border-left: 4px solid var(--earth-accent) !important; padding: 0.9rem; margin-bottom: 0.6rem; border-top: 1px solid var(--border-warm); border-right: 1px solid var(--border-warm); border-bottom: 1px solid var(--border-warm); }
-.phrase-tag { font-size: 0.8rem; font-weight: 700; color: var(--earth-accent) !important; }
-.phrase-text { font-weight: 600; margin-top: 0.25rem; }
 </style>
 </head>
 <body>
@@ -95,9 +91,9 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
         <div class="header-container">
             <div class="logo-area">
                 <h1>English Hub</h1>
-                <span class="status-badge">ELEGANT EARTH & 4-SKILLS EXERCISES</span>
+                <span class="status-badge">🎙️ EXEC PITCH & PRESENTATION HUB</span>
             </div>
-            <p class="subtitle">Hero | Integrated 4 Skills, Audio Speech & Oxford Dictionary</p>
+            <p class="subtitle">Hero | Integrated 4 Skills, Bidding Presentation Pitch & Oxford Dictionary</p>
         </div>
     </header>
 
@@ -130,11 +126,11 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
         </div>
 
         <div class="metric-card">
-            <div class="metric-icon">✍️</div>
+            <div class="metric-icon">🎙️</div>
             <div>
-                <span class="metric-label">Bài tập ôn luyện 4 kỹ năng</span>
-                <div class="metric-value">Nghe - Nói - Đọc - Viết</div>
-                <span class="metric-sub">Có chấm điểm AI & phản hồi tức thì</span>
+                <span class="metric-label">Luyện thuyết trình thầu chuẩn quốc tế</span>
+                <div class="metric-value">5 Khung Thuyết Trình Pitch</div>
+                <span class="metric-sub">Kèm Teleprompter & Chấm điểm Micro</span>
             </div>
         </div>
     </div>
@@ -150,6 +146,7 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
         <main class="main-content">
             <nav class="skill-nav">
                 <button class="nav-btn active" onclick="showSkillTab('lesson-detail-tab')">📚 Nội dung bài học (50 Mins)</button>
+                <button class="nav-btn" onclick="showSkillTab('presentation-tab')">🎙️ Thuyết Trình Đấu Thầu (Pitch Trainer)</button>
                 <button class="nav-btn" onclick="showSkillTab('ipa-tab')">🗣️ Luyện Phát Âm IPA (Video Oxford/BBC)</button>
                 <button class="nav-btn" onclick="showSkillTab('listening-tab')">🎧 Nghe (Listening)</button>
                 <button class="nav-btn" onclick="showSkillTab('speaking-tab')">🗣️ Nói (Speaking)</button>
@@ -160,6 +157,89 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
             <section id="lesson-detail-tab" class="tab-section active">
                 <div id="active-lesson-display">
                     <p>Loading Lesson Details...</p>
+                </div>
+            </section>
+
+            <!-- NEW TAB: INTERNATIONAL BIDDING PRESENTATION PITCH TRAINER -->
+            <section id="presentation-tab" class="tab-section">
+                <div class="card">
+                    <h2 style="color: #231F20; font-size: 1.3rem;">🎙️ Kỹ Năng Thuyết Trình & Bảo Vệ Hồ Sơ Thầu Chuẩn Quốc Tế</h2>
+                    <p style="color: #665E5E; margin-top: 0.25rem;">Khung thuyết trình 5 bước dành riêng cho Lãnh đạo Đấu thầu (Phó phòng / Trưởng phòng Đấu thầu) bảo vệ trước Chủ đầu tư & Tư vấn Quốc tế.</p>
+
+                    <!-- PITCH STEP 1 -->
+                    <div class="pitch-card" style="margin-top: 1.25rem;">
+                        <span class="pitch-step-tag">Step 1 · Executive Opening & Value Pitch</span>
+                        <h3 class="pitch-title">Mở Đầu Bài Thuyết Trình & Khẳng Định Tuyên Bố Giá Trị</h3>
+                        <p style="font-size: 0.88rem; color: #665E5E; margin-top: 0.25rem;">Thiết lập vị thế lãnh đạo, cảm ơn CĐT và nêu bật 2 điểm mạnh vượt trội của Central Cons.</p>
+                        <div class="pitch-script">
+                            "Good morning ladies and gentlemen, on behalf of Central Cons, I am honored to present our technical and financial proposal for the Commercial Tower Project. Today, we will demonstrate how our Value Engineering methods and PMBOK risk management deliver a zero-delay execution within your target budget."
+                        </div>
+                        <div style="display:flex; gap:0.5rem; margin-top:0.6rem;">
+                            <button class="speech-icon-btn" onclick="speakText('Good morning ladies and gentlemen, on behalf of Central Cons, I am honored to present our technical and financial proposal for the Commercial Tower Project. Today, we will demonstrate how our Value Engineering methods and PMBOK risk management deliver a zero-delay execution within your target budget.')">🔊 Nghe Luyện Đọc Mẫu</button>
+                            <button class="speech-icon-btn" style="background:#FEEBC8; color:#C05621;" onclick="testMic('on behalf of central cons', 'pitch1-res')">🎤 Bắt Đầu Thuyết Trình Qua Micro</button>
+                        </div>
+                        <div id="pitch1-res" style="margin-top:0.4rem; font-size:0.85rem; font-weight:700; color:#276749;"></div>
+                    </div>
+
+                    <!-- PITCH STEP 2 -->
+                    <div class="pitch-card">
+                        <span class="pitch-step-tag">Step 2 · Technical Excellence & Value Engineering</span>
+                        <h3 class="pitch-title">Trình Bày Giải Pháp Kỹ Thuật & Kỹ Thuật Giá Trị (VE)</h3>
+                        <p style="font-size: 0.88rem; color: #665E5E; margin-top: 0.25rem;">Chứng minh phương án thi công tối ưu tiết kiệm 14 ngày tiến độ và 6% chi phí phần thô.</p>
+                        <div class="pitch-script">
+                            "Regarding our technical bid, Central Cons proposes a Value Engineering foundation strategy utilizing top-down basement construction. This approach reduces overall site duration by 14 calendar days while maintaining strict safety standards under FIDIC guidelines."
+                        </div>
+                        <div style="display:flex; gap:0.5rem; margin-top:0.6rem;">
+                            <button class="speech-icon-btn" onclick="speakText('Regarding our technical bid, Central Cons proposes a Value Engineering foundation strategy utilizing top-down basement construction. This approach reduces overall site duration by 14 calendar days while maintaining strict safety standards under FIDIC guidelines.')">🔊 Nghe Luyện Đọc Mẫu</button>
+                            <button class="speech-icon-btn" style="background:#FEEBC8; color:#C05621;" onclick="testMic('value engineering', 'pitch2-res')">🎤 Bắt Đầu Thuyết Trình Qua Micro</button>
+                        </div>
+                        <div id="pitch2-res" style="margin-top:0.4rem; font-size:0.85rem; font-weight:700; color:#276749;"></div>
+                    </div>
+
+                    <!-- PITCH STEP 3 -->
+                    <div class="pitch-card">
+                        <span class="pitch-step-tag">Step 3 · Commercial Defense & FIDIC Formulas</span>
+                        <h3 class="pitch-title">Bảo Vệ Giá Thầu & Phân Bổ Rủi Ro Chi Phí (FIDIC 13.8)</h3>
+                        <p style="font-size: 0.88rem; color: #665E5E; margin-top: 0.25rem;">Bảo vệ tổng mức đầu tư $500,000 và đề xuất công thức điều chỉnh giá trượt đòn bẩy thép/bê tông.</p>
+                        <div class="pitch-script">
+                            "Turning to our financial bid, our total contract sum of $500,000 provides total transparency across all BOQ items. To protect both parties against raw material volatility over the 24-month period, we recommend incorporating FIDIC Clause 13.8 price adjustment formulas."
+                        </div>
+                        <div style="display:flex; gap:0.5rem; margin-top:0.6rem;">
+                            <button class="speech-icon-btn" onclick="speakText('Turning to our financial bid, our total contract sum of 500000 dollars provides total transparency across all BOQ items. To protect both parties against raw material volatility over the 24-month period, we recommend incorporating FIDIC Clause 13.8 price adjustment formulas.')">🔊 Nghe Luyện Đọc Mẫu</button>
+                            <button class="speech-icon-btn" style="background:#FEEBC8; color:#C05621;" onclick="testMic('financial bid', 'pitch3-res')">🎤 Bắt Đầu Thuyết Trình Qua Micro</button>
+                        </div>
+                        <div id="pitch3-res" style="margin-top:0.4rem; font-size:0.85rem; font-weight:700; color:#276749;"></div>
+                    </div>
+
+                    <!-- PITCH STEP 4 -->
+                    <div class="pitch-card">
+                        <span class="pitch-step-tag">Step 4 · High-Pressure Q&A Defense Framework</span>
+                        <h3 class="pitch-title">Khung Xử Lý Câu Hỏi Hóc Búa (Acknowledge -> Reframe -> Resolve)</h3>
+                        <p style="font-size: 0.88rem; color: #665E5E; margin-top: 0.25rem;">Phản xạ lịch thiệp khi CĐT ép giảm giá hoặc nghi ngờ tiến độ.</p>
+                        <div class="pitch-script">
+                            "I appreciate you bringing up that concern regarding site handover delays. Under our PMBOK contingency protocol, we have allocated dedicated standby equipment to accelerate the critical path immediately upon site possession."
+                        </div>
+                        <div style="display:flex; gap:0.5rem; margin-top:0.6rem;">
+                            <button class="speech-icon-btn" onclick="speakText('I appreciate you bringing up that concern regarding site handover delays. Under our PMBOK contingency protocol, we have allocated dedicated standby equipment to accelerate the critical path immediately upon site possession.')">🔊 Nghe Luyện Đọc Mẫu</button>
+                            <button class="speech-icon-btn" style="background:#FEEBC8; color:#C05621;" onclick="testMic('appreciate you bringing up', 'pitch4-res')">🎤 Bắt Đầu Thuyết Trình Qua Micro</button>
+                        </div>
+                        <div id="pitch4-res" style="margin-top:0.4rem; font-size:0.85rem; font-weight:700; color:#276749;"></div>
+                    </div>
+
+                    <!-- PITCH STEP 5 -->
+                    <div class="pitch-card">
+                        <span class="pitch-step-tag">Step 5 · Executive Winning Closing</span>
+                        <h3 class="pitch-title">Kết Thúc Thuyết Trình & Kêu Gọi Trao Thầu (Call to Action)</h3>
+                        <p style="font-size: 0.88rem; color: #665E5E; margin-top: 0.25rem;">Chốt lại 3 ưu thế cạnh tranh và khẳng định tư thế sẵn sàng huy động công trường ngay.</p>
+                        <div class="pitch-script">
+                            "In conclusion, Central Cons offers proven technical expertise, cost optimization, and an uncompromised safety record. We are fully prepared to mobilize resources immediately upon contract signing. Thank you for your consideration, and we welcome any further questions."
+                        </div>
+                        <div style="display:flex; gap:0.5rem; margin-top:0.6rem;">
+                            <button class="speech-icon-btn" onclick="speakText('In conclusion, Central Cons offers proven technical expertise, cost optimization, and an uncompromised safety record. We are fully prepared to mobilize resources immediately upon contract signing. Thank you for your consideration, and we welcome any further questions.')">🔊 Nghe Luyện Đọc Mẫu</button>
+                            <button class="speech-icon-btn" style="background:#FEEBC8; color:#C05621;" onclick="testMic('in conclusion central cons', 'pitch5-res')">🎤 Bắt Đầu Thuyết Trình Qua Micro</button>
+                        </div>
+                        <div id="pitch5-res" style="margin-top:0.4rem; font-size:0.85rem; font-weight:700; color:#276749;"></div>
+                    </div>
                 </div>
             </section>
 
@@ -322,6 +402,6 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
         </main>
     </div>
 
-    <script src="/js/app.js?v=20260809_exercises"></script>
+    <script src="/js/app.js?v=20260810_presentation"></script>
 </body>
 </html>

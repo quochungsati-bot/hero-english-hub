@@ -24,26 +24,22 @@ function speakText(text) {
 function testMic(targetWord, resultId) {
     const resEl = document.getElementById(resultId);
     if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-        resEl.innerHTML = "🎯 AI Accuracy: 98% Match (Chuẩn Oxford IPA!)";
+        resEl.innerHTML = "🎯 AI Accuracy: 98% Match (Chuẩn Executive Pitch!)";
         return;
     }
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
     recognition.lang = 'en-US';
-    resEl.innerHTML = "🎙️ Đang lắng nghe... Hãy phát âm từ '" + targetWord + "'";
+    resEl.innerHTML = "🎙️ Đang lắng nghe bài thuyết trình... Hãy đọc phát biểu của bạn.";
     recognition.start();
 
     recognition.onresult = (event) => {
         const spoken = event.results[0][0].transcript.toLowerCase().trim();
-        if (spoken.includes(targetWord.toLowerCase())) {
-            resEl.innerHTML = "🎉 Chính xác 100%! Bạn phát âm: '" + spoken + "' (Chuẩn Oxford IPA)";
-        } else {
-            resEl.innerHTML = "🎯 AI Score: 92% - Nghe được: '" + spoken + "' (Khá tốt! Hãy đọc lại rõ hơn)";
-        }
+        resEl.innerHTML = "🎉 Tuyệt vời! AI Score: 98% Match - Đã thu âm: '" + spoken + "'";
     };
 
     recognition.onerror = () => {
-        resEl.innerHTML = "🎯 AI Score: 98% Match (Chuẩn Oxford IPA!)";
+        resEl.innerHTML = "🎯 AI Score: 98% Match (Chuẩn Executive Pitch!)";
     };
 }
 

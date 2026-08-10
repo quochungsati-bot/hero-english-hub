@@ -61,12 +61,11 @@ header { background-color: var(--charcoal-900) !important; color: #FFFFFF !impor
 .preply-link-btn { background-color: var(--earth-accent) !important; color: #FFFFFF !important; padding: 0.45rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.85rem; }
 .preply-link-btn:hover { background-color: var(--earth-hover) !important; }
 
-.vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
-.vocab-card { background-color: #FAF8F5 !important; border-left: 4px solid var(--earth-accent) !important; padding: 1.1rem; border-radius: 0 8px 8px 0; border-top: 1px solid var(--border-warm); border-right: 1px solid var(--border-warm); border-bottom: 1px solid var(--border-warm); }
-.vocab-title { font-size: 1.05rem; font-weight: 700; color: var(--earth-accent) !important; }
-.phonetic { font-size: 0.85rem; color: #786E6E; margin-left: 0.5rem; }
-.example { font-style: italic; font-size: 0.88rem; color: #4A4244; margin-top: 0.5rem; }
-.bullet-item { background-color: #FAF8F5 !important; border: 1px solid var(--border-warm) !important; padding: 0.9rem 1rem; border-radius: 8px; margin-bottom: 0.6rem; font-size: 0.92rem; }
+/* PRESENTATION PITCH STYLES */
+.pitch-card { background-color: #FAF8F5; border: 1px solid var(--border-warm); border-left: 5px solid var(--earth-accent); padding: 1.25rem; border-radius: 10px; margin-bottom: 1.25rem; }
+.pitch-step-tag { font-size: 0.8rem; font-weight: 700; color: var(--earth-accent); text-transform: uppercase; letter-spacing: 0.5px; }
+.pitch-title { font-size: 1.1rem; font-weight: 700; color: #231F20; margin-top: 0.2rem; }
+.pitch-script { background: #FFFFFF; border: 1px solid var(--border-warm); padding: 1rem; border-radius: 8px; margin-top: 0.6rem; font-size: 0.92rem; line-height: 1.6; color: #231F20; font-weight: 500; }
 
 .speech-icon-btn { background-color: #FDF6F0 !important; color: var(--earth-accent) !important; border: 1px solid #FBD38D !important; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
 .speech-icon-btn:hover { background-color: var(--earth-accent) !important; color: #FFFFFF !important; }
@@ -77,6 +76,3 @@ header { background-color: var(--charcoal-900) !important; color: #FFFFFF !impor
 textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); border-radius: 6px; font-size: 0.95rem; margin-top: 0.5rem; background-color: #FAF8F5; }
 .feedback-box { margin-top: 1rem; padding: 1rem; background-color: #F0FFF4; border: 1px solid #C6F6D5; border-radius: 6px; display: none; }
 .badge-status { background-color: var(--earth-accent) !important; color: #FFFFFF !important; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 700; }
-.phrase-card { background-color: #FAF8F5 !important; border-left: 4px solid var(--earth-accent) !important; padding: 0.9rem; margin-bottom: 0.6rem; border-top: 1px solid var(--border-warm); border-right: 1px solid var(--border-warm); border-bottom: 1px solid var(--border-warm); }
-.phrase-tag { font-size: 0.8rem; font-weight: 700; color: var(--earth-accent) !important; }
-.phrase-text { font-weight: 600; margin-top: 0.25rem; }
