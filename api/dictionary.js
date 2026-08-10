@@ -23,7 +23,7 @@ module.exports = (req, res) => {
         pos: "business term",
         vi: `Thuật ngữ chuyên ngành: ${req.query.word}`,
         def: `Oxford standard definition for ${req.query.word} in commercial bidding context.`,
-        ex: `Hero discussed ${req.query.word} during the post-tender negotiation with Coach Lorraine.`
+        ex: `Hero Kun discussed ${req.query.word} during the post-tender negotiation with Coach Lorraine.`
       }
     });
   }
