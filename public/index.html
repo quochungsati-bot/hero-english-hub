@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Hub - AI & Construction Business English Podcasts</title>
+    <title>English Hub - Daily Bilingual Construction & Bidding News Digest</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
 :root {
@@ -68,17 +68,13 @@ header { background-color: var(--charcoal-900) !important; color: #FFFFFF !impor
 .preply-link-btn { background-color: var(--earth-accent) !important; color: #FFFFFF !important; padding: 0.45rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.85rem; }
 .preply-link-btn:hover { background-color: var(--earth-hover) !important; }
 
-/* PODCAST & VIDEO STYLES */
-.video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 1rem; }
-.video-card { background: #FAF8F5; border: 1px solid var(--border-warm); border-radius: 10px; overflow: hidden; }
-.video-card iframe { width: 100%; height: 185px; border: none; }
-.video-info { padding: 0.85rem; }
-.video-title { font-size: 0.9rem; font-weight: 700; color: #231F20; }
-
-.pitch-card { background-color: #FAF8F5; border: 1px solid var(--border-warm); border-left: 5px solid var(--earth-accent); padding: 1.25rem; border-radius: 10px; margin-bottom: 1.25rem; }
-.pitch-step-tag { font-size: 0.8rem; font-weight: 700; color: var(--earth-accent); text-transform: uppercase; letter-spacing: 0.5px; }
-.pitch-title { font-size: 1.1rem; font-weight: 700; color: #231F20; margin-top: 0.2rem; }
-.pitch-script { background: #FFFFFF; border: 1px solid var(--border-warm); padding: 1rem; border-radius: 8px; margin-top: 0.6rem; font-size: 0.92rem; line-height: 1.6; color: #231F20; font-weight: 500; }
+/* BILINGUAL NEWS STYLES */
+.news-card { background-color: #FAF8F5; border: 1px solid var(--border-warm); border-left: 5px solid var(--earth-accent); padding: 1.25rem; border-radius: 10px; margin-bottom: 1.25rem; }
+.news-cat { font-size: 0.78rem; font-weight: 700; color: var(--earth-accent); text-transform: uppercase; letter-spacing: 0.5px; }
+.news-title-en { font-size: 1.15rem; font-weight: 700; color: #231F20; margin-top: 0.25rem; }
+.news-title-vi { font-size: 0.95rem; font-weight: 600; color: #C05621; margin-top: 0.15rem; }
+.news-body-en { background: #FFFFFF; border: 1px solid var(--border-warm); padding: 0.9rem; border-radius: 6px; margin-top: 0.6rem; font-size: 0.92rem; color: #231F20; line-height: 1.6; }
+.news-body-vi { background: #FDF6F0; border: 1px solid #FBD38D; padding: 0.9rem; border-radius: 6px; margin-top: 0.4rem; font-size: 0.9rem; color: #4A4244; line-height: 1.6; }
 
 .speech-icon-btn { background-color: #FDF6F0 !important; color: var(--earth-accent) !important; border: 1px solid #FBD38D !important; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
 .speech-icon-btn:hover { background-color: var(--earth-accent) !important; color: #FFFFFF !important; }
@@ -97,9 +93,9 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
         <div class="header-container">
             <div class="logo-area">
                 <h1>English Hub</h1>
-                <span class="status-badge">🎙️ AI & CONSTRUCTION PODCAST HUB</span>
+                <span class="status-badge">📰 BILINGUAL NEWS DIGEST (DAILY UPDATED)</span>
             </div>
-            <p class="subtitle">Hero | Integrated 4 Skills, AI in Construction Podcasts & Presentation Series</p>
+            <p class="subtitle">Hero | Daily Bilingual Bidding, AI in Construction & FIDIC Hot News</p>
         </div>
     </header>
 
@@ -132,11 +128,11 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
         </div>
 
         <div class="metric-card">
-            <div class="metric-icon">🎧</div>
+            <div class="metric-icon">📰</div>
             <div>
-                <span class="metric-label">Thư viện Podcast AI & Xây Dựng</span>
-                <div class="metric-value">Video Podcasts Cập Nhật</div>
-                <span class="metric-sub">Tự Động Đồng Bộ Dữ Liệu Mới</span>
+                <span class="metric-label">Điểm Tin Song Ngữ Mỗi Sáng</span>
+                <div class="metric-value">Cập Nhật Tự Động Hàng Ngày</div>
+                <span class="metric-sub">Xây Dựng, Đấu Thầu, AI & FIDIC</span>
             </div>
         </div>
     </div>
@@ -152,6 +148,7 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
         <main class="main-content">
             <nav class="skill-nav">
                 <button class="nav-btn active" onclick="showSkillTab('lesson-detail-tab')">📚 Nội dung bài học (50 Mins)</button>
+                <button class="nav-btn" onclick="showSkillTab('news-tab')">📰 Tin Tức Song Ngữ Đấu Thầu & AI (Mới Mỗi Sáng)</button>
                 <button class="nav-btn" onclick="showSkillTab('podcast-tab')">🎙️ Video Podcast Tiếng Anh Xây Dựng & AI</button>
                 <button class="nav-btn" onclick="showSkillTab('presentation-tab')">🎙️ Thuyết Trình Đấu Thầu (Pitch Trainer)</button>
                 <button class="nav-btn" onclick="showSkillTab('video-masterclass-tab')">🎥 Video Thuyết Trình Quốc Tế (Harvard/Stanford)</button>
@@ -168,7 +165,95 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
                 </div>
             </section>
 
-            <!-- NEW TAB: AI & CONSTRUCTION BUSINESS ENGLISH VIDEO PODCASTS -->
+            <!-- NEW TAB: DAILY BILINGUAL NEWS DIGEST FOR BIDDING DIRECTOR -->
+            <section id="news-tab" class="tab-section">
+                <div class="card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #F3F0EC; padding-bottom:0.75rem; margin-bottom:1rem;">
+                        <div>
+                            <h2 style="color: #231F20; font-size: 1.3rem;">📰 Trang Điểm Tin Song Ngữ Đấu Thầu & AI (Cập Nhật Mỗi Sáng)</h2>
+                            <p style="color: #665E5E; font-size:0.88rem; margin-top: 0.2rem;">Tổng hợp tin hot Xây dựng Trong nước & Quốc tế, AI Đấu thầu, Nghị định 274 & FIDIC dành riêng cho Vai trò Giám đốc Đấu thầu.</p>
+                        </div>
+                        <span class="badge-status">CẬP NHẬT: 10/08/2026</span>
+                    </div>
+
+                    <!-- NEWS ITEM 1: AI IN CONSTRUCTION TAKEOFFS -->
+                    <div class="news-card">
+                        <span class="news-cat">🤖 AI & Smart Tech in Construction · Monday, August 10, 2026</span>
+                        <h3 class="news-title-en">38% of General Contractors Now Deploy AI for Bid Takeoffs & Estimating</h3>
+                        <p class="news-title-vi">38% Nhà Thầu Chính Hiện Ứng Dụng AI Vào Bóc Tách Khối Lượng & Lập Dự Toán Thầu</p>
+                        
+                        <div class="news-body-en">
+                            <strong>English Briefing:</strong> "Recent Q2 2026 commercial contractor surveys reveal a major industry shift: over 38% of general contractors are running AI platforms directly in production to automate BOQ takeoffs and bid proposals. Estimators using AI takeoffs process up to 3x more bids with the same headcount, gaining a decisive competitive advantage on bid day while eliminating manual scope gaps before contract award."
+                            <button class="speech-icon-btn" style="margin-top:0.4rem; display:block;" onclick="speakText('Recent Q2 2026 commercial contractor surveys reveal a major industry shift: over 38 percent of general contractors are running AI platforms directly in production to automate BOQ takeoffs and bid proposals. Estimators using AI takeoffs process up to 3 times more bids with the same headcount, gaining a decisive competitive advantage on bid day while eliminating manual scope gaps before contract award.')">🔊 Luyện Đọc Đoạn Tiếng Anh</button>
+                        </div>
+
+                        <div class="news-body-vi">
+                            <strong>Dịch Tiếng Việt:</strong> Khảo sát mới nhất Quý 2/2026 cho thấy bước ngoặt lớn: hơn 38% nhà thầu chính đang vận hành trực tiếp các nền tảng AI để tự động hóa công tác bóc tách tiên lượng BOQ và lập hồ sơ thầu. Đội ngũ dự toán áp dụng AI xử lý lượng hồ sơ thầu gấp 3 lần với cùng số lượng nhân sự, tạo lợi thế cạnh tranh vượt trội trong ngày mở thầu và loại bỏ hoàn toàn sai lệch phạm vi công việc trước khi trao hợp đồng.
+                        </div>
+
+                        <div style="margin-top:0.75rem; background:#FFFFFF; padding:0.75rem; border-radius:6px; border:1px solid #E5E0D8;">
+                            <p style="font-size:0.85rem; color:#C05621; font-weight:700;">💎 Từ vựng Executive B2-C1 trong bài:</p>
+                            <p style="font-size:0.85rem; color:#231F20; margin-top:0.2rem;">• <strong>BOQ Takeoffs</strong> [tæ.kɒf]: Công tác bóc tách khối lượng từ bản vẽ <button class="speech-icon-btn" onclick="speakText('BOQ Takeoffs')">🔊</button></p>
+                            <p style="font-size:0.85rem; color:#231F20; margin-top:0.2rem;">• <strong>Scope Gap</strong> [skəʊp ɡæp]: Khoảng hở / Thiếu sót phạm vi công việc <button class="speech-icon-btn" onclick="speakText('Scope Gap')">🔊</button></p>
+                            <p style="font-size:0.85rem; color:#231F20; margin-top:0.2rem;">• <strong>Contract Award</strong> [ˈkɒn.trækt əˈwɔːd]: Quyết định trao hợp đồng chính thức <button class="speech-icon-btn" onclick="speakText('Contract Award')">🔊</button></p>
+                        </div>
+
+                        <p style="font-size:0.8rem; color:#786E6E; margin-top:0.6rem;">Nguồn tin gốc: <a href="https://www.constructionweekonline.com/analysis/ai-in-construction" target="_blank" style="color:#C05621; font-weight:700;">Construction Week Online Article</a></p>
+                    </div>
+
+                    <!-- NEWS ITEM 2: VIETNAM BIDDING DECREE 274/2026 -->
+                    <div class="news-card">
+                        <span class="news-cat">⚖️ Bidding Laws & Policy Update · Monday, August 10, 2026</span>
+                        <h3 class="news-title-en">Vietnam Enforces Decree 274/2026/ND-CP Tightening Bidding Security & Contract Alterations</h3>
+                        <p class="news-title-vi">Việt Nam Ban Hành Nghị Định 274/2026/NĐ-CP Thắt Chặt Bảo Đảm Dự Thầu & Điều Chỉnh Hợp Đồng</p>
+                        
+                        <div class="news-body-en">
+                            <strong>English Briefing:</strong> "Decree 274/2026/ND-CP introduces strict new procurement guidelines for investment projects in Vietnam. Under the new regulations, Clients and Project Directors are held fully accountable for contractual changes, while bid security guarantees and tenderer qualification assessments are strictly audited to eliminate phantom bidders and protect public infrastructure budgets."
+                            <button class="speech-icon-btn" style="margin-top:0.4rem; display:block;" onclick="speakText('Decree 274 2026 ND-CP introduces strict new procurement guidelines for investment projects in Vietnam. Under the new regulations, Clients and Project Directors are held fully accountable for contractual changes, while bid security guarantees and tenderer qualification assessments are strictly audited to eliminate phantom bidders and protect public infrastructure budgets.')">🔊 Luyện Đọc Đoạn Tiếng Anh</button>
+                        </div>
+
+                        <div class="news-body-vi">
+                            <strong>Dịch Tiếng Việt:</strong> Nghị định 274/2026/NĐ-CP bổ sung các quy định quản lý thầu chặt chẽ đối với các dự án đầu tư tại Việt Nam. Theo quy định mới, Chủ đầu tư và Ban Quản lý Dự án chịu trách nhiệm toàn diện đối với việc thay đổi hợp đồng, đồng thời công tác bảo đảm dự thầu và đánh giá năng lực nhà thầu được kiểm toán nghiêm ngặt nhằm loại bỏ nhà thầu 'quân xanh quân đỏ' và bảo vệ ngân sách hạ tầng.
+                        </div>
+
+                        <div style="margin-top:0.75rem; background:#FFFFFF; padding:0.75rem; border-radius:6px; border:1px solid #E5E0D8;">
+                            <p style="font-size:0.85rem; color:#C05621; font-weight:700;">💎 Từ vựng Executive B2-C1 trong bài:</p>
+                            <p style="font-size:0.85rem; color:#231F20; margin-top:0.2rem;">• <strong>Bid Security Guarantee</strong> [bɪd sɪˈkjʊə.rə.ti]: Bảo đảm dự thầu / Bảo lãnh thầu <button class="speech-icon-btn" onclick="speakText('Bid Security Guarantee')">🔊</button></p>
+                            <p style="font-size:0.85rem; color:#231F20; margin-top:0.2rem;">• <strong>Procurement Guidelines</strong> [prəˈkjʊə.mənt]: Hướng dẫn quy trình lựa chọn nhà thầu <button class="speech-icon-btn" onclick="speakText('Procurement Guidelines')">🔊</button></p>
+                            <p style="font-size:0.85rem; color:#231F20; margin-top:0.2rem;">• <strong>Accountable</strong> [əˈkaʊn.tə.bəl]: Chịu trách nhiệm giải trình <button class="speech-icon-btn" onclick="speakText('Accountable')">🔊</button></p>
+                        </div>
+
+                        <p style="font-size:0.8rem; color:#786E6E; margin-top:0.6rem;">Nguồn tin gốc: <a href="https://luatvietnam.vn/linh-vuc-khac/tong-hop-diem-moi-cua-nghi-dinh-274-nam-2026-ve-dau-thau-883-110507-article.html" target="_blank" style="color:#C05621; font-weight:700;">LuatVietnam & Báo Chính Phủ</a></p>
+                    </div>
+
+                    <!-- NEWS ITEM 3: HCMC METRO MEGAPROJECTS -->
+                    <div class="news-card">
+                        <span class="news-cat">🏗️ Infrastructure & Megaprojects · Monday, August 10, 2026</span>
+                        <h3 class="news-title-en">Consortium Proposes $4.71 Billion Metro Investment Linking HCMC & Binh Duong</h3>
+                        <p class="news-title-vi">Liên Danh Đề Xuất Đầu Tư $4.71 Tỷ USD Xây 2 Tuyến Metro Nối TP.HCM - Bình Dương</p>
+                        
+                        <div class="news-body-en">
+                            <strong>English Briefing:</strong> "A major consortium between Becamex IDC and Thaco has submitted a $4.71 billion PPP proposal to construct two high-capacity metro lines connecting Ho Chi Minh City with Binh Duong province. The project features a 32.4km main corridor and a 24.2km secondary route, marking one of Southern Vietnam's largest urban transit bidding competitions."
+                            <button class="speech-icon-btn" style="margin-top:0.4rem; display:block;" onclick="speakText('A major consortium between Becamex IDC and Thaco has submitted a 4.71 billion dollar PPP proposal to construct two high-capacity metro lines connecting Ho Chi Minh City with Binh Duong province. The project features a 32.4 kilometer main corridor and a 24.2 kilometer secondary route, marking one of Southern Vietnams largest urban transit bidding competitions.')">🔊 Luyện Đọc Đoạn Tiếng Anh</button>
+                        </div>
+
+                        <div class="news-body-vi">
+                            <strong>Dịch Tiếng Việt:</strong> Liên danh giữa Becamex IDC và Thaco đã chính thức trình đề xuất PPP trị giá 4.71 tỷ USD để xây dựng 2 tuyến đường sắt đô thị Metro kết nối TP.HCM với tỉnh Bình Dương. Dự án gồm tuyến chính dài 32.4 km và tuyến phụ dài 24.2 km, tạo nên một trong những gói thầu hạ tầng giao thông đô thị lớn nhất miền Nam.
+                        </div>
+
+                        <div style="margin-top:0.75rem; background:#FFFFFF; padding:0.75rem; border-radius:6px; border:1px solid #E5E0D8;">
+                            <p style="font-size:0.85rem; color:#C05621; font-weight:700;">💎 Từ vựng Executive B2-C1 trong bài:</p>
+                            <p style="font-size:0.85rem; color:#231F20; margin-top:0.2rem;">• <strong>Consortium</strong> [kənˈsɔː.ti.əm]: Liên danh các nhà thầu / nhà đầu tư <button class="speech-icon-btn" onclick="speakText('Consortium')">🔊</button></p>
+                            <p style="font-size:0.85rem; color:#231F20; margin-top:0.2rem;">• <strong>PPP Proposal</strong> [piː-piː-piː]: Đề xuất Hợp tác Công - Tư <button class="speech-icon-btn" onclick="speakText('PPP Proposal')">🔊</button></p>
+                            <p style="font-size:0.85rem; color:#231F20; margin-top:0.2rem;">• <strong>Transit Corridor</strong> [ˈtræn.zɪt ˈkɒr.ɪ.dɔː]: Hành lang giao thông đô thị <button class="speech-icon-btn" onclick="speakText('Transit Corridor')">🔊</button></p>
+                        </div>
+
+                        <p style="font-size:0.8rem; color:#786E6E; margin-top:0.6rem;">Nguồn tin gốc: <a href="https://www.freshfields.com/en/our-thinking/briefings/2026/05/vietnam-infrastructure-spotlight-may-2026" target="_blank" style="color:#C05621; font-weight:700;">Freshfields Infrastructure Spotlight</a></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: AI & CONSTRUCTION BUSINESS ENGLISH VIDEO PODCASTS -->
             <section id="podcast-tab" class="tab-section">
                 <div class="card">
                     <h2 style="color: #231F20; font-size: 1.3rem;">🎙️ Thư Viện Video Podcast Tiếng Anh Chuyên Ngành Xây Dựng & AI</h2>
@@ -524,6 +609,6 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
         </main>
     </div>
 
-    <script src="/js/app.js?v=20260810_podcasthub"></script>
+    <script src="/js/app.js?v=20260810_newsandpodcasts"></script>
 </body>
 </html>
