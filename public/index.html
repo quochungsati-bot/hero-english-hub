@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Hub - International Bidding Director Presentation Series</title>
+    <title>English Hub - Bidding Presentation & Executive Masterclasses</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
 :root {
@@ -68,7 +68,13 @@ header { background-color: var(--charcoal-900) !important; color: #FFFFFF !impor
 .preply-link-btn { background-color: var(--earth-accent) !important; color: #FFFFFF !important; padding: 0.45rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.85rem; }
 .preply-link-btn:hover { background-color: var(--earth-hover) !important; }
 
-/* PRESENTATION PITCH STYLES */
+/* PRESENTATION PITCH & VIDEO MASTERCLASS STYLES */
+.video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 1rem; }
+.video-card { background: #FAF8F5; border: 1px solid var(--border-warm); border-radius: 10px; overflow: hidden; }
+.video-card iframe { width: 100%; height: 185px; border: none; }
+.video-info { padding: 0.85rem; }
+.video-title { font-size: 0.9rem; font-weight: 700; color: #231F20; }
+
 .pitch-card { background-color: #FAF8F5; border: 1px solid var(--border-warm); border-left: 5px solid var(--earth-accent); padding: 1.25rem; border-radius: 10px; margin-bottom: 1.25rem; }
 .pitch-step-tag { font-size: 0.8rem; font-weight: 700; color: var(--earth-accent); text-transform: uppercase; letter-spacing: 0.5px; }
 .pitch-title { font-size: 1.1rem; font-weight: 700; color: #231F20; margin-top: 0.2rem; }
@@ -91,9 +97,9 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
         <div class="header-container">
             <div class="logo-area">
                 <h1>English Hub</h1>
-                <span class="status-badge">🎙️ BIDDING DIRECTOR SERIES (8 TOPICS)</span>
+                <span class="status-badge">🎙️ INTERNATIONAL MASTERCLASS LIBRARY</span>
             </div>
-            <p class="subtitle">Hero | Integrated 4 Skills & Bidding Director Presentation Series</p>
+            <p class="subtitle">Hero | Bidding Presentation Pitch & Harvard/Stanford Executive Leadership Library</p>
         </div>
     </header>
 
@@ -126,11 +132,11 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
         </div>
 
         <div class="metric-card">
-            <div class="metric-icon">🎙️</div>
+            <div class="metric-icon">🎥</div>
             <div>
-                <span class="metric-label">Chuỗi 8 Chủ Đề Thuyết Trình Đấu Thầu</span>
-                <div class="metric-value">International Director Level</div>
-                <span class="metric-sub">8 Bài Thuyết Trình Chuẩn FIDIC & VE</span>
+                <span class="metric-label">Thư viện Video Thuyết Trình Quốc Tế</span>
+                <div class="metric-value">Harvard, Stanford & CTC</div>
+                <span class="metric-sub">Kèm Khóa Đào Tạo Lãnh Đạo Quản Lý</span>
             </div>
         </div>
     </div>
@@ -147,6 +153,7 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
             <nav class="skill-nav">
                 <button class="nav-btn active" onclick="showSkillTab('lesson-detail-tab')">📚 Nội dung bài học (50 Mins)</button>
                 <button class="nav-btn" onclick="showSkillTab('presentation-tab')">🎙️ Thuyết Trình Đấu Thầu (Pitch Trainer)</button>
+                <button class="nav-btn" onclick="showSkillTab('video-masterclass-tab')">🎥 Video Thuyết Trình Quốc Tế (Harvard/Stanford)</button>
                 <button class="nav-btn" onclick="showSkillTab('ipa-tab')">🗣️ Luyện Phát Âm IPA (Video Oxford/BBC)</button>
                 <button class="nav-btn" onclick="showSkillTab('listening-tab')">🎧 Nghe (Listening)</button>
                 <button class="nav-btn" onclick="showSkillTab('speaking-tab')">🗣️ Nói (Speaking)</button>
@@ -157,6 +164,59 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
             <section id="lesson-detail-tab" class="tab-section active">
                 <div id="active-lesson-display">
                     <p>Loading Lesson Details...</p>
+                </div>
+            </section>
+
+            <!-- NEW TAB: VIDEO MASTERCLASS LIBRARY (HARVARD, STANFORD & CONSTRUCTION BIDDING) -->
+            <section id="video-masterclass-tab" class="tab-section">
+                <div class="card">
+                    <h2 style="color: #231F20; font-size: 1.3rem;">🎥 Thư Viện Video Thuyết Trình Đấu Thầu & Đào Tạo Lãnh Đạo Quốc Tế</h2>
+                    <p style="color: #665E5E; margin-top: 0.25rem;">Tổng hợp các Video thực chiến về Lập & Bảo vệ Hồ sơ thầu xây dựng cùng các khóa đào tạo kỹ năng thuyết trình Lãnh đạo từ Harvard Business Review & Stanford Graduate School of Business.</p>
+
+                    <!-- SECTION 1: CONSTRUCTION BIDDING & PROPOSAL PRESENTATION VIDEOS -->
+                    <h3 style="color: #C05621; font-size: 1.1rem; margin-top: 1.25rem;">🏗️ 1. Thuyết Trình Lập & Bảo Vệ Hồ Sơ Dự Thầu Xây Dựng (Construction Bidding)</h3>
+                    <div class="video-grid">
+                        <div class="video-card">
+                            <iframe src="https://www.youtube.com/embed/ZcFlO_ukkE8" title="How to Create a Winning Bid Proposal" allowfullscreen></iframe>
+                            <div class="video-info">
+                                <p class="video-title">How to Create a Winning Construction Bid Proposal</p>
+                                <p style="font-size:0.8rem; color:#665E5E;">Contractor Training Center (CTC)</p>
+                            </div>
+                        </div>
+                        <div class="video-card">
+                            <iframe src="https://www.youtube.com/embed/jsGBuu88WE0" title="How to Write A Winning Project Proposal" allowfullscreen></iframe>
+                            <div class="video-info">
+                                <p class="video-title">Project Proposal Writing: How to Write & Pitch Winning Proposals</p>
+                                <p style="font-size:0.8rem; color:#665E5E;">ProjectManager Official Channel</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 2: HARVARD & STANFORD EXECUTIVE PRESENTATION MASTERCLASSES -->
+                    <h3 style="color: #C05621; font-size: 1.1rem; margin-top: 1.75rem;">🏛️ 2. Khóa Đào Tạo Kỹ Năng Thuyết Trình Lãnh Đạo Quản Lý (Harvard & Stanford)</h3>
+                    <div class="video-grid">
+                        <div class="video-card">
+                            <iframe src="https://www.youtube.com/embed/ABGHZV4JajQ" title="6 Ways to Look More Confident During a Presentation" allowfullscreen></iframe>
+                            <div class="video-info">
+                                <p class="video-title">6 Ways to Look & Sound Confident During an Executive Presentation</p>
+                                <p style="font-size:0.8rem; color:#665E5E;">Harvard Business Review (HBR)</p>
+                            </div>
+                        </div>
+                        <div class="video-card">
+                            <iframe src="https://www.youtube.com/embed/cFLjudWTuGQ" title="Make Body Language Your Superpower" allowfullscreen></iframe>
+                            <div class="video-info">
+                                <p class="video-title">Make Body Language Your Superpower in High-Stakes Meetings</p>
+                                <p style="font-size:0.8rem; color:#665E5E;">Stanford Graduate School of Business (GSB)</p>
+                            </div>
+                        </div>
+                        <div class="video-card">
+                            <iframe src="https://www.youtube.com/embed/KVZimVICjMo" title="How to Develop Executive Presence for Senior Leaders" allowfullscreen></iframe>
+                            <div class="video-info">
+                                <p class="video-title">How to Develop Executive Presence for Senior Leaders & Directors</p>
+                                <p style="font-size:0.8rem; color:#665E5E;">Kara Ronin - Executive Leadership Coach</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -402,6 +462,6 @@ textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-warm); 
         </main>
     </div>
 
-    <script src="/js/app.js?v=20260810_8topics"></script>
+    <script src="/js/app.js?v=20260810_masterclass"></script>
 </body>
 </html>
