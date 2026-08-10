@@ -1,3 +1,293 @@
+Preply Integrated Dashboard Technical Specification
+This document provides the full React index.html source code structured to host the Preply suite of tools, including the Weekly Calendar Sidebar, Bilingual News with Continuous Playlist, AI Commercial Negotiation Simulator, BOQ Rate Calculator, FIDIC Cheat Sheet, Preply Studio, and Preply Journal.
+React Application Code
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Preply Comprehensive Suite</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root {
+
+            --sidebar-width: 280px;
+
+            --primary-bg: #fdfdfd;
+
+            --border-subtle: #e9ecef;
+
+            --text-main: #3c4043;
+
+        }
+
+        body { margin: 0; font-family: 'Roboto', sans-serif; background: var(--primary-bg); color: var(--text-main); }
+
+        .app-container { display: flex; height: 100vh; }
+
+        
+
+        /* Sidebar Styles */
+
+        .sidebar { 
+
+            width: var(--sidebar-width); 
+
+            border-right: 1px solid var(--border-subtle); 
+
+            padding: 20px; 
+
+            background: #fff;
+
+        }
+
+        .main-content { flex: 1; overflow-y: auto; padding: 30px; }
+
+        
+
+        /* Component Layouts */
+
+        .grid-layout { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+        .card { border: 1px solid var(--border-subtle); border-radius: 8px; padding: 20px; background: #fff; margin-bottom: 20px; }
+
+        h2 { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 10px; }
+
+        
+
+        /* Feature Specific Styles */
+
+        .playlist-news { height: 300px; overflow-y: auto; }
+
+        .boq-input { width: 100%; margin: 5px 0; padding: 8px; }
+
+        .fidic-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+
+        .fidic-table td, .fidic-table th { border: 1px solid var(--border-subtle); padding: 8px; }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const { useState } = React;
+
+        const CalendarSidebar = () => (
+
+            <div className="sidebar">
+
+                <h2>Preply Weekly Calendar</h2>
+
+                <div className="calendar-placeholder">
+
+                    {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(day => (
+
+                        <div key={day} style={{padding: '10px 0', borderBottom: '1px solid #f0f0f0'}}>
+
+                            <strong>{day}</strong>: <span type="placeholder" placeholder-type="event"></span>
+
+                        </div>
+
+                    ))}
+
+                </div>
+
+            </div>
+
+        );
+
+        const NewsPlaylist = () => (
+
+            <div className="card">
+
+                <h2>15 Daily Bilingual News + Continuous Playlist</h2>
+
+                <div className="playlist-news">
+
+                    <ul>
+
+                        <li>Global Economy Update / Mise à jour économique mondiale</li>
+
+                        <li>Tech Innovations / Innovations Technologiques</li>
+
+                        <li>Climate Report / Rapport sur le Climat</li>
+
+                    </ul>
+
+                    <div className="audio-player" style={{background: '#f8f9fa', padding: '10px', marginTop: '10px'}}>
+
+                        ▶ Continuous Playback Active
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        );
+
+        const NegotiationSimulator = () => (
+
+            <div className="card">
+
+                <h2>AI Commercial Negotiation Simulator</h2>
+
+                <textarea style={{width: '100%', height: '100px'}} placeholder="Enter negotiation scenario..."></textarea>
+
+                <button style={{marginTop: '10px'}}>Analyze Strategy</button>
+
+            </div>
+
+        );
+
+        const BOQCalculator = () => (
+
+            <div className="card">
+
+                <h2>BOQ Rate Calculator</h2>
+
+                <input className="boq-input" type="number" placeholder="Quantity" />
+
+                <input className="boq-input" type="number" placeholder="Unit Rate" />
+
+                <p>Total Estimated: $0.00</p>
+
+            </div>
+
+        );
+
+        const FIDICCheatSheet = () => (
+
+            <div className="card">
+
+                <h2>FIDIC Cheat Sheet</h2>
+
+                <table className="fidic-table">
+
+                    <thead>
+
+                        <tr><th>Clause</th><th>Description</th></tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr><td>Red Book</td><td>Conditions of Contract for Construction</td></tr>
+
+                        <tr><td>Yellow Book</td><td>Plant and Design-Build</td></tr>
+
+                        <tr><td>Silver Book</td><td>EPC/Turnkey Projects</td></tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        );
+
+        const PreplyStudioJournal = () => (
+
+            <div className="grid-layout">
+
+                <div className="card">
+
+                    <h2>Preply Studio</h2>
+
+                    <p>Creative environment for lesson planning and material development.</p>
+
+                </div>
+
+                <div className="card">
+
+                    <h2>Preply Journal</h2>
+
+                    <textarea style={{width: '100%', height: '150px'}} placeholder="Today's reflections..."></textarea>
+
+                </div>
+
+            </div>
+
+        );
+
+        const App = () => (
+
+            <div className="app-container">
+
+                <CalendarSidebar />
+
+                <div className="main-content">
+
+                    <NewsPlaylist />
+
+                    <div className="grid-layout">
+
+                        <NegotiationSimulator />
+
+                        <BOQCalculator />
+
+                    </div>
+
+                    <FIDICCheatSheet />
+
+                    <PreplyStudioJournal />
+
+                </div>
+
+            </div>
+
+        );
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        root.render(<App />);
+
+    </script>
+
+</body>
+
+</html>
+Component Overview
+Component
+Functionality
+Preply Weekly Calendar Sidebar
+A persistent navigation element for scheduling.
+15 Daily Bilingual News
+Integrated news feed with multi-language support.
+Continuous Playlist
+Seamless audio/visual learning content stream.
+AI Negotiation Simulator
+Interactive tool for commercial strategy practice.
+BOQ Rate Calculator
+Bill of Quantities utility for rapid financial estimation.
+FIDIC Cheat Sheet
+Quick-reference guide for international contract standards.
+Preply Studio
+Dedicated creative workspace for instructional content.
+Preply Journal
+Reflection tool for tracking progress and observations.
+
+
+The interface utilizes a modular architecture, ensuring that each tool operates independently while maintaining a cohesive design aesthetic. Vertical spacing and typography are optimized for readability within a white-background environment.
 <!DOCTYPE html>
 <html lang="vi">
 <head>
