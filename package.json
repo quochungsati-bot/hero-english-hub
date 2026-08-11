@@ -1,6 +1,6 @@
 {
   "name": "hero-english-hub",
-  "version": "33.0.0",
+  "version": "35.0.0",
   "dependencies": {
     "node-fetch": "^2.6.9"
   }
