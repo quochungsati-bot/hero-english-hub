@@ -2,23 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Song Viet Plot 1-13 VE Case Study &amp; LOTTE Q&amp;A</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Song Viet Plot 1-13 VE Case Study &amp; LOTTE Q&amp;A Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
-<body>
-<h1>Song Viet Plot 1-13 Approved Value Engineering (VE) Case Study</h1>
-<p>Total Savings: VND 41.22 Billion</p>
-<ul>
-  <li>Structure</li>
-  <li>Architecture</li>
-  <li>Waterproofing</li>
-  <li>FIDIC Retention Bond</li>
-</ul>
-<h1>LOTTE Properties HCMC Q&amp;A Scripts</h1>
-<h2>Executive Self-Introduction (JD-aligned)</h2>
-<p>[Executive self-introduction aligned with Job Description for LOTTE Properties HCMC goes here.]</p>
-<h2>Commercial &amp; Pricing Strategy Q&amp;A</h2>
-<p>[Q&amp;A regarding commercial and pricing strategies for the project.]</p>
-<h2>Value Engineering (VE) Q&amp;A</h2>
-<p>[Q&amp;A focusing on Value Engineering implementations and cost control.]</p>
+<body class="bg-gray-50">
+  <div id="root"></div>
+  <script type="text/javascript">
+    const { useState } = React;
+    const App = () => {
+      const [activeTab, setActiveTab] = useState('meeting');
+      const speak = (text) => { const msg = new SpeechSynthesisUtterance(text); window.speechSynthesis.speak(msg); };
+      return (
+        <div className="min-h-screen flex flex-col">
+          <header className="bg-blue-600 text-white p-4 flex justify-between items-center">
+            <div className="flex items-center gap-2"><i className="ph-fill ph-user-circle text-2xl"></i><span className="font-bold">Hero Kun</span></div>
+            <nav className="flex gap-4"><button onClick={()=>setActiveTab('meeting')}>Meeting</button><button>Preply Studio</button><button>Journal</button></nav>
+          </header>
+          <div className="flex flex-1">
+            <main className="flex-1 p-6">
+              <div className="grid grid-cols-3 gap-4 mb-6">
+                <div className="bg-white p-4 shadow rounded">Metric 1: VE Savings</div>
+                <div className="bg-white p-4 shadow rounded">Metric 2: Lessons</div>
+                <div className="bg-white p-4 shadow rounded">Metric 3: Progress</div>
+              </div>
+              {activeTab === 'meeting' &amp;&amp; (
+                <div className="space-y-8">
+                  <section className="bg-white p-6 rounded shadow">
+                    <h1 className="text-2xl font-bold mb-4">LOTTE Properties HCMC</h1>
+                    <div className="mb-4">
+                      <h2 className="font-semibold">Executive Self-Introduction</h2>
+                      <p>[Executive self-introduction aligned with Job Description for LOTTE Properties HCMC goes here.]</p>
+                      <button onClick={()=>speak("Executive self-introduction aligned with Job Description for LOTTE Properties HCMC goes here.")} className="text-blue-500 underline">Play Audio</button>
+                    </div>
+                    <div className="mb-4">
+                      <h2 className="font-semibold">Commercial &amp; Pricing Strategy Q&amp;A</h2>
+                      <p>[Q&amp;A regarding commercial and pricing strategies for the project.]</p>
+                      <button onClick={()=>speak("Q and A regarding commercial and pricing strategies for the project.")} className="text-blue-500 underline">Play Audio</button>
+                    </div>
+                    <div>
+                      <h2 className="font-semibold">Song Viet Plot 1-13 Approved VE Case Study</h2>
+                      <p>Total Savings: VND 41.22 Billion</p>
+                      <ul className="list-disc ml-5"><li>Structure</li><li>Architecture</li><li>Waterproofing</li><li>FIDIC Retention Bond</li></ul>
+                      <button onClick={()=>speak("Song Viet Plot 1-13 Approved Value Engineering Case Study. Total Savings: 41.22 Billion VND.")} className="text-blue-500 underline">Play Audio</button>
+                    </div>
+                  </section>
+                  <section className="grid grid-cols-2 gap-4">
+                    <div className="p-4 bg-gray-100 rounded">AI Negotiation Simulator</div>
+                    <div className="p-4 bg-gray-100 rounded">BOQ Calculator</div>
+                    <div className="p-4 bg-gray-100 rounded">FIDIC Cheat Sheet</div>
+                    <div className="p-4 bg-gray-100 rounded">Bilingual JD</div>
+                  </section>
+                </div>
+              )}
+            </main>
+            <aside className="w-80 bg-white border-l p-4">
+              <h3 className="font-bold mb-4">Preply Weekly Calendar</h3>
+              <div className="space-y-2 mb-6">
+                {[...Array(8)].map((_, i) => <div key={i} className="p-2 border rounded">Lesson {i+1}</div>)}
+              </div>
+              <h3 className="font-bold mb-2">Daily News &amp; Playlist</h3>
+              <ul className="text-sm space-y-1">
+                {[...Array(15)].map((_, i) => <li key={i}>• Hot News Digest {i+1}</li>)}
+              </ul>
+            </aside>
+          </div>
+        </div>
+      );
+    };
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
 </body>
 </html>
+
