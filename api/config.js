@@ -1,6 +1,489 @@
 const fetch = require('node-fetch');
 const DOC_TXT_URL = "https://docs.google.com/document/d/1vAs8b0xp_Yo60C0NsbN-nLU42uUsj6PqOzm2wktTOs0/export?format=txt";
-const fallbackConfig = {"theme": {"siteTitle": "English Hub", "subtitle": "Hero Kun | Full Oxford Dictionary & Executive Bidding Workspace"}, "learner": "Hero Kun", "company": "Central Cons", "coach": "Lorraine Johns (Preply)", "role": "Head of Estimating & Pricing Division (Deputy Head of Tendering / Head of Bidding Strategy)", "lessons": [{"id": 1, "title": "Lesson 01: Introduction to Bidding & Executive Pitch", "topic": "Executive Self-Introduction, Bidding Process & Technical vs Financial Bids", "scheduleDate": "Monday, Aug 10, 2026 (22:00 - 22:50)", "status": "Next Session (Sắp diễn ra)", "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965", "timePlan": "Step 1 (5m): Self-Introduction Pitch | Step 2 (10m): Key Terms | Step 3 (10m): Grammar & Sentence Structures | Step 4 (10m): Bidding Process | Step 5 (10m): Role Play Pitch | Step 6 (5m): Expanded 4-Skills Review Exercises", "selfIntroPitch": {"title": "🎙️ Executive Self-Introduction Pitch to Teacher Lorraine Johns", "english": "Hello Teacher Lorraine! I am Hero Kun, currently serving as Deputy Head of Tendering at Central Cons, a leading construction contractor in Vietnam. In my role, I spearhead commercial and technical bids for major high-rise residential and commercial development projects. My primary responsibilities include managing Bill of Quantities (BOQ) takeoffs, leading tender negotiations with Clients, supervising cost control, and coordinating Value Engineering proposals. I am taking this 1:1 Preply course to elevate my international bidding presentation skills, master FIDIC contract terminology, and communicate with executive confidence as I prepare for the Head of Tendering role.", "vietnamese": "Xin chào cô Lorraine! Tôi là Hero Kun, hiện đang đảm nhiệm vị trí Phó phòng Đấu thầu tại Central Cons - nhà thầu xây dựng hàng đầu tại Việt Nam. Trong vai trò của mình, tôi chủ trì các gói thầu thương mại và kỹ thuật cho các dự án phát triển tòa nhà thương mại và nhà ở cao tầng lớn. Nhiệm vụ chính của tôi bao gồm quản lý bóc tách tiên lượng BOQ, dẫn dắt đàm phán thầu với Chủ đầu tư, giám sát kiểm soát chi phí và phối hợp các đề xuất Kỹ thuật giá trị. Tôi tham gia khóa học 1-kèm-1 trên Preply này nhằm nâng tầm kỹ năng thuyết trình đấu thầu quốc tế, làm chủ thuật ngữ hợp đồng FIDIC và giao tiếp với phong thái lãnh đạo tự tin khi chuẩn bị bước lên vị trí Trưởng phòng Đấu thầu."}, "powerWords": [{"word": "Bid", "phonetic": "[bɪd]", "meaning": "Đề xuất / Hồ sơ chào giá dự thầu", "example": "Our company will submit a formal bid tomorrow for the main tower package."}, {"word": "Tender", "phonetic": "[ˈten.dər]", "meaning": "Thông báo mời thầu chính thức từ CĐT", "example": "The government opened a public tender for the new highway construction."}, {"word": "Proposal", "phonetic": "[prəˈpəʊ.zəl]", "meaning": "Hồ sơ đề xuất phương án & kỹ thuật", "example": "We prepared a comprehensive proposal outlining all technical details."}, {"word": "Client", "phonetic": "[ˈklaɪ.ənt]", "meaning": "Chủ đầu tư / Khách hàng", "example": "The client asked for a competitive price and strict milestone schedule."}, {"word": "Deadline", "phonetic": "[ˈded.laɪn]", "meaning": "Thời hạn chót nộp hồ sơ / hoàn thành", "example": "The submission deadline for the commercial bid is Friday at 5 PM."}, {"word": "Contract", "phonetic": "[ˈkɒn.trækt]", "meaning": "Hợp đồng pháp lý giữa hai bên", "example": "Central Cons signed the contract after winning the high-rise tender."}, {"word": "Technical Bid", "phonetic": "[ˈtek.nɪ.kəl bɪd]", "meaning": "Hồ sơ dự thầu Kỹ thuật (Biện pháp, Vật liệu, Safety)", "example": "Our technical bid explains our construction methods, safety plan, and experience."}, {"word": "Financial Bid", "phonetic": "[faɪˈnæn.ʃəl bɪd]", "meaning": "Hồ sơ dự thầu Tài chính ($500,000 Total Cost & Payment Terms)", "example": "Our financial bid outlines the total project cost of $500,000 and payment terms."}], "grammarFocus": [{"title": "1. Present Simple for Job Responsibilities (Mô tả chức năng & nhiệm vụ công việc)", "rule": "Sử dụng động từ thì Hiện tại đơn để mô tả chức năng, vai trò hàng ngày tại Central Cons.", "formula": "Subject (I / Central Cons) + V(s/es) + Direct Object...", "example": "I spearhead commercial bids and supervise BOQ cost control at Central Cons."}, {"title": "2. Polite Business Modals ('would like to' + V-bare)", "rule": "Sử dụng khi mở đầu đề xuất chính thức hoặc phát biểu trang trọng với CĐT.", "formula": "We would like to + V (submit / propose / present / outline)...", "example": "We would like to submit our formal bid for this high-rise project."}, {"title": "3. Ability & Commitment Modals ('can' / 'is fully able to' + V-bare)", "rule": "Khẳng định năng lực thực thi và sự cam kết tiến độ của Central Cons.", "formula": "Our company can / is fully able to + V (meet / deliver / execute)...", "example": "Our company can meet the deadline and satisfy all technical and safety requirements."}, {"title": "4. Construction Execution Intentions ('plan to' vs 'will')", "rule": "'We plan to + V' (Diễn đạt phương án kỹ thuật) vs 'Our team will + V' (Cam kết thực hiện).", "formula": "We plan to + V (methods) | Our team will + V (commitments)", "example": "We plan to use advanced materials, and our team will finish on schedule."}], "bulletPoints": [{"en": "On behalf of Central Cons, I am honored to present our technical and financial proposal for this commercial landmark project.", "vi": "Đại diện Central Cons, tôi vinh hạnh trình bày hồ sơ đề xuất kỹ thuật và tài chính cho dự án biểu tượng thương mại này."}, {"en": "Our company has over 15 years of proven high-rise construction experience and a 100% safety record.", "vi": "Công ty chúng tôi có hơn 15 năm kinh nghiệm thi công nhà cao tầng đã được chứng minh cùng thành tích an toàn 100%."}, {"en": "We offer competitive pricing along with Value Engineering solutions that reduce structural costs without sacrificing quality.", "vi": "Chúng tôi đưa ra mức giá cạnh tranh cùng giải pháp Kỹ thuật giá trị giúp giảm chi phí phần thô mà không giảm chất lượng."}, {"en": "We believe our proposal is strong, comprehensive, and fully aligned with the Client's vision and budget.", "vi": "Chúng tôi tin rằng hồ sơ của mình rất mạnh mẽ, toàn diện và hoàn toàn phù hợp với tầm nhìn và ngân sách CĐT."}, {"en": "We are fully prepared to mobilize key personnel and equipment immediately upon contract signing.", "vi": "Chúng tôi đã chuẩn bị sẵn sàng huy động nhân sự nòng cốt và thiết bị ngay sau khi ký kết hợp đồng."}], "anticipatedQA": [{"qEn": "What is the difference between a Technical Bid and a Financial Bid in construction?", "qVi": "Sự khác biệt giữa Hồ sơ Kỹ thuật (Technical Bid) và Hồ sơ Tài chính (Financial Bid) trong xây dựng là gì?", "hint": "A Technical Bid explains how the work is done (methods, materials, safety), while a Financial Bid outlines the total cost ($500,000) and payment terms."}, {"qEn": "Can you explain the 4 steps of the Construction Bidding Process?", "qVi": "Bạn có thể giải thích 4 bước của Quy trình Đấu thầu Xây dựng?", "hint": "1. Project Announced -> 2. Companies Prepare Bids -> 3. Client Selects Best Offer -> 4. Project Awarded & Contract Signed."}], "challengeScenario": {"title": "Step 5 Role Play — Presenting a Construction Bid to Client", "contextEn": "Lorraine acts as the Client Representative in a 1:1 meeting. You (Hero) must present Central Cons' technical bid (10 years experience, safety plan) and financial bid ($500,000 total cost) using polite business tone.", "contextVi": "Cô Lorraine đóng vai Đại diện CĐT trong buổi họp 1-kèm-1. Bạn (Hero) cần trình bày hồ sơ kỹ thuật (10 năm kinh nghiệm, Kế hoạch an toàn) và hồ sơ tài chính ($500,000 tổng chi phí) sử dụng văn phong thương mại lịch thiệp.", "task": "Use sentence frames: 'We will use...', 'Our team has 10 years experience...', 'The project will cost $500,000...', 'We believe our proposal is strong and meets your requirements.'"}, "reviewExercises": {"listeningEx": {"title": "🎧 Exercise 1: Listening & Key Term Selection (Nghe & Chọn Từ)", "audioPrompt": "Our company will submit a formal _____ before the Friday deadline.", "options": ["A) Bid", "B) Contract", "C) Client"], "correctAnswer": "A) Bid", "explanation": "A 'bid' is an offer submitted by a company before the deadline."}, "speakingEx": {"title": "🗣️ Exercise 2: Speaking Reflex & Mic AI Check (Phản xạ Nói & Micro AI)", "prompt": "Hãy phát âm đoạn tự giới thiệu: 'I am Hero Kun, Deputy Head of Tendering at Central Cons. I spearhead commercial bids and lead tender negotiations.'", "targetSentence": "I am Hero Kun, Deputy Head of Tendering at Central Cons. I spearhead commercial bids and lead tender negotiations."}, "readingEx": {"title": "📖 Exercise 3: Reading Comprehension (Đọc hiểu & Phân tích thầu)", "passage": "A construction proposal consists of two essential parts: the technical bid and the financial bid. The technical bid details execution methods, safety protocols, and company experience. The financial bid outlines pricing structures, payment terms, and total contract sum.", "question": "Which bid details safety protocols and execution methods?", "answer": "The Technical Bid.", "explanation": "The passage states that the technical bid details execution methods and safety protocols."}, "writingEx": {"title": "✍️ Exercise 4: Writing Practice — Email & Self-Intro Sandbox (Viết Email Nộp Thầu & Giới Thiệu)", "prompt": "Viết 2-3 câu giới thiệu bản thân và nộp hồ sơ thầu cho CĐT.", "sampleAnswer": "Dear Client Representative, I am Hero Kun, Deputy Head of Tendering at Central Cons. We would like to submit our formal bid for the commercial tower project. Our company can meet the Friday deadline and satisfy all technical requirements."}}}, {"id": 2, "title": "Lesson 02: Technical Method Statements & Engineering Solutions", "topic": "Complex Underground & Diaphragm Wall Engineering Pitch", "scheduleDate": "Friday, Aug 14, 2026 (22:00 - 22:50)", "status": "Scheduled", "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"}, {"id": 3, "title": "Lesson 03: Commercial Strategy & BOQ Unit Rate Breakdown", "topic": "Defending Unit Rates, Overhead Margins & Provisional Sums", "scheduleDate": "Monday, Aug 17, 2026 (22:00 - 22:50)", "status": "Scheduled", "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"}, {"id": 4, "title": "Lesson 04: FIDIC Contract Clauses & Risk Allocation", "topic": "FIDIC Price Adjustments (Clause 13.8) & EOT Claims (Clause 8.4)", "scheduleDate": "Friday, Aug 21, 2026 (22:00 - 22:50)", "status": "Scheduled", "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"}, {"id": 5, "title": "Lesson 05: Subcontractor Procurement & Supply Chain Strategy", "topic": "Tier-1 Subcontractor Prequalification & Long-Lead Items", "scheduleDate": "Monday, Aug 24, 2026 (22:00 - 22:50)", "status": "Scheduled", "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"}, {"id": 6, "title": "Lesson 06: Value Engineering (VE) & Cost Optimization Proposals", "topic": "Pitching CAPEX & OPEX Savings to Client Board", "scheduleDate": "Friday, Aug 28, 2026 (22:00 - 22:50)", "status": "Scheduled", "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"}, {"id": 7, "title": "Lesson 07: Project Fast-Tracking & CPM Schedule Presentation", "topic": "Critical Path Method (CPM) & Milestone Commitments", "scheduleDate": "Monday, Aug 31, 2026 (22:00 - 22:50)", "status": "Scheduled", "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"}, {"id": 8, "title": "Lesson 08: High-Pressure Post-Tender Q&A & Winning Pitch Closing", "topic": "Objection Handling, Final Alignment & Contract Award Closing", "scheduleDate": "Friday, Sep 04, 2026 (22:00 - 22:50)", "status": "Scheduled", "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"}], "dailyNews": [{"category": "🤖 AI & Smart Tech in Construction", "date": "Monday, August 10, 2026", "titleEn": "38% of General Contractors Now Deploy AI for Bid Takeoffs & Estimating", "titleVi": "38% Nhà Thầu Chính Hiện Ứng Dụng AI Vào Bóc Tách Khối Lượng & Lập Dự Toán Thầu", "sourceTitle": "Construction Week Online", "sourceUrl": "https://www.constructionweekonline.com/analysis/ai-in-construction", "summaryEn": "Recent Q2 2026 commercial contractor surveys reveal a major industry shift: over 38% of general contractors are running AI platforms directly in production to automate BOQ takeoffs and bid proposals. Estimators using AI takeoffs process up to 3x more bids with the same headcount, gaining a decisive competitive advantage on bid day while eliminating manual scope gaps before contract award.", "summaryVi": "Khảo sát mới nhất Quý 2/2026 cho thấy bước ngoặt lớn: hơn 38% nhà thầu chính đang vận hành trực tiếp các nền tảng AI để tự động hóa công tác bóc tách tiên lượng BOQ và lập hồ sơ thầu. Đội ngũ dự toán áp dụng AI xử lý lượng hồ sơ thầu gấp 3 lần với cùng số lượng nhân sự, tạo lợi thế cạnh tranh vượt trội trong ngày mở thầu và loại bỏ hoàn toàn sai lệch phạm vi công việc trước khi trao hợp đồng.", "vocab": [{"word": "BOQ Takeoffs", "phonetic": "[tæ.kɒf]", "meaning": "Công tác bóc tách khối lượng từ bản vẽ"}, {"word": "Scope Gap", "phonetic": "[skəʊp ɡæp]", "meaning": "Khoảng hở / Thiếu sót phạm vi công việc"}, {"word": "Contract Award", "phonetic": "[ˈkɒn.trækt əˈwɔːd]", "meaning": "Quyết định trao hợp đồng chính thức"}]}, {"category": "⚖️ Bidding Laws & Policy Update", "date": "Monday, August 10, 2026", "titleEn": "Vietnam Enforces Decree 274/2026/ND-CP Tightening Bidding Security & Contract Alterations", "titleVi": "Việt Nam Ban Hành Nghị Định 274/2026/NĐ-CP Thắt Chặt Bảo Đảm Dự Thầu & Điều Chỉnh Hợp Đồng", "sourceTitle": "LuatVietnam & Báo Chính Phủ", "sourceUrl": "https://luatvietnam.vn/linh-vuc-khac/tong-hop-diem-moi-cua-nghi-dinh-274-nam-2026-ve-dau-thau-883-110507-article.html", "summaryEn": "Decree 274/2026/ND-CP introduces strict new procurement guidelines for investment projects in Vietnam. Under the new regulations, Clients and Project Directors are held fully accountable for contractual changes, while bid security guarantees and tenderer qualification assessments are strictly audited to eliminate phantom bidders and protect public infrastructure budgets.", "summaryVi": "Nghị định 274/2026/NĐ-CP bổ sung các quy định quản lý thầu chặt chẽ đối với các dự án đầu tư tại Việt Nam. Theo quy định mới, Chủ đầu tư và Ban Quản lý Dự án chịu trách nhiệm toàn diện đối với việc thay đổi hợp đồng, đồng thời công tác bảo đảm dự thầu và đánh giá năng lực nhà thầu được kiểm toán nghiêm ngặt nhằm loại bỏ nhà thầu 'quân xanh quân đỏ' và bảo vệ ngân sách hạ tầng.", "vocab": [{"word": "Bid Security Guarantee", "phonetic": "[bɪd sɪˈkjʊə.rə.ti]", "meaning": "Bảo đảm dự thầu / Bảo lãnh thầu"}, {"word": "Procurement Guidelines", "phonetic": "[prəˈkjʊə.mənt]", "meaning": "Hướng dẫn quy trình lựa chọn nhà thầu"}, {"word": "Accountable", "phonetic": "[əˈkaʊn.tə.bəl]", "meaning": "Chịu trách nhiệm giải trình"}]}, {"category": "🏗️ Infrastructure & Megaprojects", "date": "Monday, August 10, 2026", "titleEn": "Consortium Proposes $4.71 Billion Metro Investment Linking HCMC & Binh Duong", "titleVi": "Liên Danh Đề Xuất Đầu Tư $4.71 Tỷ USD Xây 2 Tuyến Metro Nối TP.HCM - Bình Dương", "sourceTitle": "Freshfields Infrastructure Spotlight May-August 2026", "sourceUrl": "https://www.freshfields.com/en/our-thinking/briefings/2026/05/vietnam-infrastructure-spotlight-may-2026", "summaryEn": "A major consortium between Becamex IDC and Thaco has submitted a $4.71 billion PPP proposal to construct two high-capacity metro lines connecting Ho Chi Minh City with Binh Duong province. The project features a 32.4km main corridor and a 24.2km secondary route, marking one of Southern Vietnam's largest urban transit bidding competitions.", "summaryVi": "Liên danh giữa Becamex IDC và Thaco đã chính thức trình đề xuất PPP trị giá 4.71 tỷ USD để xây dựng 2 tuyến đường sắt đô thị Metro kết nối TP.HCM với tỉnh Bình Dương. Dự án gồm tuyến chính dài 32.4 km và tuyến phụ dài 24.2 km, tạo nên một trong những gói thầu hạ tầng giao thông đô thị lớn nhất miền Nam.", "vocab": [{"word": "Consortium", "phonetic": "[kənˈsɔː.ti.əm]", "meaning": "Liên danh các nhà thầu / nhà đầu tư"}, {"word": "PPP Proposal", "phonetic": "[piː-piː-piː]", "meaning": "Đề xuất Hợp tác Công - Tư (Public-Private Partnership)"}, {"word": "Transit Corridor", "phonetic": "[ˈtræn.zɪt ˈkɒr.ɪ.dɔː]", "meaning": "Hành lang giao thông đô thị"}]}]};
+
+const fallbackConfig = {
+  "theme": {
+    "siteTitle": "English Hub",
+    "subtitle": "Hero Kun | Lesson 02 Full Technical Method Statements Workspace - Friday, August 14, 2026"
+  },
+  "learner": "Hero Kun",
+  "company": "Central Cons",
+  "coach": "Lorraine Johns (Preply)",
+  "role": "Head of Estimating & Pricing Division (Deputy Head of Tendering / Head of Bidding Strategy)",
+  "currentDate": "Friday, August 14, 2026",
+  "lessons": [
+    {
+      "id": 1,
+      "title": "Lesson 01: Introduction to Bidding & Executive Pitch",
+      "topic": "Executive Self-Introduction, Bidding Process & Technical vs Financial Bids",
+      "scheduleDate": "Monday, Aug 10, 2026 (22:00 - 22:50)",
+      "status": "Completed (Đã hoàn thành)",
+      "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965",
+      "timePlan": "Step 1 (5m): Self-Introduction Pitch | Step 2 (10m): Key Terms | Step 3 (10m): Grammar & Sentence Structures | Step 4 (10m): Bidding Process | Step 5 (10m): Role Play Pitch | Step 6 (5m): Expanded 4-Skills Review Exercises",
+      "selfIntroPitch": {
+        "title": "🎙️ Executive Self-Introduction Pitch to Teacher Lorraine Johns",
+        "english": "Hello Teacher Lorraine! I am Hero Kun, currently serving as Deputy Head of Tendering at Central Cons, a leading construction contractor in Vietnam. In my role, I spearhead commercial and technical bids for major high-rise residential and commercial development projects. My primary responsibilities include managing Bill of Quantities (BOQ) takeoffs, leading tender negotiations with Clients, supervising cost control, and coordinating Value Engineering proposals. I am taking this 1:1 Preply course to elevate my international bidding presentation skills, master FIDIC contract terminology, and communicate with executive confidence as I prepare for the Head of Tendering role.",
+        "vietnamese": "Xin chào cô Lorraine! Tôi là Hero Kun, hiện đang đảm nhiệm vị trí Phó phòng Đấu thầu tại Central Cons - nhà thầu xây dựng hàng đầu tại Việt Nam. Trong vai trò của mình, tôi chủ trì các gói thầu thương mại và kỹ thuật cho các dự án phát triển tòa nhà thương mại và nhà ở cao tầng lớn. Nhiệm vụ chính của tôi bao gồm quản lý bóc tách tiên lượng BOQ, dẫn dắt đàm phán thầu với Chủ đầu tư, giám sát kiểm soát chi phí và phối hợp các đề xuất Kỹ thuật giá trị. Tôi tham gia khóa học 1-kèm-1 trên Preply này nhằm nâng tầm kỹ năng thuyết trình đấu thầu quốc tế, làm chủ thuật ngữ hợp đồng FIDIC và giao tiếp với phong thái lãnh đạo tự tin khi chuẩn bị bước lên vị trí Trưởng phòng Đấu thầu."
+      },
+      "powerWords": [
+        {
+          "word": "Bid",
+          "phonetic": "[bɪd]",
+          "meaning": "Đề xuất / Hồ sơ chào giá dự thầu",
+          "example": "Our company will submit a formal bid tomorrow for the main tower package."
+        },
+        {
+          "word": "Tender",
+          "phonetic": "[ˈten.dər]",
+          "meaning": "Thông báo mời thầu chính thức từ CĐT",
+          "example": "The government opened a public tender for the new highway construction."
+        },
+        {
+          "word": "Proposal",
+          "phonetic": "[prəˈpəʊ.zəl]",
+          "meaning": "Hồ sơ đề xuất phương án & kỹ thuật",
+          "example": "We prepared a comprehensive proposal outlining all technical details."
+        },
+        {
+          "word": "Client",
+          "phonetic": "[ˈklaɪ.ənt]",
+          "meaning": "Chủ đầu tư / Khách hàng",
+          "example": "The client asked for a competitive price and strict milestone schedule."
+        },
+        {
+          "word": "Deadline",
+          "phonetic": "[ˈded.laɪn]",
+          "meaning": "Thời hạn chót nộp hồ sơ / hoàn thành",
+          "example": "The submission deadline for the commercial bid is Friday at 5 PM."
+        },
+        {
+          "word": "Contract",
+          "phonetic": "[ˈkɒn.trækt]",
+          "meaning": "Hợp đồng pháp lý giữa hai bên",
+          "example": "Central Cons signed the contract after winning the high-rise tender."
+        },
+        {
+          "word": "Technical Bid",
+          "phonetic": "[ˈtek.nɪ.kəl bɪd]",
+          "meaning": "Hồ sơ dự thầu Kỹ thuật (Biện pháp, Vật liệu, Safety)",
+          "example": "Our technical bid explains our construction methods, safety plan, and experience."
+        },
+        {
+          "word": "Financial Bid",
+          "phonetic": "[faɪˈnæn.ʃəl bɪd]",
+          "meaning": "Hồ sơ dự thầu Tài chính ($500,000 Total Cost & Payment Terms)",
+          "example": "Our financial bid outlines the total project cost of $500,000 and payment terms."
+        }
+      ],
+      "grammarFocus": [
+        {
+          "title": "1. Present Simple for Job Responsibilities",
+          "rule": "Sử dụng động từ thì Hiện tại đơn để mô tả chức năng, vai trò hàng ngày tại Central Cons.",
+          "formula": "Subject (I / Central Cons) + V(s/es) + Direct Object...",
+          "example": "I spearhead commercial bids and supervise BOQ cost control at Central Cons."
+        },
+        {
+          "title": "2. Polite Business Modals ('would like to' + V-bare)",
+          "rule": "Sử dụng khi mở đầu đề xuất chính thức hoặc phát biểu trang trọng với CĐT.",
+          "formula": "We would like to + V (submit / propose / present / outline)...",
+          "example": "We would like to submit our formal bid for this high-rise project."
+        },
+        {
+          "title": "3. Adjective + that-clause (Preply Lesson 01 Integration)",
+          "rule": "Sử dụng sau các tính từ tự tin, hài lòng kèm mệnh đề hoàn chỉnh.",
+          "formula": "Subject + Be + Adjective (confident/certain/pleased) + that + Clause",
+          "example": "I am confident that Central Cons can meet the Friday deadline."
+        }
+      ],
+      "bulletPoints": [
+        {
+          "en": "On behalf of Central Cons, I am honored to present our technical and financial proposal for this commercial landmark project.",
+          "vi": "Đại diện Central Cons, tôi vinh hạnh trình bày hồ sơ đề xuất kỹ thuật và tài chính cho dự án biểu tượng thương mại này."
+        },
+        {
+          "en": "Our company has over 15 years of proven high-rise construction experience and a 100% safety record.",
+          "vi": "Công ty chúng tôi có hơn 15 năm kinh nghiệm thi công nhà cao tầng đã được chứng minh cùng thành tích an toàn 100%."
+        },
+        {
+          "en": "We offer competitive pricing along with Value Engineering solutions that reduce structural costs without sacrificing quality.",
+          "vi": "Chúng tôi đưa ra mức giá cạnh tranh cùng giải pháp Kỹ thuật giá trị giúp giảm chi phí phần thô mà không giảm chất lượng."
+        },
+        {
+          "en": "We believe our proposal is strong, comprehensive, and fully aligned with the Client's vision and budget.",
+          "vi": "Chúng tôi tin rằng hồ sơ của mình rất mạnh mẽ, toàn diện và hoàn toàn phù hợp với tầm nhìn và ngân sách CĐT."
+        }
+      ],
+      "biddingProcessSteps": [
+        {
+          "step": "Step 1",
+          "title": "Project Announcement & Tender Release",
+          "desc": "Client issues RFP / Tender Dossier and invitation to prequalified bidders."
+        },
+        {
+          "step": "Step 2",
+          "title": "BOQ Takeoffs & Method Statement Preparation",
+          "desc": "Pricing team estimates bill of quantities while engineering prepares method statements."
+        },
+        {
+          "step": "Step 3",
+          "title": "Technical & Commercial Bid Submission",
+          "desc": "Submission of two-envelope proposal before official deadline."
+        },
+        {
+          "step": "Step 4",
+          "title": "Bid Evaluation, Defense Pitch & Award",
+          "desc": "Technical defense, price leveling, final negotiations and contract award signing."
+        }
+      ],
+      "anticipatedQA": [
+        {
+          "qEn": "What is the difference between a Technical Bid and a Financial Bid in construction?",
+          "qVi": "Sự khác biệt giữa Hồ sơ Kỹ thuật và Hồ sơ Tài chính là gì?",
+          "hint": "Technical Bid details methods and safety; Financial Bid details BOQ prices and payment schedules."
+        },
+        {
+          "qEn": "Can you explain the 4 steps of the Construction Bidding Process?",
+          "qVi": "Bạn có thể giải thích 4 bước của Quy trình Đấu thầu?",
+          "hint": "1. Tender Release -> 2. BOQ & Methods Prep -> 3. Bid Submission -> 4. Defense Pitch & Award."
+        }
+      ],
+      "challengeScenario": {
+        "title": "Step 5 Role Play — Presenting Construction Bid to Client",
+        "contextEn": "Lorraine acts as the Client Representative in a 1:1 meeting. You (Hero) must present Central Cons' technical and commercial bid using executive tone.",
+        "contextVi": "Cô Lorraine đóng vai Đại diện CĐT trong buổi họp 1-kèm-1. Bạn (Hero) cần trình bày hồ sơ kỹ thuật và tài chính sử dụng phong thái lãnh đạo tự tin.",
+        "task": "Use sentence frames: 'We would like to submit...', 'Our engineering team is confident that...', 'We guarantee zero budget overruns.'"
+      },
+      "reviewExercises": {
+        "listeningEx": {
+          "title": "🎧 Exercise 1: Listening & Key Term Selection",
+          "audioPrompt": "Central Cons will submit our formal bid and technical proposal before the Friday deadline.",
+          "options": [
+            "bid",
+            "proposal",
+            "deadline"
+          ]
+        },
+        "speakingEx": {
+          "title": "🗣️ Exercise 2: Executive Pitch Reflex",
+          "prompt": "I am Hero Kun, Deputy Head of Tendering at Central Cons. I spearhead commercial bids and lead tender negotiations."
+        },
+        "readingEx": {
+          "title": "📖 Exercise 3: Reading Comprehension",
+          "passage": "A construction proposal consists of two essential parts: the technical bid and the financial bid. The technical bid details execution methods, safety protocols, and company experience.",
+          "question": "Which bid details safety protocols and execution methods?",
+          "answer": "The Technical Bid"
+        },
+        "writingEx": {
+          "title": "✍️ Exercise 4: Transmittal Email Sandbox",
+          "template": "Dear Client Representative,\n\nI am Hero Kun, Deputy Head of Tendering at Central Cons. We are pleased to submit our formal tender proposal for your commercial tower project. Our engineering team is confident that we can satisfy all technical and milestone requirements.\n\nSincerely,\nHero Kun — Central Cons"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "title": "Lesson 02: Technical Method Statements & Engineering Solutions",
+      "topic": "Complex Underground, Top-Down Construction & Diaphragm Wall Engineering Pitch",
+      "scheduleDate": "Friday, Aug 14, 2026 (22:00 - 22:50)",
+      "status": "Tonight's Session (22:00 - 22:50)",
+      "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965",
+      "timePlan": "Step 1 (5m): Deep Basement Technical Pitch | Step 2 (10m): Engineering Power Words | Step 3 (10m): Passive Voice & Adjective+that Focus | Step 4 (10m): Top-Down Execution Sequence | Step 5 (10m): Geotechnical Defense Role Play | Step 6 (5m): 4-Skills Review Exercises",
+      "selfIntroPitch": {
+        "title": "🎙️ Technical Method Statement Pitch — Deep Basement Top-Down Execution",
+        "english": "Good evening Teacher Lorraine! Tonight, I am pitching our comprehensive Technical Method Statement for a 4-level deep basement excavation in complex urban terrain, similar to our flagship project The Hallmark at Thu Thiem. We propose an 800mm reinforced diaphragm wall constructed with synthetic polymer slurry to eliminate soil displacement and protect adjacent structures. By deploying top-down construction with laser-aligned plunge king posts, Central Cons compresses the critical path schedule by 20 calendar days while maintaining 100% structural integrity and zero groundwater drawdown.",
+        "vietnamese": "Chào cô Lorraine! Tối nay, tôi xin thuyết trình Thuyết minh Biện pháp Kỹ thuật thi công cho hố đào hầm sâu 4 tầng trong khu vực đô thị phức tạp, tương tự như dự án biểu tượng The Hallmark tại Thủ Thiêm của chúng tôi. Chúng tôi đề xuất tường vằn bê tông cốt thép dày 800mm thi công bằng dung dịch polymer để loại bỏ độ dịch chuyển nền đất và bảo vệ các công trình lân cận. Bằng cách áp dụng biện pháp thi công top-down kết hợp cột king post định vị laser, Central Cons rút ngắn tiến độ đường găng 20 ngày mà vẫn đảm bảo 100% an toàn kết cấu và không hạ mực nước ngầm."
+      },
+      "powerWords": [
+        {
+          "word": "Diaphragm wall",
+          "phonetic": "[ˈdaɪ.ə.fræm wɔːl]",
+          "meaning": "Tường vằn (tường chắn đất vĩnh cửu trong hố đào sâu)",
+          "example": "Central Cons executes 800mm-thick diaphragm walls with polymer slurry to prevent ground settlement."
+        },
+        {
+          "word": "Top-down construction",
+          "phonetic": "[tɒp daʊn kənˈstrʌk.ʃən]",
+          "meaning": "Biện pháp thi công hầm từ trên xuống kết hợp phần thân",
+          "example": "We deploy top-down construction to compress the critical path schedule by 20 calendar days."
+        },
+        {
+          "word": "Ground settlement",
+          "phonetic": "[ɡraʊnd ˈset.əl.mənt]",
+          "meaning": "Độ lún sụt nền đất xung quanh công trình",
+          "example": "Real-time geotechnical sensors monitor ground settlement to protect adjacent historical buildings."
+        },
+        {
+          "word": "King post",
+          "phonetic": "[kɪŋ pəʊst]",
+          "meaning": "Cột thép hình chữ H cắm vào cọc khoan nhồi đỡ sàn tạm",
+          "example": "Plunge steel king posts are vertically aligned with laser precision into bored piles."
+        },
+        {
+          "word": "Dewatering system",
+          "phonetic": "[diːˈwɔː.tər.ɪŋ ˈsɪs.təm]",
+          "meaning": "Hệ thống bơm hạ mực nước ngầm trong hố đào",
+          "example": "A deep-well dewatering system maintains a dry and stable basement excavation pit."
+        },
+        {
+          "word": "Structural integrity",
+          "phonetic": "[ˈstrʌk.tʃər.əl ɪnˈteɡ.rə.ti]",
+          "meaning": "Độ an toàn chịu lực và tính toàn vẹn của kết cấu",
+          "example": "Our technical method statement strictly guarantees the structural integrity of the basement perimeter."
+        },
+        {
+          "word": "Method statement",
+          "phonetic": "[ˈmeθ.əd ˌsteɪt.mənt]",
+          "meaning": "Thuyết minh biện pháp kỹ thuật thi công",
+          "example": "The engineer approved our technical method statement for deep basement excavation without reservations."
+        },
+        {
+          "word": "Deflection limit",
+          "phonetic": "[dɪˈflek.ʃən ˈlɪm.ɪt]",
+          "meaning": "Giới hạn độ võng và chuyển vị ngang cho phép",
+          "example": "Lateral wall deflection is strictly kept within the 15mm design limit throughout all excavation stages."
+        }
+      ],
+      "grammarFocus": [
+        {
+          "title": "1. Passive Voice in Technical Engineering Descriptions",
+          "rule": "Dùng thể bị động để mô tả quy trình kỹ thuật khách quan, trang trọng và chuẩn mực quốc tế.",
+          "formula": "Subject + Be + Past Participle (V3/ed) + by/with...",
+          "example": "Diaphragm wall trenching is stabilized with synthetic polymer fluid rather than heavy bentonite."
+        },
+        {
+          "title": "2. Adjective + that-clause (Preply Lesson 01 Feedback Reinforcement)",
+          "rule": "Dùng sau các tính từ khẳng định (confident, certain, pleased) + mệnh đề hoàn chỉnh.",
+          "formula": "Subject + Be + Adjective + that + Clause (Subject + Verb...)",
+          "example": "Our engineering team is confident that top-down excavation will eliminate all perimeter soil movement."
+        },
+        {
+          "title": "3. Conditional Type 1 for Geotechnical Risk Management",
+          "rule": "Dùng câu điều kiện loại 1 để cam kết biện pháp xử lý sự cố kỹ thuật và phòng ngừa rủi ro.",
+          "formula": "If + Present Simple, Future Simple (will / can + Verb)",
+          "example": "If groundwater pressure rises beyond 5mm threshold, recharge wells will balance it immediately."
+        }
+      ],
+      "bulletPoints": [
+        {
+          "en": "Our 4-level basement excavation adopts top-down methodology to shorten critical path by 20 days.",
+          "vi": "Hố đào hầm 4 tầng của chúng tôi áp dụng phương pháp top-down để rút ngắn tiến độ đường găng 20 ngày."
+        },
+        {
+          "en": "Continuous 800mm diaphragm walls eliminate soil displacement risks for surrounding urban roads.",
+          "vi": "Tường vằn liên tục dày 800mm triệt tiêu rủi ro dịch chuyển nền đất cho các tuyến đường đô thị lân cận."
+        },
+        {
+          "en": "Laser-aligned plunge king posts guarantee zero vertical eccentricity into bored piles.",
+          "vi": "Cột king post định vị laser đảm bảo độ lệch tâm thẳng đứng bằng không khi cắm vào cọc khoan nhồi."
+        },
+        {
+          "en": "Real-time piezometers and recharge wells maintain stable groundwater levels at all times.",
+          "vi": "Cảm biến áp lực nước lỗ rỗng và giếng bổ cập duy trì mực nước ngầm luôn ổn định ở mọi thời điểm."
+        }
+      ],
+      "biddingProcessSteps": [
+        {
+          "step": "Phase 1",
+          "title": "Geotechnical Survey & Guide Wall Construction",
+          "desc": "Soil investigation boreholes and reinforced concrete guide walls along basement perimeter."
+        },
+        {
+          "step": "Phase 2",
+          "title": "Diaphragm Wall Trenching & Polymer Slurry Support",
+          "desc": "Hydraulic grab excavation supported with synthetic polymer to prevent trench collapse."
+        },
+        {
+          "step": "Phase 3",
+          "title": "Bored Pile & Laser-Guided King Post Installation",
+          "desc": "Deep foundation drilling and precision vertical alignment of structural plunge columns."
+        },
+        {
+          "step": "Phase 4",
+          "title": "Ground Floor Slab Casting & Top-Down Excavation",
+          "desc": "Casting L0 floor slab opening access hatches, proceeding downwards to B1-B4 while building tower."
+        }
+      ],
+      "anticipatedQA": [
+        {
+          "qEn": "How does Central Cons guarantee that deep excavation will not cause cracking to adjacent historical buildings?",
+          "qVi": "Central Cons làm thế nào để đảm bảo việc đào hầm sâu không gây nứt nẻ cho các công trình cổ kính xung quanh?",
+          "hint": "Mention 800mm diaphragm wall stiffness, real-time inclinometers, and automated groundwater recharge wells."
+        },
+        {
+          "qEn": "Why should the Client approve your top-down proposal instead of standard bottom-up with open strutting?",
+          "qVi": "Tại sao Chủ đầu tư nên duyệt biện pháp top-down thay vì phương pháp bottom-up truyền thống dùng hệ giằng chống?",
+          "hint": "Highlight concurrent superstructure & basement progress, 20 days schedule compression, and zero temporary steel strut costs."
+        },
+        {
+          "qEn": "What contingency measures are in place if a diaphragm wall joint experiences water leakage during excavation?",
+          "qVi": "Biện pháp dự phòng là gì nếu mối nối tường vằn bị rò rỉ nước trong lúc đào?",
+          "hint": "Explain pre-installed CPT waterstop tubes and stand-by polyurethane chemical pressure grouting rigs on site."
+        }
+      ],
+      "challengeScenario": {
+        "title": "Geotechnical Defense Pitch vs Client Consultant",
+        "contextEn": "The Client's Lead Geotechnical Consultant questions Central Cons' proposal to use polymer slurry instead of bentonite, fearing trench collapse in soft Thu Thiem clay.",
+        "contextVi": "Tư vấn Trưởng Địa kỹ thuật của CĐT nghi ngờ đề xuất của Central Cons về việc dùng dung dịch polymer thay vì bentonite, lo ngại sập vách hố đào trong lớp đất sét yếu Thủ Thiêm.",
+        "task": "Defend our polymer slurry proposal by demonstrating higher sand-settling efficiency, cleaner basement concrete interfaces, and zero trench collapse record at The Hallmark."
+      },
+      "reviewExercises": {
+        "listeningEx": {
+          "title": "🎧 Technical Dictation: Top-Down Method & Diaphragm Wall",
+          "audioPrompt": "Central Cons executes continuous 800mm diaphragm walls using synthetic polymer slurry to eliminate ground settlement and preserve structural integrity.",
+          "options": [
+            "diaphragm walls",
+            "ground settlement",
+            "structural integrity"
+          ]
+        },
+        "speakingEx": {
+          "title": "🗣️ Geotechnical Defense Pitch",
+          "prompt": "Explain in 45 seconds how Central Cons' top-down method compresses schedule by 20 days while protecting adjacent structures."
+        },
+        "readingEx": {
+          "title": "📖 Technical Specification Analysis",
+          "passage": "Clause 4.2: The Main Contractor shall install continuous diaphragm wall panels of minimum 800mm thickness. Slurry level shall be maintained at least 1.5m above maximum groundwater table at all times. Vertical deviation shall not exceed 1:200.",
+          "question": "What is the maximum allowable vertical deviation for diaphragm wall panels under Clause 4.2?",
+          "answer": "1:200 (0.5% vertical tolerance)"
+        },
+        "writingEx": {
+          "title": "✍️ Technical Transmittal Letter to Client Consultant",
+          "template": "Subject: Transmittal of Technical Method Statement for Deep Basement Excavation\n\nDear Lead Geotechnical Engineer,\n\nWe are pleased to submit Central Cons' comprehensive Technical Method Statement for the 4-level basement excavation at LOTTE Eco-Smart City. Our proposed 800mm diaphragm wall and top-down sequence strictly adhere to BS 8081 and guarantee zero ground settlement to adjacent structures.\n\nWe remain confident that this engineering approach offers the optimal balance of safety, cost efficiency, and schedule acceleration.\n\nSincerely,\nHero Kun — Head of Estimating & Pricing Division, Central Cons"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "title": "Lesson 03: Commercial Strategy & BOQ Unit Rate Breakdown",
+      "topic": "Defending Unit Rates, Overhead Margins & Provisional Sums",
+      "scheduleDate": "Monday, Aug 17, 2026 (22:00 - 22:50)",
+      "status": "Scheduled",
+      "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"
+    },
+    {
+      "id": 4,
+      "title": "Lesson 04: FIDIC Contract Clauses & Risk Allocation",
+      "topic": "FIDIC Price Adjustments (Clause 13.8) & EOT Claims (Clause 8.4)",
+      "scheduleDate": "Friday, Aug 21, 2026 (22:00 - 22:50)",
+      "status": "Scheduled",
+      "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"
+    },
+    {
+      "id": 5,
+      "title": "Lesson 05: Subcontractor Procurement & Supply Chain Strategy",
+      "topic": "Tier-1 Subcontractor Prequalification & Long-Lead Items",
+      "scheduleDate": "Monday, Aug 24, 2026 (22:00 - 22:50)",
+      "status": "Scheduled",
+      "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"
+    },
+    {
+      "id": 6,
+      "title": "Lesson 06: Value Engineering (VE) & Cost Optimization Proposals",
+      "topic": "Pitching CAPEX & OPEX Savings to Client Board",
+      "scheduleDate": "Friday, Aug 28, 2026 (22:00 - 22:50)",
+      "status": "Scheduled",
+      "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"
+    },
+    {
+      "id": 7,
+      "title": "Lesson 07: Project Fast-Tracking & CPM Schedule Presentation",
+      "topic": "Critical Path Method (CPM) & Milestone Commitments",
+      "scheduleDate": "Monday, Aug 31, 2026 (22:00 - 22:50)",
+      "status": "Scheduled",
+      "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"
+    },
+    {
+      "id": 8,
+      "title": "Lesson 08: High-Pressure Post-Tender Q&A & Winning Pitch Closing",
+      "topic": "Objection Handling, Final Alignment & Contract Award Closing",
+      "scheduleDate": "Friday, Sep 04, 2026 (22:00 - 22:50)",
+      "status": "Scheduled",
+      "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"
+    }
+  ],
+  "dailyNews": [
+    {
+      "category": "🏢 Domestic Mega-Projects & Vietnam Construction",
+      "date": "Friday, August 14, 2026",
+      "titleEn": "Nghe An Province Approves $1.15 Billion (VND 29.1 Trillion) Urban Infrastructure Upgrade Scheme",
+      "titleVi": "Tỉnh Nghệ An Phê Duyệt Đề Án Cải Tạo Hạ Tầng Đô Thị 138 Dự Án Trị Giá $1.15 Tỷ USD (29.1 Nghìn Tỷ VNĐ)",
+      "sourceTitle": "VnEconomy & Provincial People's Committee",
+      "sourceUrl": "https://en.vneconomy.vn/nghe-an-to-invest-11-bln-in-urban-renovation.htm",
+      "summaryEn": "Nghe An Provincial People's Committee has officially issued an implementation scheme comprising 138 urban renovation projects valued at over VND 29.1 trillion ($1.15 billion) for the 2026-2030 period. Priority is allocated to major transportation lifelines and five critical flood-prevention civil works scheduled for Q3 2026 completion.",
+      "summaryVi": "UBND tỉnh Nghệ An chính thức ban hành kế hoạch triển khai đề án cải tạo đô thị gồm 138 dự án với tổng mức đầu tư trên 29.1 nghìn tỷ VNĐ ($1.15 tỷ USD) giai đoạn 2026-2030. Ưu tiên tập trung cho các tuyến hạ tầng giao thông kết nối và 5 công trình chống ngập cấp bách cất nóc Quý 3/2026.",
+      "vocab": [
+        {
+          "word": "Urban Infrastructure Upgrade",
+          "phonetic": "[ˈɜː.bən ˌɪn.frəˈstrʌk.tʃər]",
+          "meaning": "Cải tạo và nâng cấp hạ tầng đô thị"
+        },
+        {
+          "word": "Resource Availability Phasing",
+          "phonetic": "[rɪˈzɔːs]",
+          "meaning": "Phân kỳ đầu tư theo nguồn lực"
+        },
+        {
+          "word": "Flood-Prevention Civil Works",
+          "phonetic": "[flʌd]",
+          "meaning": "Công trình thủy lợi & chống ngập đô thị"
+        }
+      ]
+    },
+    {
+      "category": "🤖 AI Technology & Bidding Automation",
+      "date": "Friday, August 14, 2026",
+      "titleEn": "Natively Unified AI Takeoff & Procurement Platforms Cut Commercial Bid Prep Cycle to 3 Hours",
+      "titleVi": "Nền Tảng AI Tích Hợp Bóc Tách Khối Lượng & Mua Sắm Rút Ngắn Chu Kỳ Lập Hồ Sơ Thầu Xuống 3 Giờ",
+      "sourceTitle": "Quotr AI & Dan Cumberland Labs",
+      "sourceUrl": "https://quotr.ai/blog/best-ai-construction-estimating-software-2026/",
+      "summaryEn": "August 2026 preconstruction benchmark reports highlight natively unified AI estimating platforms that combine 2D/3D BIM quantity takeoffs with real-time supplier market pricing databases. Commercial pricing teams at general contractors process 3.5x more tenders without expanding headcount.",
+      "summaryVi": "Báo cáo điểm chuẩn tiền thi công tháng 8/2026 đánh giá cao các nền tảng AI tích hợp bóc tách khối lượng BIM 2D/3D trực tiếp với cơ sở dữ liệu giá nhà cung cấp thời gian thực. Đội ngũ báo giá nhà thầu chính xử lý gấp 3.5 lần số lượng gói thầu.",
+      "vocab": [
+        {
+          "word": "Unified Takeoff Platform",
+          "phonetic": "[ˈjuː.nɪ.faɪd]",
+          "meaning": "Nền tảng bóc tách khối lượng hợp nhất"
+        },
+        {
+          "word": "Real-Time Supplier Pricing",
+          "phonetic": "[praɪs.ɪŋ]",
+          "meaning": "Dữ liệu đơn giá nhà cung cấp thời gian thực"
+        },
+        {
+          "word": "Preconstruction Benchmark",
+          "phonetic": "[ˈbentʃ.mɑːk]",
+          "meaning": "Điểm chuẩn hiệu suất tiền thi công"
+        }
+      ]
+    },
+    {
+      "category": "⚖️ Construction Legislation & Procurement Laws",
+      "date": "Friday, August 14, 2026",
+      "titleEn": "Decree 274 Mandates Mandatory Technology Transfer & Green Materials Preference Audit",
+      "titleVi": "Nghị Định 274 Bắt Buộc Cam Kết Chuyển Giao Công Nghệ & Kiểm Toán Ưu Đãi Vật Liệu Xanh",
+      "sourceTitle": "LuatVietnam & Ministry of Planning and Investment",
+      "sourceUrl": "https://luatvietnam.vn/legal-updates/investors-using-advanced-technologies-to-receive-incentives-in-bid-evaluation-892-110889-article.html",
+      "summaryEn": "Entering August 2026, Vietnam enforces strict procurement audits requiring investors and main contractors claiming the 2-5% technology preference under Decree 274 to submit legal proof of technology transfer rights or certified green material supply chains.",
+      "summaryVi": "Bước sang tháng 8/2026, Việt Nam siết chặt kiểm toán đấu thầu, bắt buộc các nhà đầu tư và nhà thầu chính đề nghị hưởng 2-5% điểm ưu đãi công nghệ theo Nghị định 274 phải nộp bằng chứng pháp lý về quyền chuyển giao công nghệ hoặc chuỗi cung ứng vật liệu xanh.",
+      "vocab": [
+        {
+          "word": "Technology Transfer Mandate",
+          "phonetic": "[trænsˈfɜːr]",
+          "meaning": "Quy định bắt buộc chuyển giao công nghệ"
+        },
+        {
+          "word": "Legal Proof Submission",
+          "phonetic": "[pruːf]",
+          "meaning": "Nộp bằng chứng chứng minh tính hợp pháp"
+        },
+        {
+          "word": "Procurement Incentive Audit",
+          "phonetic": "[ˈɔː.dɪt]",
+          "meaning": "Kiểm toán điều kiện hưởng ưu đãi đấu thầu"
+        }
+      ]
+    }
+  ]
+};
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
