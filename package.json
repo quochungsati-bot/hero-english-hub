@@ -1,7 +1,9 @@
 {
   "name": "hero-english-hub",
-  "version": "33.0.0",
+  "version": "2.1.0",
+  "scripts": { "start": "node server.js" },
   "dependencies": {
-    "node-fetch": "^2.6.9"
+    "express": "^4.18.2",
+    "node-fetch": "^2.6.7"
   }
 }

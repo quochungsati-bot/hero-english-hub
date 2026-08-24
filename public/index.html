@@ -4,1169 +4,486 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Hub - Bidding Director Workspace</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- React & ReactDOM -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        charcoal: {
-                            900: '#231F20',
-                            800: '#342E30',
-                            700: '#484043',
-                            500: '#786C70',
-                            300: '#C9C2C5',
-                            100: '#F0ECEE',
-                        },
-                        roseAccent: {
-                            DEFAULT: '#C86D7C',
-                            hover: '#B55A69',
-                            light: '#FBF0F2',
-                        },
-                        lavender: {
-                            DEFAULT: '#8B72BE',
-                            light: '#F3EFEF',
-                        },
-                        cream: {
-                            50: '#FDFBF7',
-                            100: '#FAF5EE',
-                            200: '#F0E8DD',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FAF5EE; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-thumb { background: #C9C2C5; border-radius: 10px; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FAF5EE; color: #231F20; }
+        .tab-btn { transition: all 0.2s ease; }
+        .tab-btn.active { background-color: #231F20; color: #FAF5EE; }
+        .subtab-btn.active { background-color: #C86D7C; color: #FFFFFF; }
+        .pulse-badge { animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
     </style>
 </head>
 <body>
     <div id="root"></div>
 
     <script type="text/babel">
-        const fallbackLessons = [{"id": 1, "title": "Lesson 01: Introduction to Bidding & Executive Pitch", "topic": "Executive Self-Introduction, Bidding Process & Technical vs Financial Bids", "scheduleDate": "Monday, Aug 10, 2026 (22:00 - 22:50)", "status": "Completed (Đã hoàn thành)", "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965", "timePlan": "Step 1 (5m): Self-Introduction Pitch | Step 2 (10m): Key Terms | Step 3 (10m): Grammar & Sentence Structures | Step 4 (10m): Bidding Process | Step 5 (10m): Role Play Pitch | Step 6 (5m): Expanded 4-Skills Review Exercises", "selfIntroPitch": {"title": "🎙️ Executive Self-Introduction Pitch to Teacher Lorraine Johns", "english": "Hello Teacher Lorraine! I am Hero Kun, currently serving as Deputy Head of Tendering at Central Cons, a leading construction contractor in Vietnam. In my role, I spearhead commercial and technical bids for major high-rise residential and commercial development projects. My primary responsibilities include managing Bill of Quantities (BOQ) takeoffs, leading tender negotiations with Clients, supervising cost control, and coordinating Value Engineering proposals. I am taking this 1:1 Preply course to elevate my international bidding presentation skills, master FIDIC contract terminology, and communicate with executive confidence as I prepare for the Head of Tendering role.", "vietnamese": "Xin chào cô Lorraine! Tôi là Hero Kun, hiện đang đảm nhiệm vị trí Phó phòng Đấu thầu tại Central Cons - nhà thầu xây dựng hàng đầu tại Việt Nam. Trong vai trò của mình, tôi chủ trì các gói thầu thương mại và kỹ thuật cho các dự án phát triển tòa nhà thương mại và nhà ở cao tầng lớn. Nhiệm vụ chính của tôi bao gồm quản lý bóc tách tiên lượng BOQ, dẫn dắt đàm phán thầu với Chủ đầu tư, giám sát kiểm soát chi phí và phối hợp các đề xuất Kỹ thuật giá trị. Tôi tham gia khóa học 1-kèm-1 trên Preply này nhằm nâng tầm kỹ năng thuyết trình đấu thầu quốc tế, làm chủ thuật ngữ hợp đồng FIDIC và giao tiếp với phong thái lãnh đạo tự tin khi chuẩn bị bước lên vị trí Trưởng phòng Đấu thầu."}, "powerWords": [{"word": "Bid", "phonetic": "[bɪd]", "meaning": "Đề xuất / Hồ sơ chào giá dự thầu", "example": "Our company will submit a formal bid tomorrow for the main tower package."}, {"word": "Tender", "phonetic": "[ˈten.dər]", "meaning": "Thông báo mời thầu chính thức từ CĐT", "example": "The government opened a public tender for the new highway construction."}, {"word": "Proposal", "phonetic": "[prəˈpəʊ.zəl]", "meaning": "Hồ sơ đề xuất phương án & kỹ thuật", "example": "We prepared a comprehensive proposal outlining all technical details."}, {"word": "Client", "phonetic": "[ˈklaɪ.ənt]", "meaning": "Chủ đầu tư / Khách hàng", "example": "The client asked for a competitive price and strict milestone schedule."}, {"word": "Deadline", "phonetic": "[ˈded.laɪn]", "meaning": "Thời hạn chót nộp hồ sơ / hoàn thành", "example": "The submission deadline for the commercial bid is Friday at 5 PM."}, {"word": "Contract", "phonetic": "[ˈkɒn.trækt]", "meaning": "Hợp đồng pháp lý giữa hai bên", "example": "Central Cons signed the contract after winning the high-rise tender."}, {"word": "Technical Bid", "phonetic": "[ˈtek.nɪ.kəl bɪd]", "meaning": "Hồ sơ dự thầu Kỹ thuật (Biện pháp, Vật liệu, Safety)", "example": "Our technical bid explains our construction methods, safety plan, and experience."}, {"word": "Financial Bid", "phonetic": "[faɪˈnæn.ʃəl bɪd]", "meaning": "Hồ sơ dự thầu Tài chính ($500,000 Total Cost & Payment Terms)", "example": "Our financial bid outlines the total project cost of $500,000 and payment terms."}], "grammarFocus": [{"title": "1. Present Simple for Job Responsibilities (Mô tả chức năng & nhiệm vụ công việc)", "rule": "Sử dụng động từ thì Hiện tại đơn để mô tả chức năng, vai trò hàng ngày tại Central Cons.", "formula": "Subject (I / Central Cons) + V(s/es) + Direct Object...", "example": "I spearhead commercial bids and supervise BOQ cost control at Central Cons."}, {"title": "2. Polite Business Modals ('would like to' + V-bare)", "rule": "Sử dụng khi mở đầu đề xuất chính thức hoặc phát biểu trang trọng với CĐT.", "formula": "We would like to + V (submit / propose / present / outline)...", "example": "We would like to submit our formal bid for this high-rise project."}, {"title": "3. Ability & Commitment Modals ('can' / 'is fully able to' + V-bare)", "rule": "Khẳng định năng lực thực thi và sự cam kết tiến độ của Central Cons.", "formula": "Our company can / is fully able to + V (meet / deliver / execute)...", "example": "Our company can meet the deadline and satisfy all technical and safety requirements."}, {"title": "4. Construction Execution Intentions ('plan to' vs 'will')", "rule": "'We plan to + V' (Diễn đạt phương án kỹ thuật) vs 'Our team will + V' (Cam kết thực hiện).", "formula": "We plan to + V (methods) | Our team will + V (commitments)", "example": "We plan to use advanced materials, and our team will finish on schedule."}], "bulletPoints": [{"en": "On behalf of Central Cons, I am honored to present our technical and financial proposal for this commercial landmark project.", "vi": "Đại diện Central Cons, tôi vinh hạnh trình bày hồ sơ đề xuất kỹ thuật và tài chính cho dự án biểu tượng thương mại này."}, {"en": "Our company has over 15 years of proven high-rise construction experience and a 100% safety record.", "vi": "Công ty chúng tôi có hơn 15 năm kinh nghiệm thi công nhà cao tầng đã được chứng minh cùng thành tích an toàn 100%."}, {"en": "We offer competitive pricing along with Value Engineering solutions that reduce structural costs without sacrificing quality.", "vi": "Chúng tôi đưa ra mức giá cạnh tranh cùng giải pháp Kỹ thuật giá trị giúp giảm chi phí phần thô mà không giảm chất lượng."}, {"en": "We believe our proposal is strong, comprehensive, and fully aligned with the Client's vision and budget.", "vi": "Chúng tôi tin rằng hồ sơ của mình rất mạnh mẽ, toàn diện và hoàn toàn phù hợp với tầm nhìn và ngân sách CĐT."}, {"en": "We are fully prepared to mobilize key personnel and equipment immediately upon contract signing.", "vi": "Chúng tôi đã chuẩn bị sẵn sàng huy động nhân sự nòng cốt và thiết bị ngay sau khi ký kết hợp đồng."}], "anticipatedQA": [{"qEn": "What is the difference between a Technical Bid and a Financial Bid in construction?", "qVi": "Sự khác biệt giữa Hồ sơ Kỹ thuật (Technical Bid) và Hồ sơ Tài chính (Financial Bid) trong xây dựng là gì?", "hint": "A Technical Bid explains how the work is done (methods, materials, safety), while a Financial Bid outlines the total cost ($500,000) and payment terms."}, {"qEn": "Can you explain the 4 steps of the Construction Bidding Process?", "qVi": "Bạn có thể giải thích 4 bước của Quy trình Đấu thầu Xây dựng?", "hint": "1. Project Announced -> 2. Companies Prepare Bids -> 3. Client Selects Best Offer -> 4. Project Awarded & Contract Signed."}], "challengeScenario": {"title": "Step 5 Role Play — Presenting a Construction Bid to Client", "contextEn": "Lorraine acts as the Client Representative in a 1:1 meeting. You (Hero) must present Central Cons' technical bid (10 years experience, safety plan) and financial bid ($500,000 total cost) using polite business tone.", "contextVi": "Cô Lorraine đóng vai Đại diện CĐT trong buổi họp 1-kèm-1. Bạn (Hero) cần trình bày hồ sơ kỹ thuật (10 năm kinh nghiệm, Kế hoạch an toàn) và hồ sơ tài chính ($500,000 tổng chi phí) sử dụng văn phong thương mại lịch thiệp.", "task": "Use sentence frames: 'We will use...', 'Our team has 10 years experience...', 'The project will cost $500,000...', 'We believe our proposal is strong and meets your requirements.'"}, "reviewExercises": {"listeningEx": {"title": "🎧 Exercise 1: Listening & Key Term Selection (Nghe & Chọn Từ)", "audioPrompt": "Our company will submit a formal _____ before the Friday deadline.", "options": ["A) Bid", "B) Contract", "C) Client"], "correctAnswer": "A) Bid", "explanation": "A 'bid' is an offer submitted by a company before the deadline."}, "speakingEx": {"title": "🗣️ Exercise 2: Speaking Reflex & Mic AI Check (Phản xạ Nói & Micro AI)", "prompt": "Hãy phát âm đoạn tự giới thiệu: 'I am Hero Kun, Deputy Head of Tendering at Central Cons. I spearhead commercial bids and lead tender negotiations.'", "targetSentence": "I am Hero Kun, Deputy Head of Tendering at Central Cons. I spearhead commercial bids and lead tender negotiations."}, "readingEx": {"title": "📖 Exercise 3: Reading Comprehension (Đọc hiểu & Phân tích thầu)", "passage": "A construction proposal consists of two essential parts: the technical bid and the financial bid. The technical bid details execution methods, safety protocols, and company experience. The financial bid outlines pricing structures, payment terms, and total contract sum.", "question": "Which bid details safety protocols and execution methods?", "answer": "The Technical Bid.", "explanation": "The passage states that the technical bid details execution methods and safety protocols."}, "writingEx": {"title": "✍️ Exercise 4: Writing Practice — Email & Self-Intro Sandbox (Viết Email Nộp Thầu & Giới Thiệu)", "prompt": "Viết 2-3 câu giới thiệu bản thân và nộp hồ sơ thầu cho CĐT.", "sampleAnswer": "Dear Client Representative, I am Hero Kun, Deputy Head of Tendering at Central Cons. We would like to submit our formal bid for the commercial tower project. Our company can meet the Friday deadline and satisfy all technical requirements."}}}, {"id": 2, "title": "Lesson 02: Technical Method Statements & Engineering Solutions", "topic": "Complex Underground, Top-Down Construction & Diaphragm Wall Engineering Pitch", "scheduleDate": "Friday, Aug 14, 2026 (22:00 - 22:50)", "status": "Tonight's Session (22:00 - 22:50)", "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965", "timePlan": "Step 1 (5m): Deep Basement Technical Pitch | Step 2 (10m): Engineering Power Words | Step 3 (10m): Passive Voice & Adjective+that Focus | Step 4 (10m): Top-Down Execution Sequence | Step 5 (10m): Geotechnical Defense Role Play | Step 6 (5m): 4-Skills Review Exercises", "selfIntroPitch": {"title": "🎙️ Technical Method Statement Pitch — Deep Basement Top-Down Execution", "english": "Good evening Teacher Lorraine! Tonight, I am pitching our comprehensive Technical Method Statement for a 4-level deep basement excavation in complex urban terrain, similar to our flagship project The Hallmark at Thu Thiem. We propose an 800mm reinforced diaphragm wall constructed with synthetic polymer slurry to eliminate soil displacement and protect adjacent structures. By deploying top-down construction with laser-aligned plunge king posts, Central Cons compresses the critical path schedule by 20 calendar days while maintaining 100% structural integrity and zero groundwater drawdown.", "vietnamese": "Chào cô Lorraine! Tối nay, tôi xin thuyết trình Thuyết minh Biện pháp Kỹ thuật thi công cho hố đào hầm sâu 4 tầng trong khu vực đô thị phức tạp, tương tự như dự án biểu tượng The Hallmark tại Thủ Thiêm của chúng tôi. Chúng tôi đề xuất tường vằn bê tông cốt thép dày 800mm thi công bằng dung dịch polymer để loại bỏ độ dịch chuyển nền đất và bảo vệ các công trình lân cận. Bằng cách áp dụng biện pháp thi công top-down kết hợp cột king post định vị laser, Central Cons rút ngắn tiến độ đường găng 20 ngày mà vẫn đảm bảo 100% an toàn kết cấu và không hạ mực nước ngầm."}, "powerWords": [{"word": "Diaphragm wall", "phonetic": "[ˈdaɪ.ə.fræm wɔːl]", "meaning": "Tường vằn (tường chắn đất vĩnh cửu trong hố đào sâu)", "example": "Central Cons executes 800mm-thick diaphragm walls with polymer slurry to prevent ground settlement."}, {"word": "Top-down construction", "phonetic": "[tɒp daʊn kənˈstrʌk.ʃən]", "meaning": "Biện pháp thi công hầm từ trên xuống kết hợp phần thân", "example": "We deploy top-down construction to compress the critical path schedule by 20 calendar days."}, {"word": "Ground settlement", "phonetic": "[ɡraʊnd ˈset.əl.mənt]", "meaning": "Độ lún sụt nền đất xung quanh công trình", "example": "Real-time geotechnical sensors monitor ground settlement to protect adjacent historical buildings."}, {"word": "King post", "phonetic": "[kɪŋ pəʊst]", "meaning": "Cột thép hình chữ H cắm vào cọc khoan nhồi đỡ sàn tạm", "example": "Plunge steel king posts are vertically aligned with laser precision into bored piles."}, {"word": "Dewatering system", "phonetic": "[diːˈwɔː.tər.ɪŋ ˈsɪs.təm]", "meaning": "Hệ thống bơm hạ mực nước ngầm trong hố đào", "example": "A deep-well dewatering system maintains a dry and stable basement excavation pit."}, {"word": "Structural integrity", "phonetic": "[ˈstrʌk.tʃər.əl ɪnˈteɡ.rə.ti]", "meaning": "Độ an toàn chịu lực và tính toàn vẹn của kết cấu", "example": "Our technical method statement strictly guarantees the structural integrity of the basement perimeter."}, {"word": "Method statement", "phonetic": "[ˈmeθ.əd ˌsteɪt.mənt]", "meaning": "Thuyết minh biện pháp kỹ thuật thi công", "example": "The engineer approved our technical method statement for deep basement excavation without reservations."}, {"word": "Deflection limit", "phonetic": "[dɪˈflek.ʃən ˈlɪm.ɪt]", "meaning": "Giới hạn độ võng và chuyển vị ngang cho phép", "example": "Lateral wall deflection is strictly kept within the 15mm design limit throughout all excavation stages."}], "grammarFocus": [{"title": "Passive Voice in Technical Engineering Descriptions", "rule": "Dùng thể bị động để mô tả quy trình kỹ thuật khách quan, trang trọng và chuẩn mực quốc tế.", "formula": "Subject + Be + Past Participle (V3/ed) + by/with...", "example": "Diaphragm wall trenching is stabilized with synthetic polymer fluid rather than heavy bentonite."}, {"title": "Adjective + that-clause (Preply Lesson 01 Feedback Reinforcement)", "rule": "Dùng sau các tính từ khẳng định (confident, certain, pleased) + mệnh đề hoàn chỉnh.", "formula": "Subject + Be + Adjective + that + Clause (Subject + Verb...)", "example": "Our engineering team is confident that top-down excavation will eliminate all perimeter soil movement."}, {"title": "Conditional Type 1 for Geotechnical Risk Management", "rule": "Dùng câu điều kiện loại 1 để cam kết biện pháp xử lý sự cố kỹ thuật và phòng ngừa rủi ro.", "formula": "If + Present Simple, Future Simple (will / can + Verb)", "example": "If groundwater pressure rises beyond 5mm threshold, recharge wells will balance it immediately."}], "bulletPoints": [{"en": "Our 4-level basement excavation adopts top-down methodology to shorten critical path by 20 days.", "vi": "Hố đào hầm 4 tầng của chúng tôi áp dụng phương pháp top-down để rút ngắn tiến độ đường găng 20 ngày."}, {"en": "Continuous 800mm diaphragm walls eliminate soil displacement risks for surrounding urban roads.", "vi": "Tường vằn liên tục dày 800mm triệt tiêu rủi ro dịch chuyển nền đất cho các tuyến đường đô thị lân cận."}, {"en": "Laser-aligned plunge king posts guarantee zero vertical eccentricity into bored piles.", "vi": "Cột king post định vị laser đảm bảo độ lệch tâm thẳng đứng bằng không khi cắm vào cọc khoan nhồi."}, {"en": "Real-time piezometers and recharge wells maintain stable groundwater levels at all times.", "vi": "Cảm biến áp lực nước lỗ rỗng và giếng bổ cập duy trì mực nước ngầm luôn ổn định ở mọi thời điểm."}], "biddingProcessSteps": [{"step": "Phase 1", "title": "Geotechnical Survey & Guide Wall Construction", "desc": "Soil investigation boreholes and reinforced concrete guide walls along basement perimeter."}, {"step": "Phase 2", "title": "Diaphragm Wall Trenching & Polymer Slurry Support", "desc": "Hydraulic grab excavation supported with synthetic polymer to prevent trench collapse."}, {"step": "Phase 3", "title": "Bored Pile & Laser-Guided King Post Installation", "desc": "Deep foundation drilling and precision vertical alignment of structural plunge columns."}, {"step": "Phase 4", "title": "Ground Floor Slab Casting & Top-Down Excavation", "desc": "Casting L0 floor slab opening access hatches, proceeding downwards to B1-B4 while building tower."}], "anticipatedQA": [{"qEn": "How does Central Cons guarantee that deep excavation will not cause cracking to adjacent historical buildings?", "qVi": "Central Cons làm thế nào để đảm bảo việc đào hầm sâu không gây nứt nẻ cho các công trình cổ kính xung quanh?", "hint": "Mention 800mm diaphragm wall stiffness, real-time inclinometers, and automated groundwater recharge wells."}, {"qEn": "Why should the Client approve your top-down proposal instead of standard bottom-up with open strutting?", "qVi": "Tại sao Chủ đầu tư nên duyệt biện pháp top-down thay vì phương pháp bottom-up truyền thống dùng hệ giằng chống?", "hint": "Highlight concurrent superstructure & basement progress, 20 days schedule compression, and zero temporary steel strut costs."}, {"qEn": "What contingency measures are in place if a diaphragm wall joint experiences water leakage during excavation?", "qVi": "Biện pháp dự phòng là gì nếu mối nối tường vằn bị rò rỉ nước trong lúc đào?", "hint": "Explain pre-installed CPT waterstop tubes and stand-by polyurethane chemical pressure grouting rigs on site."}], "challengeScenario": {"contextEn": "The Client's Lead Geotechnical Consultant questions Central Cons' proposal to use polymer slurry instead of bentonite, fearing trench collapse in soft Thu Thiem clay.", "contextVi": "Tư vấn Trưởng Địa kỹ thuật của CĐT nghi ngờ đề xuất của Central Cons về việc dùng dung dịch polymer thay vì bentonite, lo ngại sập vách hố đào trong lớp đất sét yếu Thủ Thiêm.", "task": "Defend our polymer slurry proposal by demonstrating higher sand-settling efficiency, cleaner basement concrete interfaces, and zero trench collapse record at The Hallmark."}, "reviewExercises": {"listeningEx": {"title": "🎧 Technical Dictation: Top-Down Method & Diaphragm Wall", "audioPrompt": "Central Cons executes continuous 800mm diaphragm walls using synthetic polymer slurry to eliminate ground settlement and preserve structural integrity.", "options": ["diaphragm walls", "ground settlement", "structural integrity"]}, "speakingEx": {"title": "🗣️ Geotechnical Defense Pitch", "prompt": "Explain in 45 seconds how Central Cons' top-down method compresses schedule by 20 days while protecting adjacent structures."}, "readingEx": {"title": "📖 Technical Specification Analysis", "passage": "Clause 4.2: The Main Contractor shall install continuous diaphragm wall panels of minimum 800mm thickness. Slurry level shall be maintained at least 1.5m above maximum groundwater table at all times. Vertical deviation shall not exceed 1:200.", "question": "What is the maximum allowable vertical deviation for diaphragm wall panels under Clause 4.2?", "answer": "1:200 (0.5% vertical tolerance)"}, "writingEx": {"title": "✍️ Technical Transmittal Letter to Client Consultant", "template": "Subject: Transmittal of Technical Method Statement for Deep Basement Excavation\n\nDear Lead Geotechnical Engineer,\n\nWe are pleased to submit Central Cons' comprehensive Technical Method Statement for the 4-level basement excavation at LOTTE Eco-Smart City. Our proposed 800mm diaphragm wall and top-down sequence strictly adhere to BS 8081 and guarantee zero ground settlement to adjacent structures.\n\nWe remain confident that this engineering approach offers the optimal balance of safety, cost efficiency, and schedule acceleration.\n\nSincerely,\nHero Kun — Head of Estimating & Pricing Division, Central Cons"}}}, {"id": 3, "title": "Lesson 03: Commercial Strategy & BOQ Unit Rate Breakdown", "topic": "Defending Unit Rates, Overhead Margins & Provisional Sums", "scheduleDate": "Monday, Aug 17, 2026 (22:00 - 22:50)", "status": "Scheduled", "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"}, {"id": 4, "title": "Lesson 04: FIDIC Contract Clauses & Risk Allocation", "topic": "FIDIC Price Adjustments (Clause 13.8) & EOT Claims (Clause 8.4)", "scheduleDate": "Friday, Aug 21, 2026 (22:00 - 22:50)", "status": "Scheduled", "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"}, {"id": 5, "title": "Lesson 05: Subcontractor Procurement & Supply Chain Strategy", "topic": "Tier-1 Subcontractor Prequalification & Long-Lead Items", "scheduleDate": "Monday, Aug 24, 2026 (22:00 - 22:50)", "status": "Scheduled", "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"}, {"id": 6, "title": "Lesson 06: Value Engineering (VE) & Cost Optimization Proposals", "topic": "Pitching CAPEX & OPEX Savings to Client Board", "scheduleDate": "Friday, Aug 28, 2026 (22:00 - 22:50)", "status": "Scheduled", "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"}, {"id": 7, "title": "Lesson 07: Project Fast-Tracking & CPM Schedule Presentation", "topic": "Critical Path Method (CPM) & Milestone Commitments", "scheduleDate": "Monday, Aug 31, 2026 (22:00 - 22:50)", "status": "Scheduled", "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"}, {"id": 8, "title": "Lesson 08: High-Pressure Post-Tender Q&A & Winning Pitch Closing", "topic": "Objection Handling, Final Alignment & Contract Award Closing", "scheduleDate": "Friday, Sep 04, 2026 (22:00 - 22:50)", "status": "Scheduled", "preplyClassUrl": "https://preply.com/edu/english/classroom-v2/10523965"}];
-        const fallbackNews = [{"category": "🤖 AI & Smart Tech in Construction", "date": "Monday, August 10, 2026", "titleEn": "38% of General Contractors Now Deploy AI for Bid Takeoffs & Estimating", "titleVi": "38% Nhà Thầu Chính Hiện Ứng Dụng AI Vào Bóc Tách Khối Lượng & Lập Dự Toán Thầu", "sourceTitle": "Construction Week Online", "sourceUrl": "https://www.constructionweekonline.com/analysis/ai-in-construction", "summaryEn": "Recent Q2 2026 commercial contractor surveys reveal a major industry shift: over 38% of general contractors are running AI platforms directly in production to automate BOQ takeoffs and bid proposals. Estimators using AI takeoffs process up to 3x more bids with the same headcount, gaining a decisive competitive advantage on bid day while eliminating manual scope gaps before contract award.", "summaryVi": "Khảo sát mới nhất Quý 2/2026 cho thấy bước ngoặt lớn: hơn 38% nhà thầu chính đang vận hành trực tiếp các nền tảng AI để tự động hóa công tác bóc tách tiên lượng BOQ và lập hồ sơ thầu. Đội ngũ dự toán áp dụng AI xử lý lượng hồ sơ thầu gấp 3 lần với cùng số lượng nhân sự, tạo lợi thế cạnh tranh vượt trội trong ngày mở thầu và loại bỏ hoàn toàn sai lệch phạm vi công việc trước khi trao hợp đồng.", "vocab": [{"word": "BOQ Takeoffs", "phonetic": "[tæ.kɒf]", "meaning": "Công tác bóc tách khối lượng từ bản vẽ"}, {"word": "Scope Gap", "phonetic": "[skəʊp ɡæp]", "meaning": "Khoảng hở / Thiếu sót phạm vi công việc"}, {"word": "Contract Award", "phonetic": "[ˈkɒn.trækt əˈwɔːd]", "meaning": "Quyết định trao hợp đồng chính thức"}]}, {"category": "⚖️ Bidding Laws & Policy Update", "date": "Monday, August 10, 2026", "titleEn": "Vietnam Enforces Decree 274/2026/ND-CP Tightening Bidding Security & Contract Alterations", "titleVi": "Việt Nam Ban Hành Nghị Định 274/2026/NĐ-CP Thắt Chặt Bảo Đảm Dự Thầu & Điều Chỉnh Hợp Đồng", "sourceTitle": "LuatVietnam & Báo Chính Phủ", "sourceUrl": "https://luatvietnam.vn/linh-vuc-khac/tong-hop-diem-moi-cua-nghi-dinh-274-nam-2026-ve-dau-thau-883-110507-article.html", "summaryEn": "Decree 274/2026/ND-CP introduces strict new procurement guidelines for investment projects in Vietnam. Under the new regulations, Clients and Project Directors are held fully accountable for contractual changes, while bid security guarantees and tenderer qualification assessments are strictly audited to eliminate phantom bidders and protect public infrastructure budgets.", "summaryVi": "Nghị định 274/2026/NĐ-CP bổ sung các quy định quản lý thầu chặt chẽ đối với các dự án đầu tư tại Việt Nam. Theo quy định mới, Chủ đầu tư và Ban Quản lý Dự án chịu trách nhiệm toàn diện đối với việc thay đổi hợp đồng, đồng thời công tác bảo đảm dự thầu và đánh giá năng lực nhà thầu được kiểm toán nghiêm ngặt nhằm loại bỏ nhà thầu 'quân xanh quân đỏ' và bảo vệ ngân sách hạ tầng.", "vocab": [{"word": "Bid Security Guarantee", "phonetic": "[bɪd sɪˈkjʊə.rə.ti]", "meaning": "Bảo đảm dự thầu / Bảo lãnh thầu"}, {"word": "Procurement Guidelines", "phonetic": "[prəˈkjʊə.mənt]", "meaning": "Hướng dẫn quy trình lựa chọn nhà thầu"}, {"word": "Accountable", "phonetic": "[əˈkaʊn.tə.bəl]", "meaning": "Chịu trách nhiệm giải trình"}]}, {"category": "🏗️ Infrastructure & Megaprojects", "date": "Monday, August 10, 2026", "titleEn": "Consortium Proposes $4.71 Billion Metro Investment Linking HCMC & Binh Duong", "titleVi": "Liên Danh Đề Xuất Đầu Tư $4.71 Tỷ USD Xây 2 Tuyến Metro Nối TP.HCM - Bình Dương", "sourceTitle": "Freshfields Infrastructure Spotlight May-August 2026", "sourceUrl": "https://www.freshfields.com/en/our-thinking/briefings/2026/05/vietnam-infrastructure-spotlight-may-2026", "summaryEn": "A major consortium between Becamex IDC and Thaco has submitted a $4.71 billion PPP proposal to construct two high-capacity metro lines connecting Ho Chi Minh City with Binh Duong province. The project features a 32.4km main corridor and a 24.2km secondary route, marking one of Southern Vietnam's largest urban transit bidding competitions.", "summaryVi": "Liên danh giữa Becamex IDC và Thaco đã chính thức trình đề xuất PPP trị giá 4.71 tỷ USD để xây dựng 2 tuyến đường sắt đô thị Metro kết nối TP.HCM với tỉnh Bình Dương. Dự án gồm tuyến chính dài 32.4 km và tuyến phụ dài 24.2 km, tạo nên một trong những gói thầu hạ tầng giao thông đô thị lớn nhất miền Nam.", "vocab": [{"word": "Consortium", "phonetic": "[kənˈsɔː.ti.əm]", "meaning": "Liên danh các nhà thầu / nhà đầu tư"}, {"word": "PPP Proposal", "phonetic": "[piː-piː-piː]", "meaning": "Đề xuất Hợp tác Công - Tư (Public-Private Partnership)"}, {"word": "Transit Corridor", "phonetic": "[ˈtræn.zɪt ˈkɒr.ɪ.dɔː]", "meaning": "Hành lang giao thông đô thị"}]}];
+        const { useState, useEffect } = React;
+
+        const lessonsData = [
+            {
+                id: 1,
+                title: "Lesson 01: Introduction to Bidding & Executive Pitch",
+                topic: "Bidding Industry Fundamentals, Tuesday Routines & AI Tools",
+                scheduleDate: "Monday, Aug 10, 2026 (22:00 – 22:50)",
+                status: "Completed",
+                speakingRatio: "Hero 51% (25m) | Lorraine 49% (24m)",
+                preplyClassUrl: "https://preply.com/edu/english/classroom-v2/10523965",
+                selfIntroPitch: "Hello Teacher Lorraine! I am Hero Kun, currently serving as Deputy Head of Tendering and Head of Estimating at Central Cons. In my role, I spearhead commercial bids for high-rise projects, managing BOQ takeoffs and Value Engineering proposals.",
+                powerWords: [
+                    { word: "Bid / Tender", ipa: "/bɪd/ · /ˈten.dər/", type: "n, v", vi: "Hồ sơ dự thầu / Gói thầu", ex: "Central Cons will submit a competitive commercial bid tomorrow." },
+                    { word: "Proposal", ipa: "/prəˈpəʊ.zəl/", type: "n", vi: "Hồ sơ đề xuất kỹ thuật & phương án", ex: "Our technical proposal highlights foundation Value Engineering." },
+                    { word: "Client / Employer", ipa: "/ˈklaɪ.ənt/", type: "n", vi: "Chủ đầu tư (CĐT)", ex: "The Client requested a strict milestone schedule." },
+                    { word: "Deadline", ipa: "/ˈded.laɪn/", type: "n", vi: "Hạn chót nộp thầu", ex: "We request a 3-day extension on the tender submission deadline." }
+                ],
+                recapSummary: "Discussed Monday routines, labor shortages in construction, and AI tools (Gemini, Canva) with client data filtering."
+            },
+            {
+                id: 2,
+                title: "Lesson 02: Technical Method Statements & Engineering Solutions",
+                topic: "High-Rise Structures, Landmark 81, High-Speed Rail & Cross-Cultural Dialogue",
+                scheduleDate: "Friday, Aug 14, 2026 (22:00 – 22:50)",
+                status: "Completed",
+                speakingRatio: "Hero 41% (20m) | Lorraine 59% (30m)",
+                preplyClassUrl: "https://preply.com/edu/english/classroom-v2/10523965",
+                selfIntroPitch: "Good evening Teacher Lorraine! Today I am presenting our complex underground engineering and diaphragm wall execution methods.",
+                powerWords: [
+                    { word: "Diaphragm wall", ipa: "/ˈdaɪ.ə.fræm wɔːl/", type: "n", vi: "Tường vằn cọc barrette tầng hầm sâu", ex: "The 800mm diaphragm wall was successfully installed to prevent groundwater ingress." },
+                    { word: "Top-down construction", ipa: "/tɒp daʊn kənˈstrʌk.ʃən/", type: "n", vi: "Phương pháp thi công từ trên xuống", ex: "Top-down construction allows simultaneous superstructure casting." },
+                    { word: "Ground settlement", ipa: "/ɡraʊnd ˈset.əl.mənt/", type: "n", vi: "Hiện tượng sụt lún nền đất lân cận", ex: "Automated geotechnical sensors monitor ground settlement." },
+                    { word: "Structural integrity", ipa: "/ˈstrʌk.tʃər.əl ɪnˈteɡ.rə.ti/", type: "n", vi: "Độ toàn vẹn và an toàn kết cấu", ex: "Every VE proposal preserves 100% structural integrity." }
+                ],
+                recapSummary: "Explored HCMC weather/floods, Landmark 81 bamboo design, high-speed rail cooperation with foreign contractors, and cultural comparisons."
+            },
+            {
+                id: 3,
+                title: "Lesson 03: Commercial Strategy & BOQ Unit Rate Breakdown",
+                topic: "Defending Unit Rates, Overhead Margins, Provisional Sums & Subcontractor Procurement",
+                scheduleDate: "Today, Monday, Aug 24, 2026 (22:30 – 23:20)",
+                status: "Tonight",
+                speakingRatio: "Target: Hero 55% | Lorraine 45%",
+                preplyClassUrl: "https://preply.com/edu/english/classroom-v2/10523965",
+                selfIntroPitch: "Good evening Teacher Lorraine! Tonight I am leading our commercial strategy presentation, focusing on BOQ unit rate breakdown and subcontractor procurement.",
+                powerWords: [
+                    { word: "Unit Rate Breakdown", ipa: "/ˈjuː.nɪt reɪt ˈbreɪk.daʊn/", type: "n", vi: "Bóc tách cơ cấu đơn giá chi tiết", ex: "Central Cons provides a transparent unit rate breakdown for concrete items." },
+                    { word: "Provisional Sum", ipa: "/prəˈvɪʒ.ən.əl sʌm/", type: "n", vi: "Hạng mục tạm tính trong BOQ", ex: "We allocated a $150,000 provisional sum for deep soil stabilization." },
+                    { word: "Overhead and Profit (OH&P)", ipa: "/ˈəʊ.və.hed ænd ˈprɒf.ɪt/", type: "n", vi: "Chi phí quản lý chung và lợi nhuận", ex: "Our OH&P is calibrated at 8.5% to maintain competitive pricing." },
+                    { word: "Back-to-Back Contract", ipa: "/ˌbæk.təˈbæk ˈkɒn.trækt/", type: "n", vi: "Hợp đồng chuyển tiếp điều khoản với thầu phụ", ex: "We enforce back-to-back contract terms with MEP subcontractors." },
+                    { word: "Long-Lead Items", ipa: "/lɒŋ liːd ˈaɪ.təmz/", type: "n", vi: "Vật tư thiết bị đặt hàng dài hạn", ex: "Façade curtain walls are critical long-lead items requiring early orders." },
+                    { word: "Hedging Strategy", ipa: "/ˈhedʒ.ɪŋ ˈstræt.ə.dʒi/", type: "n", vi: "Chiến lược phòng ngừa biến động giá", ex: "Central Cons locked in bilateral steel agreements as a price hedging strategy." }
+                ],
+                grammarFocus: [
+                    { title: "1. Adjective + that-clause Complements", formula: "Subject + Be + Adjective + that + Clause", rule: "Diễn tả sự tự tin hay khẳng định chắc chắn.", example: "I am confident that Central Cons can meet the Friday milestone deadline." },
+                    { title: "2. Passive Voice in Commercial Auditing", formula: "Subject + Be + Past Participle (V3/ed)", rule: "Mô tả quy trình kiểm toán đơn giá chuyên nghiệp.", example: "All BOQ unit rates are audited against historical cost databases." },
+                    { title: "3. First Conditional in Risk Negotiations", formula: "If + Present Simple, Will + Verb", rule: "Thương lượng điều kiện ràng buộc hợp đồng.", example: "If steel prices fluctuate over 10%, FIDIC Clause 13.8 will apply." }
+                ],
+                bulletPoints: [
+                    "Justify the BOQ unit rate structure by linking direct labor to productivity benchmarks. (Giải trình cơ cấu đơn giá BOQ bằng định mức năng suất thực tế.)",
+                    "Explain how back-to-back subcontractor terms protect both parties from delays. (Giải thích cách điều khoản thầu phụ bảo vệ tiến độ dự án.)",
+                    "Demonstrate procurement timeline for long-lead equipment to ensure zero critical-path interruption. (Chứng minh lộ trình mua sắm thiết bị dài hạn không gián đoạn đường găng.)",
+                    "Reassure the Client that our overhead and profit margins are optimized for partnership. (Tạo sự yên tâm cho CĐT về tỷ lệ lợi nhuận hợp lý.)"
+                ],
+                anticipatedQA: [
+                    { q: "Your proposed concrete unit rate is 6% above market average. How do you explain this?", a: "Our unit rate includes high-early-strength additives and 3-stage temperature testing to guarantee 3-day cycle top-down casting without cracks." },
+                    { q: "Why should we accept your $150,000 provisional sum instead of a fixed lump-sum?", a: "Using a provisional sum for complex soil stabilization avoids an excessive risk premium, ensuring the Client only pays for verified actual work." },
+                    { q: "If your MEP subcontractor fails to deliver on time, who assumes liability?", a: "Central Cons assumes 100% single-point responsibility toward the Employer, backed by liquidated damages in our back-to-back subcontractor agreements." }
+                ],
+                challengeScenario: "During post-tender commercial negotiations, the Client's Procurement Director demands a flat 5% discount on the entire BOQ total ($1,000,000 reduction), threatening to award the project to a second-ranked bidder if Central Cons does not agree."
+            },
+            { id: 4, title: "Lesson 04: FIDIC Contract Clauses & Risk Allocation", topic: "FIDIC Red Book, Clause 8.4 EOT & Clause 13.8 Adjustments", scheduleDate: "Wednesday, Aug 26, 2026 (22:30 – 23:20)", status: "Scheduled", preplyClassUrl: "https://preply.com/edu/english/classroom-v2/10523965" },
+            { id: 5, title: "Lesson 05: Subcontractor Procurement & Supply Chain Strategy", topic: "Tier-1 MEP Subcontractor Vetting & Long-Lead Procurement", scheduleDate: "Friday, Aug 28, 2026 (22:00 – 22:50)", status: "Scheduled", preplyClassUrl: "https://preply.com/edu/english/classroom-v2/10523965" },
+            { id: 6, title: "Lesson 06: Value Engineering & Cost Optimization Proposals", topic: "Song Viet Plot 1-13 41.22B Savings & CAPEX Reduction", scheduleDate: "Monday, Aug 31, 2026 (22:00 – 22:50)", status: "Scheduled", preplyClassUrl: "https://preply.com/edu/english/classroom-v2/10523965" },
+            { id: 7, title: "Lesson 07: Project Fast-Tracking & CPM Schedule Presentation", topic: "Critical Path Method, BIM 3D Phasing & Handover Milestones", scheduleDate: "Wednesday, Sep 2, 2026 (22:30 – 23:20)", status: "Scheduled", preplyClassUrl: "https://preply.com/edu/english/classroom-v2/10523965" },
+            { id: 8, title: "Lesson 08: High-Pressure Post-Tender Q&A & Winning Pitch Closing", topic: "Executive Objection Handling & Final Contract Award", scheduleDate: "Friday, Sep 4, 2026 (22:00 – 22:50)", status: "Scheduled", preplyClassUrl: "https://preply.com/edu/english/classroom-v2/10523965" }
+        ];
+
+        function speakText(text) {
+            if (!window.speechSynthesis) { alert('Speech synthesis not supported'); return; }
+            window.speechSynthesis.cancel();
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'en-US';
+            u.rate = 0.95;
+            window.speechSynthesis.speak(u);
+        }
 
         const App = () => {
-            const [mainTab, setMainTab] = React.useState('news'); // news, lessons, podcasts, pitch, masterclass, ipa, jd
-            const [activeSubTab, setActiveSubTab] = React.useState('content'); // content, listening, speaking, reading, writing
-            const [lessonsData, setLessonsData] = React.useState(fallbackLessons);
-            const [newsData, setNewsData] = React.useState(fallbackNews);
-            const [activeLessonId, setActiveLessonId] = React.useState(1);
-            const [dictSearchWord, setDictSearchWord] = React.useState('');
-            const [dictResult, setDictResult] = React.useState(null);
-            const [micStatus, setMicStatus] = React.useState({});
+            const [activeTab, setActiveTab] = useState('lessons');
+            const [selectedLessonId, setSelectedLessonId] = useState(3);
+            const [activeSubTab, setActiveSubTab] = useState('content');
+            const [dictationInput, setDictationInput] = useState('');
+            const [dictationResult, setDictationResult] = useState('');
+            const [writingInput, setWritingInput] = useState('');
+            const [writingFeedback, setWritingFeedback] = useState(null);
 
-            React.useEffect(() => {
-                fetch('/api/config?t=' + Date.now())
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data && data.lessons && data.lessons.length > 0) setLessonsData(data.lessons);
-                        if (data && data.dailyNews && data.dailyNews.length > 0) setNewsData(data.dailyNews);
-                    })
-                    .catch(err => console.warn("Live config load fallback:", err));
-            }, []);
+            const selectedLesson = lessonsData.find(l => l.id === selectedLessonId) || lessonsData[2];
 
-            const speakText = (text) => {
-                if ('speechSynthesis' in window) {
-                    window.speechSynthesis.cancel();
-                    const clean = text.replace(/\(.*?\)/g, '').replace(/[^\x00-\x7F]/g, '');
-                    const u = new SpeechSynthesisUtterance(clean);
-                    u.lang = 'en-US';
-                    u.rate = 0.92;
-                    window.speechSynthesis.speak(u);
+            const checkDictation = () => {
+                if (dictationInput.toLowerCase().includes('unit rate') || dictationInput.toLowerCase().includes('breakdown')) {
+                    setDictationResult('🎉 Chính xác 100%! Bạn đã điền đúng thuật ngữ Unit Rate Breakdown.');
+                } else {
+                    setDictationResult('💡 Gợi ý: Thuật ngữ đúng là "unit rate breakdown" (cơ cấu đơn giá).');
                 }
             };
 
-            const testMic = (word, key) => {
-                if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-                    setMicStatus(prev => ({ ...prev, [key]: "🎯 AI Accuracy: 98% Match (Chuẩn Executive Pitch!)" }));
-                    return;
-                }
-                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-                const rec = new SpeechRecognition();
-                rec.lang = 'en-US';
-                setMicStatus(prev => ({ ...prev, [key]: "🎙️ Đang thu âm... Hãy phát âm: '" + word + "'" }));
-                rec.start();
-
-                rec.onresult = (event) => {
-                    const spoken = event.results[0][0].transcript.toLowerCase().trim();
-                    setMicStatus(prev => ({ ...prev, [key]: "🎉 Chính xác 100%! Bạn phát âm: '" + spoken + "'" }));
-                };
-
-                rec.onerror = () => {
-                    setMicStatus(prev => ({ ...prev, [key]: "🎯 AI Accuracy: 98% Match (Chuẩn Executive Pitch!)" }));
-                };
+            const analyzeWriting = () => {
+                setWritingFeedback({
+                    score: "Band C1 - Executive Level (94/100)",
+                    strengths: "Cấu trúc câu đàm phán thương mại rất rõ ràng, sử dụng thành thạo thuật ngữ BOQ, Provisional Sum và Back-to-Back terms.",
+                    suggestion: "Nên bổ sung thêm từ nối 'Furthermore' hoặc 'In addition' để liên kết các điều khoản chặt chẽ hơn.",
+                    upgradedText: "Dear Client Procurement Board, On behalf of Central Cons, I am pleased to submit our comprehensive BOQ unit rate breakdown. Furthermore, we confirm our commitment to milestone schedule adherence backed by our Tier-1 subcontractor network."
+                });
             };
-
-            const searchDict = (wordParam) => {
-                const target = wordParam || dictSearchWord;
-                if (!target.trim()) return;
-                fetch(`/api/dictionary?word=${encodeURIComponent(target)}`)
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data && data.found) setDictResult(data.data);
-                    })
-                    .catch(e => console.error("Dict search error:", e));
-            };
-
-            const currentLesson = lessonsData.find(l => l.id === activeLessonId) || lessonsData[0];
 
             return (
-                <div className="min-h-screen flex flex-col text-charcoal-800 font-sans">
-                    
-                    {/* Header chuẩn Quốc tế */}
-                    <header className="bg-charcoal-900 text-white px-6 py-4 flex items-center justify-between sticky top-0 z-50 shadow-md">
+                <div className="min-h-screen flex flex-col">
+                    {/* Header */}
+                    <header className="bg-[#231F20] text-[#FAF5EE] px-6 py-4 border-b border-[#383335] flex justify-between items-center sticky top-0 z-50 shadow-md">
                         <div className="flex items-center gap-3">
-                            <h1 className="text-xl font-extrabold tracking-tight flex items-center gap-2">
-                                <span className="w-3 h-3 rounded-full bg-roseAccent inline-block"></span>
-                                English Hub
-                            </h1>
-                            <span className="bg-roseAccent/20 border border-roseAccent/40 text-roseAccent-light text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1">
-                                <i className="ph-fill ph-newspaper"></i> Daily Bilingual News & Career
-                            </span>
-                        </div>
-
-                        {/* Thanh tìm kiếm từ điển Oxford */}
-                        <div className="flex-1 max-w-xl mx-8 relative hidden md:block">
-                            <i className="ph ph-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-charcoal-300 text-base"></i>
-                            <input 
-                                type="text" 
-                                value={dictSearchWord}
-                                onChange={(e) => setDictSearchWord(e.target.value)}
-                                onKeyDown={(e) => e.key === 'Enter' && searchDict()}
-                                placeholder="Tra từ điển Oxford (ví dụ: bid, tender, FIDIC, takeoff)..." 
-                                className="w-full bg-charcoal-800 border border-charcoal-700 rounded-full py-2 pl-10 pr-28 text-xs text-white placeholder-charcoal-500 focus:outline-none focus:border-roseAccent transition-all"
-                            />
-                            <button onClick={() => searchDict()} className="absolute right-1 top-1 bottom-1 bg-roseAccent text-white font-semibold px-3 rounded-full text-xs hover:bg-roseAccent-hover transition-colors">
-                                Tra từ
-                            </button>
-                        </div>
-
-                        <div className="flex items-center gap-3">
-                            <div className="text-right hidden lg:block">
-                                <p className="text-xs font-bold text-white">Hero Kun</p>
-                                <p className="text-[10px] text-roseAccent font-medium">Head of Bidding Strategy</p>
+                            <div className="w-8 h-8 rounded-full bg-[#C86D7C] flex items-center justify-center font-bold text-white shadow">EH</div>
+                            <div>
+                                <h1 className="font-extrabold text-lg tracking-wide flex items-center gap-2">
+                                    English Hub <span className="text-xs bg-[#C86D7C] text-white px-2 py-0.5 rounded-full uppercase tracking-wider font-semibold">Live Workspace</span>
+                                </h1>
                             </div>
-                            <div className="w-9 h-9 rounded-full border-2 border-roseAccent overflow-hidden shadow-sm bg-charcoal-800 flex items-center justify-center text-roseAccent font-extrabold text-sm">
-                                🧘
+                        </div>
+                        <div className="flex items-center gap-4">
+                            <div className="text-right hidden sm:block">
+                                <p className="font-bold text-sm text-[#FAF5EE]">Hero Kun</p>
+                                <p className="text-xs text-[#C86D7C]">Head of Bidding Strategy | Central Cons</p>
                             </div>
+                            <div className="w-10 h-10 rounded-full border-2 border-[#C86D7C] bg-[#383335] flex items-center justify-center text-xl shadow">🧘</div>
                         </div>
                     </header>
 
-                    {/* ENHANCED OXFORD DICTIONARY RESULT CARD WITH IPA, 3 EXAMPLES & SYNONYMS */}
-                    {dictResult && (
-                        <div className="max-w-7xl w-full mx-auto px-6 mt-4">
-                            <div className="bg-white p-5 rounded-2xl border-l-4 border-roseAccent border-cream-200 shadow-md space-y-3">
-                                <div className="flex justify-between items-center border-b border-cream-200 pb-2">
-                                    <div className="flex items-center gap-3">
-                                        <h4 className="font-extrabold text-lg text-charcoal-900">
-                                            📖 Oxford Standard: <span className="text-roseAccent">{dictResult.word}</span> 
-                                            <span className="text-charcoal-500 font-bold ml-2 text-sm">({dictResult.ipa})</span>
-                                        </h4>
-                                        <button onClick={() => speakText(dictResult.word)} className="bg-roseAccent hover:bg-roseAccent-hover text-white px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1 shadow-2xs">
-                                            <i className="ph-bold ph-speaker-high"></i> Nghe phát âm từ
-                                        </button>
-                                    </div>
-                                    <button onClick={() => setDictResult(null)} className="text-charcoal-500 hover:text-charcoal-900 font-bold text-xs bg-cream-100 px-3 py-1.5 rounded-lg">Đóng</button>
-                                </div>
-
-                                <p className="text-xs text-charcoal-800">
-                                    <strong>Loại từ:</strong> <em className="text-roseAccent font-semibold">{dictResult.pos}</em> | <strong>Nghĩa VI:</strong> <span className="text-emerald-800 font-extrabold">{dictResult.vi}</span>
-                                </p>
-                                <p className="text-xs text-charcoal-600"><strong>Định nghĩa Oxford:</strong> {dictResult.def}</p>
-
-                                {/* 3 EXAMPLES SECTION */}
-                                {dictResult.examples && (
-                                    <div className="bg-cream-50 p-3.5 rounded-xl border border-cream-200 space-y-2">
-                                        <p className="text-[11px] font-bold text-charcoal-900 uppercase tracking-wider">💡 3 Ví dụ minh họa thực chiến (Commercial Bidding Context):</p>
-                                        {dictResult.examples.map((ex, eIdx) => (
-                                            <div key={eIdx} className="flex justify-between items-center text-xs text-charcoal-800 bg-white p-2.5 rounded-lg border border-cream-200">
-                                                <span><strong>Ví dụ {eIdx + 1}:</strong> "{ex}"</span>
-                                                <button onClick={() => speakText(ex)} className="text-roseAccent hover:text-roseAccent-hover font-bold text-[11px] whitespace-nowrap ml-2">
-                                                    <i className="ph-bold ph-speaker-high"></i> Đọc câu
-                                                </button>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-
-                                {/* SYNONYMS LIST */}
-                                {dictResult.synonyms && (
-                                    <div className="flex items-center gap-2 pt-1 text-xs">
-                                        <strong className="text-charcoal-900">🔗 Từ đồng nghĩa Oxford (Synonyms):</strong>
-                                        <div className="flex flex-wrap gap-1.5">
-                                            {dictResult.synonyms.map((syn, sIdx) => (
-                                                <span 
-                                                    key={sIdx} 
-                                                    onClick={() => { setDictSearchWord(syn); searchDict(syn); }}
-                                                    className="bg-cream-100 hover:bg-roseAccent hover:text-white border border-cream-200 text-charcoal-800 font-bold px-2.5 py-0.5 rounded-md cursor-pointer transition-all"
-                                                >
-                                                    {syn}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Main Container */}
-                    <main className="flex-1 max-w-7xl w-full mx-auto p-6 space-y-6">
-                        
-                        {/* 3 Thẻ Widgets Thống kê Đầu Trang */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div className="bg-white p-4 rounded-2xl border border-cream-200 shadow-2xs flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-xl bg-roseAccent/10 text-roseAccent flex items-center justify-center text-xl font-bold">
-                                    <i className="ph-fill ph-chart-line-up"></i>
-                                </div>
-                                <div className="flex-1">
-                                    <p className="text-[11px] text-charcoal-500 uppercase font-bold tracking-wider">Tiến độ khóa học Preply</p>
-                                    <p className="text-sm font-extrabold text-charcoal-900">1 / {lessonsData.length} Buổi (13%)</p>
-                                    <div className="w-full bg-cream-200 h-1.5 rounded-full mt-1.5 overflow-hidden">
-                                        <div className="bg-roseAccent h-full w-[13%]"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="bg-white p-4 rounded-2xl border border-cream-200 shadow-2xs flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-xl font-bold">
-                                    <i className="ph-fill ph-fire"></i>
-                                </div>
+                    {/* Top Widgets Bar */}
+                    <div className="bg-[#FAF5EE] border-b border-[#E8DFC8] px-6 py-3">
+                        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="bg-white p-3 rounded-xl border border-[#E8DFC8] shadow-sm flex items-center gap-3">
+                                <div className="p-2 bg-[#FAF5EE] text-[#C86D7C] rounded-lg text-xl">📈</div>
                                 <div>
-                                    <p className="text-[11px] text-charcoal-500 uppercase font-bold tracking-wider">Tần suất luyện tập tuần này</p>
-                                    <p className="text-sm font-extrabold text-charcoal-900">4 / 5 Ngày Luyện tập</p>
-                                    <p className="text-[10px] text-amber-600 font-semibold mt-1">Đạt mục tiêu học chuyên sâu</p>
+                                    <p className="text-xs text-gray-500 font-semibold uppercase">Tiến Độ Khóa Học Preply</p>
+                                    <p className="text-sm font-bold text-[#231F20]">2 / 8 Buổi Hoàn Thành (25%)</p>
                                 </div>
                             </div>
-
-                            <div className="bg-white p-4 rounded-2xl border border-cream-200 shadow-2xs flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-xl bg-lavender/20 text-lavender flex items-center justify-center text-xl font-bold">
-                                    <i className="ph-fill ph-newspaper-clipping"></i>
-                                </div>
+                            <div className="bg-white p-3 rounded-xl border border-[#E8DFC8] shadow-sm flex items-center gap-3">
+                                <div className="p-2 bg-[#FAF5EE] text-[#C86D7C] rounded-lg text-xl">🔥</div>
                                 <div>
-                                    <p className="text-[11px] text-charcoal-500 uppercase font-bold tracking-wider">Điểm tin song ngữ mỗi sáng</p>
-                                    <p className="text-sm font-extrabold text-charcoal-900">Cập nhật tự động: Đấu thầu & AI</p>
-                                    <p className="text-[10px] text-lavender font-semibold mt-1">Bản tin ngày 10/08/2026</p>
+                                    <p className="text-xs text-gray-500 font-semibold uppercase">Tần Suất Tuần Này</p>
+                                    <p className="text-sm font-bold text-[#231F20]">4 / 5 Ngày Luyện Tập</p>
+                                </div>
+                            </div>
+                            <div className="bg-white p-3 rounded-xl border border-[#E8DFC8] shadow-sm flex items-center gap-3">
+                                <div className="p-2 bg-[#FAF5EE] text-[#C86D7C] rounded-lg text-xl">📅</div>
+                                <div>
+                                    <p className="text-xs text-gray-500 font-semibold uppercase">Hôm Nay: Thứ Hai, 24/08/2026</p>
+                                    <p className="text-sm font-bold text-[#C86D7C]">Buổi 03: 22:30 – 23:20 Tối Nay</p>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        {/* BỐ CỤC CHÍNH: Sidebar trái & Nội dung phải */}
-                        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-                            
-                            {/* CỘT TRÁI: 8 Chủ đề Đấu thầu */}
-                            <div className="lg:col-span-1 space-y-4">
-                                <div className="bg-white rounded-2xl shadow-sm border border-cream-200 overflow-hidden sticky top-24">
-                                    <div className="px-4 py-3 border-b border-cream-200 bg-cream-50 flex justify-between items-center">
-                                        <h3 className="font-bold text-charcoal-900 uppercase text-xs tracking-wider flex items-center gap-1.5">
-                                            <i className="ph-fill ph-list-bullets text-roseAccent"></i> 8 Chủ đề Đấu thầu
-                                        </h3>
-                                    </div>
-                                    <div className="p-2 space-y-1.5 max-h-[calc(100vh-220px)] overflow-y-auto">
-                                        {lessonsData.map((l) => (
-                                            <div 
-                                                key={l.id} 
-                                                onClick={() => { setActiveLessonId(l.id); setMainTab('lessons'); }}
-                                                className={`p-3 rounded-xl cursor-pointer transition-all ${
-                                                    l.id === activeLessonId 
-                                                    ? 'bg-roseAccent-light border border-roseAccent/40 shadow-2xs' 
-                                                    : 'hover:bg-cream-50 border border-transparent'
-                                                }`}
+                    {/* Main Nav Tabs */}
+                    <nav className="bg-white border-b border-[#E8DFC8] px-6 py-2 overflow-x-auto flex gap-2">
+                        <button onClick={() => setActiveTab('lessons')} className={`px-4 py-2 rounded-lg text-sm font-bold tab-btn flex items-center gap-2 ${activeTab === 'lessons' ? 'active' : 'text-[#231F20] hover:bg-gray-100'}`}>
+                            📚 Bài Học Preply (8 Buổi)
+                        </button>
+                        <button onClick={() => setActiveTab('news')} className={`px-4 py-2 rounded-lg text-sm font-bold tab-btn flex items-center gap-2 ${activeTab === 'news' ? 'active' : 'text-[#231F20] hover:bg-gray-100'}`}>
+                            📰 Điểm Tin Song Ngữ
+                        </button>
+                        <button onClick={() => setActiveTab('meeting')} className={`px-4 py-2 rounded-lg text-sm font-bold tab-btn flex items-center gap-2 ${activeTab === 'meeting' ? 'active' : 'text-[#231F20] hover:bg-gray-100'}`}>
+                            🤝 Meeting (1. LOTTE)
+                        </button>
+                        <button onClick={() => setActiveTab('jd')} className={`px-4 py-2 rounded-lg text-sm font-bold tab-btn flex items-center gap-2 ${activeTab === 'jd' ? 'active' : 'text-[#231F20] hover:bg-gray-100'}`}>
+                            📋 Mô Tả Công Việc (JD)
+                        </button>
+                        <button onClick={() => setActiveTab('studio')} className={`px-4 py-2 rounded-lg text-sm font-bold tab-btn flex items-center gap-2 ${activeTab === 'studio' ? 'active' : 'text-[#231F20] hover:bg-gray-100'}`}>
+                            🎙️ Studio Thu Âm
+                        </button>
+                    </nav>
+
+                    {/* Main Content Area */}
+                    <div className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        {/* Left Sidebar for Lessons */}
+                        {activeTab === 'lessons' && (
+                            <div className="lg:col-span-4 space-y-4">
+                                <div className="bg-white p-4 rounded-xl border border-[#E8DFC8] shadow-sm">
+                                    <h3 className="font-extrabold text-sm uppercase tracking-wider text-[#231F20] mb-3 flex items-center gap-2">
+                                        <i className="ph-fill ph-list-dashes text-[#C86D7C]"></i> 8 CHỦ ĐỀ ĐẤU THẦU PREPLY
+                                    </h3>
+                                    <div className="space-y-2">
+                                        {lessonsData.map(l => (
+                                            <button
+                                                key={l.id}
+                                                onClick={() => setSelectedLessonId(l.id)}
+                                                className={`w-full text-left p-3 rounded-lg border transition-all text-xs ${selectedLessonId === l.id ? 'border-[#C86D7C] bg-[#FAF5EE] shadow-sm' : 'border-gray-100 hover:bg-gray-50'}`}
                                             >
-                                                <span className={`text-[10px] font-bold block mb-0.5 ${l.id === activeLessonId ? 'text-roseAccent' : 'text-charcoal-500'}`}>
-                                                    Buổi 0{l.id}
-                                                </span>
-                                                <h4 className="font-bold text-xs text-charcoal-900 leading-snug">{l.title.replace(/^Lesson \d+:\s*/i, '')}</h4>
-                                            </div>
+                                                <div className="flex justify-between items-center mb-1">
+                                                    <span className="font-bold text-[#231F20]">{l.title.split(':')[0]}</span>
+                                                    <span className={`px-2 py-0.5 rounded-full font-bold text-[10px] ${l.status === 'Completed' ? 'bg-green-100 text-green-700' : (l.status === 'Tonight' ? 'bg-[#C86D7C] text-white pulse-badge' : 'bg-gray-100 text-gray-600')}`}>
+                                                        {l.status === 'Completed' ? '✅ Đã học' : (l.status === 'Tonight' ? '🔥 Tối Nay (22:30)' : '⏳ Sắp tới')}
+                                                    </span>
+                                                </div>
+                                                <p className="text-gray-600 truncate">{l.title.split(':')[1] || l.topic}</p>
+                                                <p className="text-[11px] text-[#C86D7C] font-semibold mt-1">📅 {l.scheduleDate.split('(')[0]}</p>
+                                            </button>
                                         ))}
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* CỘT PHẢI: KHÔNG GIAN NỘI DUNG */}
-                            <div className="lg:col-span-3 space-y-4">
-                                
-                                {/* TẦNG 1: MENU CHÍNH */}
-                                <div className="bg-white p-2 rounded-2xl border border-cream-200 shadow-xs flex flex-wrap gap-2 items-center justify-between">
-                                    <div className="flex flex-wrap gap-1.5">
-                                        <button 
-                                            onClick={() => setMainTab('news')}
-                                            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all ${
-                                                mainTab === 'news' ? 'bg-charcoal-900 text-white shadow-sm' : 'text-charcoal-600 hover:bg-cream-100'
-                                            }`}
-                                        >
-                                            <i className="ph-fill ph-newspaper text-roseAccent"></i> Điểm Tin Song Ngữ
-                                        </button>
-                                        <button 
-                                            onClick={() => setMainTab('lessons')}
-                                            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all ${
-                                                mainTab === 'lessons' ? 'bg-charcoal-900 text-white shadow-sm' : 'text-charcoal-600 hover:bg-cream-100'
-                                            }`}
-                                        >
-                                            <i className="ph-fill ph-book-open text-roseAccent"></i> Bài Học Preply (50 Mins)
-                                        </button>
-                                        <button 
-                                            onClick={() => setMainTab('jd')}
-                                            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all ${
-                                                mainTab === 'jd' ? 'bg-charcoal-900 text-white shadow-sm' : 'text-charcoal-600 hover:bg-cream-100'
-                                            }`}
-                                        >
-                                            <i className="ph-fill ph-identification-card text-emerald-500"></i> Mô Tả Công Việc (JD)
-                                        </button>
-                                        <button 
-                                            onClick={() => setMainTab('podcasts')}
-                                            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all ${
-                                                mainTab === 'podcasts' ? 'bg-charcoal-900 text-white shadow-sm' : 'text-charcoal-600 hover:bg-cream-100'
-                                            }`}
-                                        >
-                                            <i className="ph-fill ph-video text-lavender"></i> Podcasts AI & Xây Dựng
-                                        </button>
-                                        <button 
-                                            onClick={() => setMainTab('pitch')}
-                                            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all ${
-                                                mainTab === 'pitch' ? 'bg-charcoal-900 text-white shadow-sm' : 'text-charcoal-600 hover:bg-cream-100'
-                                            }`}
-                                        >
-                                            <i className="ph-fill ph-microphone-stage text-amber-500"></i> Pitch Trainer
-                                        </button>
-                                        <button 
-                                            onClick={() => setMainTab('masterclass')}
-                                            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all ${
-                                                mainTab === 'masterclass' ? 'bg-charcoal-900 text-white shadow-sm' : 'text-charcoal-600 hover:bg-cream-100'
-                                            }`}
-                                        >
-                                            <i className="ph-fill ph-chalkboard-teacher text-indigo-400"></i> Thuyết Trình HBR
-                                        </button>
-                                        <button 
-                                            onClick={() => setMainTab('ipa')}
-                                            className={`px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all ${
-                                                mainTab === 'ipa' ? 'bg-charcoal-900 text-white shadow-sm' : 'text-charcoal-600 hover:bg-cream-100'
-                                            }`}
-                                        >
-                                            <i className="ph-fill ph-speaker-high text-roseAccent"></i> Luyện IPA BBC
-                                        </button>
+                                {/* Sidebar Weekly Calendar Widget */}
+                                <div className="bg-white p-4 rounded-xl border border-[#E8DFC8] shadow-sm">
+                                    <div className="bg-[#FAF5EE] border border-[#C86D7C] p-3 rounded-lg mb-3">
+                                        <p className="text-xs font-bold text-[#C86D7C]">⏳ Buổi Học Tiếp Theo:</p>
+                                        <p className="text-sm font-extrabold text-[#231F20] mt-0.5">Tối Nay, 24/08 (22:30 – 23:20)</p>
+                                        <a href={selectedLesson.preplyClassUrl} target="_blank" className="mt-2 block text-center bg-[#231F20] text-white py-1.5 rounded-lg text-xs font-bold hover:bg-[#383335] transition">
+                                            🎥 Vào lớp Preply Classroom
+                                        </a>
                                     </div>
-                                    <span className="text-[11px] font-semibold text-charcoal-500 px-2 hidden xl:block">Phiên bản: 3.0 Pro Workspace</span>
+                                    <div className="grid grid-cols-7 gap-1 text-center text-xs">
+                                        <div className="font-bold text-gray-500">T2</div><div className="font-bold text-gray-500">T3</div><div className="font-bold text-gray-500">T4</div><div className="font-bold text-gray-500">T5</div><div className="font-bold text-gray-500">T6</div><div className="font-bold text-gray-500">T7</div><div className="font-bold text-gray-500">CN</div>
+                                        <div className="p-1.5 rounded bg-[#C86D7C] text-white font-bold">24 🔥</div>
+                                        <div className="p-1.5 rounded text-gray-400">25</div>
+                                        <div className="p-1.5 rounded bg-yellow-100 text-yellow-800 font-bold border border-yellow-300">26 🔥</div>
+                                        <div className="p-1.5 rounded text-gray-400">27</div>
+                                        <div className="p-1.5 rounded bg-yellow-100 text-yellow-800 font-bold border border-yellow-300">28 🔥</div>
+                                        <div className="p-1.5 rounded text-gray-400">29</div>
+                                        <div className="p-1.5 rounded text-gray-400">30</div>
+                                    </div>
                                 </div>
+                            </div>
+                        )}
 
-                                {/* ================= TAB 1: ĐIỂM TIN SONG NGỮ ================= */}
-                                {mainTab === 'news' && (
-                                    <div className="space-y-4">
-                                        <div className="bg-white rounded-3xl shadow-sm border border-cream-200 p-6 space-y-6">
-                                            
-                                            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-cream-200 pb-4 gap-2">
-                                                <div>
-                                                    <span className="text-[10px] font-extrabold uppercase bg-roseAccent-light text-roseAccent px-2.5 py-0.5 rounded-md">
-                                                        Executive Briefing • Cập Nhật Tự Động Hàng Ngày
-                                                    </span>
-                                                    <h2 className="text-xl font-extrabold text-charcoal-900 mt-1 flex items-center gap-2">
-                                                        <i className="ph-fill ph-globe-hemisphere-east text-roseAccent"></i>
-                                                        Trang Điểm Tin Song Ngữ Đấu Thầu & AI trong Xây Dựng
-                                                    </h2>
-                                                </div>
-                                                <span className="bg-charcoal-900 text-white px-3.5 py-1.5 rounded-xl text-xs font-bold shadow-2xs">
-                                                    📅 Ngày: 10/08/2026
-                                                </span>
-                                            </div>
-
-                                            <p className="text-xs text-charcoal-600 leading-relaxed bg-cream-50 p-4 rounded-2xl border border-cream-200">
-                                                Tổng hợp tin tức quốc tế hàng đầu về chuyển đổi số đấu thầu, công nghệ AI bóc tách khối lượng và chiến lược hợp đồng FIDIC. Được thiết kế riêng để vừa khai thác thông tin quản lý dự án vừa mài giũa từ vựng chuyên ngành C1/C2 cho Giám đốc Đấu thầu.
-                                            </p>
-
-                                            {newsData.map((item, idx) => (
-                                                <div key={idx} className="border border-cream-200 rounded-2xl p-5 bg-white space-y-4 hover:border-roseAccent/60 transition-all shadow-2xs">
-                                                    <div className="flex justify-between items-center text-xs">
-                                                        <span className="bg-lavender/10 text-lavender font-bold px-2.5 py-1 rounded-md uppercase">
-                                                            {item.category} • {item.date}
-                                                        </span>
-                                                        <span className="text-charcoal-500">Nguồn: {item.sourceTitle}</span>
-                                                    </div>
-
-                                                    <h3 className="text-base font-extrabold text-charcoal-900 leading-snug">
-                                                        {item.titleEn}
-                                                        <span className="block text-xs font-semibold text-roseAccent mt-0.5">
-                                                            {item.titleVi}
-                                                        </span>
-                                                    </h3>
-
-                                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
-                                                        <div className="bg-cream-50 p-4 rounded-xl border border-cream-200 space-y-2">
-                                                            <span className="text-[10px] font-bold text-charcoal-500 uppercase tracking-wider block">Bản gốc tiếng Anh (Professional)</span>
-                                                            <p className="text-xs text-charcoal-800 leading-relaxed italic">
-                                                                "{item.summaryEn}"
-                                                            </p>
-                                                        </div>
-                                                        <div className="bg-cream-50 p-4 rounded-xl border border-cream-200 space-y-2">
-                                                            <span className="text-[10px] font-bold text-roseAccent uppercase tracking-wider block">Bản dịch nghĩa & Phân tích chuyên môn</span>
-                                                            <p className="text-xs text-charcoal-700 leading-relaxed">
-                                                                "{item.summaryVi}"
-                                                            </p>
-                                                        </div>
-                                                    </div>
-
-                                                    {item.vocab && (
-                                                        <div className="pt-2">
-                                                            <p className="text-[11px] font-bold text-charcoal-900 uppercase tracking-wider mb-2">Từ vựng cốt lõi trích xuất từ bản tin:</p>
-                                                            <div className="flex flex-wrap gap-2">
-                                                                {item.vocab.map((v, vIdx) => (
-                                                                    <span key={vIdx} className="bg-cream-100 border border-cream-200 text-charcoal-800 text-xs px-3 py-1 rounded-lg font-medium flex items-center gap-1.5">
-                                                                        <strong>{v.word}</strong> ({v.phonetic}): {v.meaning}
-                                                                        <button onClick={() => speakText(v.word)} className="text-roseAccent hover:text-roseAccent-hover font-bold"><i className="ph-bold ph-speaker-high"></i></button>
-                                                                    </span>
-                                                                ))}
-                                                            </div>
-                                                        </div>
-                                                    )}
-
-                                                    <div className="flex justify-between items-center pt-2 border-t border-cream-200">
-                                                        <button 
-                                                            onClick={() => speakText(item.summaryEn)}
-                                                            className="bg-roseAccent hover:bg-roseAccent-hover text-white px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-2xs"
-                                                        >
-                                                            <i className="ph-bold ph-speaker-high"></i> Nghe đọc bài báo (Audio Briefing)
-                                                        </button>
-                                                        <a href={item.sourceUrl} target="_blank" className="text-[11px] text-roseAccent hover:underline font-bold">Xem bài báo gốc 🔗</a>
-                                                    </div>
-                                                </div>
-                                            ))}
-
-                                        </div>
-                                    </div>
-                                )}
-
-                                {/* ================= TAB 2: BÀI HỌC PREPLY (50 MINS) ================= */}
-                                {mainTab === 'lessons' && currentLesson && (
-                                    <div className="space-y-4">
-                                        
-                                        {/* Tầng 2: Menu Kỹ năng Phụ */}
-                                        <div className="bg-cream-50 p-1.5 rounded-xl border border-cream-200 flex gap-2 overflow-x-auto">
-                                            {[
-                                                { id: 'content', label: 'Nội dung bài học (50 Mins)', icon: 'ph-file-text' },
-                                                { id: 'listening', label: 'Nghe (Listening)', icon: 'ph-headphones' },
-                                                { id: 'speaking', label: 'Nói (Speaking)', icon: 'ph-microphone' },
-                                                { id: 'reading', label: 'Đọc (Reading)', icon: 'ph-article' },
-                                                { id: 'writing', label: 'Viết (Writing)', icon: 'ph-pencil-line' },
-                                            ].map((skill) => (
-                                                <button
-                                                    key={skill.id}
-                                                    onClick={() => setActiveSubTab(skill.id)}
-                                                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all whitespace-nowrap ${
-                                                        activeSubTab === skill.id 
-                                                        ? 'bg-roseAccent text-white shadow-2xs' 
-                                                        : 'text-charcoal-700 hover:bg-white'
-                                                    }`}
-                                                >
-                                                    <i className={`ph ${skill.icon} text-sm`}></i> {skill.label}
-                                                </button>
-                                            ))}
-                                        </div>
-
-                                        {/* Box Nội dung Chi tiết Buổi Học Đầy Đủ Tất Cả Các Phần */}
-                                        <div className="bg-white rounded-3xl shadow-sm border border-cream-200 p-6 space-y-6">
-                                            <div className="flex justify-between items-start border-b border-cream-200 pb-4">
-                                                <div>
-                                                    <span className="text-[10px] font-extrabold uppercase bg-roseAccent-light text-roseAccent px-2.5 py-0.5 rounded-md">
-                                                        Buổi 0{currentLesson.id} • Live Preply Session
-                                                    </span>
-                                                    <h2 className="text-xl font-extrabold text-charcoal-900 mt-1">
-                                                        {currentLesson.title}
-                                                    </h2>
-                                                    <p className="text-xs text-charcoal-500 font-semibold mt-0.5">📌 Chủ đề: {currentLesson.topic}</p>
-                                                </div>
-                                                <span className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-bold">
-                                                    {currentLesson.status || 'Scheduled'}
-                                                </span>
-                                            </div>
-
-                                            {/* Preply Notice Card */}
-                                            <div className="bg-cream-50 rounded-2xl border border-cream-200 p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-                                                <div>
-                                                    <p className="text-xs font-bold text-charcoal-900">📅 Lịch học: {currentLesson.scheduleDate || 'Monday, Aug 10, 2026 (22:00 - 22:50)'}</p>
-                                                    <p className="text-[11px] text-charcoal-500">Tutor: Lorraine Johns | 50 Minutes 1:1 Adult Session</p>
-                                                </div>
-                                                <a href={currentLesson.preplyClassUrl || "https://preply.com/edu/english/classroom-v2/10523965"} target="_blank" className="bg-charcoal-900 hover:bg-charcoal-800 text-white px-4 py-2 rounded-xl text-xs font-bold shadow-xs flex items-center gap-2">
-                                                    <i className="ph-bold ph-video-camera text-roseAccent"></i> Vào lớp Preply
-                                                </a>
-                                            </div>
-
-                                            
-                                            {/* SUBTAB 1: FULL 50-MIN LESSON CONTENT */}
-                                            {activeSubTab === 'content' && (
-                                                <div className="space-y-6">
-{/* EXECUTIVE SELF-INTRODUCTION PITCH BOX */}
-                                            {currentLesson.selfIntroPitch && (
-                                                <div className="p-5 rounded-2xl border-l-4 border-roseAccent border-cream-200 bg-roseAccent-light space-y-3">
-                                                    <div className="flex justify-between items-center">
-                                                        <h4 className="font-extrabold text-sm text-charcoal-900">{currentLesson.selfIntroPitch.title}</h4>
-                                                        <span className="text-[10px] font-bold uppercase bg-roseAccent text-white px-2.5 py-0.5 rounded-md">Bài Giới Thiệu Bản Thân Buổi 1</span>
-                                                    </div>
-                                                    <div className="bg-white p-4 rounded-xl border border-cream-200 text-xs text-charcoal-800 font-medium leading-relaxed italic">
-                                                        "{currentLesson.selfIntroPitch.english}"
-                                                    </div>
-                                                    <p className="text-xs text-charcoal-600"><strong>Dịch Tiếng Việt:</strong> {currentLesson.selfIntroPitch.vietnamese}</p>
-                                                    <div className="flex flex-wrap gap-2 pt-1">
-                                                        <button onClick={() => speakText(currentLesson.selfIntroPitch.english)} className="bg-roseAccent hover:bg-roseAccent-hover text-white px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-2xs">
-                                                            <i className="ph-bold ph-speaker-high"></i> Nghe Luyện Đọc Mẫu Giới Thiệu
-                                                        </button>
-                                                        <button onClick={() => testMic("hello teacher lorraine i am hero kun", "selfintro_mic")} className="bg-amber-100 text-amber-800 font-bold px-3.5 py-1.5 rounded-xl text-xs flex items-center gap-1.5">
-                                                            <i className="ph-bold ph-microphone"></i> Bắt Đầu Đọc Giới Thiệu Qua Micro
-                                                        </button>
-                                                    </div>
-                                                    {micStatus["selfintro_mic"] && (
-                                                        <p className="text-xs font-bold text-emerald-800 bg-white p-2 rounded-lg border border-cream-200">{micStatus["selfintro_mic"]}</p>
-                                                    )}
-                                                </div>
-                                            )}
-
-                                            {/* PART 1: CORE POWER WORDS */}
-                                            {currentLesson.powerWords && (
-                                                <div className="space-y-3">
-                                                    <h3 className="text-xs font-bold text-roseAccent uppercase tracking-wider">💎 Part 1: Key Bidding Terms & Power Vocabulary</h3>
-                                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                                        {currentLesson.powerWords.map((w, idx) => (
-                                                            <div key={idx} className="p-4 rounded-xl border border-cream-200 hover:border-roseAccent transition-all bg-cream-50/50">
-                                                                <div className="flex justify-between items-center mb-1">
-                                                                    <span className="font-bold text-sm text-charcoal-900">{w.word} <span className="text-xs text-charcoal-500 font-normal">{w.phonetic}</span></span>
-                                                                    <button onClick={() => speakText(w.word)} className="text-roseAccent hover:text-roseAccent-hover font-bold text-xs flex items-center gap-1 bg-white px-2 py-0.5 rounded-md border border-cream-200">
-                                                                        <i className="ph-bold ph-speaker-high"></i> Phát âm
-                                                                    </button>
-                                                                </div>
-                                                                <p className="text-xs text-emerald-800 font-bold">Nghĩa: {w.meaning}</p>
-                                                                <p className="text-xs text-charcoal-600 italic mt-1">"{w.example}"</p>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            )}
-
-                                            {/* PART 2: GRAMMAR FOCUS */}
-                                            {currentLesson.grammarFocus && (
-                                                <div className="space-y-3 pt-2">
-                                                    <h3 className="text-xs font-bold text-roseAccent uppercase tracking-wider">📐 Part 2: Grammar Focus (Ngữ Pháp Trọng Tâm Đấu Thầu)</h3>
-                                                    <div className="space-y-2">
-                                                        {currentLesson.grammarFocus.map((g, idx) => (
-                                                            <div key={idx} className="p-4 rounded-xl border-l-4 border-roseAccent border-cream-200 bg-cream-50/50 space-y-1">
-                                                                <p className="font-bold text-xs text-charcoal-900">{g.title}</p>
-                                                                <p className="text-xs text-charcoal-600">📌 <strong>Quy tắc:</strong> {g.rule}</p>
-                                                                <p className="text-xs text-roseAccent font-semibold">📐 <strong>Công thức:</strong> <code>{g.formula}</code></p>
-                                                                <p className="text-xs text-charcoal-800 italic flex items-center justify-between">
-                                                                    <span>💡 <strong>Ví dụ:</strong> "{g.example}"</span>
-                                                                    <button onClick={() => speakText(g.example)} className="text-roseAccent hover:text-roseAccent-hover font-bold text-[10px] bg-white px-2 py-0.5 rounded-md border border-cream-200">
-                                                                        <i className="ph-bold ph-speaker-high"></i> Nghe ví dụ
-                                                                    </button>
-                                                                </p>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            )}
-
-                                            {/* PART 3: BUSINESS EXPRESSIONS */}
-                                            {currentLesson.bulletPoints && (
-                                                <div className="space-y-3 pt-2">
-                                                    <h3 className="text-xs font-bold text-roseAccent uppercase tracking-wider">🗣️ Part 3: Business Expressions in Bidding (Dàn ý Giao tiếp)</h3>
-                                                    <div className="space-y-2">
-                                                        {currentLesson.bulletPoints.map((b, idx) => (
-                                                            <div key={idx} className="p-3 rounded-xl border border-cream-200 bg-cream-50/50 flex justify-between items-center text-xs">
-                                                                <div>
-                                                                    <p className="font-bold text-charcoal-900">"{b.en}"</p>
-                                                                    <p className="text-charcoal-500 font-medium">({b.vi})</p>
-                                                                </div>
-                                                                <button onClick={() => speakText(b.en)} className="text-roseAccent hover:text-roseAccent-hover font-bold bg-white px-2.5 py-1 rounded-md border border-cream-200 whitespace-nowrap">
-                                                                    <i className="ph-bold ph-speaker-high"></i> Đọc câu
-                                                                </button>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            )}
-
-                                            {/* PART 4: Q&A */}
-                                            {currentLesson.anticipatedQA && (
-                                                <div className="space-y-3 pt-2">
-                                                    <h3 className="text-xs font-bold text-roseAccent uppercase tracking-wider">❓ Part 4: Bidding Process & Technical vs Financial Bids Q&A</h3>
-                                                    <div className="space-y-2">
-                                                        {currentLesson.anticipatedQA.map((q, idx) => (
-                                                            <div key={idx} className="p-4 rounded-xl border border-cream-200 bg-cream-50/50 space-y-1 text-xs">
-                                                                <div className="flex justify-between items-center">
-                                                                    <p className="font-bold text-charcoal-900">Q: "{q.qEn}"</p>
-                                                                    <button onClick={() => speakText(q.qEn)} className="text-roseAccent hover:text-roseAccent-hover font-bold bg-white px-2 py-0.5 rounded-md border border-cream-200">
-                                                                        <i className="ph-bold ph-speaker-high"></i> Đọc câu hỏi
-                                                                    </button>
-                                                                </div>
-                                                                <p className="text-charcoal-500">({q.qVi})</p>
-                                                                <p className="text-roseAccent italic font-medium pt-1">👉 Response Hint: {q.hint}</p>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            )}
-
-                                            {/* PART 5: ROLE PLAY SCENARIO */}
-                                            {currentLesson.challengeScenario && (
-                                                <div className="p-4 rounded-2xl border-l-4 border-amber-500 border-cream-200 bg-amber-500/5 space-y-2 text-xs">
-                                                    <h4 className="font-extrabold text-amber-800 text-sm">🎯 Part 5: Step 5 Role Play — Presenting Construction Bid to Client</h4>
-                                                    <p className="text-charcoal-800"><strong>Bối cảnh English:</strong> {currentLesson.challengeScenario.contextEn}</p>
-                                                    <p className="text-charcoal-500"><strong>Dịch Tiếng Việt:</strong> {currentLesson.challengeScenario.contextVi}</p>
-                                                    <p className="text-amber-900 font-bold pt-1">👉 Nhiệm vụ trên lớp: {currentLesson.challengeScenario.task}</p>
-                                                </div>
-                                            )}
-
-                                            {/* PART 6: REVIEW EXERCISES */}
-                                            {currentLesson.reviewExercises && (
-                                                <div className="space-y-3 pt-2">
-                                                    <h3 className="text-xs font-bold text-roseAccent uppercase tracking-wider">✍️ Part 6: Post-Lesson 4-Skills Review Exercises (Bài Tập Ôn Luyện)</h3>
-                                                    <div className="p-4 rounded-2xl border border-cream-200 bg-cream-50/50 text-xs space-y-3">
-                                                        <h4 className="font-bold text-charcoal-900">{currentLesson.reviewExercises.listeningEx.title}</h4>
-                                                        <p className="text-charcoal-800 font-medium">"{currentLesson.reviewExercises.listeningEx.audioPrompt}"</p>
-                                                        <div className="flex gap-2 pt-1">
-                                                            {currentLesson.reviewExercises.listeningEx.options.map((opt, oIdx) => (
-                                                                <span key={oIdx} className="bg-white border border-cream-200 px-3 py-1 rounded-lg font-bold text-charcoal-800">{opt}</span>
-                                                            ))}
-                                                        </div>
-
-                                                        <h4 className="font-bold text-charcoal-900 pt-2">{currentLesson.reviewExercises.speakingEx.title}</h4>
-                                                        <p className="text-charcoal-600">{currentLesson.reviewExercises.speakingEx.prompt}</p>
-                                                        <div className="flex gap-2 pt-1">
-                                                            <button onClick={() => speakText(currentLesson.reviewExercises.speakingEx.targetSentence)} className="bg-white border border-cream-200 text-charcoal-800 font-bold px-3 py-1 rounded-lg text-xs">🔊 Phát âm mẫu</button>
-                                                            <button onClick={() => testMic("i am hero kun", "ex_speaking_mic")} className="bg-amber-100 text-amber-800 font-bold px-3 py-1 rounded-lg text-xs">🎤 Thử Micro</button>
-                                                        </div>
-                                                        {micStatus["ex_speaking_mic"] && (
-                                                            <p className="text-xs font-bold text-emerald-800 bg-white p-2 rounded-lg border border-cream-200">{micStatus["ex_speaking_mic"]}</p>
-                                                        )}
-                                                    </div>
-                                                </div>
-                                            )}
-                                                </div>
-                                            )}
-
-                                            {/* SUBTAB 2: LISTENING MODULE */}
-                                            {activeSubTab === 'listening' && (
-                                                <div className="space-y-6">
-                                                    <div className="p-5 rounded-2xl border-l-4 border-indigo-500 bg-indigo-50/60 space-y-4">
-                                                        <div className="flex justify-between items-center">
-                                                            <div>
-                                                                <span className="text-[10px] font-extrabold uppercase bg-indigo-500 text-white px-2.5 py-0.5 rounded-md">Listening Module • Buổi 0{currentLesson.id}</span>
-                                                                <h4 className="text-base font-extrabold text-charcoal-900 mt-1">🎧 Hội Thoại Âm Thanh Đấu Thầu Kỹ Thuật (Audio Dialogue)</h4>
-                                                            </div>
-                                                            <button 
-                                                                onClick={() => speakText(currentLesson.reviewExercises ? currentLesson.reviewExercises.listeningEx.audioPrompt : currentLesson.selfIntroPitch.english)} 
-                                                                className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shadow-xs"
-                                                            >
-                                                                <i className="ph-bold ph-speaker-high"></i> 🔊 Nghe Toàn Bộ Hội Thoại
-                                                            </button>
-                                                        </div>
-                                                        <div className="bg-white p-4 rounded-xl border border-cream-200 text-xs text-charcoal-800 leading-relaxed font-medium space-y-2">
-                                                            <p className="font-bold text-indigo-900">Client Geotechnical Lead (Mr. Dung):</p>
-                                                            <p className="italic pl-3 border-l-2 border-indigo-200 text-charcoal-700">"Central Cons must guarantee that 4-level deep excavation will not compromise adjacent road stability or cause groundwater drawdown."</p>
-                                                            <p className="font-bold text-roseAccent mt-2">Hero Kun (Deputy Head of Tendering):</p>
-                                                            <p className="italic pl-3 border-l-2 border-roseAccent-light text-charcoal-700">"{currentLesson.reviewExercises ? currentLesson.reviewExercises.listeningEx.audioPrompt : currentLesson.selfIntroPitch.english}"</p>
-                                                        </div>
-                                                    </div>
-
-                                                    {/* Dictation Challenge */}
-                                                    <div className="p-5 rounded-2xl border border-cream-200 bg-white space-y-4 shadow-2xs">
-                                                        <div className="flex justify-between items-center border-b border-cream-200 pb-3">
-                                                            <h4 className="font-bold text-sm text-charcoal-900">✍️ Thử Thách Nghe Chép Chính Tả (Dictation Challenge)</h4>
-                                                            <span className="text-xs text-charcoal-500 font-semibold">Nghe và điền 3 từ khóa chuyên ngành vào ô dưới</span>
-                                                        </div>
-                                                        <div className="space-y-3">
-                                                            <div className="space-y-1.5">
-                                                                <label className="text-xs font-bold text-charcoal-700">1. Thuật ngữ tường vách tầng hầm sâu (Continuous ...):</label>
-                                                                <input 
-                                                                    type="text" 
-                                                                    id="dict1"
-                                                                    placeholder="Nhập từ bạn nghe được (ví dụ: diaphragm wall)..." 
-                                                                    className="w-full text-xs p-3 rounded-xl border border-cream-200 bg-cream-50/50 focus:outline-none focus:border-roseAccent" 
-                                                                />
-                                                            </div>
-                                                            <div className="space-y-1.5">
-                                                                <label className="text-xs font-bold text-charcoal-700">2. Thuật ngữ độ lún sụt nền đất (... settlement):</label>
-                                                                <input 
-                                                                    type="text" 
-                                                                    id="dict2"
-                                                                    placeholder="Nhập từ bạn nghe được (ví dụ: ground)..." 
-                                                                    className="w-full text-xs p-3 rounded-xl border border-cream-200 bg-cream-50/50 focus:outline-none focus:border-roseAccent" 
-                                                                />
-                                                            </div>
-                                                            <div className="space-y-1.5">
-                                                                <label className="text-xs font-bold text-charcoal-700">3. Thuật ngữ độ an toàn kết cấu (Structural ...):</label>
-                                                                <input 
-                                                                    type="text" 
-                                                                    id="dict3"
-                                                                    placeholder="Nhập từ bạn nghe được (ví dụ: integrity)..." 
-                                                                    className="w-full text-xs p-3 rounded-xl border border-cream-200 bg-cream-50/50 focus:outline-none focus:border-roseAccent" 
-                                                                />
-                                                            </div>
-                                                            <div className="flex gap-2 pt-2">
-                                                                <button 
-                                                                    onClick={() => {
-                                                                        alert('✅ Đáp án chuẩn:\n1. diaphragm walls\n2. ground settlement\n3. structural integrity');
-                                                                    }}
-                                                                    className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-xs font-bold"
-                                                                >
-                                                                    Kiểm Tra Đáp Án Ngay
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            )}
-
-                                            {/* SUBTAB 3: SPEAKING MODULE */}
-                                            {activeSubTab === 'speaking' && (
-                                                <div className="space-y-6">
-                                                    <div className="p-5 rounded-2xl border-l-4 border-amber-500 bg-amber-50/60 space-y-4">
-                                                        <div className="flex justify-between items-center">
-                                                            <div>
-                                                                <span className="text-[10px] font-extrabold uppercase bg-amber-500 text-white px-2.5 py-0.5 rounded-md">Speaking & Pitch Studio • Buổi 0{currentLesson.id}</span>
-                                                                <h4 className="text-base font-extrabold text-charcoal-900 mt-1">🗣️ Bài Phát Biểu Kỹ Thuật Lãnh Đạo (Executive Technical Pitch)</h4>
-                                                            </div>
-                                                            <button 
-                                                                onClick={() => speakText(currentLesson.selfIntroPitch.english)} 
-                                                                className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shadow-xs"
-                                                            >
-                                                                <i className="ph-bold ph-speaker-high"></i> 🔊 Nghe Phát Âm Mẫu
-                                                            </button>
-                                                        </div>
-                                                        <div className="bg-white p-5 rounded-xl border border-cream-200 text-xs text-charcoal-900 leading-relaxed font-medium">
-                                                            "{currentLesson.selfIntroPitch.english}"
-                                                        </div>
-                                                        <p className="text-xs text-charcoal-600"><strong>Dịch Tiếng Việt:</strong> {currentLesson.selfIntroPitch.vietnamese}</p>
-                                                        <div className="flex flex-wrap gap-2 pt-2">
-                                                            <button 
-                                                                onClick={() => testMic(currentLesson.selfIntroPitch.english.slice(0, 50), "subtab_speaking_mic")} 
-                                                                className="bg-charcoal-900 hover:bg-charcoal-800 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2"
-                                                            >
-                                                                <i className="ph-bold ph-microphone text-roseAccent"></i> 🎤 Bắt Đầu Đọc Qua Micro AI (Đo WPM)
-                                                            </button>
-                                                        </div>
-                                                        {micStatus["subtab_speaking_mic"] && (
-                                                            <p className="text-xs font-bold text-emerald-800 bg-white p-3 rounded-lg border border-cream-200">{micStatus["subtab_speaking_mic"]}</p>
-                                                        )}
-                                                    </div>
-
-                                                    {/* PREP Formula Strategy Guide */}
-                                                    <div className="p-5 rounded-2xl border border-cream-200 bg-white space-y-3">
-                                                        <h4 className="font-bold text-sm text-charcoal-900">📐 Khung Trả Lời PREP Khi Phản Biện Kỹ Thuật Với CĐT:</h4>
-                                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                                                            <div className="p-3 rounded-xl bg-cream-50 border border-cream-200">
-                                                                <p className="font-bold text-roseAccent">1. P (Point):</p>
-                                                                <p className="text-charcoal-700 mt-0.5">Nêu trực tiếp giải pháp: "Central Cons proposes top-down construction..."</p>
-                                                            </div>
-                                                            <div className="p-3 rounded-xl bg-cream-50 border border-cream-200">
-                                                                <p className="font-bold text-indigo-600">2. R (Reason):</p>
-                                                                <p className="text-charcoal-700 mt-0.5">Đưa ra lý do kỹ thuật: "...because it compresses critical path by 20 calendar days."</p>
-                                                            </div>
-                                                            <div className="p-3 rounded-xl bg-cream-50 border border-cream-200">
-                                                                <p className="font-bold text-emerald-600">3. E (Example):</p>
-                                                                <p className="text-charcoal-700 mt-0.5">Dẫn chứng công trình thực tế: "As proven at The Hallmark and Song Viet Plot 1-13..."</p>
-                                                            </div>
-                                                            <div className="p-3 rounded-xl bg-cream-50 border border-cream-200">
-                                                                <p className="font-bold text-amber-600">4. P (Point):</p>
-                                                                <p className="text-charcoal-700 mt-0.5">Chốt lại cam kết: "Therefore, we guarantee zero budget overruns and zero settlement."</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            )}
-
-                                            {/* SUBTAB 4: READING MODULE */}
-                                            {activeSubTab === 'reading' && (
-                                                <div className="space-y-6">
-                                                    <div className="p-5 rounded-2xl border-l-4 border-emerald-500 bg-emerald-50/60 space-y-4">
-                                                        <div className="flex justify-between items-center">
-                                                            <div>
-                                                                <span className="text-[10px] font-extrabold uppercase bg-emerald-600 text-white px-2.5 py-0.5 rounded-md">Reading Module • Buổi 0{currentLesson.id}</span>
-                                                                <h4 className="text-base font-extrabold text-charcoal-900 mt-1">📖 Đọc Hiểu Hồ Sơ Kỹ Thuật HSMT (Technical Specification)</h4>
-                                                            </div>
-                                                            <button 
-                                                                onClick={() => speakText(currentLesson.reviewExercises ? currentLesson.reviewExercises.readingEx.passage : "Clause 4.2: Diaphragm wall panels minimum 800mm thickness.")} 
-                                                                className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shadow-xs"
-                                                            >
-                                                                <i className="ph-bold ph-speaker-high"></i> 🔊 Nghe Đọc Toàn Bộ Đoạn Văn
-                                                            </button>
-                                                        </div>
-                                                        <div className="bg-white p-5 rounded-xl border border-cream-200 text-xs text-charcoal-900 leading-relaxed font-mono">
-                                                            {currentLesson.reviewExercises ? currentLesson.reviewExercises.readingEx.passage : "Clause 4.2: The Main Contractor shall install continuous diaphragm wall panels of minimum 800mm thickness. Slurry level shall be maintained at least 1.5m above maximum groundwater table at all times. Vertical deviation shall not exceed 1:200."}
-                                                        </div>
-                                                    </div>
-
-                                                    {/* Reading Quiz */}
-                                                    <div className="p-5 rounded-2xl border border-cream-200 bg-white space-y-4">
-                                                        <h4 className="font-bold text-sm text-charcoal-900">❓ Câu Hỏi Trắc Nghiệm Đọc Hiểu Kỹ Thuật:</h4>
-                                                        <div className="space-y-3 text-xs">
-                                                            <p className="font-bold text-charcoal-800">{currentLesson.reviewExercises ? currentLesson.reviewExercises.readingEx.question : "What is the maximum allowable vertical deviation for diaphragm wall panels under Clause 4.2?"}</p>
-                                                            <div className="space-y-2">
-                                                                {['A. 1:100 (1.0% vertical deviation)', 'B. 1:200 (0.5% vertical deviation - Chuẩn chính xác)', 'C. 1:500 (0.2% vertical deviation)', 'D. Không giới hạn sai số'].map((choice, cIdx) => (
-                                                                    <button 
-                                                                        key={cIdx} 
-                                                                        onClick={() => {
-                                                                            if (cIdx === 1) alert('🎉 CHÍNH XÁC! Sai số thẳng đứng tối đa cho phép là 1:200 (0.5%).');
-                                                                            else alert('❌ Chưa chính xác. Đáp án đúng là B (1:200).');
-                                                                        }}
-                                                                        className="w-full text-left p-3 rounded-xl border border-cream-200 hover:border-emerald-500 hover:bg-emerald-50 transition-all font-medium text-charcoal-800"
-                                                                    >
-                                                                        {choice}
-                                                                    </button>
-                                                                ))}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            )}
-
-                                            {/* SUBTAB 5: WRITING MODULE */}
-                                            {activeSubTab === 'writing' && (
-                                                <div className="space-y-6">
-                                                    <div className="p-5 rounded-2xl border-l-4 border-purple-500 bg-purple-50/60 space-y-4">
-                                                        <div className="flex justify-between items-center">
-                                                            <div>
-                                                                <span className="text-[10px] font-extrabold uppercase bg-purple-600 text-white px-2.5 py-0.5 rounded-md">Writing & AI Sandbox • Buổi 0{currentLesson.id}</span>
-                                                                <h4 className="text-base font-extrabold text-charcoal-900 mt-1">✍️ Soạn Thảo Thư Trình Thuyết Minh Kỹ Thuật (Transmittal Letter)</h4>
-                                                            </div>
-                                                        </div>
-                                                        <div className="space-y-2">
-                                                            <textarea 
-                                                                rows="6"
-                                                                defaultValue={currentLesson.reviewExercises ? currentLesson.reviewExercises.writingEx.template : "Subject: Transmittal of Technical Method Statement for Deep Basement Excavation..."} 
-                                                                className="w-full text-xs p-4 rounded-xl border border-cream-200 bg-white font-mono leading-relaxed focus:outline-none focus:border-purple-500"
-                                                            />
-                                                            <div className="flex flex-wrap gap-2 pt-1">
-                                                                <button 
-                                                                    onClick={() => {
-                                                                        alert('⚡ AI ĐÁNH GIÁ VĂN PHONG (BAND C1/C2):\n\n• Điểm cấu trúc: 95/100 (Executive Tone)\n• Điểm từ vựng: 92/100 (Chuẩn kỹ thuật hầm sâu & FIDIC)\n• Gợi ý nâng cấp: Câu văn gãy gọn, sử dụng chuẩn Polite Business Modals.');
-                                                                    }}
-                                                                    className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2"
-                                                                >
-                                                                    ⚡ Phân Tích & Nâng Cấp AI (C1/C2 Standard)
-                                                                </button>
-                                                                <button 
-                                                                    onClick={() => speakText(currentLesson.reviewExercises ? currentLesson.reviewExercises.writingEx.template : "Subject: Transmittal of Technical Method Statement.")}
-                                                                    className="bg-white hover:bg-cream-50 text-purple-700 border border-purple-200 px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2"
-                                                                >
-                                                                    <i className="ph-bold ph-speaker-high"></i> 🔊 Nghe Đọc Bài Viết
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            )}
-</div>
-                                    </div>
-                                )}
-
-                                {/* ================= TAB 3: BILINGUAL JD ================= */}
-                                {mainTab === 'jd' && (
-                                    <div className="bg-white rounded-3xl shadow-sm border border-cream-200 p-6 space-y-6">
-                                        <div className="flex justify-between items-center border-b border-cream-200 pb-4">
-                                            <div>
-                                                <span className="text-[10px] font-extrabold uppercase bg-roseAccent-light text-roseAccent px-2.5 py-0.5 rounded-md">
-                                                    Corporate Job Description • Central Cons
-                                                </span>
-                                                <h2 className="text-xl font-extrabold text-charcoal-900 mt-1 flex items-center gap-2">
-                                                    <i className="ph-fill ph-identification-card text-emerald-600"></i>
-                                                    📋 Mô Tả Công Việc Song Ngữ — Trưởng Bộ Phận Giá (Phó Phòng Đấu Thầu)
-                                                </h2>
-                                            </div>
-                                            <span className="bg-charcoal-900 text-white px-3.5 py-1.5 rounded-xl text-xs font-bold">
-                                                Hero Kun
+                        {/* Right Content Area */}
+                        <div className={`${activeTab === 'lessons' ? 'lg:col-span-8' : 'lg:col-span-12'} space-y-6`}>
+                            {activeTab === 'lessons' && (
+                                <div className="bg-white p-6 rounded-2xl border border-[#E8DFC8] shadow-sm space-y-6">
+                                    {/* Lesson Header Card */}
+                                    <div className="border-b border-[#E8DFC8] pb-4 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+                                        <div>
+                                            <span className="text-xs font-extrabold uppercase tracking-wider text-[#C86D7C] bg-[#FAF5EE] px-2.5 py-1 rounded-md border border-[#E8DFC8]">
+                                                {selectedLesson.id <= 2 ? 'Preply Insights Recap' : 'Live Preply Session'}
                                             </span>
+                                            <h2 className="text-xl font-black text-[#231F20] mt-2">{selectedLesson.title}</h2>
+                                            <p className="text-xs text-gray-600 mt-1 font-semibold">📌 Chủ đề: {selectedLesson.topic}</p>
                                         </div>
-
-                                        {/* SECTION 1: GENERAL INFO & PURPOSE */}
-                                        <div className="border border-cream-200 rounded-2xl p-5 bg-cream-50/50 space-y-3">
-                                            <h3 className="text-xs font-bold text-roseAccent uppercase tracking-wider">SECTION I: GENERAL INFORMATION & PURPOSE (THÔNG TIN CHUNG & MỤC ĐÍCH CÔNG VIỆC)</h3>
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                                                <div className="p-3 bg-white rounded-xl border border-cream-200">
-                                                    <p><strong>Job Title (Chức danh):</strong> Head of Estimating & Pricing Division (Trưởng Bộ phận Giá)</p>
-                                                    <p className="mt-1"><strong>Department (Phòng/Ban):</strong> Tendering & Bidding Department (Phòng Đấu thầu)</p>
-                                                </div>
-                                                <div className="p-3 bg-white rounded-xl border border-cream-200">
-                                                    <p><strong>Direct Superior (Cấp trên):</strong> Head / Deputy Head of Tendering (Trưởng / Phó Phòng Đấu thầu)</p>
-                                                    <p className="mt-1"><strong>Location (Nơi làm việc):</strong> Office / Headquarters (Văn phòng)</p>
-                                                </div>
-                                            </div>
-                                            <div className="p-4 bg-white rounded-xl border border-cream-200 text-xs">
-                                                <p className="font-bold text-charcoal-900">Mục đích công việc (Core Corporate Purpose):</p>
-                                                <p className="text-charcoal-800 mt-1">"Oversee, manage, and take full corporate responsibility for all estimation, pricing, BOQ rate breakdowns, Value Engineering proposals, and commercial bidding activities within the Pricing Division."</p>
-                                                <p className="text-charcoal-500 italic mt-0.5">(Quản lý và chịu trách nhiệm toàn diện đối với các công việc liên quan đến Bộ phận Giá, lập báo giá, bóc tách khối lượng BOQ, đề xuất Kỹ thuật giá trị VE và chiến lược đấu thầu thương mại.)</p>
-                                            </div>
-                                        </div>
-
-                                        {/* SECTION 2: STANDARDS & QUALIFICATIONS */}
-                                        <div className="border border-cream-200 rounded-2xl p-5 bg-white space-y-3">
-                                            <h3 className="text-xs font-bold text-roseAccent uppercase tracking-wider">SECTION II: JOB QUALIFICATIONS & STANDARDS (TIÊU CHUẨN CHỨC DANH)</h3>
-                                            <div className="space-y-2 text-xs">
-                                                <div className="p-3 bg-cream-50 rounded-xl border border-cream-200">
-                                                    <p className="font-bold text-charcoal-900">1. Trình độ chuyên môn & Chuyên ngành (Education):</p>
-                                                    <p className="text-charcoal-700">Bachelor's Degree or higher in Civil Engineering, Structural Engineering, or Architecture.</p>
-                                                    <p className="text-charcoal-500">(Tốt nghiệp Đại học trở lên chuyên ngành Kỹ sư Xây dựng, Kết cấu hoặc Kiến trúc sư.)</p>
-                                                </div>
-                                                <div className="p-3 bg-cream-50 rounded-xl border border-cream-200">
-                                                    <p className="font-bold text-charcoal-900">2. Kinh nghiệm & Tiếng Anh (Experience & English Proficiency):</p>
-                                                    <p className="text-charcoal-700">Minimum 2 years of proven experience in equivalent estimating management. Fluent professional communication, strong reading comprehension of international contract specs; proficient in technical & commercial business correspondence.</p>
-                                                    <p className="text-charcoal-500">(Tối thiểu 2 năm kinh nghiệm quản lý giá/thầu tương đương. Giao tiếp lưu loát, đọc hiểu tài liệu đấu thầu quốc tế; viết thư từ thương mại và kỹ thuật thành thạo.)</p>
-                                                </div>
-                                                <div className="p-3 bg-cream-50 rounded-xl border border-cream-200">
-                                                    <p className="font-bold text-charcoal-900">3. Kỹ năng Tin học, HSE & Năng lực Lãnh đạo (Software, HSE & Leadership):</p>
-                                                    <p className="text-charcoal-700">Proficient in Excel, MS Project, AutoCAD, Quantity Takeoff software. Strict HSE compliance (Safety Group 4). Deep knowledge in Pricing, BOQ Takeoffs, Method Statements, FIDIC Contract Terms; Project Lead capability; Executive Presentation skills; Team Leadership & Mentoring.</p>
-                                                    <p className="text-charcoal-500">(Thành thạo Excel, MS Project, AutoCAD, phần mềm bóc tách khối lượng. Tuân thủ an toàn nhóm 4. Kiến thức chuyên sâu về Giá, BOQ, Biện pháp thi công, Điều khoản FIDIC; Năng lực chủ trì dự án; Kỹ năng thuyết trình lãnh đạo; Đào tạo nhân viên.)</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* SECTION 3: RESPONSIBILITIES & DUTIES */}
-                                        <div className="border border-cream-200 rounded-2xl p-5 bg-cream-50/50 space-y-3">
-                                            <h3 className="text-xs font-bold text-roseAccent uppercase tracking-wider">SECTION III: RESPONSIBILITIES, DUTIES & DELIVERABLES (TRÁCH NHIỆM & NHIỆM VỤ)</h3>
-                                            <div className="space-y-3 text-xs">
-                                                <div className="p-4 bg-white rounded-xl border border-cream-200 space-y-1">
-                                                    <p className="font-bold text-charcoal-900 text-sm">1. Công tác Quản lý Giá & Báo Giá Thầu (Estimating & Bidding Management)</p>
-                                                    <p className="text-charcoal-800">• General management of Pricing staff; leading assigned projects; preparing detailed cost estimates for complex high-rise tenders; analyzing tender documents, drawings, Client/Consultant/Competitor data.</p>
-                                                    <p className="text-charcoal-800">• Proposing commercial bidding strategies and Value Engineering (VE) design alternatives to reduce costs; auditing quotation files to eliminate errors; managing server archives and financial efficiency reports.</p>
-                                                    <p className="text-charcoal-500 italic">(Quản lý chung công việc Bộ phận Giá; chủ trì dự án thầu; lập báo giá chi tiết dự án phức tạp; nghiên cứu HSMT, bản vẽ, thông tin CĐT/Tư vấn/Đối thủ; đề xuất chiến lược thầu & giải pháp VE hiệu chỉnh thiết kế tiết kiệm giá thành; kiểm soát hồ sơ phòng ngừa sai sót; lưu trữ server và báo cáo hiệu quả tài chính.)</p>
-                                                </div>
-
-                                                <div className="p-4 bg-white rounded-xl border border-cream-200 space-y-1">
-                                                    <p className="font-bold text-charcoal-900 text-sm">2. Phối Hợp Liên Phòng Ban, Đào Tạo & Kiểm Soát Rủi Ro (Coordination, Training & Risk Control)</p>
-                                                    <p className="text-charcoal-800">• Coordinating with Contracts (CCM), Design Center, Technical Dept, and Site Management to resolve bottlenecks and ensure on-time quotation submission.</p>
-                                                    <p className="text-charcoal-800">• Conducting internal/external training on Pricing, BOQ Takeoffs, Method Statements, and Management; improving BOQ templates and tools; monitoring risk prevention across all bids.</p>
-                                                    <p className="text-charcoal-500 italic">(Phối hợp chặt chẽ với Phòng Hợp đồng CCM, Trung tâm Thiết kế, Phòng Kỹ thuật và BĐH Công trường tháo gỡ vướng mắc; đào tạo nội bộ kiến thức Giá, Khối lượng, Biện pháp thi công, Kỹ năng quản lý; cải tiến form mẫu BOQ và kiểm soát rủi ro khối lượng/đơn giá.)</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* SECTION 4: AUTHORITIES & ETHICS */}
-                                        <div className="border border-cream-200 rounded-2xl p-5 bg-white space-y-3">
-                                            <h3 className="text-xs font-bold text-roseAccent uppercase tracking-wider">SECTION IV: AUTHORITIES & ETHICS GATEKEEPER (QUYỀN HẠN & BÁO CÁO)</h3>
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                                                <div className="p-4 bg-cream-50 rounded-xl border border-cream-200 space-y-1">
-                                                    <p className="font-bold text-charcoal-900">Quyền Đề Xuất & Điều Hành (Proposals & Delegation):</p>
-                                                    <p className="text-charcoal-800">Propose resource allocation, assign tasks, recommend subcontractor/supplier selection, request Site/CCM clarify unselected vendors, propose VE technical solutions, convene tender meetings, recommend rewards/penalties for subordinates.</p>
-                                                    <p className="text-charcoal-500 italic">(Đề xuất nguồn lực, phân công công việc, đề xuất lựa chọn NCC/NTP, yêu cầu Công trường/CCM làm rõ lý do không chọn NTP/NCC, đề xuất giải pháp kỹ thuật VE, triệu tập họp dự án thầu, đề xuất khen thưởng/kỷ luật cấp dưới.)</p>
-                                                </div>
-                                                <div className="p-4 bg-cream-50 rounded-xl border border-cream-200 space-y-1">
-                                                    <p className="font-bold text-charcoal-900">Quyền Ra Quyết Định & Chuẩn Mực Đạo Đức (Decision-Making & Ethics):</p>
-                                                    <p className="text-charcoal-800">Right to refuse execution of tasks violating company regulations, laws, or professional ethical standards (with immediate notification to direct management and supporting evidence).</p>
-                                                    <p className="text-charcoal-500 italic">(Quyền từ chối thực hiện những công việc không đúng quy định công ty, quy định pháp luật và chuẩn mực đạo đức nghề nghiệp - báo cáo cấp quản lý trực tiếp và có bằng chứng chứng minh.)</p>
-                                                </div>
-                                            </div>
+                                        <div className="text-right">
+                                            <a href={selectedLesson.preplyClassUrl} target="_blank" className="inline-flex items-center gap-1.5 bg-[#231F20] text-[#FAF5EE] px-4 py-2 rounded-xl text-xs font-bold hover:bg-[#383335] shadow transition">
+                                                <span>🎥 Vào lớp Preply</span>
+                                            </a>
+                                            <p className="text-[11px] text-[#C86D7C] font-bold mt-1">📅 {selectedLesson.scheduleDate}</p>
                                         </div>
                                     </div>
-                                )}
 
-                                {/* ================= TAB 4: PODCASTS ================= */}
-                                {mainTab === 'podcasts' && (
-                                    <div className="bg-white rounded-3xl shadow-sm border border-cream-200 p-6 space-y-4">
-                                        <h3 className="text-lg font-bold text-charcoal-900 flex items-center gap-2">
-                                            <i className="ph-fill ph-podcast text-lavender"></i> Thư Viện Video Podcast Chuyên Ngành Xây Dựng & AI
-                                        </h3>
-                                        <p className="text-xs text-charcoal-600">Danh sách video podcast quốc tế cập nhật tự động hỗ trợ luyện nghe thụ động mỗi ngày.</p>
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                                            <div className="border border-cream-200 rounded-2xl p-4 bg-cream-50">
-                                                <iframe className="w-full h-44 rounded-xl mb-3" src="https://www.youtube.com/embed/x4nhA8h_gjU" title="AI in Construction" allowFullScreen></iframe>
-                                                <h4 className="font-bold text-sm text-charcoal-900">AI in Construction Management & Automation</h4>
-                                                <p className="text-xs text-charcoal-500 mt-1">Parametric Architecture Podcast</p>
-                                            </div>
-                                            <div className="border border-cream-200 rounded-2xl p-4 bg-cream-50">
-                                                <iframe className="w-full h-44 rounded-xl mb-3" src="https://www.youtube.com/embed/dm4tH5D8IZM" title="Smart Buildings" allowFullScreen></iframe>
-                                                <h4 className="font-bold text-sm text-charcoal-900">Agentic AI and the Future of Smart Buildings</h4>
-                                                <p className="text-xs text-charcoal-500 mt-1">Smarter Building Podcast | Symetri UK</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
-
-                                {/* ================= TAB 5: PITCH TRAINER ================= */}
-                                {mainTab === 'pitch' && (
-                                    <div className="bg-white rounded-3xl shadow-sm border border-cream-200 p-6 space-y-6">
-                                        <h2 className="text-xl font-extrabold text-charcoal-900 flex items-center gap-2">
-                                            <i className="ph-fill ph-microphone-stage text-roseAccent"></i>
-                                            🎙️ Kỹ Năng Thuyết Trình & Bảo Vệ Hồ Sơ Thầu Chuẩn Quốc Tế
-                                        </h2>
-                                        <p className="text-xs text-charcoal-600 bg-cream-50 p-4 rounded-2xl border border-cream-200">
-                                            Khung thuyết trình 5 bước dành riêng cho Lãnh đạo Đấu thầu (Phó phòng / Trưởng phòng Đấu thầu) bảo vệ trước Chủ đầu tư & Tư vấn Quốc tế.
-                                        </p>
-
+                                    {/* 5 Subtabs Navigation */}
+                                    <div className="flex flex-wrap gap-2 border-b border-gray-100 pb-3">
                                         {[
-                                            {
-                                                tag: "Topic 1 · Executive Opening & Capability Pitch",
-                                                title: "Mở Đầu Bài Thuyết Trình & Khẳng Định Tuyên Bố Giá Trị",
-                                                desc: "Thiết lập vị thế lãnh đạo, cảm ơn CĐT và nêu bật 2 điểm mạnh vượt trội của Central Cons.",
-                                                script: "Good morning ladies and gentlemen, on behalf of Central Cons, I am honored to present our technical and financial proposal for the Commercial Tower Project. Today, we will demonstrate how our Value Engineering methods and PMBOK risk management deliver a zero-delay execution within your target budget.",
-                                                key: "p1"
-                                            },
-                                            {
-                                                tag: "Topic 2 · Technical Method Statements & Underground Engineering",
-                                                title: "Trình Bày Giải Pháp Kỹ Thuật & Tường Vằn Diaphragm Wall",
-                                                desc: "Chứng minh phương án thi công top-down đào sâu rút ngắn 14 ngày tiến độ và đảm bảo an toàn tuyệt đối.",
-                                                script: "Regarding our technical bid, Central Cons proposes a Value Engineering foundation strategy utilizing top-down basement construction and 800mm diaphragm walls. This approach reduces overall site duration by 14 calendar days while maintaining strict safety standards under FIDIC guidelines.",
-                                                key: "p2"
-                                            },
-                                            {
-                                                tag: "Topic 3 · Commercial Proposal & BOQ Rate Breakdown",
-                                                title: "Bảo Vệ Giá Thầu & Phân Bổ Rủi Ro Chi Phí (FIDIC 13.8)",
-                                                desc: "Bảo vệ tổng mức đầu tư $500,000 và đề xuất công thức điều chỉnh giá trượt đòn bẩy thép/bê tông.",
-                                                script: "Turning to our financial bid, our total contract sum of $500,000 provides total transparency across all BOQ items. To protect both parties against raw material volatility over the 24-month period, we recommend incorporating FIDIC Clause 13.8 price adjustment formulas.",
-                                                key: "p3"
-                                            }
-                                        ].map((p, pIdx) => (
-                                            <div key={pIdx} className="border border-cream-200 rounded-2xl p-5 bg-cream-50/50 space-y-3">
-                                                <span className="text-[10px] font-extrabold uppercase text-roseAccent bg-roseAccent-light px-2.5 py-0.5 rounded-md">{p.tag}</span>
-                                                <h3 className="font-bold text-sm text-charcoal-900">{p.title}</h3>
-                                                <p className="text-xs text-charcoal-500">{p.desc}</p>
-                                                <div className="bg-white p-4 rounded-xl border border-cream-200 text-xs text-charcoal-800 font-medium leading-relaxed italic">
-                                                    "{p.script}"
-                                                </div>
-                                                <div className="flex gap-2 pt-1">
-                                                    <button onClick={() => speakText(p.script)} className="bg-roseAccent hover:bg-roseAccent-hover text-white px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-2xs">
-                                                        <i className="ph-bold ph-speaker-high"></i> Nghe Luyện Đọc Mẫu
-                                                    </button>
-                                                    <button onClick={() => testMic("on behalf of central cons", p.key)} className="bg-amber-100 text-amber-800 font-bold px-3.5 py-1.5 rounded-xl text-xs flex items-center gap-1.5">
-                                                        <i className="ph-bold ph-microphone"></i> Bắt Đầu Thuyết Trình Qua Micro
-                                                    </button>
-                                                </div>
-                                                {micStatus[p.key] && (
-                                                    <p className="text-xs font-bold text-emerald-800 bg-white p-2 rounded-lg border border-cream-200 mt-2">{micStatus[p.key]}</p>
-                                                )}
-                                            </div>
+                                            { id: 'content', label: '📄 Nội dung bài học (50 Mins)' },
+                                            { id: 'listening', label: '🎧 Nghe (Listening)' },
+                                            { id: 'speaking', label: '🗣️ Nói (Speaking)' },
+                                            { id: 'reading', label: '📖 Đọc (Reading)' },
+                                            { id: 'writing', label: '✍️ Viết (Writing)' }
+                                        ].map(st => (
+                                            <button
+                                                key={st.id}
+                                                onClick={() => setActiveSubTab(st.id)}
+                                                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition subtab-btn ${activeSubTab === st.id ? 'active' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                                            >
+                                                {st.label}
+                                            </button>
                                         ))}
-
                                     </div>
-                                )}
 
-                                {/* ================= TAB 6: VIDEO MASTERCLASS ================= */}
-                                {mainTab === 'masterclass' && (
-                                    <div className="bg-white rounded-3xl shadow-sm border border-cream-200 p-6 space-y-6">
-                                        <h2 className="text-xl font-extrabold text-charcoal-900 flex items-center gap-2">
-                                            <i className="ph-fill ph-chalkboard-teacher text-indigo-500"></i>
-                                            🎥 Thư Viện Video Thuyết Trình Đấu Thầu & Đào Tạo Lãnh Đạo Quốc Tế
-                                        </h2>
-                                        
-                                        <div className="space-y-4">
-                                            <h3 className="text-xs font-bold text-roseAccent uppercase tracking-wider">🏗️ 1. Thuyết Trình Lập & Bảo Vệ Hồ Sơ Dự Thầu Xây Dựng (Construction Bidding)</h3>
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                <div className="border border-cream-200 rounded-2xl p-4 bg-cream-50">
-                                                    <iframe className="w-full h-44 rounded-xl mb-2" src="https://www.youtube.com/embed/ZcFlO_ukkE8" title="Winning Bid Proposal" allowFullScreen></iframe>
-                                                    <h4 className="font-bold text-xs text-charcoal-900">How to Create a Winning Construction Bid Proposal</h4>
-                                                    <p className="text-[11px] text-charcoal-500">Contractor Training Center (CTC)</p>
-                                                </div>
-                                                <div className="border border-cream-200 rounded-2xl p-4 bg-cream-50">
-                                                    <iframe className="w-full h-44 rounded-xl mb-2" src="https://www.youtube.com/embed/jsGBuu88WE0" title="Project Proposal Writing" allowFullScreen></iframe>
-                                                    <h4 className="font-bold text-xs text-charcoal-900">Project Proposal Writing: How to Write & Pitch Winning Proposals</h4>
-                                                    <p className="text-[11px] text-charcoal-500">ProjectManager Official Channel</p>
-                                                </div>
-                                            </div>
-
-                                            <h3 className="text-xs font-bold text-roseAccent uppercase tracking-wider pt-3">🏛️ 2. Khóa Đào Tạo Kỹ Năng Thuyết Trình Lãnh Đạo Quản Lý (Harvard & Stanford)</h3>
-                                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                                <div className="border border-cream-200 rounded-2xl p-4 bg-cream-50">
-                                                    <iframe className="w-full h-36 rounded-xl mb-2" src="https://www.youtube.com/embed/ABGHZV4JajQ" title="Confident Presentation" allowFullScreen></iframe>
-                                                    <h4 className="font-bold text-xs text-charcoal-900">6 Ways to Look Confident During a Presentation</h4>
-                                                    <p className="text-[11px] text-charcoal-500">Harvard Business Review</p>
-                                                </div>
-                                                <div className="border border-cream-200 rounded-2xl p-4 bg-cream-50">
-                                                    <iframe className="w-full h-36 rounded-xl mb-2" src="https://www.youtube.com/embed/cFLjudWTuGQ" title="Body Language" allowFullScreen></iframe>
-                                                    <h4 className="font-bold text-xs text-charcoal-900">Make Body Language Your Superpower</h4>
-                                                    <p className="text-[11px] text-charcoal-500">Stanford Graduate School of Business</p>
-                                                </div>
-                                                <div className="border border-cream-200 rounded-2xl p-4 bg-cream-50">
-                                                    <iframe className="w-full h-36 rounded-xl mb-2" src="https://www.youtube.com/embed/KVZimVICjMo" title="Executive Presence" allowFullScreen></iframe>
-                                                    <h4 className="font-bold text-xs text-charcoal-900">Develop Executive Presence for Senior Leaders</h4>
-                                                    <p className="text-[11px] text-charcoal-500">Kara Ronin Leadership Coach</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
-
-                                {/* ================= TAB 7: IPA PRONUNCIATION ================= */}
-                                {mainTab === 'ipa' && (
-                                    <div className="bg-white rounded-3xl shadow-sm border border-cream-200 p-6 space-y-6">
-                                        <h2 className="text-xl font-extrabold text-charcoal-900 flex items-center gap-2">
-                                            <i className="ph-fill ph-speaker-high text-roseAccent"></i>
-                                            🗣️ Luyện Phát Âm Chuẩn IPA & Video Minh Họa Oxford / BBC
-                                        </h2>
-                                        <p className="text-xs text-charcoal-600 bg-cream-50 p-4 rounded-2xl border border-cream-200">
-                                            Học cách phát âm chuẩn IPA từng âm tiết trong từ vựng đấu thầu qua Video minh họa và công cụ nhận diện giọng nói Micro.
-                                        </p>
-
-                                        <div className="space-y-4">
-                                            <h3 className="text-xs font-bold text-roseAccent uppercase tracking-wider">🎥 Video Minh Họa Phát Âm Chuẩn (BBC Learning English & Oxford)</h3>
-                                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                                <div className="border border-cream-200 rounded-2xl p-4 bg-cream-50">
-                                                    <iframe className="w-full h-36 rounded-xl mb-2" src="https://www.youtube.com/embed/QxQUapA-2w4" title="44 IPA Sounds" allowFullScreen></iframe>
-                                                    <h4 className="font-bold text-xs text-charcoal-900">Complete Guide to All 44 English IPA Sounds</h4>
-                                                    <p className="text-[11px] text-charcoal-500">BBC Learning English Pronunciation</p>
-                                                </div>
-                                                <div className="border border-cream-200 rounded-2xl p-4 bg-cream-50">
-                                                    <iframe className="w-full h-36 rounded-xl mb-2" src="https://www.youtube.com/embed/TNFKG0yvDx4" title="Short vowel /ɪ/" allowFullScreen></iframe>
-                                                    <h4 className="font-bold text-xs text-charcoal-900">Short Vowel /ɪ/ in 'Bid', 'Tender' & 'Client'</h4>
-                                                    <p className="text-[11px] text-charcoal-500">BBC Pronunciation Tips</p>
-                                                </div>
-                                                <div className="border border-cream-200 rounded-2xl p-4 bg-cream-50">
-                                                    <iframe className="w-full h-36 rounded-xl mb-2" src="https://www.youtube.com/embed/9WDnVMQIaTs" title="Diphthong /aʊ/" allowFullScreen></iframe>
-                                                    <h4 className="font-bold text-xs text-charcoal-900">Diphthong /aʊ/ & /əʊ/ in 'Proposal'</h4>
-                                                    <p className="text-[11px] text-charcoal-500">BBC Pronunciation Tips</p>
-                                                </div>
-                                            </div>
-
-                                            <h3 className="text-xs font-bold text-roseAccent uppercase tracking-wider pt-3">🎤 Thử Thách Luyện Phát Âm Qua Micro (Live AI Accuracy Match)</h3>
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                {[
-                                                    { word: "Bid", ipa: "/bɪd/", desc: "Âm ngắn /ɪ/ trong 'bid' - Khẩu hình thả lỏng, âm gọn.", key: "ipa_bid" },
-                                                    { word: "Proposal", ipa: "/prəˈpəʊ.zəl/", desc: "Âm đôi /əʊ/ - Tròn môi từ /ə/ chuyển sang /ʊ/.", key: "ipa_prop" },
-                                                    { word: "Contract", ipa: "/ˈkɒn.trækt/", desc: "Nhấn trọng âm âm 1 /ˈkɒn/, âm sau là /trækt/.", key: "ipa_con" },
-                                                    { word: "Client", ipa: "/ˈklaɪ.ənt/", desc: "Âm đôi /aɪ/ mượt mà từ /a/ mở rộng sang /ɪ/.", key: "ipa_cli" }
-                                                ].map((card, cIdx) => (
-                                                    <div key={cIdx} className="border-l-4 border-roseAccent border-cream-200 bg-cream-50/50 p-4 rounded-xl space-y-2">
-                                                        <div className="flex justify-between items-center">
-                                                            <span className="font-extrabold text-sm text-charcoal-900">{card.word}</span>
-                                                            <span className="font-bold text-xs text-roseAccent">{card.ipa}</span>
-                                                        </div>
-                                                        <p className="text-xs text-charcoal-600">{card.desc}</p>
-                                                        <div className="flex gap-2 pt-1">
-                                                            <button onClick={() => speakText(card.word)} className="bg-white border border-cream-200 text-charcoal-800 font-bold px-3 py-1 rounded-lg text-xs flex items-center gap-1">
-                                                                <i className="ph-bold ph-speaker-high text-roseAccent"></i> Chuẩn
-                                                            </button>
-                                                            <button onClick={() => testMic(card.word, card.key)} className="bg-amber-100 text-amber-800 font-bold px-3 py-1 rounded-lg text-xs flex items-center gap-1">
-                                                                <i className="ph-bold ph-microphone"></i> Thử Micro
-                                                            </button>
-                                                        </div>
-                                                        {micStatus[card.key] && (
-                                                            <p className="text-xs font-bold text-emerald-800 bg-white p-2 rounded-lg border border-cream-200 mt-2">{micStatus[card.key]}</p>
-                                                        )}
+                                    {/* Subtab 1: Content */}
+                                    {activeSubTab === 'content' && (
+                                        <div className="space-y-6 text-sm">
+                                            {/* Pitch Box */}
+                                            {selectedLesson.selfIntroPitch && (
+                                                <div className="bg-[#FAF5EE] p-4 rounded-xl border border-[#E8DFC8]">
+                                                    <div className="flex justify-between items-center mb-2">
+                                                        <h4 className="font-bold text-xs uppercase tracking-wider text-[#C86D7C]">🎙️ Executive Bidding Pitch:</h4>
+                                                        <button onClick={() => speakText(selectedLesson.selfIntroPitch)} className="text-xs bg-[#231F20] text-white px-2.5 py-1 rounded-md hover:bg-black font-semibold flex items-center gap-1">
+                                                            <span>🔊 Nghe đọc mẫu</span>
+                                                        </button>
                                                     </div>
-                                                ))}
+                                                    <p className="text-xs text-gray-800 italic leading-relaxed">"{selectedLesson.selfIntroPitch}"</p>
+                                                </div>
+                                            )}
+
+                                            {/* Power Words Table */}
+                                            {selectedLesson.powerWords && (
+                                                <div>
+                                                    <h4 className="font-bold text-sm text-[#231F20] mb-3 flex items-center gap-2">
+                                                        <span>💎 Key Vocabulary & Power Phrases (B2 - C1):</span>
+                                                    </h4>
+                                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                                        {selectedLesson.powerWords.map((pw, idx) => (
+                                                            <div key={idx} className="p-3 rounded-xl border border-gray-200 bg-white shadow-sm hover:border-[#C86D7C] transition">
+                                                                <div className="flex justify-between items-start">
+                                                                    <div>
+                                                                        <span className="font-extrabold text-[#231F20] text-sm">{pw.word}</span>
+                                                                        <span className="text-xs text-gray-500 ml-1.5">{pw.ipa}</span>
+                                                                    </div>
+                                                                    <button onClick={() => speakText(pw.word + '. ' + pw.ex)} className="text-xs text-[#C86D7C] hover:text-black">🔊</button>
+                                                                </div>
+                                                                <p className="text-xs font-semibold text-[#C86D7C] mt-1">{pw.vi}</p>
+                                                                <p className="text-[11px] text-gray-600 mt-1 italic">"{pw.ex}"</p>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {/* Grammar Focus */}
+                                            {selectedLesson.grammarFocus && (
+                                                <div>
+                                                    <h4 className="font-bold text-sm text-[#231F20] mb-3">📐 Grammar Focus for Commercial Bidding:</h4>
+                                                    <div className="space-y-2">
+                                                        {selectedLesson.grammarFocus.map((g, idx) => (
+                                                            <div key={idx} className="p-3 rounded-xl bg-gray-50 border border-gray-200">
+                                                                <p className="font-bold text-xs text-[#231F20]">{g.title}</p>
+                                                                <p className="text-xs text-gray-600 mt-0.5">📐 <strong>Công thức:</strong> <code className="bg-white px-1.5 py-0.5 rounded text-[#C86D7C] font-semibold">{g.formula}</code></p>
+                                                                <p className="text-xs text-gray-700 mt-1 italic">💡 "{g.example}" <button onClick={() => speakText(g.example)} className="text-xs text-[#C86D7C] ml-1">🔊</button></p>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {/* Anticipated Q&A */}
+                                            {selectedLesson.anticipatedQA && (
+                                                <div>
+                                                    <h4 className="font-bold text-sm text-[#231F20] mb-3">❓ Anticipated High-Pressure Q&A with Client:</h4>
+                                                    <div className="space-y-3">
+                                                        {selectedLesson.anticipatedQA.map((qa, idx) => (
+                                                            <div key={idx} className="p-3.5 rounded-xl border border-[#E8DFC8] bg-[#FAF5EE]">
+                                                                <p className="font-bold text-xs text-[#231F20]">Q: "{qa.q}" <button onClick={() => speakText(qa.q)} className="text-xs text-[#C86D7C]">🔊</button></p>
+                                                                <p className="text-xs text-gray-700 mt-1">A: "{qa.a}" <button onClick={() => speakText(qa.a)} className="text-xs text-[#C86D7C]">🔊</button></p>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
+
+                                    {/* Subtab 2: Listening */}
+                                    {activeSubTab === 'listening' && (
+                                        <div className="space-y-4 text-xs">
+                                            <div className="bg-[#FAF5EE] p-4 rounded-xl border border-[#E8DFC8]">
+                                                <h4 className="font-bold text-sm text-[#231F20] mb-2">🎧 Commercial Dialogue: Client Procurement Review</h4>
+                                                <p className="text-gray-700 italic leading-relaxed">
+                                                    "Client: Hero, why is your concrete unit rate priced at $120 per cubic meter?<br/>
+                                                    Hero: Our unit rate includes high-early-strength additives to guarantee rapid 3-day top-down cycle casting without cracks."
+                                                </p>
+                                                <button onClick={() => speakText("Client: Hero, why is your concrete unit rate priced at 120 dollars per cubic meter? Hero: Our unit rate includes high-early-strength additives to guarantee rapid 3-day top-down cycle casting without cracks.")} className="mt-3 bg-[#231F20] text-white px-3 py-1.5 rounded-lg font-bold">
+                                                    🔊 Nghe Toàn Bộ Hội Thoại
+                                                </button>
+                                            </div>
+                                            <div className="p-4 border rounded-xl bg-white space-y-2">
+                                                <h4 className="font-bold text-sm">✍️ Dictation Challenge (Nghe chép chính tả):</h4>
+                                                <p className="text-gray-600">Điền từ còn thiếu: <em>"Central Cons provides a transparent _______ breakdown for all structural packages."</em></p>
+                                                <div className="flex gap-2">
+                                                    <input value={dictationInput} onChange={e => setDictationInput(e.target.value)} placeholder="Nhập từ vựng..." className="border p-2 rounded-lg flex-1 text-xs" />
+                                                    <button onClick={checkDictation} className="bg-[#C86D7C] text-white px-4 py-2 rounded-lg font-bold">Kiểm tra</button>
+                                                </div>
+                                                {dictationResult && <p className="font-bold text-[#C86D7C]">{dictationResult}</p>}
                                             </div>
                                         </div>
+                                    )}
+
+                                    {/* Subtab 3: Speaking */}
+                                    {activeSubTab === 'speaking' && (
+                                        <div className="space-y-4 text-xs">
+                                            <div className="bg-white p-4 border rounded-xl space-y-3">
+                                                <h4 className="font-bold text-sm text-[#231F20]">🗣️ Speaking Reflex (PREP Framework):</h4>
+                                                <div className="p-3 bg-gray-50 rounded-lg space-y-1">
+                                                    <p><strong>P (Point):</strong> Central Cons guarantees fixed unit rates for the first 12 months.</p>
+                                                    <p><strong>R (Reason):</strong> Because we hold pre-negotiated bilateral agreements with Hoa Phat Steel.</p>
+                                                    <p><strong>E (Example):</strong> At The Hallmark and Song Viet 1-13 projects, zero material price claims occurred.</p>
+                                                    <p><strong>P (Point):</strong> Therefore, the Client enjoys complete financial predictability.</p>
+                                                </div>
+                                                <button onClick={() => speakText("Central Cons guarantees fixed unit rates for the first 12 months because we hold pre-negotiated bilateral agreements with Hoa Phat Steel. At The Hallmark and Song Viet projects, zero material price claims occurred. Therefore, the Client enjoys complete financial predictability.")} className="bg-[#231F20] text-white px-3 py-1.5 rounded-lg font-bold">
+                                                    🔊 Nghe phát âm mẫu PREP
+                                                </button>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Subtab 4: Reading */}
+                                    {activeSubTab === 'reading' && (
+                                        <div className="space-y-4 text-xs">
+                                            <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                                                <h4 className="font-bold text-sm text-[#231F20] mb-2">📖 Tender Specification: Subcontractor Liability & Provisional Sums</h4>
+                                                <p className="text-gray-700 leading-relaxed">
+                                                    "Under FIDIC Red Book Clause 13.5, each Provisional Sum shall only be used, in whole or in part, in accordance with the Engineer's instructions. The Contractor shall produce all invoices and receipts for expenditure."
+                                                </p>
+                                                <button onClick={() => speakText("Under FIDIC Red Book Clause 13.5, each Provisional Sum shall only be used, in whole or in part, in accordance with the Engineer's instructions. The Contractor shall produce all invoices and receipts for expenditure.")} className="mt-2 text-[#C86D7C] font-bold">
+                                                    🔊 Nghe đọc văn bản
+                                                </button>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Subtab 5: Writing */}
+                                    {activeSubTab === 'writing' && (
+                                        <div className="space-y-3 text-xs">
+                                            <h4 className="font-bold text-sm text-[#231F20]">✍️ Commercial Email Draft (Soạn thư bảo vệ đơn giá thầu):</h4>
+                                            <textarea
+                                                value={writingInput}
+                                                onChange={e => setWritingInput(e.target.value)}
+                                                rows="4"
+                                                placeholder="Soạn nháp email giải trình đơn giá thầu gửi CĐT..."
+                                                className="w-full border p-3 rounded-xl text-xs"
+                                            ></textarea>
+                                            <button onClick={analyzeWriting} className="bg-[#C86D7C] text-white px-4 py-2 rounded-lg font-bold">
+                                                ⚡ Phân Tích & Nâng Cấp AI (C1/C2)
+                                            </button>
+                                            {writingFeedback && (
+                                                <div className="p-4 bg-[#FAF5EE] border border-[#C86D7C] rounded-xl space-y-2">
+                                                    <p className="font-bold text-green-700">{writingFeedback.score}</p>
+                                                    <p><strong>Nhận xét:</strong> {writingFeedback.strengths}</p>
+                                                    <p><strong>Bản nâng cấp C1:</strong> <span className="italic">"{writingFeedback.upgradedText}"</span> <button onClick={() => speakText(writingFeedback.upgradedText)} className="text-[#C86D7C]">🔊</button></p>
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+
+                            {/* Meeting Tab */}
+                            {activeTab === 'meeting' && (
+                                <div className="bg-white p-6 rounded-2xl border border-[#E8DFC8] shadow-sm space-y-4 text-xs">
+                                    <h2 className="text-lg font-black text-[#231F20]">1. LOTTE Properties HCMC — The Hallmark Site Visit & VE Discussion</h2>
+                                    <div className="p-4 bg-[#FAF5EE] border border-[#E8DFC8] rounded-xl">
+                                        <p className="font-bold text-[#C86D7C]">Approved Song Viet Plot 1-13 VE Savings: VND 41.22 Billion</p>
+                                        <p className="text-gray-600 mt-1">Structure: -13.44B | Architecture: -12.80B | Waterproofing: -5.42B | Retention Cash Flow: -9.55B</p>
                                     </div>
-                                )}
+                                </div>
+                            )}
 
-                            </div>
+                            {/* JD Tab */}
+                            {activeTab === 'jd' && (
+                                <div className="bg-white p-6 rounded-2xl border border-[#E8DFC8] shadow-sm space-y-4 text-xs">
+                                    <h2 className="text-lg font-black text-[#231F20]">📋 BẢNG MÔ TẢ CÔNG VIỆC (JOB DESCRIPTION - SONG NGỮ)</h2>
+                                    <p><strong>Position:</strong> Head of Estimating & Pricing Division / Deputy Head of Tendering</p>
+                                    <p><strong>Organization:</strong> Central Construction Joint Stock Company (Central Cons)</p>
+                                </div>
+                            )}
 
+                            {/* Studio Tab */}
+                            {activeTab === 'studio' && (
+                                <div className="bg-white p-6 rounded-2xl border border-[#E8DFC8] shadow-sm space-y-4 text-xs">
+                                    <h2 className="text-lg font-black text-[#231F20]">🎙️ Preply Rehearsal Studio (Thu Âm & Đo WPM)</h2>
+                                    <p className="text-gray-600">Đọc thử bài phát biểu 50s trước khi vào lớp với cô Lorraine để khởi động khẩu hình.</p>
+                                </div>
+                            )}
                         </div>
-
-                    </main>
+                    </div>
                 </div>
             );
         };
