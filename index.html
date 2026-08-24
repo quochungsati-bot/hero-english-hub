@@ -29,10 +29,12 @@
             {
                 id: 1,
                 title: "Lesson 01: Introduction to Bidding & Executive Pitch",
-                topic: "Bidding Industry Fundamentals, Tuesday Routines & AI Tools",
+                topic: "Bidding Industry Fundamentals, Monday Routines & AI Tools",
                 scheduleDate: "Monday, Aug 10, 2026 (22:00 – 22:50)",
                 status: "Completed",
                 speakingRatio: "Hero 51% (25m) | Lorraine 49% (24m)",
+                speakingSpeed: "104 WPM",
+                vocabSize: "+375 words",
                 preplyClassUrl: "https://preply.com/edu/english/classroom-v2/10523965",
                 selfIntroPitch: "Hello Teacher Lorraine! I am Hero Kun, currently serving as Deputy Head of Tendering and Head of Estimating at Central Cons. In my role, I spearhead commercial bids for high-rise projects, managing BOQ takeoffs and Value Engineering proposals.",
                 powerWords: [
@@ -40,6 +42,25 @@
                     { word: "Proposal", ipa: "/prəˈpəʊ.zəl/", type: "n", vi: "Hồ sơ đề xuất kỹ thuật & phương án", ex: "Our technical proposal highlights foundation Value Engineering." },
                     { word: "Client / Employer", ipa: "/ˈklaɪ.ənt/", type: "n", vi: "Chủ đầu tư (CĐT)", ex: "The Client requested a strict milestone schedule." },
                     { word: "Deadline", ipa: "/ˈded.laɪn/", type: "n", vi: "Hạn chót nộp thầu", ex: "We request a 3-day extension on the tender submission deadline." }
+                ],
+                grammarFixes: [
+                    { wrong: "...You can teach me normally.", right: "You can teach me as you normally would.", note: "Word order & natural phrasing" },
+                    { wrong: "...It is same.", right: "It's the same.", note: "Article 'the' before 'same'" },
+                    { wrong: "...But have you any question after my lesson.", right: "Do you have any questions after my lesson?", note: "Present simple question with 'Do' & plural 'questions'" },
+                    { wrong: "...So if you need you have to go to bed early to recovery.", right: "So if you need to recover, you should go to bed early.", note: "Infinitive 'to recover' & polite modal 'should'" },
+                    { wrong: "...Do you what do you do.", right: "What do you do?", note: "Clean question phrasing without extra words" }
+                ],
+                synonymUpgrades: [
+                    { user: "normally", better: "typically", vi: "Thông thường / Đặc thù quy trình", ex: "In high-rise construction, Central Cons typically deploys top-down excavation." },
+                    { user: "main (language)", better: "primary", vi: "Chính / Trọng tâm", ex: "The primary objective of our commercial proposal is cost predictability." },
+                    { user: "repair (material)", better: "fix / amend / adjust", vi: "Sửa đổi / Hiệu chỉnh kỹ thuật", ex: "Can our team use AI to adjust and fix that BOQ take-off calculation?" },
+                    { user: "realized (lesson)", better: "understood / grasped", vi: "Thấu hiểu / Nắm bắt bài học", ex: "I fully understood the contract risk allocation after Teacher Lorraine's explanation." }
+                ],
+                pronunciationDrills: [
+                    { word: "pleasure", ipa: "/ˈpleʒ.ər/", note: "Âm /ʒ/ rung mềm vòm họng giữa từ", ex: "It is my pleasure to present our bid today." },
+                    { word: "catch", ipa: "/kætʃ/", note: "Chụm môi bật dứt khoát âm đuôi /tʃ/", ex: "We need to catch up with the concrete pouring schedule." },
+                    { word: "clock", ipa: "/klɒk/", note: "Nối mượt âm đầu /kl/ và bật âm đuôi /k/", ex: "Our site engineering team operates around the clock." },
+                    { word: "thing", ipa: "/θɪŋ/", note: "Đặt đầu lưỡi giữa 2 hàm răng phát âm /θ/ và âm mũi /ŋ/", ex: "The key thing in bidding is managing provisional sums." }
                 ],
                 recapSummary: "Discussed Monday routines, labor shortages in construction, and AI tools (Gemini, Canva) with client data filtering."
             },
@@ -279,175 +300,245 @@
                                         </div>
                                     </div>
 
-                                    {/* 5 Subtabs Navigation */}
-                                    <div className="flex flex-wrap gap-2 border-b border-gray-100 pb-3">
-                                        {[
-                                            { id: 'content', label: '📄 Nội dung bài học (50 Mins)' },
-                                            { id: 'listening', label: '🎧 Nghe (Listening)' },
-                                            { id: 'speaking', label: '🗣️ Nói (Speaking)' },
-                                            { id: 'reading', label: '📖 Đọc (Reading)' },
-                                            { id: 'writing', label: '✍️ Viết (Writing)' }
-                                        ].map(st => (
-                                            <button
-                                                key={st.id}
-                                                onClick={() => setActiveSubTab(st.id)}
-                                                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition subtab-btn ${activeSubTab === st.id ? 'active' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
-                                            >
-                                                {st.label}
-                                            </button>
-                                        ))}
-                                    </div>
-
-                                    {/* Subtab 1: Content */}
-                                    {activeSubTab === 'content' && (
+                                    {/* Special Lesson 1 Preply Insights Box */}
+                                    {selectedLesson.id === 1 && (
                                         <div className="space-y-6 text-sm">
-                                            {/* Pitch Box */}
-                                            {selectedLesson.selfIntroPitch && (
-                                                <div className="bg-[#FAF5EE] p-4 rounded-xl border border-[#E8DFC8]">
-                                                    <div className="flex justify-between items-center mb-2">
-                                                        <h4 className="font-bold text-xs uppercase tracking-wider text-[#C86D7C]">🎙️ Executive Bidding Pitch:</h4>
-                                                        <button onClick={() => speakText(selectedLesson.selfIntroPitch)} className="text-xs bg-[#231F20] text-white px-2.5 py-1 rounded-md hover:bg-black font-semibold flex items-center gap-1">
-                                                            <span>🔊 Nghe đọc mẫu</span>
+                                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                                <div className="p-3 bg-[#FAF5EE] rounded-xl border border-[#E8DFC8] text-center">
+                                                    <p className="text-xs text-gray-500 font-bold">Thời lượng nói</p>
+                                                    <p className="text-sm font-extrabold text-[#C86D7C] mt-1">{selectedLesson.speakingRatio}</p>
+                                                </div>
+                                                <div className="p-3 bg-[#FAF5EE] rounded-xl border border-[#E8DFC8] text-center">
+                                                    <p className="text-xs text-gray-500 font-bold">Tốc độ nói</p>
+                                                    <p className="text-sm font-extrabold text-[#231F20] mt-1">{selectedLesson.speakingSpeed}</p>
+                                                </div>
+                                                <div className="p-3 bg-[#FAF5EE] rounded-xl border border-[#E8DFC8] text-center">
+                                                    <p className="text-xs text-gray-500 font-bold">Vốn từ tích lũy</p>
+                                                    <p className="text-sm font-extrabold text-green-700 mt-1">{selectedLesson.vocabSize}</p>
+                                                </div>
+                                            </div>
+
+                                            {/* Grammar Corrections */}
+                                            <div>
+                                                <h4 className="font-bold text-sm text-[#231F20] mb-3">🛠️ Phân Tích 5 Lỗi Ngữ Pháp & Sửa Lỗi Chi Tiết:</h4>
+                                                <div className="space-y-2.5">
+                                                    {selectedLesson.grammarFixes.map((gf, idx) => (
+                                                        <div key={idx} className="p-3 rounded-xl bg-red-50/50 border border-red-200 text-xs">
+                                                            <p className="text-red-700 line-through">❌ You said: "{gf.wrong}"</p>
+                                                            <p className="text-green-700 font-bold mt-1">👉 Correction: "{gf.right}" <button onClick={() => speakText(gf.right)} className="text-[#C86D7C] ml-1">🔊</button></p>
+                                                            <p className="text-gray-500 mt-0.5 italic">💡 {gf.note}</p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            {/* Synonyms Upgrades */}
+                                            <div>
+                                                <h4 className="font-bold text-sm text-[#231F20] mb-3">💎 Nâng Cấp 4 Cặp Từ Đồng Nghĩa B2/C1:</h4>
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                                                    {selectedLesson.synonymUpgrades.map((su, idx) => (
+                                                        <div key={idx} className="p-3 rounded-xl border border-[#E8DFC8] bg-[#FAF5EE]">
+                                                            <p className="text-gray-500">Từ cũ: <span className="line-through">{su.user}</span></p>
+                                                            <p className="font-extrabold text-[#C86D7C] text-sm mt-0.5">👉 {su.better}</p>
+                                                            <p className="text-gray-700 font-semibold mt-1">{su.vi}</p>
+                                                            <p className="text-gray-600 italic mt-1">"{su.ex}" <button onClick={() => speakText(su.ex)} className="text-[#C86D7C]">🔊</button></p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            {/* Pronunciation Drills */}
+                                            <div>
+                                                <h4 className="font-bold text-sm text-[#231F20] mb-3">🎙️ Chỉnh Phát Âm 4 Từ Trọng Tâm:</h4>
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                                                    {selectedLesson.pronunciationDrills.map((pd, idx) => (
+                                                        <div key={idx} className="p-3 rounded-xl border border-gray-200 bg-white">
+                                                            <div className="flex justify-between items-center">
+                                                                <span className="font-extrabold text-sm text-[#231F20]">{pd.word} <span className="text-gray-500 text-xs">{pd.ipa}</span></span>
+                                                                <button onClick={() => speakText(pd.word + '. ' + pd.ex)} className="text-xs bg-[#FAF5EE] text-[#C86D7C] px-2 py-0.5 rounded border border-[#E8DFC8]">🔊 Nghe</button>
+                                                            </div>
+                                                            <p className="text-gray-600 mt-1">{pd.note}</p>
+                                                            <p className="text-gray-700 italic mt-1 font-medium">"{pd.ex}"</p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* 5 Subtabs Navigation for Lesson 2 & 3 */}
+                                    {selectedLesson.id !== 1 && (
+                                        <div>
+                                            <div className="flex flex-wrap gap-2 border-b border-gray-100 pb-3">
+                                                {[
+                                                    { id: 'content', label: '📄 Nội dung bài học (50 Mins)' },
+                                                    { id: 'listening', label: '🎧 Nghe (Listening)' },
+                                                    { id: 'speaking', label: '🗣️ Nói (Speaking)' },
+                                                    { id: 'reading', label: '📖 Đọc (Reading)' },
+                                                    { id: 'writing', label: '✍️ Viết (Writing)' }
+                                                ].map(st => (
+                                                    <button
+                                                        key={st.id}
+                                                        onClick={() => setActiveSubTab(st.id)}
+                                                        className={`px-3 py-1.5 rounded-lg text-xs font-bold transition subtab-btn ${activeSubTab === st.id ? 'active' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                                                    >
+                                                        {st.label}
+                                                    </button>
+                                                ))}
+                                            </div>
+
+                                            {/* Subtab 1: Content for Lesson 3 */}
+                                            {activeSubTab === 'content' && (
+                                                <div className="space-y-6 text-sm mt-4">
+                                                    {/* Pitch Box */}
+                                                    {selectedLesson.selfIntroPitch && (
+                                                        <div className="bg-[#FAF5EE] p-4 rounded-xl border border-[#E8DFC8]">
+                                                            <div className="flex justify-between items-center mb-2">
+                                                                <h4 className="font-bold text-xs uppercase tracking-wider text-[#C86D7C]">🎙️ Executive Bidding Pitch:</h4>
+                                                                <button onClick={() => speakText(selectedLesson.selfIntroPitch)} className="text-xs bg-[#231F20] text-white px-2.5 py-1 rounded-md hover:bg-black font-semibold flex items-center gap-1">
+                                                                    <span>🔊 Nghe đọc mẫu</span>
+                                                                </button>
+                                                            </div>
+                                                            <p className="text-xs text-gray-800 italic leading-relaxed">"{selectedLesson.selfIntroPitch}"</p>
+                                                        </div>
+                                                    )}
+
+                                                    {/* Power Words Table */}
+                                                    {selectedLesson.powerWords && (
+                                                        <div>
+                                                            <h4 className="font-bold text-sm text-[#231F20] mb-3 flex items-center gap-2">
+                                                                <span>💎 Key Vocabulary & Power Phrases (B2 - C1):</span>
+                                                            </h4>
+                                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                                                {selectedLesson.powerWords.map((pw, idx) => (
+                                                                    <div key={idx} className="p-3 rounded-xl border border-gray-200 bg-white shadow-sm hover:border-[#C86D7C] transition">
+                                                                        <div className="flex justify-between items-start">
+                                                                            <div>
+                                                                                <span className="font-extrabold text-[#231F20] text-sm">{pw.word}</span>
+                                                                                <span className="text-xs text-gray-500 ml-1.5">{pw.ipa}</span>
+                                                                            </div>
+                                                                            <button onClick={() => speakText(pw.word + '. ' + pw.ex)} className="text-xs text-[#C86D7C] hover:text-black">🔊</button>
+                                                                        </div>
+                                                                        <p className="text-xs font-semibold text-[#C86D7C] mt-1">{pw.vi}</p>
+                                                                        <p className="text-[11px] text-gray-600 mt-1 italic">"{pw.ex}"</p>
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    )}
+
+                                                    {/* Grammar Focus */}
+                                                    {selectedLesson.grammarFocus && (
+                                                        <div>
+                                                            <h4 className="font-bold text-sm text-[#231F20] mb-3">📐 Grammar Focus for Commercial Bidding:</h4>
+                                                            <div className="space-y-2">
+                                                                {selectedLesson.grammarFocus.map((g, idx) => (
+                                                                    <div key={idx} className="p-3 rounded-xl bg-gray-50 border border-gray-200">
+                                                                        <p className="font-bold text-xs text-[#231F20]">{g.title}</p>
+                                                                        <p className="text-xs text-gray-600 mt-0.5">📐 <strong>Công thức:</strong> <code className="bg-white px-1.5 py-0.5 rounded text-[#C86D7C] font-semibold">{g.formula}</code></p>
+                                                                        <p className="text-xs text-gray-700 mt-1 italic">💡 "{g.example}" <button onClick={() => speakText(g.example)} className="text-xs text-[#C86D7C] ml-1">🔊</button></p>
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    )}
+
+                                                    {/* Anticipated Q&A */}
+                                                    {selectedLesson.anticipatedQA && (
+                                                        <div>
+                                                            <h4 className="font-bold text-sm text-[#231F20] mb-3">❓ Anticipated High-Pressure Q&A with Client:</h4>
+                                                            <div className="space-y-3">
+                                                                {selectedLesson.anticipatedQA.map((qa, idx) => (
+                                                                    <div key={idx} className="p-3.5 rounded-xl border border-[#E8DFC8] bg-[#FAF5EE]">
+                                                                        <p className="font-bold text-xs text-[#231F20]">Q: "{qa.q}" <button onClick={() => speakText(qa.q)} className="text-xs text-[#C86D7C]">🔊</button></p>
+                                                                        <p className="text-xs text-gray-700 mt-1">A: "{qa.a}" <button onClick={() => speakText(qa.a)} className="text-xs text-[#C86D7C]">🔊</button></p>
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            )}
+
+                                            {/* Subtab 2: Listening */}
+                                            {activeSubTab === 'listening' && (
+                                                <div className="space-y-4 text-xs mt-4">
+                                                    <div className="bg-[#FAF5EE] p-4 rounded-xl border border-[#E8DFC8]">
+                                                        <h4 className="font-bold text-sm text-[#231F20] mb-2">🎧 Commercial Dialogue: Client Procurement Review</h4>
+                                                        <p className="text-gray-700 italic leading-relaxed">
+                                                            "Client: Hero, why is your concrete unit rate priced at $120 per cubic meter?<br/>
+                                                            Hero: Our unit rate includes high-early-strength additives to guarantee rapid 3-day top-down cycle casting without cracks."
+                                                        </p>
+                                                        <button onClick={() => speakText("Client: Hero, why is your concrete unit rate priced at 120 dollars per cubic meter? Hero: Our unit rate includes high-early-strength additives to guarantee rapid 3-day top-down cycle casting without cracks.")} className="mt-3 bg-[#231F20] text-white px-3 py-1.5 rounded-lg font-bold">
+                                                            🔊 Nghe Toàn Bộ Hội Thoại
                                                         </button>
                                                     </div>
-                                                    <p className="text-xs text-gray-800 italic leading-relaxed">"{selectedLesson.selfIntroPitch}"</p>
-                                                </div>
-                                            )}
-
-                                            {/* Power Words Table */}
-                                            {selectedLesson.powerWords && (
-                                                <div>
-                                                    <h4 className="font-bold text-sm text-[#231F20] mb-3 flex items-center gap-2">
-                                                        <span>💎 Key Vocabulary & Power Phrases (B2 - C1):</span>
-                                                    </h4>
-                                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                                        {selectedLesson.powerWords.map((pw, idx) => (
-                                                            <div key={idx} className="p-3 rounded-xl border border-gray-200 bg-white shadow-sm hover:border-[#C86D7C] transition">
-                                                                <div className="flex justify-between items-start">
-                                                                    <div>
-                                                                        <span className="font-extrabold text-[#231F20] text-sm">{pw.word}</span>
-                                                                        <span className="text-xs text-gray-500 ml-1.5">{pw.ipa}</span>
-                                                                    </div>
-                                                                    <button onClick={() => speakText(pw.word + '. ' + pw.ex)} className="text-xs text-[#C86D7C] hover:text-black">🔊</button>
-                                                                </div>
-                                                                <p className="text-xs font-semibold text-[#C86D7C] mt-1">{pw.vi}</p>
-                                                                <p className="text-[11px] text-gray-600 mt-1 italic">"{pw.ex}"</p>
-                                                            </div>
-                                                        ))}
+                                                    <div className="p-4 border rounded-xl bg-white space-y-2">
+                                                        <h4 className="font-bold text-sm">✍️ Dictation Challenge (Nghe chép chính tả):</h4>
+                                                        <p className="text-gray-600">Điền từ còn thiếu: <em>"Central Cons provides a transparent _______ breakdown for all structural packages."</em></p>
+                                                        <div className="flex gap-2">
+                                                            <input value={dictationInput} onChange={e => setDictationInput(e.target.value)} placeholder="Nhập từ vựng..." className="border p-2 rounded-lg flex-1 text-xs" />
+                                                            <button onClick={checkDictation} className="bg-[#C86D7C] text-white px-4 py-2 rounded-lg font-bold">Kiểm tra</button>
+                                                        </div>
+                                                        {dictationResult && <p className="font-bold text-[#C86D7C]">{dictationResult}</p>}
                                                     </div>
                                                 </div>
                                             )}
 
-                                            {/* Grammar Focus */}
-                                            {selectedLesson.grammarFocus && (
-                                                <div>
-                                                    <h4 className="font-bold text-sm text-[#231F20] mb-3">📐 Grammar Focus for Commercial Bidding:</h4>
-                                                    <div className="space-y-2">
-                                                        {selectedLesson.grammarFocus.map((g, idx) => (
-                                                            <div key={idx} className="p-3 rounded-xl bg-gray-50 border border-gray-200">
-                                                                <p className="font-bold text-xs text-[#231F20]">{g.title}</p>
-                                                                <p className="text-xs text-gray-600 mt-0.5">📐 <strong>Công thức:</strong> <code className="bg-white px-1.5 py-0.5 rounded text-[#C86D7C] font-semibold">{g.formula}</code></p>
-                                                                <p className="text-xs text-gray-700 mt-1 italic">💡 "{g.example}" <button onClick={() => speakText(g.example)} className="text-xs text-[#C86D7C] ml-1">🔊</button></p>
-                                                            </div>
-                                                        ))}
+                                            {/* Subtab 3: Speaking */}
+                                            {activeSubTab === 'speaking' && (
+                                                <div className="space-y-4 text-xs mt-4">
+                                                    <div className="bg-white p-4 border rounded-xl space-y-3">
+                                                        <h4 className="font-bold text-sm text-[#231F20]">🗣️ Speaking Reflex (PREP Framework):</h4>
+                                                        <div className="p-3 bg-gray-50 rounded-lg space-y-1">
+                                                            <p><strong>P (Point):</strong> Central Cons guarantees fixed unit rates for the first 12 months.</p>
+                                                            <p><strong>R (Reason):</strong> Because we hold pre-negotiated bilateral agreements with Hoa Phat Steel.</p>
+                                                            <p><strong>E (Example):</strong> At The Hallmark and Song Viet 1-13 projects, zero material price claims occurred.</p>
+                                                            <p><strong>P (Point):</strong> Therefore, the Client enjoys complete financial predictability.</p>
+                                                        </div>
+                                                        <button onClick={() => speakText("Central Cons guarantees fixed unit rates for the first 12 months because we hold pre-negotiated bilateral agreements with Hoa Phat Steel. At The Hallmark and Song Viet projects, zero material price claims occurred. Therefore, the Client enjoys complete financial predictability.")} className="bg-[#231F20] text-white px-3 py-1.5 rounded-lg font-bold">
+                                                            🔊 Nghe phát âm mẫu PREP
+                                                        </button>
                                                     </div>
                                                 </div>
                                             )}
 
-                                            {/* Anticipated Q&A */}
-                                            {selectedLesson.anticipatedQA && (
-                                                <div>
-                                                    <h4 className="font-bold text-sm text-[#231F20] mb-3">❓ Anticipated High-Pressure Q&A with Client:</h4>
-                                                    <div className="space-y-3">
-                                                        {selectedLesson.anticipatedQA.map((qa, idx) => (
-                                                            <div key={idx} className="p-3.5 rounded-xl border border-[#E8DFC8] bg-[#FAF5EE]">
-                                                                <p className="font-bold text-xs text-[#231F20]">Q: "{qa.q}" <button onClick={() => speakText(qa.q)} className="text-xs text-[#C86D7C]">🔊</button></p>
-                                                                <p className="text-xs text-gray-700 mt-1">A: "{qa.a}" <button onClick={() => speakText(qa.a)} className="text-xs text-[#C86D7C]">🔊</button></p>
-                                                            </div>
-                                                        ))}
+                                            {/* Subtab 4: Reading */}
+                                            {activeSubTab === 'reading' && (
+                                                <div className="space-y-4 text-xs mt-4">
+                                                    <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                                                        <h4 className="font-bold text-sm text-[#231F20] mb-2">📖 Tender Specification: Subcontractor Liability & Provisional Sums</h4>
+                                                        <p className="text-gray-700 leading-relaxed">
+                                                            "Under FIDIC Red Book Clause 13.5, each Provisional Sum shall only be used, in whole or in part, in accordance with the Engineer's instructions. The Contractor shall produce all invoices and receipts for expenditure."
+                                                        </p>
+                                                        <button onClick={() => speakText("Under FIDIC Red Book Clause 13.5, each Provisional Sum shall only be used, in whole or in part, in accordance with the Engineer's instructions. The Contractor shall produce all invoices and receipts for expenditure.")} className="mt-2 text-[#C86D7C] font-bold">
+                                                            🔊 Nghe đọc văn bản
+                                                        </button>
                                                     </div>
                                                 </div>
                                             )}
-                                        </div>
-                                    )}
 
-                                    {/* Subtab 2: Listening */}
-                                    {activeSubTab === 'listening' && (
-                                        <div className="space-y-4 text-xs">
-                                            <div className="bg-[#FAF5EE] p-4 rounded-xl border border-[#E8DFC8]">
-                                                <h4 className="font-bold text-sm text-[#231F20] mb-2">🎧 Commercial Dialogue: Client Procurement Review</h4>
-                                                <p className="text-gray-700 italic leading-relaxed">
-                                                    "Client: Hero, why is your concrete unit rate priced at $120 per cubic meter?<br/>
-                                                    Hero: Our unit rate includes high-early-strength additives to guarantee rapid 3-day top-down cycle casting without cracks."
-                                                </p>
-                                                <button onClick={() => speakText("Client: Hero, why is your concrete unit rate priced at 120 dollars per cubic meter? Hero: Our unit rate includes high-early-strength additives to guarantee rapid 3-day top-down cycle casting without cracks.")} className="mt-3 bg-[#231F20] text-white px-3 py-1.5 rounded-lg font-bold">
-                                                    🔊 Nghe Toàn Bộ Hội Thoại
-                                                </button>
-                                            </div>
-                                            <div className="p-4 border rounded-xl bg-white space-y-2">
-                                                <h4 className="font-bold text-sm">✍️ Dictation Challenge (Nghe chép chính tả):</h4>
-                                                <p className="text-gray-600">Điền từ còn thiếu: <em>"Central Cons provides a transparent _______ breakdown for all structural packages."</em></p>
-                                                <div className="flex gap-2">
-                                                    <input value={dictationInput} onChange={e => setDictationInput(e.target.value)} placeholder="Nhập từ vựng..." className="border p-2 rounded-lg flex-1 text-xs" />
-                                                    <button onClick={checkDictation} className="bg-[#C86D7C] text-white px-4 py-2 rounded-lg font-bold">Kiểm tra</button>
-                                                </div>
-                                                {dictationResult && <p className="font-bold text-[#C86D7C]">{dictationResult}</p>}
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    {/* Subtab 3: Speaking */}
-                                    {activeSubTab === 'speaking' && (
-                                        <div className="space-y-4 text-xs">
-                                            <div className="bg-white p-4 border rounded-xl space-y-3">
-                                                <h4 className="font-bold text-sm text-[#231F20]">🗣️ Speaking Reflex (PREP Framework):</h4>
-                                                <div className="p-3 bg-gray-50 rounded-lg space-y-1">
-                                                    <p><strong>P (Point):</strong> Central Cons guarantees fixed unit rates for the first 12 months.</p>
-                                                    <p><strong>R (Reason):</strong> Because we hold pre-negotiated bilateral agreements with Hoa Phat Steel.</p>
-                                                    <p><strong>E (Example):</strong> At The Hallmark and Song Viet 1-13 projects, zero material price claims occurred.</p>
-                                                    <p><strong>P (Point):</strong> Therefore, the Client enjoys complete financial predictability.</p>
-                                                </div>
-                                                <button onClick={() => speakText("Central Cons guarantees fixed unit rates for the first 12 months because we hold pre-negotiated bilateral agreements with Hoa Phat Steel. At The Hallmark and Song Viet projects, zero material price claims occurred. Therefore, the Client enjoys complete financial predictability.")} className="bg-[#231F20] text-white px-3 py-1.5 rounded-lg font-bold">
-                                                    🔊 Nghe phát âm mẫu PREP
-                                                </button>
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    {/* Subtab 4: Reading */}
-                                    {activeSubTab === 'reading' && (
-                                        <div className="space-y-4 text-xs">
-                                            <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
-                                                <h4 className="font-bold text-sm text-[#231F20] mb-2">📖 Tender Specification: Subcontractor Liability & Provisional Sums</h4>
-                                                <p className="text-gray-700 leading-relaxed">
-                                                    "Under FIDIC Red Book Clause 13.5, each Provisional Sum shall only be used, in whole or in part, in accordance with the Engineer's instructions. The Contractor shall produce all invoices and receipts for expenditure."
-                                                </p>
-                                                <button onClick={() => speakText("Under FIDIC Red Book Clause 13.5, each Provisional Sum shall only be used, in whole or in part, in accordance with the Engineer's instructions. The Contractor shall produce all invoices and receipts for expenditure.")} className="mt-2 text-[#C86D7C] font-bold">
-                                                    🔊 Nghe đọc văn bản
-                                                </button>
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    {/* Subtab 5: Writing */}
-                                    {activeSubTab === 'writing' && (
-                                        <div className="space-y-3 text-xs">
-                                            <h4 className="font-bold text-sm text-[#231F20]">✍️ Commercial Email Draft (Soạn thư bảo vệ đơn giá thầu):</h4>
-                                            <textarea
-                                                value={writingInput}
-                                                onChange={e => setWritingInput(e.target.value)}
-                                                rows="4"
-                                                placeholder="Soạn nháp email giải trình đơn giá thầu gửi CĐT..."
-                                                className="w-full border p-3 rounded-xl text-xs"
-                                            ></textarea>
-                                            <button onClick={analyzeWriting} className="bg-[#C86D7C] text-white px-4 py-2 rounded-lg font-bold">
-                                                ⚡ Phân Tích & Nâng Cấp AI (C1/C2)
-                                            </button>
-                                            {writingFeedback && (
-                                                <div className="p-4 bg-[#FAF5EE] border border-[#C86D7C] rounded-xl space-y-2">
-                                                    <p className="font-bold text-green-700">{writingFeedback.score}</p>
-                                                    <p><strong>Nhận xét:</strong> {writingFeedback.strengths}</p>
-                                                    <p><strong>Bản nâng cấp C1:</strong> <span className="italic">"{writingFeedback.upgradedText}"</span> <button onClick={() => speakText(writingFeedback.upgradedText)} className="text-[#C86D7C]">🔊</button></p>
+                                            {/* Subtab 5: Writing */}
+                                            {activeSubTab === 'writing' && (
+                                                <div className="space-y-3 text-xs mt-4">
+                                                    <h4 className="font-bold text-sm text-[#231F20]">✍️ Commercial Email Draft (Soạn thư bảo vệ đơn giá thầu):</h4>
+                                                    <textarea
+                                                        value={writingInput}
+                                                        onChange={e => setWritingInput(e.target.value)}
+                                                        rows="4"
+                                                        placeholder="Soạn nháp email giải trình đơn giá thầu gửi CĐT..."
+                                                        className="w-full border p-3 rounded-xl text-xs"
+                                                    ></textarea>
+                                                    <button onClick={analyzeWriting} className="bg-[#C86D7C] text-white px-4 py-2 rounded-lg font-bold">
+                                                        ⚡ Phân Tích & Nâng Cấp AI (C1/C2)
+                                                    </button>
+                                                    {writingFeedback && (
+                                                        <div className="p-4 bg-[#FAF5EE] border border-[#C86D7C] rounded-xl space-y-2">
+                                                            <p className="font-bold text-green-700">{writingFeedback.score}</p>
+                                                            <p><strong>Nhận xét:</strong> {writingFeedback.strengths}</p>
+                                                            <p><strong>Bản nâng cấp C1:</strong> <span className="italic">"{writingFeedback.upgradedText}"</span> <button onClick={() => speakText(writingFeedback.upgradedText)} className="text-[#C86D7C]">🔊</button></p>
+                                                        </div>
+                                                    )}
                                                 </div>
                                             )}
                                         </div>
