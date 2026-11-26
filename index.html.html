@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Executive English &amp; Bidding Intelligence Hub (B1 → C2)</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+    .dark-mode { background-color: #0b1120; color: #f1f5f9; }
+    .dark-mode .surface { background-color: #111827; border-color: #1f2937; color: #f1f5f9; }
+    .dark-mode .surface-muted { background-color: #1e293b; border-color: #334155; color: #e2e8f0; }
+    .dark-mode .text-muted { color: #94a3b8; }
+    .light-mode { background-color: #f8fafc; color: #0f172a; }
+    .light-mode .surface { background-color: #ffffff; border-color: #e2e8f0; color: #0f172a; }
+    .light-mode .surface-muted { background-color: #f1f5f9; border-color: #e2e8f0; color: #334155; }
+    .light-mode .text-muted { color: #64748b; }
+    .perspective-1000 { perspective: 1000px; }
+    .flip-inner { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; position: relative; }
+    .flipped .flip-inner { transform: rotateY(180deg); }
+    .flip-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+    .flip-back { transform: rotateY(180deg); }
+    mark.kw { background-color: #fef08a; color: #0f172a; padding: 0 3px; border-radius: 3px; font-weight: 600; }
+  </style>
+</head>
+<body class="light-mode min-h-screen flex flex-col transition-colors duration-200">
+  <!-- PIN Lock Overlay -->
+  <div id="pin-overlay" class="fixed inset-0 z-50 hidden bg-slate-950/95 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl">
+      <div class="w-12 h-12 mx-auto rounded-xl bg-teal-500/20 border border-teal-400/40 flex items-center justify-center text-teal-300 font-extrabold text-xl">🔒</div>
+      <div>
+        <h2 class="text-lg font-bold text-white">Executive English Hub Locked</h2>
+        <p class="text-xs text-slate-400 mt-1">Nhập mã PIN cá nhân để mở khóa (Mặc định: <span class="font-mono text-teal-300">2026</span>)</p>
+      </div>
+      <form id="pin-form" class="space-y-3">
+        <input id="pin-input" type="password" maxlength="8" placeholder="Nhập mã PIN..." class="w-full text-center tracking-widest text-lg font-bold px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500" required />
+        <p id="pin-error" class="hidden text-xs text-rose-400 font-medium">Mã PIN không chính xác.</p>
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-sm font-semibold transition">Mở khóa</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-sm shadow">
+          GC
+        </div>
+        <div>
+          <h1 class="text-sm sm:text-base font-bold tracking-tight">Executive English &amp; Bidding Intelligence</h1>
+          <p class="text-[11px] text-slate-400">Lộ trình B1 → B2 → C1/C2 Giám đốc Đấu thầu Quốc tế</p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+        <span class="px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-400/30 text-amber-300 text-xs font-bold">
+          🔥 <span id="streak-count">7</span> ngày
+        </span>
+        <button id="btn-theme" type="button" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-200 border border-slate-700 transition" title="Chuyển Dark/Light Mode">
+          🌙 Dark
+        </button>
+        <button id="btn-lock-app" type="button" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-200 border border-slate-700 transition" title="Khóa màn hình PIN">
+          🔒 Khóa
+        </button>
+        <button id="btn-sync-header" type="button" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-200 border border-slate-700 transition flex items-center gap-1.5">
+          <span id="sync-dot" class="w-2 h-2 rounded-full bg-amber-400"></span>
+          <span id="sync-label">Demo 5-Tab</span>
+        </button>
+        <button id="btn-open-api" type="button" class="px-3 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-xs font-semibold text-white transition">
+          ⚙ API Sheet
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <div class="surface border-b sticky top-[57px] z-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex items-center gap-1.5 overflow-x-auto">
+      <button data-mod="preply" class="mod-btn shrink-0 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition bg-slate-900 text-white">
+        1. Daily Small Talk &amp; Preply Hub
+      </button>
+      <button data-mod="roadmap" class="mod-btn shrink-0 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition surface-muted hover:opacity-80">
+        2. Executive Roadmap
+      </button>
+      <button data-mod="simlab" class="mod-btn shrink-0 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition surface-muted hover:opacity-80">
+        3. Work Simulation Lab
+      </button>
+      <button data-mod="studio" class="mod-btn shrink-0 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition surface-muted hover:opacity-80">
+        4. 4-Skill Studio
+      </button>
+      <button data-mod="kb" class="mod-btn shrink-0 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition surface-muted hover:opacity-80">
+        5. GC Knowledge Hub (3D)
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Workspace -->
+  <main class="max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 flex-1 space-y-6">
+    <!-- Global NDA Reminder -->
+    <div class="bg-amber-50 border border-amber-200 text-amber-900 rounded-xl px-4 py-2.5 flex items-center justify-between gap-3 text-xs">
+      <div class="flex items-center gap-2">
+        <span class="font-bold">🛡 Quy tắc NDA bắt buộc:</span>
+        <span>Luôn ẩn danh tên dự án, tên Chủ đầu tư, đơn giá và địa điểm thực tế trước khi nhập liệu hoặc gửi AI chấm bài.</span>
+      </div>
+      <span class="hidden sm:inline font-mono text-[11px] bg-amber-100 px-2 py-0.5 rounded font-semibold">Single Source: Bidding_English_DB</span>
+    </div>
+
+    <!-- ==================== MODULE 5 (HOME): PREPLY BRIDGE & 5-MIN SMALL TALK ==================== -->
+    <section id="mod-preply" class="space-y-6">
+      <!-- Top Row: 5-Min Daily Small Talk (05_Daily_Briefing) + 50-Min Lesson Generator -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <!-- 5-Min Daily Small Talk -->
+        <div class="lg:col-span-7 surface rounded-2xl border p-5 shadow-sm space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h2 class="text-base font-bold">5-Min Daily Small Talk <span class="text-xs font-mono text-teal-600">(05_Daily_Briefing)</span></h2>
+              <p class="text-xs text-muted">Nghe mẫu tốc độ 0.9x và đọc đuổi (Shadowing) để mở màn cuộc họp FDI</p>
+            </div>
+            <button id="btn-add-briefing" type="button" class="px-3 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-white text-xs font-semibold">+ Thêm tin mới</button>
+          </div>
+          <div id="briefing-list" class="space-y-3"></div>
+        </div>
+
+        <!-- Auto 50-Min Preply Lesson Generator -->
+        <div class="lg:col-span-5 surface rounded-2xl border p-5 shadow-sm flex flex-col justify-between gap-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <h2 class="text-base font-bold">Preply 50-Min Lesson Builder</h2>
+              <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-indigo-100 text-indigo-800">70% Student Talk</span>
+            </div>
+            <p class="text-xs text-muted">Tự động gom tình huống Pending (<code class="font-mono">03_Work_Agenda</code>) + 3 lỗi chưa thuộc (<code class="font-mono">02_Mistake_Bank</code>) thành giáo án gửi giáo viên.</p>
+            <textarea id="preply-plan-box" rows="10" readonly class="w-full p-3 rounded-xl surface-muted border text-xs font-mono leading-relaxed focus:outline-none"></textarea>
+          </div>
+          <div class="flex gap-2">
+            <button id="btn-regen-plan" type="button" class="px-3.5 py-2 rounded-xl surface-muted border text-xs font-semibold hover:opacity-80">↻ Làm mới</button>
+            <button id="btn-copy-plan" type="button" class="flex-1 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold transition">📋 1-Click Copy gửi Ms. Lorraine</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mistake Bank (02_Mistake_Bank) 3-column table -->
+      <div class="surface rounded-2xl border p-5 shadow-sm space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h2 class="text-base font-bold">Ngân hàng Lỗi sai B1 → B2/C1 <span class="text-xs font-mono text-teal-600">(02_Mistake_Bank)</span></h2>
+            <p class="text-xs text-muted">Bấm trạng thái để đồng bộ trực tiếp lên Google Sheet</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <select id="mistake-status-filter" class="px-3 py-1.5 rounded-lg border border-slate-300 text-xs bg-white text-slate-800">
+              <option value="all">Tất cả trạng thái</option>
+              <option value="Learning">Đang ôn (Learning)</option>
+              <option value="Mastered">Đã thuộc (Mastered)</option>
+            </select>
+            <button id="btn-add-mistake" type="button" class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold">+ Thêm lỗi mới</button>
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead>
+              <tr class="surface-muted border-b">
+                <th class="py-2.5 px-3 font-bold">Câu nói sai (Original)</th>
+                <th class="py-2.5 px-3 font-bold">Câu chuẩn B2/C1</th>
+                <th class="py-2.5 px-3 font-bold">Ngữ cảnh &amp; Trạng thái</th>
+              </tr>
+            </thead>
+            <tbody id="mistake-table-body" class="divide-y divide-slate-200"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MODULE 1: EXECUTIVE ROADMAP ==================== -->
+    <section id="mod-roadmap" class="hidden space-y-5">
+      <div class="surface rounded-2xl border p-5 shadow-sm flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 class="text-lg font-bold">Lộ trình Thăng hạng Giám đốc Đấu thầu Quốc tế</h2>
+          <p class="text-xs text-muted mt-0.5">Nhấn vào từng bài học để chuyển trạng thái: Chưa mở → Đang học → Hoàn thành</p>
+        </div>
+        <div class="w-full sm:w-64">
+          <div class="flex justify-between text-xs font-bold mb-1">
+            <span>Tiến độ tổng thể</span>
+            <span id="roadmap-pct" class="text-teal-600">0%</span>
+          </div>
+          <div class="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
+            <div id="roadmap-bar" class="bg-gradient-to-r from-teal-500 to-indigo-600 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+      <div id="roadmap-stages" class="grid grid-cols-1 lg:grid-cols-3 gap-5"></div>
+    </section>
+
+    <!-- ==================== MODULE 2: WORK-FIRST SIMULATION LAB ==================== -->
+    <section id="mod-simlab" class="hidden space-y-5">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div class="flex flex-wrap gap-2">
+          <button data-sim="pretender" class="sim-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-teal-600 text-white">1. Pre-Tender &amp; Site Visit</button>
+          <button data-sim="interview" class="sim-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold surface border hover:opacity-80">2. Tender Interview (VE)</button>
+          <button data-sim="negotiation" class="sim-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold surface border hover:opacity-80">3. Contract Negotiation (FIDIC)</button>
+        </div>
+        <button id="btn-add-agenda" type="button" class="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold">+ Thêm tình huống (03_Work_Agenda)</button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <!-- Interactive Roleplay + PREP Timer -->
+        <div class="lg:col-span-7 surface rounded-2xl border p-5 shadow-sm space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3">
+            <div>
+              <span id="sim-stage-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-teal-100 text-teal-800">Pre-Tender</span>
+              <h3 id="sim-title" class="text-base font-bold mt-1"></h3>
+            </div>
+            <div class="flex items-center gap-2 surface-muted px-3 py-1.5 rounded-xl border">
+              <span id="sim-timer" class="font-mono text-base font-extrabold text-indigo-600">02:00</span>
+              <button id="btn-timer-start" type="button" class="px-2.5 py-1 rounded-lg bg-indigo-600 text-white text-xs font-semibold">Bắt đầu</button>
+              <button id="btn-timer-reset" type="button" class="px-2 py-1 rounded-lg bg-slate-200 text-slate-700 text-xs font-semibold">↺</button>
+            </div>
+          </div>
+
+          <div class="bg-rose-50 border border-rose-200 rounded-xl p-4 space-y-1.5">
+            <div class="flex items-center justify-between">
+              <p class="text-xs font-bold text-rose-800 uppercase">Câu hỏi xoáy từ Chủ đầu tư FDI / PMCM:</p>
+              <button id="btn-speak-sim-q" type="button" class="px-2 py-1 rounded bg-rose-100 hover:bg-rose-200 text-rose-800 text-xs font-semibold">🔊 Nghe câu hỏi</button>
+            </div>
+            <p id="sim-question" class="text-sm font-semibold text-rose-950"></p>
+          </div>
+
+          <!-- Level Switcher B1 -> B2 -> C1 -->
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between">
+              <p class="text-xs font-bold text-muted uppercase">So sánh cách trả lời theo khung PREP:</p>
+              <div class="flex gap-1">
+                <button data-lvl="b1" class="lvl-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-200 text-slate-700">B1 (Cơ bản)</button>
+                <button data-lvl="b2" class="lvl-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-teal-600 text-white">B2 (Rõ ràng)</button>
+                <button data-lvl="c1" class="lvl-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-200 text-slate-700">C1 (Giám đốc)</button>
+              </div>
+            </div>
+            <div class="surface-muted border rounded-xl p-4 space-y-2">
+              <p id="sim-answer-text" class="text-sm leading-relaxed font-medium"></p>
+              <div class="flex items-center justify-between pt-1">
+                <span id="sim-answer-tip" class="text-xs text-teal-700 font-medium"></span>
+                <button id="btn-speak-sim-a" type="button" class="px-2.5 py-1 rounded-lg bg-teal-600 text-white text-xs font-semibold">🔊 Nghe mẫu</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Work Agenda from 03_Work_Agenda -->
+        <div class="lg:col-span-5 surface rounded-2xl border p-5 shadow-sm space-y-3">
+          <h3 class="text-base font-bold">Lịch họp &amp; Tình huống thực tế <span class="text-xs font-mono text-teal-600">(03_Work_Agenda)</span></h3>
+          <div id="agenda-list" class="space-y-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MODULE 3: 4-SKILL INTERACTIVE STUDIO ==================== -->
+    <section id="mod-studio" class="hidden space-y-5">
+      <div class="flex flex-wrap gap-2">
+        <button data-skill="listening" class="skill-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 text-white">🎧 Listening</button>
+        <button data-skill="reading" class="skill-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold surface border">📄 Reading (Split-Screen)</button>
+        <button data-skill="writing" class="skill-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold surface border">✍️ Writing (RFI / Email)</button>
+        <button data-skill="speaking" class="skill-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold surface border">🎙 Speaking Studio</button>
+      </div>
+
+      <!-- Listening -->
+      <div id="skill-listening" class="surface rounded-2xl border p-5 shadow-sm space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-3">
+          <div>
+            <h3 class="text-base font-bold">Listening Drill: FDI Pre-Tender Briefing (Data Center Package)</h3>
+            <p class="text-xs text-muted">Tốc độ mặc định 0.9x • Bật Transcript để xem từ khóa tô sáng</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <select id="listen-speed" class="px-2.5 py-1.5 rounded-lg border border-slate-300 text-xs bg-white text-slate-800">
+              <option value="0.75">0.75x</option>
+              <option value="0.9" selected>0.9x (Mặc định)</option>
+              <option value="1.0">1.0x</option>
+              <option value="1.25">1.25x</option>
+            </select>
+            <button id="btn-listen-play" type="button" class="px-3.5 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-white text-xs font-semibold">▶ Phát Audio</button>
+            <button id="btn-listen-replay" type="button" class="px-3 py-1.5 rounded-lg surface-muted border text-xs font-semibold">↺ Tua lại (-5s)</button>
+            <button id="btn-toggle-transcript" type="button" class="px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-700 border border-indigo-200 text-xs font-semibold">Hiện Transcript</button>
+          </div>
+        </div>
+
+        <div id="listen-transcript" class="hidden surface-muted border rounded-xl p-4 text-sm leading-relaxed">
+          "Good morning everyone. For this <mark class="kw">Design and Build</mark> industrial facility, our primary concern is the <mark class="kw">critical path</mark> for deep basement excavation. Bidders must submit all <mark class="kw">RFI clarifications</mark> by Friday, and any <mark class="kw">Value Engineering</mark> proposal must clearly prove zero compromise on <mark class="kw">MEP redundancy</mark> and <mark class="kw">liquidated damages</mark> milestones."
+        </div>
+
+        <div class="space-y-3">
+          <p class="text-xs font-bold uppercase text-muted">Bài tập kiểm tra nghe bắt từ khóa:</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="surface-muted border rounded-xl p-3.5 space-y-2">
+              <p class="text-xs font-semibold">1. Điều kiện bắt buộc nếu nhà thầu đề xuất Value Engineering (VE)?</p>
+              <select id="lq1" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs bg-white text-slate-800">
+                <option value="">-- Chọn đáp án --</option>
+                <option value="a">Giảm tối thiểu 20% giá thầu</option>
+                <option value="b">Không làm giảm độ dự phòng cơ điện (MEP redundancy) và mốc tiến độ</option>
+                <option value="c">Kéo dài thêm 3 tháng thi công tầng hầm</option>
+              </select>
+            </div>
+            <div class="surface-muted border rounded-xl p-3.5 space-y-2">
+              <p class="text-xs font-semibold">2. Hạng mục nào đang nằm trên đường găng (critical path) của dự án?</p>
+              <select id="lq2" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs bg-white text-slate-800">
+                <option value="">-- Chọn đáp án --</option>
+                <option value="a">Đào đất và thi công tầng hầm sâu (deep basement excavation)</option>
+                <option value="b">Sơn hoàn thiện mặt ngoài</option>
+                <option value="c">Lắp đặt cảnh quan cây xanh</option>
+              </select>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <button id="btn-check-listen" type="button" class="px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-semibold">Kiểm tra đáp án</button>
+            <span id="listen-result" class="text-xs font-bold"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reading (Split Screen) -->
+      <div id="skill-reading" class="hidden grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <div class="surface rounded-2xl border p-5 shadow-sm space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold">Văn bản HSMT / FIDIC Giả lập (Đã ẩn danh NDA)</h3>
+            <button id="btn-toggle-highlights" type="button" class="px-2.5 py-1 rounded-lg bg-amber-100 text-amber-900 text-xs font-semibold">✨ Bật/Tắt Highlight</button>
+          </div>
+          <div id="reading-passage" class="surface-muted border rounded-xl p-4 text-xs sm:text-sm leading-relaxed space-y-3">
+            <p><strong>Clause 8.7 — Delay Damages:</strong> If the Contractor fails to comply with the Time for Completion, the Contractor shall pay delay damages at <span class="hl">0.1% of the Accepted Contract Amount per day</span>, capped at <span class="hl">10% maximum</span>.</p>
+            <p><strong>Clause 4.12 — Unforeseeable Physical Conditions:</strong> If the Contractor encounters adverse subsurface soil conditions that were <span class="hl">unforeseeable</span> by an experienced contractor, the Contractor must give formal notice within <span class="hl">28 days</span> to claim an Extension of Time (EOT) and Cost.</p>
+          </div>
+        </div>
+        <div class="surface rounded-2xl border p-5 shadow-sm space-y-4">
+          <h3 class="text-sm font-bold">Câu hỏi Đọc hiểu Hợp đồng (FIDIC)</h3>
+          <div class="space-y-3 text-xs">
+            <div>
+              <p class="font-semibold mb-1">1. Mức trần phạt chậm tiến độ (Cap on Delay Damages) là bao nhiêu?</p>
+              <select id="rq1" class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-slate-800">
+                <option value="">-- Chọn đáp án --</option>
+                <option value="5">5% giá trị hợp đồng</option>
+                <option value="10">10% giá trị hợp đồng</option>
+                <option value="unlimited">Không giới hạn</option>
+              </select>
+            </div>
+            <div>
+              <p class="font-semibold mb-1">2. Thời hạn bắt buộc phải gửi thông báo khi gặp địa chất bất thường (Clause 4.12)?</p>
+              <select id="rq2" class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-slate-800">
+                <option value="">-- Chọn đáp án --</option>
+                <option value="7">Trong vòng 7 ngày</option>
+                <option value="14">Trong vòng 14 ngày</option>
+                <option value="28">Trong vòng 28 ngày</option>
+              </select>
+            </div>
+            <button id="btn-check-reading" type="button" class="px-4 py-2 rounded-lg bg-teal-600 text-white font-semibold">Chấm điểm Reading</button>
+            <p id="reading-result" class="font-bold"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Writing -->
+      <div id="skill-writing" class="hidden surface rounded-2xl border p-5 shadow-sm space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h3 class="text-base font-bold">Writing Studio: Soạn Email RFI / Đề xuất Value Engineering</h3>
+            <p class="text-xs text-muted">Bấm chọn mẫu câu mở đầu (Sentence Starters B2/C1) để chèn nhanh vào khung soạn thảo</p>
+          </div>
+          <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg surface-muted border">Số từ: <span id="word-count">0</span></span>
+        </div>
+
+        <div class="flex flex-wrap gap-1.5">
+          <button type="button" data-starter="With reference to Tender Package [Package_X], could you please clarify whether temporary power is included in our scope? " class="starter-btn px-2.5 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-800 text-xs font-semibold">+ RFI Scope Clarification</button>
+          <button type="button" data-starter="To optimize capex without compromising structural integrity, we propose a Value Engineering alternative for the basement slab. " class="starter-btn px-2.5 py-1.5 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-800 text-xs font-semibold">+ Value Engineering Proposal</button>
+          <button type="button" data-starter="Under FIDIC Clause 13.8, we respectfully request a transparent ±5% price escalation threshold for key commodities. " class="starter-btn px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold">+ FIDIC Risk Escalation</button>
+        </div>
+
+        <textarea id="writing-input" rows="5" placeholder="Viết đoạn email/RFI bằng tiếng Anh (đã ẩn danh tên dự án & CĐT)..." class="w-full p-3.5 rounded-xl surface-muted border text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"></textarea>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="btn-eval-writing" type="button" class="px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-semibold">✨ Chấm điểm &amp; Gợi ý nâng cấp B2 → C1</button>
+          <button id="btn-clear-writing" type="button" class="px-3 py-2 rounded-xl surface-muted border text-xs font-semibold">Xóa nháp</button>
+        </div>
+
+        <div id="writing-feedback" class="hidden grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+          <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 space-y-1.5 text-xs text-teal-950">
+            <p class="font-bold text-teal-800 uppercase">Phiên bản B2 (Rõ ràng, chuyên nghiệp)</p>
+            <p id="wf-b2"></p>
+          </div>
+          <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-4 space-y-1.5 text-xs text-indigo-950">
+            <p class="font-bold text-indigo-800 uppercase">Phiên bản C1 (Sắc bén chuẩn Giám đốc)</p>
+            <p id="wf-c1"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Speaking -->
+      <div id="skill-speaking" class="hidden surface rounded-2xl border p-5 shadow-sm space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h3 class="text-base font-bold">Speaking Studio: Luyện Phản Xạ 60 Giây (PREP)</h3>
+            <p class="text-xs text-muted">Đề bài: "Explain how your Value Engineering proposal reduces basement schedule by 3 weeks without increasing safety risk."</p>
+          </div>
+          <span id="speak-timer" class="font-mono text-lg font-extrabold text-teal-600 px-3 py-1 rounded-xl surface-muted border">01:00</span>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button id="btn-rec-start" type="button" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-semibold">🎙 Bắt đầu nói &amp; Nhận diện giọng nói</button>
+          <button id="btn-rec-stop" type="button" class="px-4 py-2 rounded-xl surface-muted border text-xs font-semibold">⏹ Dừng</button>
+        </div>
+        <div class="surface-muted border rounded-xl p-4 min-h-[90px] text-sm">
+          <p class="text-[11px] font-bold uppercase text-muted mb-1">Transcript giọng nói của bạn:</p>
+          <p id="speak-transcript" class="italic text-muted">Bấm "Bắt đầu nói" để luyện phản xạ (hỗ trợ Chrome/Edge Speech Recognition hoặc tự luyện theo đồng hồ 60 giây).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MODULE 4: GC KNOWLEDGE HUB (3D FLASHCARDS) ==================== -->
+    <section id="mod-kb" class="hidden space-y-5">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div class="flex flex-wrap gap-1.5">
+          <button data-kbcat="all" class="kbcat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-teal-600 text-white">Tất cả</button>
+          <button data-kbcat="Contract/FIDIC" class="kbcat-btn px-3 py-1.5 rounded-full text-xs font-semibold surface border">FIDIC / Hợp đồng</button>
+          <button data-kbcat="PMI" class="kbcat-btn px-3 py-1.5 rounded-full text-xs font-semibold surface border">PMI / RICS</button>
+          <button data-kbcat="HSMT" class="kbcat-btn px-3 py-1.5 rounded-full text-xs font-semibold surface border">HSMT / VE / RFI</button>
+        </div>
+        <button id="btn-add-kb" type="button" class="px-3.5 py-2 rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-semibold">+ Thêm thuật ngữ (04_Knowledge_Base)</button>
+      </div>
+      <div id="kb-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-4 right-4 z-50 hidden bg-slate-900 text-white text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-lg border border-slate-700"></div>
+
+  <!-- Modal: API Config -->
+  <div id="api-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="surface rounded-2xl max-w-lg w-full p-5 sm:p-6 shadow-xl space-y-4 border">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <h3 class="text-base font-bold">Kết nối 2 Chiều Google Sheet (5 Tab)</h3>
+        <button id="btn-close-api" type="button" class="text-slate-400 hover:text-slate-700 text-xl font-bold">&times;</button>
+      </div>
+      <form id="api-form" class="space-y-3">
+        <div>
+          <label class="block text-xs font-semibold mb-1">Google Apps Script Web App URL</label>
+          <input id="api-url" type="url" placeholder="https://script.google.com/macros/s/.../exec" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs bg-white text-slate-900" required />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold mb-1">SECRET_TOKEN</label>
+          <input id="api-token" type="text" value="FDI_BIDDING_2026_SECRET" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs font-mono bg-white text-slate-900" required />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold mb-1">Mã PIN khóa ứng dụng (tùy chọn)</label>
+          <input id="api-pin" type="text" value="2026" maxlength="8" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs font-mono bg-white text-slate-900" />
+        </div>
+        <div class="flex gap-2 pt-1">
+          <button type="submit" class="flex-1 py-2.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-white text-xs font-semibold">Lưu &amp; Đồng bộ 5 Tab</button>
+          <button id="btn-reset-demo" type="button" class="px-4 py-2.5 rounded-lg surface-muted border text-xs font-semibold">Dùng Demo</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Quick Add Row -->
+  <div id="add-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="surface rounded-2xl max-w-lg w-full p-5 sm:p-6 shadow-xl space-y-4 border">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <h3 id="add-title" class="text-base font-bold">Thêm dữ liệu mới</h3>
+        <button id="btn-close-add" type="button" class="text-slate-400 hover:text-slate-700 text-xl font-bold">&times;</button>
+      </div>
+      <form id="add-form" class="space-y-3"></form>
+    </div>
+  </div>
+
+  <script>
+    // 1. Seed Data (5-tab schema matching Bidding_English_DB)
+    const SEED_DB = {
+      "01_Preply_Log": [
+        { id: "L01", date: "2026-11-23", topic: "Pre-Tender Site Visit Q&A", category: "Pre-Tender", teacher_note: "Good structure, watch out for past tense", rating: 4 },
+        { id: "L02", date: "2026-11-26", topic: "Explaining Value Engineering", category: "Interview", teacher_note: "Clear main idea, slow down on numbers", rating: 4 }
+      ],
+      "02_Mistake_Bank": [
+        { id: "M01", date: "2026-11-23", wrong_sentence: "We very agree with this schedule.", correct_b2: "We fully agree with this schedule.", error_type: "Grammar", context: "Pre-Tender", status: "Learning" },
+        { id: "M02", date: "2026-11-26", wrong_sentence: "The price is depend on the soil.", correct_b2: "The price depends on the soil condition.", error_type: "Grammar", context: "Negotiation", status: "Mastered" },
+        { id: "M03", date: "2026-11-20", wrong_sentence: "My company has many project in Taiwan.", correct_b2: "My company has many projects in Taiwan.", error_type: "Grammar", context: "Interview", status: "Learning" },
+        { id: "M04", date: "2026-11-20", wrong_sentence: "In Vietnam in this year, we cut provinces into half.", correct_b2: "This year, Vietnam cut the number of provinces in half.", error_type: "Grammar", context: "General", status: "Learning" }
+      ],
+      "03_Work_Agenda": [
+        { id: "W01", target_date: "2026-11-30", scenario: "Làm rõ phạm vi gói thầu M&E với CĐT FDI (Ẩn danh)", stage: "Pre-Tender", key_goal: "Hỏi ngắn gọn 3 câu RFI không gây hiểu lầm", status: "Pending" },
+        { id: "W02", target_date: "2026-12-03", scenario: "Bảo vệ phương án tối ưu biện pháp hầm sâu", stage: "Interview", key_goal: "Trình bày 2 phút theo khung PREP", status: "Pending" },
+        { id: "W03", target_date: "2026-12-06", scenario: "Thương thảo mức trần phạt chậm tiến độ (Liquidated Damages)", stage: "Negotiation", key_goal: "Đề xuất cap 10% theo chuẩn FIDIC", status: "Pending" }
+      ],
+      "04_Knowledge_Base": [
+        { id: "K01", term_or_phrase: "Liquidated Damages", category: "Contract/FIDIC", b2_explanation: "Tiền phạt chậm tiến độ (có mức trần)", sample_sentence: "We would like to discuss a fair cap on liquidated damages.", status: "Learning" },
+        { id: "K02", term_or_phrase: "Risk Mitigation", category: "PMI", b2_explanation: "Biện pháp giảm thiểu rủi ro (PMBOK)", sample_sentence: "Our risk mitigation plan focuses on early material procurement.", status: "Mastered" },
+        { id: "K03", term_or_phrase: "Scope Clarification", category: "HSMT", b2_explanation: "Làm rõ phạm vi công việc (RFI/TCQ)", sample_sentence: "Could you please clarify if the temporary road is in our scope?", status: "Learning" },
+        { id: "K04", term_or_phrase: "Elemental Cost Plan", category: "PMI", b2_explanation: "Phân rã chi phí theo cấu kiện chuẩn RICS (E1–E8)", sample_sentence: "Our RICS elemental cost breakdown ensures complete commercial transparency.", status: "Learning" },
+        { id: "K05", term_or_phrase: "Force Majeure", category: "Contract/FIDIC", b2_explanation: "Sự kiện bất khả kháng (FIDIC Clause 19)", sample_sentence: "Under FIDIC, supply-chain blockades may qualify for an EOT under Force Majeure.", status: "Learning" },
+        { id: "K06", term_or_phrase: "Value Engineering (VE)", category: "HSMT", b2_explanation: "Tối ưu biện pháp/thiết kế giảm chi phí giữ nguyên công năng", sample_sentence: "Our VE alternative saves 6% on concrete while maintaining full structural safety.", status: "Mastered" }
+      ],
+      "05_Daily_Briefing": [
+        { id: "D01", date: "2026-11-26", category: "FDI & Energy", vi_summary: "Biến động lợi suất trái phiếu toàn cầu và giá năng lượng khiến các CĐT FDI siết chặt ngân sách CAPEX năm 2027.", en_quick_talk: "With global bond yields staying elevated heading into 2027, we're seeing FDI developers put much stronger emphasis on cost certainty and early Value Engineering.", status: "Pending" },
+        { id: "D02", date: "2026-11-26", category: "Tech & Data Center", vi_summary: "Làn sóng xây dựng Data Center tại Đông Nam Á đòi hỏi tiến độ thần tốc và độ dự phòng cơ điện (MEP) tuyệt đối.", en_quick_talk: "Data center construction across Southeast Asia is booming, and the biggest differentiator for a general contractor now is fast-track MEP coordination.", status: "Pending" }
+      ]
+    };
+
+    const ROADMAP_DEFAULT = [
+      {
+        stage: "Chặng 1: B1 → B2 (Vững nền Thực chiến)",
+        badge: "Đang tập trung",
+        color: "teal",
+        lessons: [
+          { id: "r1", title: "Nghe bắt từ khóa họp Pre-Tender & Site Visit", status: "Hoàn thành" },
+          { id: "r2", title: "Viết Email RFI / Scope Clarification chuẩn xác", status: "Đang học" },
+          { id: "r3", title: "Trình bày ý kiến 2–3 phút theo khung PREP", status: "Đang học" }
+        ]
+      },
+      {
+        stage: "Chặng 2: B2 → C1 (Phỏng vấn & Giải pháp)",
+        badge: "Mục tiêu Q1–Q2",
+        color: "indigo",
+        lessons: [
+          { id: "r4", title: "Bảo vệ đề xuất Value Engineering (VE) trước QS", status: "Đang học" },
+          { id: "r5", title: "Giải trình tiến độ tầng hầm & biện pháp thi công", status: "Chưa mở" },
+          { id: "r6", title: "Xử lý Tough Q&A khi CĐT ép tiến độ & đơn giá", status: "Chưa mở" }
+        ]
+      },
+      {
+        stage: "Chặng 3: C1 → C2 (Giám đốc Đấu thầu Quốc tế)",
+        badge: "Chuẩn C-Level",
+        color: "slate",
+        lessons: [
+          { id: "r7", title: "Thuyết trình chiến lược đấu thầu 45–60 phút", status: "Chưa mở" },
+          { id: "r8", title: "Thương thảo điều khoản rủi ro FIDIC (LD, EOT, Escalation)", status: "Chưa mở" },
+          { id: "r9", title: "Dẫn dắt đàm phán cấp C-level với CĐT Âu–Mỹ–Nhật", status: "Chưa mở" }
+        ]
+      }
+    ];
+
+    const SIM_SCENARIOS = {
+      pretender: {
+        stage: "Pre-Tender & Site Visit",
+        title: "Làm rõ phạm vi hạ tầng tạm & nguồn điện thi công (RFI)",
+        question: "We expect your lump-sum bid to cover all site logistics. Why are you raising RFI questions about temporary power and access roads?",
+        b1: { text: "Because in the tender drawings, the temporary road is not clear. We want to ask if we have to pay for it so we don't lose money.", tip: "B1: Đúng ý nhưng cách diễn đạt còn trực diện, thiếu mềm mỏng thương mại." },
+        b2: { text: "Thank you for raising that. To ensure an accurate and competitive lump-sum price, we need to clarify whether temporary power and access roads fall under the Employer's or the Contractor's scope.", tip: "B2: Lịch sự, rõ ràng, gắn trực tiếp vào lợi ích tính giá chính xác cho CĐT." },
+        c1: { text: "We fully support a transparent lump-sum structure. Precisely to avoid pricing unnecessary risk contingencies into your budget, we are seeking formal scope alignment on temporary utilities and site access prior to bid submission.", tip: "C1 (Giám đốc): Đứng về phía ngân sách CĐT, biến câu hỏi thành hành động tối ưu chi phí." }
+      },
+      interview: {
+        stage: "Tender Interview",
+        title: "Bảo vệ phương án Value Engineering (VE) cho tầng hầm sâu",
+        question: "Your VE alternative looks 6% cheaper, but how can you guarantee it won't delay our critical path or compromise waterproofing quality?",
+        b1: { text: "Don't worry, our engineers are very experienced. We did this in another project and it was faster and safe.", tip: "B1: Thiếu cấu trúc PREP và thiếu bằng chứng kỹ thuật thuyết phục." },
+        b2: { text: "Good question. Our VE design actually shortens the critical path by two weeks while keeping the exact same waterproofing standard, backed by similar deep-basement projects we delivered.", tip: "B2: Trả lời trực diện, đưa ra con số tiết kiệm thời gian và kinh nghiệm tương tự." },
+        c1: { text: "Our VE proposal achieves 6% capex savings without touching the waterproofing specification. By optimizing the shoring sequence, we shave three weeks off the critical path—and we will submit full third-party structural verification before mobilization.", tip: "C1 (Giám đốc): Chắc chắn, tách bạch rõ phần không thỏa hiệp và cam kết kiểm chứng độc lập." }
+      },
+      negotiation: {
+        stage: "Contract Negotiation",
+        title: "Đàm phán trần phạt chậm tiến độ (Liquidated Damages) & trượt giá",
+        question: "Our corporate template has no cap on delay damages and strictly zero price escalation for 24 months. Can you accept that?",
+        b1: { text: "No cap is very dangerous for us. And steel prices can go up, so we cannot accept zero escalation.", tip: "B1: Nói thẳng 'cannot accept' dễ gây căng thẳng trên bàn đàm phán." },
+        b2: { text: "We are committed to meeting every milestone, but an uncapped penalty creates major financing risk. We propose a standard 10% FIDIC cap and a transparent escalation clause for major steel spikes.", tip: "B2: Đưa ra chuẩn mực thị trường (FIDIC 10%) và lý do tài chính rõ ràng." },
+        c1: { text: "We stand fully behind our schedule commitment. However, uncapped liability is non-bankable under international governance. Adopting the standard FIDIC 10% cap and a mutual ±5% commodity threshold protects both parties from inflated risk premiums.", tip: "C1 (Giám đốc): Dùng thuật ngữ chuẩn quốc tế ('non-bankable', 'mutual threshold') tạo thế thắng-thắng." }
+      }
+    };
+
+    // State
+    let db = JSON.parse(JSON.stringify(SEED_DB));
+    let roadmap = JSON.parse(JSON.stringify(ROADMAP_DEFAULT));
+    let cfg = { url: "", token: "FDI_BIDDING_2026_SECRET", pin: "2026", dark: false };
+    let activeMod = "preply";
+    let activeSim = "pretender";
+    let activeSimLvl = "b2";
+    let activeSkill = "listening";
+    let kbCat = "all";
+    let mistakeFilter = "all";
+    let currentAddTarget = "mistake";
+    let simTimerInt = null;
+    let simSeconds = 120;
+    let speakTimerInt = null;
+    let recognition = null;
+
+    function loadState() {
+      try {
+        const sCfg = localStorage.getItem("exec_bid_cfg_v1");
+        if (sCfg) cfg = { ...cfg, ...JSON.parse(sCfg) };
+        const sDb = localStorage.getItem("exec_bid_db_v1");
+        if (sDb) db = { ...SEED_DB, ...JSON.parse(sDb) };
+        const sRm = localStorage.getItem("exec_bid_rm_v1");
+        if (sRm) roadmap = JSON.parse(sRm);
+      } catch (e) {}
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem("exec_bid_cfg_v1", JSON.stringify(cfg));
+        localStorage.setItem("exec_bid_db_v1", JSON.stringify(db));
+        localStorage.setItem("exec_bid_rm_v1", JSON.stringify(roadmap));
+      } catch (e) {}
+    }
+
+    function toast(msg) {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.classList.remove("hidden");
+      setTimeout(() => t.classList.add("hidden"), 2800);
+    }
+
+    function speakText(text, rate = 0.9) {
+      if (!("speechSynthesis" in window)) {
+        toast("Trình duyệt không hỗ trợ đọc âm thanh tự động.");
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = "en-US";
+      u.rate = rate;
+      window.speechSynthesis.speak(u);
+    }
+
+    function applyTheme() {
+      document.body.classList.toggle("dark-mode", cfg.dark);
+      document.body.classList.toggle("light-mode", !cfg.dark);
+      document.getElementById("btn-theme").textContent = cfg.dark ? "☀️ Light" : "🌙 Dark";
+    }
+
+    // 2-Way Google Sheet API (5 tabs)
+    function setSyncStatus(mode, label) {
+      document.getElementById("sync-label").textContent = label;
+      document.getElementById("sync-dot").className = "w-2 h-2 rounded-full " + (
+        mode === "ok" ? "bg-emerald-400" : mode === "loading" ? "bg-sky-400 animate-pulse" : mode === "err" ? "bg-rose-400" : "bg-amber-400"
+      );
+    }
+
+    async function syncFromSheet(quiet) {
+      if (!cfg.url || !cfg.url.startsWith("https://")) {
+        setSyncStatus("demo", "Demo 5-Tab");
+        return;
+      }
+      setSyncStatus("loading", "Đang đồng bộ...");
+      try {
+        const sep = cfg.url.includes("?") ? "&" : "?";
+        const res = await fetch(`${cfg.url}${sep}token=${encodeURIComponent(cfg.token)}`);
+        const json = await res.json();
+        if (json.status === "success" && json.data) {
+          ["01_Preply_Log", "02_Mistake_Bank", "03_Work_Agenda", "04_Knowledge_Base", "05_Daily_Briefing"].forEach(k => {
+            if (Array.isArray(json.data[k])) db[k] = json.data[k];
+          });
+          saveState();
+          renderAll();
+          setSyncStatus("ok", "Đã đồng bộ Sheet");
+          if (!quiet) toast("Đồng bộ thành công dữ liệu từ Bidding_English_DB!");
+        } else {
+          setSyncStatus("err", "Lỗi Token");
+          if (!quiet) toast("Lỗi API: " + (json.message || "Kiểm tra lại Token"));
+        }
+      } catch (e) {
+        setSyncStatus("err", "Lỗi kết nối");
+        if (!quiet) toast("Không thể kết nối Apps Script. Kiểm tra URL/quyền Anyone.");
+      }
+    }
+
+    async function postToSheet(payload) {
+      if (!cfg.url || !cfg.url.startsWith("https://")) return;
+      try {
+        setSyncStatus("loading", "Đang ghi...");
+        const res = await fetch(cfg.url, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({ ...payload, token: cfg.token })
+        });
+        const json = await res.json();
+        setSyncStatus(json.status === "success" ? "ok" : "err", json.status === "success" ? "Đã đồng bộ Sheet" : "Lỗi ghi Sheet");
+      } catch (e) {
+        setSyncStatus("err", "Lỗi mạng");
+      }
+    }
+
+    // Module Renderers
+    function renderPreplyModule() {
+      // 1. Daily Briefing
+      const bList = document.getElementById("briefing-list");
+      const items = db["05_Daily_Briefing"] || [];
+      bList.innerHTML = items.map(b => {
+        const done = String(b.status) === "Done";
+        return `
+          <div class="surface-muted border rounded-xl p-3.5 space-y-2">
+            <div class="flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-teal-600 text-white">${b.category}</span>
+                <span class="text-[11px] text-muted">${b.date || ''}</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <button type="button" data-speak="${String(b.en_quick_talk).replace(/"/g, '&quot;')}" class="speak-btn px-2.5 py-1 rounded-lg bg-teal-600/15 hover:bg-teal-600/25 text-teal-700 text-xs font-semibold">🔊 Shadowing 0.9x</button>
+                <button type="button" data-toggle-brief="${b.id}" class="px-2.5 py-1 rounded-lg text-xs font-semibold ${done ? 'bg-emerald-600 text-white' : 'bg-white text-slate-700 border border-slate-300'}">${done ? '✓ Đã luyện' : 'Đánh dấu xong'}</button>
+              </div>
+            </div>
+            <p class="text-xs text-muted">${b.vi_summary}</p>
+            <p class="text-sm font-semibold leading-snug">"${b.en_quick_talk}"</p>
+          </div>
+        `;
+      }).join("");
+
+      // 2. Auto 50-Min Lesson Plan
+      const pendingAgenda = (db["03_Work_Agenda"] || []).filter(a => String(a.status) !== "Done").slice(0, 2);
+      const topMistakes = (db["02_Mistake_Bank"] || []).filter(m => String(m.status) !== "Mastered").slice(0, 3);
+      const topBrief = (db["05_Daily_Briefing"] || [])[0];
+      const plan = [
+        "=== 50-MIN EXECUTIVE ENGLISH LESSON PLAN (70% STUDENT TALK) ===",
+        "",
+        "1. WARM-UP & SMALL TALK (8 mins)",
+        topBrief ? `- Topic: ${topBrief.category}\n- Starter: "${topBrief.en_quick_talk}"` : "- Discuss current FDI construction trends in Vietnam & Southeast Asia.",
+        "",
+        "2. WORK-FIRST ROLEPLAY (25 mins — From 03_Work_Agenda)",
+        ...(pendingAgenda.length ? pendingAgenda.map((a, i) => `- Scenario ${i + 1} [${a.stage}]: ${a.scenario}\n  Goal: ${a.key_goal}`) : ["- Practice 2-minute PREP pitch for Value Engineering."]),
+        "",
+        "3. MISTAKE BANK DRILL (12 mins — Fix 3 Active Errors)",
+        ...(topMistakes.length ? topMistakes.map((m, i) => `- Fix ${i + 1}: "${m.wrong_sentence}" -> "${m.correct_b2}"`) : ["- Review recent B2 grammar upgrades."]),
+        "",
+        "4. FEEDBACK & NEXT ACTIONS (5 mins)",
+        "- Highlight top 2 pronunciation fixes & 1 C1 upgrade phrase."
+      ].join("\n");
+      document.getElementById("preply-plan-box").value = plan;
+
+      // 3. Mistake Bank Table
+      const mBody = document.getElementById("mistake-table-body");
+      const mList = (db["02_Mistake_Bank"] || []).filter(m => mistakeFilter === "all" || String(m.status) === mistakeFilter);
+      mBody.innerHTML = mList.map(m => {
+        const mastered = String(m.status) === "Mastered";
+        return `
+          <tr>
+            <td class="py-3 px-3 text-rose-600 font-medium">"${m.wrong_sentence}"</td>
+            <td class="py-3 px-3">
+              <div class="flex items-center justify-between gap-2">
+                <span class="font-semibold text-teal-700">"${m.correct_b2}"</span>
+                <button type="button" data-speak="${String(m.correct_b2).replace(/"/g, '&quot;')}" class="speak-btn px-2 py-0.5 rounded bg-teal-50 text-teal-700 text-xs font-semibold">🔊</button>
+              </div>
+            </td>
+            <td class="py-3 px-3">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded-full text-[11px] surface-muted font-semibold">${m.context}</span>
+                <button type="button" data-toggle-mistake="${m.id}" class="px-2.5 py-1 rounded-lg text-xs font-semibold ${mastered ? 'bg-teal-600 text-white' : 'bg-amber-100 text-amber-800'}">${mastered ? '✓ Mastered' : 'Learning'}</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function renderRoadmap() {
+      let total = 0, done = 0;
+      roadmap.forEach(s => s.lessons.forEach(l => { total++; if (l.status === "Hoàn thành") done++; }));
+      const pct = total ? Math.round((done / total) * 100) : 0;
+      document.getElementById("roadmap-pct").textContent = pct + "%";
+      document.getElementById("roadmap-bar").style.width = pct + "%";
+
+      document.getElementById("roadmap-stages").innerHTML = roadmap.map((st, si) => `
+        <div class="surface rounded-2xl border p-5 shadow-sm space-y-4">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-sm font-extrabold">${st.stage}</h3>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-indigo-100 text-indigo-800 shrink-0">${st.badge}</span>
+          </div>
+          <div class="space-y-2.5">
+            ${st.lessons.map((l, li) => {
+              const cls = l.status === "Hoàn thành" ? "bg-emerald-100 text-emerald-800" : l.status === "Đang học" ? "bg-amber-100 text-amber-800" : "bg-slate-200 text-slate-600";
+              return `
+                <button type="button" data-rm="${si}-${li}" class="rm-toggle w-full text-left surface-muted border rounded-xl p-3 flex items-center justify-between gap-2 hover:opacity-90 transition">
+                  <span class="text-xs font-semibold">${l.title}</span>
+                  <span class="px-2 py-0.5 rounded-md text-[10px] font-bold shrink-0 ${cls}">${l.status}</span>
+                </button>
+              `;
+            }).join("")}
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderSimLab() {
+      const sc = SIM_SCENARIOS[activeSim];
+      document.getElementById("sim-stage-badge").textContent = sc.stage;
+      document.getElementById("sim-title").textContent = sc.title;
+      document.getElementById("sim-question").textContent = `"${sc.question}"`;
+      const ans = sc[activeSimLvl];
+      document.getElementById("sim-answer-text").textContent = `"${ans.text}"`;
+      document.getElementById("sim-answer-tip").textContent = ans.tip;
+
+      document.querySelectorAll(".sim-tab-btn").forEach(b => {
+        b.className = b.dataset.sim === activeSim
+          ? "sim-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-teal-600 text-white"
+          : "sim-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold surface border hover:opacity-80";
+      });
+      document.querySelectorAll(".lvl-btn").forEach(b => {
+        b.className = b.dataset.lvl === activeSimLvl
+          ? "lvl-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-teal-600 text-white"
+          : "lvl-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-200 text-slate-700";
+      });
+
+      document.getElementById("agenda-list").innerHTML = (db["03_Work_Agenda"] || []).map(a => {
+        const done = String(a.status) === "Done";
+        return `
+          <div class="surface-muted border rounded-xl p-3.5 space-y-1.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-indigo-100 text-indigo-800">${a.stage} • ${a.target_date}</span>
+              <button type="button" data-toggle-agenda="${a.id}" class="px-2.5 py-1 rounded-lg text-xs font-semibold ${done ? 'bg-emerald-600 text-white' : 'bg-white text-slate-700 border border-slate-300'}">${done ? '✓ Done' : 'Pending'}</button>
+            </div>
+            <p class="text-xs font-bold">${a.scenario}</p>
+            <p class="text-[11px] text-muted">🎯 ${a.key_goal}</p>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderKB() {
+      const items = (db["04_Knowledge_Base"] || []).filter(k => kbCat === "all" || String(k.category) === kbCat);
+      document.getElementById("kb-grid").innerHTML = items.map(k => {
+        const mastered = String(k.status) === "Mastered";
+        return `
+          <div class="kb-card perspective-1000 h-56 cursor-pointer">
+            <div class="flip-inner w-full h-full">
+              <div class="flip-face absolute inset-0 surface rounded-2xl border ${mastered ? 'border-teal-500' : ''} p-4 shadow-sm flex flex-col justify-between">
+                <div class="flex items-center justify-between">
+                  <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-indigo-100 text-indigo-800">${k.category}</span>
+                  <div class="flex gap-1.5">
+                    <button type="button" data-speak="${String(k.term_or_phrase).replace(/"/g, '&quot;')}" class="speak-btn px-2 py-1 rounded-lg bg-teal-50 text-teal-700 text-xs font-semibold">🔊</button>
+                    <button type="button" data-toggle-kb="${k.id}" class="px-2 py-1 rounded-lg text-[11px] font-semibold ${mastered ? 'bg-teal-600 text-white' : 'bg-slate-200 text-slate-700'}">${mastered ? '✓ Mastered' : 'Master'}</button>
+                  </div>
+                </div>
+                <div class="text-center my-auto">
+                  <p class="text-lg font-extrabold">${k.term_or_phrase}</p>
+                  <p class="text-xs text-teal-600 font-semibold mt-1">${k.b2_explanation}</p>
+                </div>
+                <p class="text-[11px] text-muted text-center border-t border-slate-200 pt-2">Chạm thẻ để lật xem câu mẫu C1</p>
+              </div>
+              <div class="flip-face flip-back absolute inset-0 bg-slate-900 text-white rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-teal-300">Sample Sentence (GC Context)</span>
+                  <button type="button" data-speak="${String(k.sample_sentence).replace(/"/g, '&quot;')}" class="speak-btn px-2 py-1 rounded-lg bg-slate-800 text-teal-300 text-xs font-semibold">🔊 Nghe</button>
+                </div>
+                <p class="text-sm italic text-slate-100 leading-relaxed my-auto">"${k.sample_sentence}"</p>
+                <p class="text-[11px] text-slate-400 text-center border-t border-slate-800 pt-2">Chạm để lật lại</p>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderAll() {
+      ["preply", "roadmap", "simlab", "studio", "kb"].forEach(m => {
+        document.getElementById(`mod-${m}`).classList.toggle("hidden", m !== activeMod);
+      });
+      document.querySelectorAll(".mod-btn").forEach(b => {
+        b.className = b.dataset.mod === activeMod
+          ? "mod-btn shrink-0 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition bg-slate-900 text-white"
+          : "mod-btn shrink-0 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition surface-muted hover:opacity-80";
+      });
+      if (activeMod === "preply") renderPreplyModule();
+      if (activeMod === "roadmap") renderRoadmap();
+      if (activeMod === "simlab") renderSimLab();
+      if (activeMod === "kb") renderKB();
+    }
+
+    // Event Bindings
+    document.querySelectorAll(".mod-btn").forEach(b => b.addEventListener("click", () => { activeMod = b.dataset.mod; renderAll(); }));
+    document.querySelectorAll(".sim-tab-btn").forEach(b => b.addEventListener("click", () => { activeSim = b.dataset.sim; renderSimLab(); }));
+    document.querySelectorAll(".lvl-btn").forEach(b => b.addEventListener("click", () => { activeSimLvl = b.dataset.lvl; renderSimLab(); }));
+    document.querySelectorAll(".skill-btn").forEach(b => b.addEventListener("click", () => {
+      activeSkill = b.dataset.skill;
+      ["listening", "reading", "writing", "speaking"].forEach(sk => document.getElementById(`skill-${sk}`).classList.toggle("hidden", sk !== activeSkill));
+      document.querySelectorAll(".skill-btn").forEach(btn => {
+        btn.className = btn.dataset.skill === activeSkill
+          ? "skill-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 text-white"
+          : "skill-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold surface border";
+      });
+    }));
+
+    document.querySelectorAll(".kbcat-btn").forEach(b => b.addEventListener("click", () => {
+      kbCat = b.dataset.kbcat;
+      document.querySelectorAll(".kbcat-btn").forEach(btn => {
+        btn.className = btn.dataset.kbcat === kbCat
+          ? "kbcat-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-teal-600 text-white"
+          : "kbcat-btn px-3 py-1.5 rounded-full text-xs font-semibold surface border";
+      });
+      renderKB();
+    }));
+
+    document.getElementById("mistake-status-filter").addEventListener("change", e => { mistakeFilter = e.target.value; renderPreplyModule(); });
+
+    // Theme & PIN Lock
+    document.getElementById("btn-theme").addEventListener("click", () => { cfg.dark = !cfg.dark; saveState(); applyTheme(); });
+    document.getElementById("btn-lock-app").addEventListener("click", () => {
+      document.getElementById("pin-input").value = "";
+      document.getElementById("pin-error").classList.add("hidden");
+      document.getElementById("pin-overlay").classList.remove("hidden");
+    });
+    document.getElementById("pin-form").addEventListener("submit", e => {
+      e.preventDefault();
+      if (document.getElementById("pin-input").value.trim() === String(cfg.pin || "2026")) {
+        document.getElementById("pin-overlay").classList.add("hidden");
+      } else {
+        document.getElementById("pin-error").classList.remove("hidden");
+      }
+    });
+
+    // Copy 50-Min Preply Plan
+    document.getElementById("btn-regen-plan").addEventListener("click", () => { renderPreplyModule(); toast("Đã cập nhật giáo án 50 phút mới nhất!"); });
+    document.getElementById("btn-copy-plan").addEventListener("click", () => {
+      const box = document.getElementById("preply-plan-box");
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(box.value).then(() => toast("Đã copy Giáo án 50 phút gửi Ms. Lorraine!")).catch(() => { box.select(); document.execCommand("copy"); toast("Đã copy Giáo án 50 phút!"); });
+      } else {
+        box.select(); document.execCommand("copy"); toast("Đã copy Giáo án 50 phút!");
+      }
+    });
+
+    // SimLab Timer & Audio
+    function updateSimTimerDisplay() {
+      const m = String(Math.floor(simSeconds / 60)).padStart(2, "0");
+      const s = String(simSeconds % 60).padStart(2, "0");
+      document.getElementById("sim-timer").textContent = `${m}:${s}`;
+    }
+    document.getElementById("btn-timer-start").addEventListener("click", () => {
+      if (simTimerInt) { clearInterval(simTimerInt); simTimerInt = null; document.getElementById("btn-timer-start").textContent = "Tiếp tục"; return; }
+      document.getElementById("btn-timer-start").textContent = "Tạm dừng";
+      simTimerInt = setInterval(() => {
+        if (simSeconds > 0) { simSeconds--; updateSimTimerDisplay(); }
+        else { clearInterval(simTimerInt); simTimerInt = null; toast("Hết 2 phút trình bày PREP!"); document.getElementById("btn-timer-start").textContent = "Bắt đầu"; }
+      }, 1000);
+    });
+    document.getElementById("btn-timer-reset").addEventListener("click", () => {
+      clearInterval(simTimerInt); simTimerInt = null; simSeconds = 120; updateSimTimerDisplay();
+      document.getElementById("btn-timer-start").textContent = "Bắt đầu";
+    });
+    document.getElementById("btn-speak-sim-q").addEventListener("click", () => speakText(SIM_SCENARIOS[activeSim].question, 0.95));
+    document.getElementById("btn-speak-sim-a").addEventListener("click", () => speakText(SIM_SCENARIOS[activeSim][activeSimLvl].text, 0.9));
+
+    // 4-Skill Studio Handlers
+    const LISTEN_SCRIPT = "Good morning everyone. For this Design and Build industrial facility, our primary concern is the critical path for deep basement excavation. Bidders must submit all RFI clarifications by Friday, and any Value Engineering proposal must clearly prove zero compromise on MEP redundancy and liquidated damages milestones.";
+    document.getElementById("btn-listen-play").addEventListener("click", () => speakText(LISTEN_SCRIPT, Number(document.getElementById("listen-speed").value)));
+    document.getElementById("btn-listen-replay").addEventListener("click", () => speakText(LISTEN_SCRIPT, Number(document.getElementById("listen-speed").value)));
+    document.getElementById("btn-toggle-transcript").addEventListener("click", () => document.getElementById("listen-transcript").classList.toggle("hidden"));
+    document.getElementById("btn-check-listen").addEventListener("click", () => {
+      const score = (document.getElementById("lq1").value === "b" ? 1 : 0) + (document.getElementById("lq2").value === "a" ? 1 : 0);
+      document.getElementById("listen-result").textContent = score === 2 ? "✓ Chính xác 2/2! Bắt từ khóa rất chuẩn." : `Đúng ${score}/2 — Bật Transcript để đối chiếu từ khóa tô vàng.`;
+    });
+
+    let hlOn = true;
+    document.getElementById("btn-toggle-highlights").addEventListener("click", () => {
+      hlOn = !hlOn;
+      document.querySelectorAll("#reading-passage .hl").forEach(el => {
+        el.className = hlOn ? "hl bg-amber-200 text-slate-900 px-1 rounded font-semibold" : "hl";
+      });
+    });
+    document.getElementById("btn-check-reading").addEventListener("click", () => {
+      const score = (document.getElementById("rq1").value === "10" ? 1 : 0) + (document.getElementById("rq2").value === "28" ? 1 : 0);
+      document.getElementById("reading-result").textContent = score === 2 ? "✓ Chính xác 2/2 chuẩn FIDIC!" : `Đúng ${score}/2 — Xem lại Clause 8.7 (10%) và Clause 4.12 (28 days).`;
+    });
+
+    const wInput = document.getElementById("writing-input");
+    wInput.addEventListener("input", () => {
+      const words = wInput.value.trim() ? wInput.value.trim().split(/\s+/).length : 0;
+      document.getElementById("word-count").textContent = words;
+    });
+    document.querySelectorAll(".starter-btn").forEach(b => b.addEventListener("click", () => {
+      wInput.value += b.dataset.starter;
+      wInput.dispatchEvent(new Event("input"));
+      wInput.focus();
+    }));
+    document.getElementById("btn-clear-writing").addEventListener("click", () => { wInput.value = ""; wInput.dispatchEvent(new Event("input")); document.getElementById("writing-feedback").classList.add("hidden"); });
+    document.getElementById("btn-eval-writing").addEventListener("click", () => {
+      const txt = wInput.value.trim();
+      if (!txt) { toast("Vui lòng nhập nội dung tiếng Anh trước khi chấm."); return; }
+      document.getElementById("wf-b2").textContent = `Clear B2 Upgrade: "Regarding our tender submission, ${txt.charAt(0).toLowerCase() + txt.slice(1)} Please let us know if you need any further technical clarification."`;
+      document.getElementById("wf-c1").textContent = `Executive C1 Upgrade: "To align commercial expectations and safeguard project certainty, we formally propose the following: ${txt} We welcome a brief alignment call with your PMCM team."`;
+      document.getElementById("writing-feedback").classList.remove("hidden");
+    });
+
+    // Speaking Studio
+    document.getElementById("btn-rec-start").addEventListener("click", () => {
+      clearInterval(speakTimerInt);
+      let s = 60;
+      document.getElementById("speak-timer").textContent = "01:00";
+      speakTimerInt = setInterval(() => {
+        s--;
+        document.getElementById("speak-timer").textContent = `00:${String(Math.max(0, s)).padStart(2, "0")}`;
+        if (s <= 0) clearInterval(speakTimerInt);
+      }, 1000);
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (SR) {
+        recognition = new SR();
+        recognition.lang = "en-US";
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.onresult = ev => {
+          const text = Array.from(ev.results).map(r => r[0].transcript).join(" ");
+          document.getElementById("speak-transcript").textContent = text;
+        };
+        recognition.onerror = () => toast("Micro bị chặn trong khung xem trước; bạn vẫn có thể tự luyện theo đồng hồ 60 giây.");
+        try { recognition.start(); } catch (e) {}
+      } else {
+        document.getElementById("speak-transcript").textContent = "Trình duyệt đang chạy đồng hồ đếm ngược 60 giây để bạn tự luyện nói theo khung PREP.";
+      }
+    });
+    document.getElementById("btn-rec-stop").addEventListener("click", () => {
+      clearInterval(speakTimerInt);
+      if (recognition) { try { recognition.stop(); } catch (e) {} }
+      toast("Đã dừng phiên luyện nói.");
+    });
+
+    // Delegated Clicks (Speak, Status Toggles, Roadmap, 3D Cards)
+    document.addEventListener("click", e => {
+      const sp = e.target.closest(".speak-btn");
+      if (sp) { e.stopPropagation(); speakText(sp.dataset.speak, 0.9); return; }
+
+      const rm = e.target.closest(".rm-toggle");
+      if (rm) {
+        const [si, li] = rm.dataset.rm.split("-").map(Number);
+        const order = ["Chưa mở", "Đang học", "Hoàn thành"];
+        const cur = roadmap[si].lessons[li].status;
+        roadmap[si].lessons[li].status = order[(order.indexOf(cur) + 1) % 3];
+        saveState(); renderRoadmap(); return;
+      }
+
+      const mb = e.target.closest("[data-toggle-mistake]");
+      if (mb) {
+        const item = db["02_Mistake_Bank"].find(x => String(x.id) === mb.dataset.toggleMistake);
+        if (item) {
+          item.status = item.status === "Mastered" ? "Learning" : "Mastered";
+          saveState(); renderPreplyModule();
+          postToSheet({ sheet: "02_Mistake_Bank", action: "update_status", id: item.id, status: item.status });
+        }
+        return;
+      }
+
+      const ab = e.target.closest("[data-toggle-agenda]");
+      if (ab) {
+        const item = db["03_Work_Agenda"].find(x => String(x.id) === ab.dataset.toggleAgenda);
+        if (item) {
+          item.status = item.status === "Done" ? "Pending" : "Done";
+          saveState(); renderSimLab();
+          postToSheet({ sheet: "03_Work_Agenda", action: "update_status", id: item.id, status: item.status });
+        }
+        return;
+      }
+
+      const bb = e.target.closest("[data-toggle-brief]");
+      if (bb) {
+        const item = db["05_Daily_Briefing"].find(x => String(x.id) === bb.dataset.toggleBrief);
+        if (item) {
+          item.status = item.status === "Done" ? "Pending" : "Done";
+          saveState(); renderPreplyModule();
+          postToSheet({ sheet: "05_Daily_Briefing", action: "update_status", id: item.id, status: item.status });
+        }
+        return;
+      }
+
+      const kbBtn = e.target.closest("[data-toggle-kb]");
+      if (kbBtn) {
+        e.stopPropagation();
+        const item = db["04_Knowledge_Base"].find(x => String(x.id) === kbBtn.dataset.toggleKb);
+        if (item) {
+          item.status = item.status === "Mastered" ? "Learning" : "Mastered";
+          saveState(); renderKB();
+          postToSheet({ sheet: "04_Knowledge_Base", action: "update_status", id: item.id, status: item.status });
+        }
+        return;
+      }
+
+      const card = e.target.closest(".kb-card");
+      if (card) card.classList.toggle("flipped");
+    });
+
+    // API Config Modal
+    const apiModal = document.getElementById("api-modal");
+    document.getElementById("btn-open-api").addEventListener("click", () => {
+      document.getElementById("api-url").value = cfg.url || "";
+      document.getElementById("api-token").value = cfg.token || "FDI_BIDDING_2026_SECRET";
+      document.getElementById("api-pin").value = cfg.pin || "2026";
+      apiModal.classList.remove("hidden");
+    });
+    document.getElementById("btn-close-api").addEventListener("click", () => apiModal.classList.add("hidden"));
+    document.getElementById("btn-sync-header").addEventListener("click", () => {
+      if (!cfg.url) apiModal.classList.remove("hidden");
+      else syncFromSheet(false);
+    });
+    document.getElementById("api-form").addEventListener("submit", e => {
+      e.preventDefault();
+      cfg.url = document.getElementById("api-url").value.trim();
+      cfg.token = document.getElementById("api-token").value.trim();
+      cfg.pin = document.getElementById("api-pin").value.trim() || "2026";
+      saveState(); apiModal.classList.add("hidden"); syncFromSheet(false);
+    });
+    document.getElementById("btn-reset-demo").addEventListener("click", () => {
+      cfg.url = ""; saveState(); apiModal.classList.add("hidden"); setSyncStatus("demo", "Demo 5-Tab"); toast("Đang chạy chế độ dữ liệu Demo 5-Tab.");
+    });
+
+    // Quick Add Row Modal
+    const addModal = document.getElementById("add-modal");
+    function openAdd(target) {
+      currentAddTarget = target;
+      const form = document.getElementById("add-form");
+      const today = new Date().toISOString().slice(0, 10);
+      if (target === "mistake") {
+        document.getElementById("add-title").textContent = "Thêm Lỗi Sai (02_Mistake_Bank)";
+        form.innerHTML = `<input name="date" type="date" value="${today}" class="w-full px-3 py-2 rounded-lg border text-xs text-slate-900" required /><input name="wrong_sentence" placeholder="Câu sai gốc..." class="w-full px-3 py-2 rounded-lg border text-xs text-slate-900" required /><input name="correct_b2" placeholder="Câu chuẩn B2/C1..." class="w-full px-3 py-2 rounded-lg border text-xs text-slate-900" required /><select name="context" class="w-full px-3 py-2 rounded-lg border text-xs bg-white text-slate-900"><option>Pre-Tender</option><option>Interview</option><option>Negotiation</option><option>General</option></select><button type="submit" class="w-full py-2.5 rounded-lg bg-teal-600 text-white text-xs font-semibold">Lưu vào Sheet</button>`;
+      } else if (target === "agenda") {
+        document.getElementById("add-title").textContent = "Thêm Tình Huống Tuần Tới (03_Work_Agenda)";
+        form.innerHTML = `<input name="target_date" type="date" value="${today}" class="w-full px-3 py-2 rounded-lg border text-xs text-slate-900" required /><select name="stage" class="w-full px-3 py-2 rounded-lg border text-xs bg-white text-slate-900"><option>Pre-Tender</option><option>Interview</option><option>Negotiation</option></select><input name="scenario" placeholder="Tình huống (đã ẩn danh NDA)..." class="w-full px-3 py-2 rounded-lg border text-xs text-slate-900" required /><input name="key_goal" placeholder="Mục tiêu cần đạt..." class="w-full px-3 py-2 rounded-lg border text-xs text-slate-900" required /><button type="submit" class="w-full py-2.5 rounded-lg bg-indigo-600 text-white text-xs font-semibold">Lưu vào Sheet</button>`;
+      } else if (target === "briefing") {
+        document.getElementById("add-title").textContent = "Thêm Tin Small Talk (05_Daily_Briefing)";
+        form.innerHTML = `<input name="date" type="date" value="${today}" class="w-full px-3 py-2 rounded-lg border text-xs text-slate-900" required /><input name="category" placeholder="Chủ đề (vd: FDI, AI, Energy)..." class="w-full px-3 py-2 rounded-lg border text-xs text-slate-900" required /><input name="vi_summary" placeholder="Tóm tắt tiếng Việt..." class="w-full px-3 py-2 rounded-lg border text-xs text-slate-900" required /><textarea name="en_quick_talk" rows="3" placeholder="Câu mở màn tiếng Anh B2..." class="w-full px-3 py-2 rounded-lg border text-xs text-slate-900" required></textarea><button type="submit" class="w-full py-2.5 rounded-lg bg-teal-600 text-white text-xs font-semibold">Lưu vào Sheet</button>`;
+      } else {
+        document.getElementById("add-title").textContent = "Thêm Thuật Ngữ NDA-Safe (04_Knowledge_Base)";
+        form.innerHTML = `<input name="term_or_phrase" placeholder="Thuật ngữ / Mẫu câu (EN)..." class="w-full px-3 py-2 rounded-lg border text-xs text-slate-900" required /><select name="category" class="w-full px-3 py-2 rounded-lg border text-xs bg-white text-slate-900"><option>Contract/FIDIC</option><option>PMI</option><option>HSMT</option></select><input name="b2_explanation" placeholder="Nghĩa tiếng Việt..." class="w-full px-3 py-2 rounded-lg border text-xs text-slate-900" required /><input name="sample_sentence" placeholder="Câu mẫu thực chiến (EN)..." class="w-full px-3 py-2 rounded-lg border text-xs text-slate-900" required /><button type="submit" class="w-full py-2.5 rounded-lg bg-teal-600 text-white text-xs font-semibold">Lưu vào Sheet</button>`;
+      }
+      addModal.classList.remove("hidden");
+    }
+    document.getElementById("btn-add-mistake").addEventListener("click", () => openAdd("mistake"));
+    document.getElementById("btn-add-agenda").addEventListener("click", () => openAdd("agenda"));
+    document.getElementById("btn-add-briefing").addEventListener("click", () => openAdd("briefing"));
+    document.getElementById("btn-add-kb").addEventListener("click", () => openAdd("kb"));
+    document.getElementById("btn-close-add").addEventListener("click", () => addModal.classList.add("hidden"));
+
+    document.getElementById("add-form").addEventListener("submit", e => {
+      e.preventDefault();
+      const row = Object.fromEntries(new FormData(e.target).entries());
+      const map = {
+        mistake: { sheet: "02_Mistake_Bank", prefix: "M", extra: { error_type: "Grammar", status: "Learning" } },
+        agenda: { sheet: "03_Work_Agenda", prefix: "W", extra: { status: "Pending" } },
+        briefing: { sheet: "05_Daily_Briefing", prefix: "D", extra: { status: "Pending" } },
+        kb: { sheet: "04_Knowledge_Base", prefix: "K", extra: { status: "Learning" } }
+      }[currentAddTarget];
+      const item = { id: map.prefix + String(Date.now()).slice(-4), ...map.extra, ...row };
+      db[map.sheet].unshift(item);
+      saveState(); renderAll(); addModal.classList.add("hidden");
+      postToSheet({ sheet: map.sheet, action: "add_row", row: item });
+      toast(`Đã thêm vào ${map.sheet}!`);
+    });
+
+    // Init
+    loadState();
+    applyTheme();
+    document.querySelectorAll("#reading-passage .hl").forEach(el => el.className = "hl bg-amber-200 text-slate-900 px-1 rounded font-semibold");
+    renderAll();
+    if (cfg.url) syncFromSheet(true);
+  </script>
+</body>
+</html>
