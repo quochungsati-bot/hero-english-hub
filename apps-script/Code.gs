@@ -4,6 +4,7 @@
  *
  * Script Properties (Project Settings → Script properties):
  *   SECRET_TOKEN = chuỗi ngẫu nhiên dài, KHÔNG dùng lại "FDI_BIDDING_2026_SECRET"
+ *   (khi chưa đặt, script tạm chấp nhận token cũ để app không mất đồng bộ)
  *
  * Giao thức (khớp với index.html):
  *   POST {action:"read", token}                         → {status:"success", data:{tab:[rows]}}
@@ -15,9 +16,11 @@
 var TABS = ['01_Preply_Log', '02_Mistake_Bank', '03_Work_Agenda', '04_Knowledge_Base', '05_Daily_Briefing'];
 
 function out_(o) { return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON); }
+// Token cũ chỉ được chấp nhận khi CHƯA đặt SECRET_TOKEN trong Script Properties.
+// Đặt SECRET_TOKEN mới xong thì token cũ tự hết hiệu lực.
+var LEGACY_TOKEN = 'FDI_BIDDING_2026_SECRET';
 function auth_(t) {
-  var s = PropertiesService.getScriptProperties().getProperty('SECRET_TOKEN');
-  if (!s) throw new Error('Chưa đặt SECRET_TOKEN trong Script Properties');
+  var s = PropertiesService.getScriptProperties().getProperty('SECRET_TOKEN') || LEGACY_TOKEN;
   if (String(t || '') !== s) throw new Error('Unauthorized: sai token');
 }
 function sheet_(name) {
@@ -62,6 +65,7 @@ function doPost(e) {
     }
     if (b.action === 'add_row') {
       var row = b.row || {};
+      if (!row.id) row.id = 'ID_' + Date.now();
       sh.appendRow(head.map(function (h) { return row[h] == null ? '' : row[h]; }));
       return out_({ status: 'success', id: row.id });
     }
