@@ -3,10 +3,857 @@
   "id": "L11",
   "no": 11,
   "date": "2026-09-18",
+  "duration": 57,
+  "title": "Buổi 11 · Schooling, Exam Cheating & AI vs Real Food Photos",
+  "topic": "Trường công/tư, gian lận thi tuyển sinh, bệnh thành tích · ảnh đồ ăn AI vs ảnh thật, biển hiệu vẽ tay",
+  "summary": "Buổi học mở đầu bằng chuyện trường học của con Lorraine, so sánh trường công, trường tư, trường Công giáo, học tại nhà và học bổng ở Philippines với Việt Nam. Anh kể vụ gian lận thi vào lớp 10 năm 2026 và 'bệnh thành tích'. Phần chủ đề chính so sánh ảnh đồ ăn tạo bằng AI với ảnh thật, kèm câu chuyện nhóm bạn trẻ Việt Nam vẽ tay biển hiệu miễn phí cho người bán hàng rong. Lorraine hiểu anh khoảng 95%. Lỗi nổi bật: câu hỏi thiếu trợ động từ, thiếu động từ chính, dùng hiện tại cho chuyện đã qua, many/all + danh từ, và 'in the Philippines'. Toàn văn do máy nghe từ bản ghi âm nên có thể sai vài từ.",
+  "strengths": [
+   "Chủ động dẫn dắt: tự tìm hiểu chủ đề trước buổi và kể câu chuyện thật từ Việt Nam (biển hiệu vẽ tay).",
+   "Dùng được cụm từ hay: \"the mindset of every student\", \"less appealing, less appetizing\", \"a free marketing boost\".",
+   "Đặt nhiều câu hỏi ngược lại cho giáo viên, giữ cuộc nói chuyện tự nhiên.",
+   "Lorraine đánh giá hiểu được khoảng 95% lời anh nói."
+  ],
+  "focus": [
+   "Câu hỏi cần trợ động từ: Do/Does/Did/Are…? (lỗi lặp nhiều nhất)",
+   "Câu thiếu động từ chính hoặc thiếu chủ ngữ (I enough the score…, is relate to…)",
+   "Chuyện đã qua phải dùng quá khứ (cancelled, had to, failed, happened)",
+   "many / all / those + danh từ số nhiều; there are many aspects",
+   "the Philippines luôn có the; bored (-ed) vs boring (-ing)",
+   "Phát âm /juː/: youth, human, huge"
+  ],
+  "errors": [
+   {
+    "group": "Câu hỏi thiếu trợ động từ",
+    "n": 14,
+    "repeat": true,
+    "ex": "Any lesson after me? / when start study in the morning / have any the young people do that",
+    "fix": "Do you have any lessons after me? / When does he start school? / Do any young people do that?"
+   },
+   {
+    "group": "Thiếu động từ chính / chủ ngữ",
+    "n": 8,
+    "repeat": true,
+    "ex": "after I enough the score… / I understand is relate to the religion",
+    "fix": "after I got enough points… / I understand it is related to religion"
+   },
+   {
+    "group": "Dùng hiện tại cho chuyện đã qua",
+    "n": 7,
+    "repeat": true,
+    "ex": "So they cancel, the children have to test them again / happen in this year",
+    "fix": "So they cancelled the results, and the students had to retake the exam / It happened this year"
+   },
+   {
+    "group": "many / all / those + số nhiều",
+    "n": 6,
+    "repeat": true,
+    "ex": "many many a restaurant / those hand-painted sign / many aspects like math",
+    "fix": "many restaurants / those hand-painted signs / There are many aspects, like maths"
+   },
+   {
+    "group": "Ngôi 3 số ít",
+    "n": 3,
+    "repeat": true,
+    "ex": "he have the time break / the reason come from",
+    "fix": "he has a lunch break / the reason comes from"
+   },
+   {
+    "group": "Mạo từ the với tên nước",
+    "n": 3,
+    "repeat": true,
+    "ex": "in Philippines",
+    "fix": "in the Philippines (nhưng: in Vietnam)"
+   },
+   {
+    "group": "Tính từ -ed / -ing",
+    "n": 1,
+    "repeat": false,
+    "ex": "the people are very boring with the AI picture",
+    "fix": "people are bored with AI pictures"
+   },
+   {
+    "group": "Từ dùng sai nghĩa",
+    "n": 5,
+    "repeat": false,
+    "ex": "50% fell / I still reserve / the program is very strong / give the children to kindergarten",
+    "fix": "50% failed / I haven't decided yet / the curriculum is very heavy / send the children to kindergarten"
+   }
+  ],
+  "grammar": [
+   {
+    "title": "Câu hỏi với trợ động từ",
+    "formula": "(Wh-) + do / does / did / are / is + S + V …?",
+    "rule": "Tiếng Anh không hỏi bằng cách lên giọng như tiếng Việt. Phải đặt trợ động từ trước chủ ngữ: do (I/you/we/they), does (he/she/it), did (quá khứ), hoặc đảo to be.",
+    "right": [
+     "Do you have any lessons after me?",
+     "When does he start school in the morning?",
+     "Are there any fees for students?"
+    ],
+    "wrong": [
+     "Any lesson after me?",
+     "When start study in the morning?",
+     "The government have any support?"
+    ]
+   },
+   {
+    "title": "Câu phải có động từ chính",
+    "formula": "S + V (+ O)",
+    "rule": "Mỗi câu cần chủ ngữ và động từ. 'enough', 'condition', 'relate' không thay được động từ. Hay thiếu nhất: got, meet, is.",
+    "right": [
+     "After I got enough points, I passed high school.",
+     "Then you meet the requirements to enter university.",
+     "I understand it is related to religion."
+    ],
+    "wrong": [
+     "After I enough the score…",
+     "You enough condition to join the university.",
+     "I understand is relate to the religion."
+    ]
+   },
+   {
+    "title": "Quá khứ đơn khi kể chuyện đã xảy ra",
+    "formula": "S + V-ed / V2 (+ mốc thời gian quá khứ)",
+    "rule": "Kể sự việc đã xong (kỳ thi năm nay, hồi anh đi học) thì dùng quá khứ. Phủ định: didn't + V nguyên mẫu.",
+    "right": [
+     "They cancelled the results, and the students had to retake the exam.",
+     "In my time, it didn't happen like that.",
+     "It happened this year."
+    ],
+    "wrong": [
+     "So they cancel, the children have to test them again.",
+     "It not happened like that.",
+     "Happen in this year."
+    ]
+   },
+   {
+    "title": "There is / There are + lượng từ",
+    "formula": "There are + many / some / any + N số nhiều",
+    "rule": "Để nói 'có nhiều…' dùng There are many + danh từ số nhiều. Câu hỏi: Are there any + N số nhiều…?",
+    "right": [
+     "There are many aspects, like maths, art and singing.",
+     "Are there any parents who choose homeschooling?"
+    ],
+    "wrong": [
+     "I think many aspects like math, art, singing.",
+     "You don't have any parents who follow style called home school?"
+    ]
+   },
+   {
+    "title": "The + tên nước dạng số nhiều / cộng hoà",
+    "formula": "the + Philippines / United States / Netherlands; không dùng the với Vietnam, Korea",
+    "rule": "Lorraine nhắc: tên nước số nhiều hoặc có Republic/United/States phải có the. Vietnam thì không.",
+    "right": [
+     "Is this common in the Philippines?",
+     "It's the same in Vietnam."
+    ],
+    "wrong": [
+     "in Philippines",
+     "in the Vietnam"
+    ]
+   },
+   {
+    "title": "Tính từ -ed và -ing",
+    "formula": "S + feel/be + V-ed (cảm xúc của người) · S + be + V-ing (tính chất gây ra cảm xúc)",
+    "rule": "bored = mình thấy chán; boring = thứ gây chán. Tương tự: interested/interesting, shocked/shocking.",
+    "right": [
+     "People are bored with AI pictures.",
+     "AI pictures are boring."
+    ],
+    "wrong": [
+     "The people are very boring with the AI picture."
+    ]
+   }
+  ],
+  "exercises": [
+   {
+    "id": "s1",
+    "title": "Bài 1 · Chọn trợ động từ cho câu hỏi",
+    "items": [
+     {
+      "type": "choice",
+      "q": "___ you have any meetings after lunch?",
+      "options": [
+       "Do",
+       "Does",
+       "Are"
+      ],
+      "answer": [
+       "Do"
+      ],
+      "explain": "you → do."
+     },
+     {
+      "type": "choice",
+      "q": "When ___ the bid opening start tomorrow?",
+      "options": [
+       "do",
+       "does",
+       "is"
+      ],
+      "answer": [
+       "does"
+      ],
+      "explain": "the bid opening (số ít) → does + V nguyên mẫu."
+     },
+     {
+      "type": "choice",
+      "q": "___ there any fees for submitting the tender?",
+      "options": [
+       "Do",
+       "Is",
+       "Are"
+      ],
+      "answer": [
+       "Are"
+      ],
+      "explain": "There are + any fees (số nhiều) → câu hỏi Are there…?"
+     },
+     {
+      "type": "choice",
+      "q": "___ the client provide any support for site access last month?",
+      "options": [
+       "Does",
+       "Did",
+       "Is"
+      ],
+      "answer": [
+       "Did"
+      ],
+      "explain": "last month → quá khứ → Did + V nguyên mẫu."
+     },
+     {
+      "type": "choice",
+      "q": "___ your team members work on site every day?",
+      "options": [
+       "Do",
+       "Does",
+       "Are"
+      ],
+      "answer": [
+       "Do"
+      ],
+      "explain": "your team members (số nhiều) → do."
+     },
+     {
+      "type": "choice",
+      "q": "___ this approach popular in Vietnam?",
+      "options": [
+       "Do",
+       "Does",
+       "Is"
+      ],
+      "answer": [
+       "Is"
+      ],
+      "explain": "Câu với tính từ popular → đảo to be: Is this approach popular?"
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "title": "Bài 2 · Viết lại thành câu hỏi đúng",
+    "items": [
+     {
+      "type": "text",
+      "q": "Viết đúng: 'Any lesson after me?' (hỏi giáo viên còn buổi dạy nào sau anh không)",
+      "answer": [
+       "do you have any lessons after me?",
+       "do you have any lessons after me",
+       "do you have any classes after me?",
+       "do you have any classes after me"
+      ],
+      "explain": "Do you have any + danh từ số nhiều…?"
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'When start the site meeting tomorrow?'",
+      "answer": [
+       "when does the site meeting start tomorrow?",
+       "when does the site meeting start tomorrow"
+      ],
+      "explain": "When + does + chủ ngữ + V nguyên mẫu."
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'You think that project very meaningful?'",
+      "answer": [
+       "do you think that project is very meaningful?",
+       "do you think that project is very meaningful",
+       "do you think the project is very meaningful?",
+       "do you think the project is very meaningful"
+      ],
+      "explain": "Do you think + mệnh đề có động từ (is)."
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'The client have any comments on our proposal?'",
+      "answer": [
+       "does the client have any comments on our proposal?",
+       "does the client have any comments on our proposal"
+      ],
+      "explain": "the client → does … have."
+     }
+    ]
+   },
+   {
+    "id": "s3",
+    "title": "Bài 3 · Quá khứ đơn",
+    "items": [
+     {
+      "type": "choice",
+      "q": "Last year the client ___ the tender and we had to resubmit.",
+      "options": [
+       "cancel",
+       "cancelled",
+       "cancels"
+      ],
+      "answer": [
+       "cancelled"
+      ],
+      "explain": "Last year → quá khứ."
+     },
+     {
+      "type": "choice",
+      "q": "In my time, cheating ___ happen like that.",
+      "options": [
+       "doesn't",
+       "didn't",
+       "not"
+      ],
+      "answer": [
+       "didn't"
+      ],
+      "explain": "Quá khứ phủ định: didn't + V nguyên mẫu."
+     },
+     {
+      "type": "choice",
+      "q": "The students had to retake the exam, and 50% ___.",
+      "options": [
+       "fell",
+       "failed",
+       "fail"
+      ],
+      "answer": [
+       "failed"
+      ],
+      "explain": "fail = trượt; fell là quá khứ của fall (ngã)."
+     },
+     {
+      "type": "choice",
+      "q": "It ___ this year, in the summer.",
+      "options": [
+       "happen",
+       "happened",
+       "is happen"
+      ],
+      "answer": [
+       "happened"
+      ],
+      "explain": "Chuyện đã xảy ra → happened, không dùng in trước this year."
+     },
+     {
+      "type": "choice",
+      "q": "I ___ the picture you sent me and found some information about it.",
+      "options": [
+       "see",
+       "saw",
+       "seeing"
+      ],
+      "answer": [
+       "saw"
+      ],
+      "explain": "Song song với found → quá khứ saw."
+     }
+    ]
+   },
+   {
+    "id": "s4",
+    "title": "Bài 4 · Lượng từ và there are",
+    "items": [
+     {
+      "type": "choice",
+      "q": "There ___ many aspects to consider in this bid.",
+      "options": [
+       "is",
+       "are",
+       "be"
+      ],
+      "answer": [
+       "are"
+      ],
+      "explain": "There are + danh từ số nhiều."
+     },
+     {
+      "type": "choice",
+      "q": "We visited many ___ during the site survey.",
+      "options": [
+       "restaurant",
+       "restaurants"
+      ],
+      "answer": [
+       "restaurants"
+      ],
+      "explain": "many + số nhiều."
+     },
+     {
+      "type": "choice",
+      "q": "When people look at those hand-painted ___, they see a story.",
+      "options": [
+       "sign",
+       "signs"
+      ],
+      "answer": [
+       "signs"
+      ],
+      "explain": "those + số nhiều."
+     },
+     {
+      "type": "choice",
+      "q": "___ the students of that school passed the first exam.",
+      "options": [
+       "All",
+       "Every",
+       "Each"
+      ],
+      "answer": [
+       "All"
+      ],
+      "explain": "All the students + động từ số nhiều; every/each đi với số ít."
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'I think many aspect like cost, time, quality.'",
+      "answer": [
+       "there are many aspects, like cost, time and quality.",
+       "there are many aspects like cost, time and quality.",
+       "there are many aspects, like cost, time and quality",
+       "there are many aspects like cost, time, and quality."
+      ],
+      "explain": "There are many aspects (số nhiều)."
+     }
+    ]
+   },
+   {
+    "id": "s5",
+    "title": "Bài 5 · the Philippines, -ed/-ing, từ đúng nghĩa",
+    "items": [
+     {
+      "type": "choice",
+      "q": "Is entrance exam cheating common in ___?",
+      "options": [
+       "Philippines",
+       "the Philippines"
+      ],
+      "answer": [
+       "the Philippines"
+      ],
+      "explain": "Tên nước số nhiều luôn có the."
+     },
+     {
+      "type": "choice",
+      "q": "Our partner is based in ___.",
+      "options": [
+       "Vietnam",
+       "the Vietnam"
+      ],
+      "answer": [
+       "Vietnam"
+      ],
+      "explain": "Vietnam không có the."
+     },
+     {
+      "type": "choice",
+      "q": "People are ___ with AI pictures, so traditional art is coming back.",
+      "options": [
+       "boring",
+       "bored"
+      ],
+      "answer": [
+       "bored"
+      ],
+      "explain": "Cảm xúc của người → -ed."
+     },
+     {
+      "type": "choice",
+      "q": "Long tender meetings can be really ___.",
+      "options": [
+       "boring",
+       "bored"
+      ],
+      "answer": [
+       "boring"
+      ],
+      "explain": "Tính chất gây chán → -ing."
+     },
+     {
+      "type": "choice",
+      "q": "I haven't ___ which school to choose for my son yet.",
+      "options": [
+       "reserved",
+       "decided"
+      ],
+      "answer": [
+       "decided"
+      ],
+      "explain": "Chưa quyết định = haven't decided yet."
+     },
+     {
+      "type": "choice",
+      "q": "Many parents like to ___ their children to Catholic kindergartens.",
+      "options": [
+       "give",
+       "send"
+      ],
+      "answer": [
+       "send"
+      ],
+      "explain": "Cho con đi học = send children to school."
+     }
+    ]
+   }
+  ],
+  "rewrites": [
+   {
+    "orig": "Any lesson after me?",
+    "err": "Câu hỏi thiếu trợ động từ",
+    "b2": "Do you have any lessons after me?",
+    "c1": "Are you teaching anyone else after our session?",
+    "work": "Do you have any other meetings after this one, or can we run a bit longer?"
+   },
+   {
+    "orig": "So they cancel, the children have to test them again.",
+    "err": "Hiện tại cho chuyện đã qua",
+    "b2": "So they cancelled the results, and the students had to retake the exam.",
+    "c1": "The results were annulled, and every candidate had to resit the exam.",
+    "work": "The first submission was rejected, and every bidder had to resubmit."
+   },
+   {
+    "orig": "after I enough the score to pass the high school.",
+    "err": "Thiếu động từ",
+    "b2": "after I got enough points to pass high school.",
+    "c1": "once I had scored high enough to graduate from high school,",
+    "work": "Once we meet the pre-qualification requirements, we can submit the technical proposal."
+   },
+   {
+    "orig": "I think that's for achievement-oriented disease.",
+    "err": "because of + danh từ",
+    "b2": "I think that's because of the obsession with achievements.",
+    "c1": "I'd put it down to an obsession with grades and rankings.",
+    "work": "I'd put the delay down to an obsession with headline progress rather than real quality."
+   },
+   {
+    "orig": "I think many aspects like math, art, singing.",
+    "err": "There are many + số nhiều",
+    "b2": "There are many aspects, like maths, art and singing.",
+    "c1": "The curriculum covers a wide range of subjects, from maths to the arts.",
+    "work": "There are many aspects to evaluate, like cost, schedule and safety."
+   },
+   {
+    "orig": "But the concept of AI is a lack of realism.",
+    "err": "lack là động từ",
+    "b2": "But AI images lack realism.",
+    "c1": "AI-generated images often lack authenticity.",
+    "work": "A render alone lacks credibility; the client wants real site photos."
+   },
+   {
+    "orig": "because the people are very boring with the AI picture",
+    "err": "-ed vs -ing",
+    "b2": "because people are bored with AI pictures",
+    "c1": "because audiences have grown tired of AI imagery",
+    "work": "Clients have grown tired of generic proposals; they want project-specific solutions."
+   },
+   {
+    "orig": "In the whole lesson, how many persons you can understand when I speak.",
+    "err": "Câu hỏi + percent",
+    "b2": "What percentage of what I say can you understand in the whole lesson?",
+    "c1": "Roughly how much of what I say comes across clearly?",
+    "work": "Roughly how much of our method statement was clear to your team?"
+   }
+  ],
+  "pron": [
+   {
+    "word": "youth",
+    "ipa": "/juːθ/",
+    "tip": "Bắt đầu bằng âm /j/ như 'diu', kết thúc /θ/ lưỡi giữa răng. Lorraine nghe 'yufrup' thay vì 'youth groups'.",
+    "example": "Youth groups paint signs for street vendors for free."
+   },
+   {
+    "word": "human",
+    "ipa": "/ˈhjuː.mən/",
+    "tip": "Có âm /j/ sau h: 'hiu-mần', không đọc 'hu-man'. Lorraine dặn nghĩ tới chữ U.",
+    "example": "It's a very human story."
+   },
+   {
+    "word": "huge",
+    "ipa": "/hjuːdʒ/",
+    "tip": "Giống human: 'hiu-dʒ', kết thúc /dʒ/ rõ.",
+    "example": "There is a huge difference between the two bids."
+   },
+   {
+    "word": "realism",
+    "ipa": "/ˈrɪə.lɪ.zəm/",
+    "tip": "Nhấn âm đầu REAL; Lorraine hỏi lại 2 lần vì nghe chưa rõ.",
+    "example": "AI images lack realism."
+   },
+   {
+    "word": "appetizing",
+    "ipa": "/ˈæp.ə.taɪ.zɪŋ/",
+    "tip": "Nhấn âm đầu AP, 4 âm tiết.",
+    "example": "Real photos look more appetizing."
+   },
+   {
+    "word": "maths",
+    "ipa": "/mæθs/",
+    "tip": "Âm /θ/ cuối (lưỡi giữa răng). Máy nghe thành 'map' vì thiếu /θ/.",
+    "example": "There are many subjects, like maths, art and singing."
+   }
+  ],
+  "prep": {
+   "upgrades": [
+    {
+     "b1": "In Vietnam the program for study is very strong, children learn everything.",
+     "c1": "Vietnam's curriculum is overloaded; children are expected to master every subject instead of a few core ones."
+    },
+    {
+     "b1": "I think the reason is achievement-oriented disease from parents and teachers.",
+     "c1": "I think the root cause is pressure to achieve, coming from parents, teachers and society."
+    },
+    {
+     "b1": "AI picture is cheap and fast but it is not real.",
+     "c1": "AI imagery is cheap and fast, but it lacks the authenticity that builds customer trust."
+    }
+   ],
+   "vocab": [
+    {
+     "term": "rampant",
+     "ipa": "/ˈræm.pənt/",
+     "vi": "tràn lan",
+     "example": "Entrance exam cheating is not rampant here."
+    },
+    {
+     "term": "retake an exam",
+     "ipa": "/ˌriːˈteɪk ən ɪɡˈzæm/",
+     "vi": "thi lại",
+     "example": "Every candidate had to retake the exam."
+    },
+    {
+     "term": "meet the requirements",
+     "ipa": "/miːt ðə rɪˈkwaɪə.mənts/",
+     "vi": "đủ điều kiện",
+     "example": "Our firm meets the pre-qualification requirements."
+    },
+    {
+     "term": "curriculum",
+     "ipa": "/kəˈrɪk.jə.ləm/",
+     "vi": "chương trình học",
+     "example": "The curriculum is too heavy for young children."
+    },
+    {
+     "term": "cost-effective",
+     "ipa": "/ˌkɒst ɪˈfek.tɪv/",
+     "vi": "hiệu quả chi phí",
+     "example": "Precast concrete is more cost-effective for this project."
+    },
+    {
+     "term": "lack (v)",
+     "ipa": "/læk/",
+     "vi": "thiếu",
+     "example": "The proposal lacks detail on safety."
+    },
+    {
+     "term": "appetizing",
+     "ipa": "/ˈæp.ə.taɪ.zɪŋ/",
+     "vi": "ngon mắt",
+     "example": "Real photos look more appetizing."
+    },
+    {
+     "term": "outreach",
+     "ipa": "/ˈaʊt.riːtʃ/",
+     "vi": "hoạt động hỗ trợ cộng đồng",
+     "example": "The youth outreach programme supports street vendors."
+    }
+   ],
+   "compareTitle": "So sánh ảnh AI và ảnh thật",
+   "compareHead": [
+    "Tiêu chí",
+    "Ảnh tạo bằng AI",
+    "Ảnh chụp thật / vẽ tay"
+   ],
+   "compare": [
+    [
+     "Chi phí, thời gian",
+     "Rẻ, vài phút là xong",
+     "Tốn thời gian, công sức, đắt hơn"
+    ],
+    [
+     "Độ tin cậy",
+     "Thiếu chân thực, dễ thành 'expectation vs reality'",
+     "Khách thấy đúng thứ họ nhận"
+    ],
+    [
+     "Cảm xúc",
+     "Nhanh nhàm, khách đã chán ảnh AI",
+     "Kể được câu chuyện, tạo cộng đồng"
+    ],
+    [
+     "Bài học cho hồ sơ thầu",
+     "Phối cảnh render đẹp nhưng chung chung",
+     "Ảnh công trường thật, dự án thật tạo niềm tin"
+    ]
+   ]
+  },
+  "speaking": {
+   "task": "Nói 1 phút với Chủ đầu tư: vì sao hồ sơ thầu nên dùng ảnh công trình thật thay vì chỉ dùng phối cảnh AI?",
+   "starter": "Renders look impressive, but real site photos show clients exactly what we deliver, and that builds trust."
+  },
+  "transcriptTab": "06_Lesson_Library",
+  "newWords": [
+   {
+    "term": "exam preparations",
+    "vi": "luyện thi",
+    "ipa": "/ɪɡˈzæm ˌprep.əˈreɪ.ʃənz/"
+   },
+   {
+    "term": "allocate",
+    "vi": "phân bổ (thời gian, nguồn lực)",
+    "ipa": "/ˈæl.ə.keɪt/"
+   },
+   {
+    "term": "intentionally",
+    "vi": "cố ý, có chủ đích",
+    "ipa": "/ɪnˈten.ʃən.əl.i/"
+   },
+   {
+    "term": "cafeteria",
+    "vi": "căng-tin",
+    "ipa": "/ˌkæf.əˈtɪə.ri.ə/"
+   },
+   {
+    "term": "Catholic",
+    "vi": "Công giáo",
+    "ipa": "/ˈkæθ.əl.ɪk/"
+   },
+   {
+    "term": "kindergarten",
+    "vi": "mẫu giáo",
+    "ipa": "/ˈkɪn.dəˌɡɑː.tən/"
+   },
+   {
+    "term": "home school",
+    "vi": "học tại nhà (homeschool)",
+    "ipa": "/ˈhəʊm.skuːl/"
+   },
+   {
+    "term": "scholarship",
+    "vi": "học bổng",
+    "ipa": "/ˈskɒl.ə.ʃɪp/"
+   },
+   {
+    "term": "achievement-oriented",
+    "vi": "chạy theo thành tích",
+    "ipa": "/əˈtʃiːv.mənt ˈɔː.ri.en.tɪd/"
+   },
+   {
+    "term": "rampant",
+    "vi": "tràn lan",
+    "ipa": "/ˈræm.pənt/"
+   },
+   {
+    "term": "entrance exam",
+    "vi": "kỳ thi tuyển sinh",
+    "ipa": "/ˈen.trəns ɪɡˈzæm/"
+   },
+   {
+    "term": "substandard",
+    "vi": "dưới chuẩn",
+    "ipa": "/sʌbˈstæn.dəd/"
+   },
+   {
+    "term": "meet the requirements",
+    "vi": "đáp ứng yêu cầu, đủ điều kiện",
+    "ipa": "/miːt ðə rɪˈkwaɪə.mənts/"
+   },
+   {
+    "term": "cost effective",
+    "vi": "hiệu quả về chi phí",
+    "ipa": "/ˌkɒst ɪˈfek.tɪv/"
+   },
+   {
+    "term": "realism",
+    "vi": "tính chân thực",
+    "ipa": "/ˈrɪə.lɪ.zəm/"
+   },
+   {
+    "term": "appetizing",
+    "vi": "trông ngon miệng",
+    "ipa": "/ˈæp.ə.taɪ.zɪŋ/"
+   },
+   {
+    "term": "appealing",
+    "vi": "hấp dẫn",
+    "ipa": "/əˈpiː.lɪŋ/"
+   },
+   {
+    "term": "street vendors",
+    "vi": "người bán hàng rong",
+    "ipa": "/striːt ˈven.dəz/"
+   },
+   {
+    "term": "hand-painted",
+    "vi": "vẽ tay",
+    "ipa": "/ˌhænd ˈpeɪn.tɪd/"
+   },
+   {
+    "term": "graffiti",
+    "vi": "hình vẽ bậy trên tường",
+    "ipa": "/ɡrəˈfiː.ti/"
+   },
+   {
+    "term": "free marketing boost",
+    "vi": "cú hích quảng bá miễn phí",
+    "ipa": "/friː ˈmɑː.kɪ.tɪŋ buːst/"
+   },
+   {
+    "term": "outreach",
+    "vi": "hoạt động hỗ trợ cộng đồng",
+    "ipa": "/ˈaʊt.riːtʃ/"
+   },
+   {
+    "term": "humane",
+    "vi": "nhân văn",
+    "ipa": "/hjuːˈmeɪn/"
+   },
+   {
+    "term": "expectation versus reality",
+    "vi": "kỳ vọng và thực tế",
+    "ipa": "/ˌek.spekˈteɪ.ʃən ˈvɜː.səs riˈæl.ə.ti/"
+   },
+   {
+    "term": "enunciate",
+    "vi": "phát âm rõ từng âm",
+    "ipa": "/ɪˈnʌn.si.eɪt/"
+   },
+   {
+    "term": "quantifiers",
+    "vi": "lượng từ (many, every, all…)",
+    "ipa": "/ˈkwɒn.tɪ.faɪ.əz/"
+   }
+  ],
+  "audio": {
+   "name": "HeroHub_L11.m4a",
+   "duration": 3538.2,
+   "mb": 22,
+   "start": 77.0
+  }
+ },
+ {
+  "id": "L10",
+  "no": 10,
+  "date": "2026-09-18",
   "duration": 50,
-  "title": "Buổi 11 · Goya's Saturn & Empathetic Leadership",
+  "title": "Buổi 10 (?) · Goya's Saturn & Empathetic Leadership",
   "topic": "Bức tranh 'Saturn Devouring His Son' (Goya) · Lãnh đạo bằng nỗi sợ vs. đồng hành thấu cảm",
-  "summary": "Buổi thảo luận từ bức tranh của Goya sang cách nuôi dạy con, trừng phạt thể xác ngày xưa, sức bền của thế hệ trẻ và cách lãnh đạo đội ngũ. Ba lỗi chính đều là lỗi cũ lặp lại: thiếu 'to be', every/many + danh từ, và dùng hiện tại thay cho quá khứ.",
+  "summary": "Lưu ý: số buổi và ngày của bài này chưa chắc (báo cáo ghi Buổi 11, 18/09, nhưng bản ghi âm 18/09 là buổi Schooling and exams). Buổi thảo luận từ bức tranh của Goya sang cách nuôi dạy con, trừng phạt thể xác ngày xưa, sức bền của thế hệ trẻ và cách lãnh đạo đội ngũ. Ba lỗi chính đều là lỗi cũ lặp lại: thiếu 'to be', every/many + danh từ, và dùng hiện tại thay cho quá khứ.",
   "strengths": [
    "Đúng thì: \"He doesn't understand why it's wrong.\"",
    "Đúng giới từ: \"as an educator\", \"from your life experience\".",
@@ -94,6 +941,12 @@
      "Dọa phạt LDs ngay từ va chạm đầu",
      "Cùng tìm nguyên nhân gốc, lập kế hoạch khôi phục tiến độ"
     ]
+   ],
+   "compareTitle": "So sánh hai mô hình lãnh đạo",
+   "compareHead": [
+    "Tiêu chí",
+    "Kiểm soát bằng nỗi sợ",
+    "Đồng hành thấu cảm"
    ]
   },
   "errors": [
