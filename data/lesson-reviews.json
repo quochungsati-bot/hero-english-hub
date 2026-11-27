@@ -1,5 +1,853 @@
 [
  {
+  "id": "L29",
+  "no": 29,
+  "date": "2026-11-23",
+  "duration": 54,
+  "title": "Buổi 29 · Cultural Holiday & How Bidding Really Works",
+  "topic": "Ngày Văn hoá Việt Nam, cuối tuần của Lorraine · mẹo thuyết trình thầu, vòng kỹ thuật/thương mại, đấu giá online, open book vs lump sum, phạt chậm tiến độ, bất khả kháng",
+  "summary": "Buổi học thứ Hai 23/11 (Preply: \"Cultural holiday and bidding\"). Anh kể đưa vợ con lên phố đi bộ xem lễ hội Ngày Văn hoá Việt Nam, Lorraine kể cuối tuần bận làm đạo cụ cho con và dạy con trượt patin. Phần chính là đấu thầu: Lorraine chia sẻ mẹo thuyết trình (tìm hiểu khách hàng, mở đầu bằng câu hỏi), anh giải thích quy trình vòng kỹ thuật rồi vòng thương mại, chào giá cuối trong phòng riêng, đấu giá online có giá trần, sự minh bạch của chủ đầu tư, hợp đồng open book và trọn gói, các yếu tố làm tăng chi phí, phạt chậm tiến độ và bất khả kháng. Lorraine khen phát âm program, lower, commercial rất rõ, và nhắc lại lỗi \"I very like\".",
+  "strengths": [
+   "Giải thích quy trình đấu thầu rất chi tiết và chủ động, Lorraine hỏi sâu nhiều lượt mà anh vẫn trả lời được.",
+   "Phát âm program, lower, commercial rõ ràng (Lorraine khen).",
+   "Dùng đúng nhiều thuật ngữ nghề: technical, commercial negotiation, lowest bid, open book, lump sum, subcontractor, penalty.",
+   "Câu đúng được Lorraine ghi nhận: \"I just relax at home\", \"tomorrow is the main day\"."
+  ],
+  "focus": [
+   "Lỗi hoá thạch: I very like → I like … very much / I really like",
+   "Số nhiều sau some / many: some clients, many situations, many shows",
+   "Ngôi 3 số ít: the contractor comes, every contractor bears",
+   "Thuật ngữ thầu dễ nói sai: ceiling price, bear the risk, extension of time, labour shortage, force majeure",
+   "affect / impact không có to; meet requirements; qualify for",
+   "Phát âm: risk (không phải rich), bike (không phải buy), son (không phải song)"
+  ],
+  "errors": [
+   {
+    "group": "Lỗi hoá thạch: very + động từ",
+    "n": 3,
+    "repeat": true,
+    "ex": "I very like, very like play football",
+    "fix": "I like playing football very much / I really like playing football"
+   },
+   {
+    "group": "Số nhiều sau some / many",
+    "n": 6,
+    "repeat": true,
+    "ex": "some client fair / many many situation / many show",
+    "fix": "some clients are fair / many situations / many shows"
+   },
+   {
+    "group": "Ngôi 3 số ít",
+    "n": 4,
+    "repeat": true,
+    "ex": "The eight contractors come to the first room / the contractor often pair the risk",
+    "fix": "The first contractor goes into the first room / the contractor bears the risk"
+   },
+   {
+    "group": "Câu thiếu động từ",
+    "n": 8,
+    "repeat": true,
+    "ex": "they very concerned… / tomorrow very crowded / you enough the condition",
+    "fix": "they are very concerned… / tomorrow will be very crowded / you qualify for"
+   },
+   {
+    "group": "Thuật ngữ thầu nói chưa đúng",
+    "n": 9,
+    "repeat": true,
+    "ex": "selling price / pay the risk / attention of time / Sotek labor / meta statement",
+    "fix": "ceiling price / bear the risk / extension of time / labour shortage / method statement"
+   },
+   {
+    "group": "affect / impact + to",
+    "n": 3,
+    "repeat": true,
+    "ex": "can affect to the cost / impact to the cost",
+    "fix": "can affect the cost / affect costs"
+   },
+   {
+    "group": "Câu hỏi",
+    "n": 4,
+    "repeat": false,
+    "ex": "how your weekend / and this item is the common words in daily conversation?",
+    "fix": "How was your weekend? / Is this term common in daily conversation?"
+   },
+   {
+    "group": "Từ phát âm gần giống",
+    "n": 6,
+    "repeat": false,
+    "ex": "my song / big buy / the rich / custom / flew",
+    "fix": "my son / a big bike / the risk / costumes / went through"
+   }
+  ],
+  "grammar": [
+   {
+    "title": "Sửa lỗi hoá thạch \"I very like\"",
+    "formula": "S + like / love + V-ing (+ very much) · S + really like + V-ing",
+    "rule": "very chỉ đứng trước tính từ/trạng từ, không đứng trước động từ. Lorraine gọi đây là lỗi hoá thạch (fossilized mistake) vì lặp lại nhiều buổi.",
+    "right": [
+     "I like playing football very much.",
+     "I really like playing football.",
+     "He likes playing tug-of-war very much."
+    ],
+    "wrong": [
+     "I very like play football."
+    ]
+   },
+   {
+    "title": "some / many + danh từ số nhiều",
+    "formula": "some / many + N-s + động từ số nhiều",
+    "rule": "Lorraine sửa 2 lần: some clients, many situations. Sau some/many danh từ đếm được luôn có -s.",
+    "right": [
+     "Some clients are fair and some are not.",
+     "I've been in many situations like that."
+    ],
+    "wrong": [
+     "some client fair",
+     "many many situation"
+    ]
+   },
+   {
+    "title": "Câu phải có động từ",
+    "formula": "S + be + tính từ · S + will be + tính từ · S + V",
+    "rule": "Rất nhiều câu trong buổi thiếu are / will be / động từ chính. Kiểm tra: câu đã có động từ chưa?",
+    "right": [
+     "FDI clients are very concerned about track records.",
+     "Tomorrow will be very crowded.",
+     "That way you qualify for the commercial negotiation."
+    ],
+    "wrong": [
+     "they very concerned",
+     "tomorrow very crowded"
+    ]
+   },
+   {
+    "title": "affect / impact / increase không đi với to",
+    "formula": "S + affect / impact / increase + tân ngữ",
+    "rule": "Ba động từ này là ngoại động từ, tân ngữ đứng ngay sau. Danh từ impact thì đi với on: the impact on costs.",
+    "right": [
+     "Tariffs can increase the cost.",
+     "Typhoons affect the schedule.",
+     "the impact of the war on material prices"
+    ],
+    "wrong": [
+     "can affect to the cost",
+     "impact to the cost"
+    ]
+   },
+   {
+    "title": "Bị động trong báo cáo tiến độ",
+    "formula": "S + has/have been + V3 (+ by + mức độ)",
+    "rule": "Khi nói dự án bị trễ dùng bị động hiện tại hoàn thành: has been delayed by four months.",
+    "right": [
+     "Some projects have been delayed by about four months.",
+     "The deadline has been extended by two weeks."
+    ],
+    "wrong": [
+     "Now some project delay, maybe four months."
+    ]
+   },
+   {
+    "title": "Collocation trong đấu thầu",
+    "formula": "meet requirements · bear the risk · bid below the ceiling price · claim an extension of time · impose tariffs on",
+    "rule": "Những cụm này hay dùng trong họp thầu, nên học cả cụm thay vì từng từ.",
+    "right": [
+     "We meet all the technical requirements.",
+     "The contractor bears the risk.",
+     "We claimed an extension of time because of the typhoon."
+    ],
+    "wrong": [
+     "adapt many requirements",
+     "pay the risk",
+     "claim for the attention of time"
+    ]
+   }
+  ],
+  "exercises": [
+   {
+    "id": "s1",
+    "title": "Bài 1 · Sửa lỗi \"I very like\"",
+    "items": [
+     {
+      "type": "choice",
+      "q": "I ___ playing football.",
+      "options": [
+       "very like",
+       "really like",
+       "like very"
+      ],
+      "answer": [
+       "really like"
+      ],
+      "explain": "really like + V-ing; very không đứng trước động từ."
+     },
+     {
+      "type": "choice",
+      "q": "She likes reading reports ___.",
+      "options": [
+       "very",
+       "very much",
+       "much very"
+      ],
+      "answer": [
+       "very much"
+      ],
+      "explain": "very much đứng cuối câu."
+     },
+     {
+      "type": "choice",
+      "q": "He ___ tug-of-war very much.",
+      "options": [
+       "likes playing",
+       "very likes playing",
+       "like playing"
+      ],
+      "answer": [
+       "likes playing"
+      ],
+      "explain": "Ngôi 3: likes + V-ing."
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'I very like play football.'",
+      "answer": [
+       "i like playing football very much.",
+       "i like playing football very much",
+       "i really like playing football.",
+       "i really like playing football",
+       "i love playing football very much.",
+       "i love playing football very much"
+      ],
+      "explain": "like + V-ing + very much."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "title": "Bài 2 · some / many + số nhiều, ngôi 3",
+    "items": [
+     {
+      "type": "choice",
+      "q": "Some ___ are fair and some are not.",
+      "options": [
+       "client",
+       "clients"
+      ],
+      "answer": [
+       "clients"
+      ],
+      "explain": "some + số nhiều."
+     },
+     {
+      "type": "choice",
+      "q": "I've been in many ___ like that.",
+      "options": [
+       "situation",
+       "situations"
+      ],
+      "answer": [
+       "situations"
+      ],
+      "explain": "many + số nhiều."
+     },
+     {
+      "type": "choice",
+      "q": "The first contractor ___ into the first room.",
+      "options": [
+       "go",
+       "goes",
+       "going"
+      ],
+      "answer": [
+       "goes"
+      ],
+      "explain": "Ngôi 3: goes."
+     },
+     {
+      "type": "choice",
+      "q": "Every contractor ___ some risk.",
+      "options": [
+       "bear",
+       "bears"
+      ],
+      "answer": [
+       "bears"
+      ],
+      "explain": "every + số ít → bears."
+     },
+     {
+      "type": "choice",
+      "q": "There ___ many shows for citizens tomorrow.",
+      "options": [
+       "is",
+       "are"
+      ],
+      "answer": [
+       "are"
+      ],
+      "explain": "There are + số nhiều."
+     }
+    ]
+   },
+   {
+    "id": "s3",
+    "title": "Bài 3 · Thuật ngữ đấu thầu",
+    "items": [
+     {
+      "type": "choice",
+      "q": "In the online auction, you must bid below the ___ price.",
+      "options": [
+       "selling",
+       "ceiling"
+      ],
+      "answer": [
+       "ceiling"
+      ],
+      "explain": "ceiling price = giá trần."
+     },
+     {
+      "type": "choice",
+      "q": "Under a lump-sum contract, the contractor ___ the risk.",
+      "options": [
+       "pays",
+       "bears"
+      ],
+      "answer": [
+       "bears"
+      ],
+      "explain": "bear the risk = chịu rủi ro."
+     },
+     {
+      "type": "choice",
+      "q": "Because of the typhoon, we claimed an ___ of time.",
+      "options": [
+       "attention",
+       "extension"
+      ],
+      "answer": [
+       "extension"
+      ],
+      "explain": "extension of time (EOT)."
+     },
+     {
+      "type": "choice",
+      "q": "Too many projects at once cause a labour ___.",
+      "options": [
+       "shortage",
+       "short"
+      ],
+      "answer": [
+       "shortage"
+      ],
+      "explain": "labour shortage = thiếu nhân công."
+     },
+     {
+      "type": "choice",
+      "q": "Our submission includes a detailed method ___.",
+      "options": [
+       "statement",
+       "state"
+      ],
+      "answer": [
+       "statement"
+      ],
+      "explain": "method statement = biện pháp thi công."
+     },
+     {
+      "type": "choice",
+      "q": "To pass the technical round, you must ___ all the requirements.",
+      "options": [
+       "adapt",
+       "meet"
+      ],
+      "answer": [
+       "meet"
+      ],
+      "explain": "meet requirements."
+     },
+     {
+      "type": "choice",
+      "q": "A typhoon is usually treated as ___.",
+      "options": [
+       "force majeure",
+       "force major"
+      ],
+      "answer": [
+       "force majeure"
+      ],
+      "explain": "/ˌfɔːs mæˈʒɜːr/ = bất khả kháng."
+     }
+    ]
+   },
+   {
+    "id": "s4",
+    "title": "Bài 4 · affect / impact / increase",
+    "items": [
+     {
+      "type": "choice",
+      "q": "Tariffs on steel can ___ the cost.",
+      "options": [
+       "increase",
+       "increase to"
+      ],
+      "answer": [
+       "increase"
+      ],
+      "explain": "increase + tân ngữ."
+     },
+     {
+      "type": "choice",
+      "q": "Typhoons ___ the schedule.",
+      "options": [
+       "affect",
+       "affect to"
+      ],
+      "answer": [
+       "affect"
+      ],
+      "explain": "affect không có to."
+     },
+     {
+      "type": "choice",
+      "q": "The war had a big impact ___ material prices.",
+      "options": [
+       "to",
+       "on"
+      ],
+      "answer": [
+       "on"
+      ],
+      "explain": "Danh từ impact + on."
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'Many factor can affect to the cost.'",
+      "answer": [
+       "many factors can affect the cost.",
+       "many factors can affect the cost",
+       "many factors can increase the cost.",
+       "many factors can increase the cost"
+      ],
+      "explain": "many + số nhiều; affect không có to."
+     }
+    ]
+   },
+   {
+    "id": "s5",
+    "title": "Bài 5 · Câu đủ động từ và câu hỏi",
+    "items": [
+     {
+      "type": "choice",
+      "q": "FDI clients ___ very concerned about track records.",
+      "options": [
+       "—",
+       "are",
+       "do"
+      ],
+      "answer": [
+       "are"
+      ],
+      "explain": "be concerned about."
+     },
+     {
+      "type": "choice",
+      "q": "Tomorrow ___ very crowded, so I'll stay at home.",
+      "options": [
+       "—",
+       "will be",
+       "will"
+      ],
+      "answer": [
+       "will be"
+      ],
+      "explain": "Thiếu will be."
+     },
+     {
+      "type": "choice",
+      "q": "Some projects have ___ delayed by about four months.",
+      "options": [
+       "be",
+       "been",
+       "being"
+      ],
+      "answer": [
+       "been"
+      ],
+      "explain": "Bị động: have been + V3."
+     },
+     {
+      "type": "choice",
+      "q": "How ___ your weekend?",
+      "options": [
+       "is",
+       "was"
+      ],
+      "answer": [
+       "was"
+      ],
+      "explain": "Cuối tuần đã qua → was."
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'This item is the common words in daily conversation?'",
+      "answer": [
+       "is this term common in daily conversation?",
+       "is this term common in daily conversation",
+       "is this word common in daily conversation?",
+       "is this word common in daily conversation",
+       "is this term common in everyday conversation?",
+       "is this term common in everyday conversation"
+      ],
+      "explain": "Câu hỏi: đảo Is lên đầu."
+     }
+    ]
+   }
+  ],
+  "rewrites": [
+   {
+    "orig": "Because I very like, very like play football.",
+    "err": "Lỗi hoá thạch: very + động từ",
+    "b2": "Because I like playing football very much.",
+    "c1": "Because I'm a huge football fan.",
+    "work": "I really enjoy working on tenders with tight deadlines."
+   },
+   {
+    "orig": "some client fair and some client not fair.",
+    "err": "some + số nhiều; thiếu are",
+    "b2": "Some clients are fair and some are not.",
+    "c1": "Some clients run a transparent process; others are less so.",
+    "work": "Some clients run a fully transparent tender; others negotiate behind closed doors."
+   },
+   {
+    "orig": "So normally the contractor often pair the rich",
+    "err": "bear the risk",
+    "b2": "So the contractor normally bears the risk.",
+    "c1": "So the risk is shifted almost entirely onto the contractor.",
+    "work": "Under a lump-sum contract, almost all of the risk is shifted onto the contractor."
+   },
+   {
+    "orig": "they gave the they gave the the selling rise selling right",
+    "err": "ceiling price",
+    "b2": "they set a ceiling price",
+    "c1": "the client sets a price cap for the e-auction",
+    "work": "For the e-auction, [CLIENT] set a ceiling price of [AMOUNT]."
+   },
+   {
+    "orig": "You have to adapt many requirements for technical.",
+    "err": "meet requirements",
+    "b2": "You have to meet many technical requirements.",
+    "c1": "You need to demonstrate full technical compliance.",
+    "work": "We need to demonstrate full compliance with the client's specifications before the commercial round."
+   },
+   {
+    "orig": "Now some project delay, maybe four months.",
+    "err": "Bị động has been delayed",
+    "b2": "Some projects have been delayed by about four months.",
+    "c1": "Some projects are running about four months behind schedule.",
+    "work": "[PROJECT] is running about four months behind schedule, mainly due to adverse weather."
+   },
+   {
+    "orig": "So that is the reason we claim for the attention of time.",
+    "err": "extension of time",
+    "b2": "That's why we claim an extension of time.",
+    "c1": "That gives us grounds to claim an extension of time.",
+    "work": "The typhoon gives us grounds to claim an extension of time without liquidated damages."
+   },
+   {
+    "orig": "when the US gave the tax tariff from some some raw material",
+    "err": "impose tariffs on",
+    "b2": "when the US imposed tariffs on some raw materials",
+    "c1": "when the US slapped tariffs on key raw materials such as steel and aluminium",
+    "work": "New tariffs on steel and aluminium could push our material costs up by [AMOUNT]."
+   }
+  ],
+  "pron": [
+   {
+    "word": "risk",
+    "ipa": "/rɪsk/",
+    "tip": "Kết thúc bằng cụm /sk/, không phải /tʃ/. Máy nghe thành 'rich' nhiều lần.",
+    "example": "The contractor bears the risk."
+   },
+   {
+    "word": "son",
+    "ipa": "/sʌn/",
+    "tip": "Kết thúc /n/, không có /ŋ/. Máy nghe thành 'song'.",
+    "example": "I took my wife and my son downtown."
+   },
+   {
+    "word": "bike",
+    "ipa": "/baɪk/",
+    "tip": "Bật rõ /k/ cuối, nếu không sẽ thành 'buy'.",
+    "example": "He got a bigger bike for his birthday."
+   },
+   {
+    "word": "force majeure",
+    "ipa": "/ˌfɔːs mæˈʒɜːr/",
+    "tip": "Lorraine luyện riêng: âm /ʒ/ như 'j' trong 'measure', nhấn ở JEURE.",
+    "example": "A typhoon counts as force majeure."
+   },
+   {
+    "word": "ceiling",
+    "ipa": "/ˈsiː.lɪŋ/",
+    "tip": "Âm đầu /siː/ dài; khác 'selling' /ˈsel.ɪŋ/.",
+    "example": "You must bid below the ceiling price."
+   },
+   {
+    "word": "commercial",
+    "ipa": "/kəˈmɜː.ʃəl/",
+    "tip": "Lorraine khen âm này. Nhấn âm thứ hai MER.",
+    "example": "Then we move on to the commercial negotiation."
+   }
+  ],
+  "prep": {
+   "upgrades": [
+    {
+     "b1": "Normally the client will choose the lowest price, so you have to lower the price and you get the award.",
+     "c1": "Most clients award on price alone, so the only real way to stand out is to submit the lowest compliant bid."
+    },
+    {
+     "b1": "In open book contract you less the risk and you can keep the profit.",
+     "c1": "An open-book contract lowers our exposure to risk and protects our margin."
+    },
+    {
+     "b1": "Some project delay four months because weather, design change and force majeure.",
+     "c1": "Some projects are four months behind schedule due to adverse weather, client design changes and force majeure events."
+    }
+   ],
+   "vocab": [
+    {
+     "term": "ceiling price",
+     "ipa": "/ˈsiː.lɪŋ praɪs/",
+     "vi": "giá trần",
+     "example": "Every bid must stay below the ceiling price."
+    },
+    {
+     "term": "bear the risk",
+     "ipa": "/beər ðə rɪsk/",
+     "vi": "chịu rủi ro",
+     "example": "Under a lump-sum contract, the contractor bears the risk."
+    },
+    {
+     "term": "open-book contract",
+     "ipa": "/ˌəʊ.pən ˈbʊk ˈkɒn.trækt/",
+     "vi": "hợp đồng mở sổ chi phí",
+     "example": "An open-book contract shows direct cost plus an agreed margin."
+    },
+    {
+     "term": "lump sum",
+     "ipa": "/ˌlʌmp ˈsʌm/",
+     "vi": "trọn gói",
+     "example": "It's a lump-sum price, so overruns are our risk."
+    },
+    {
+     "term": "liquidated damages",
+     "ipa": "/ˈlɪk.wɪ.deɪ.tɪd ˈdæm.ɪ.dʒɪz/",
+     "vi": "tiền phạt chậm tiến độ (LD)",
+     "example": "Liquidated damages are capped at a percentage of the contract value."
+    },
+    {
+     "term": "extension of time",
+     "ipa": "/ɪkˈsten.ʃən əv taɪm/",
+     "vi": "gia hạn thời gian",
+     "example": "We claimed an extension of time for the typhoon."
+    },
+    {
+     "term": "stand out from competitors",
+     "ipa": "/stænd aʊt frəm kəmˈpet.ɪ.təz/",
+     "vi": "nổi bật so với đối thủ",
+     "example": "Our track record helps us stand out from competitors."
+    },
+    {
+     "term": "transparency",
+     "ipa": "/trænˈspær.ən.si/",
+     "vi": "sự minh bạch",
+     "example": "A fair tender depends on transparency."
+    }
+   ],
+   "compareTitle": "Hợp đồng trọn gói và hợp đồng open book",
+   "compareHead": [
+    "Tiêu chí",
+    "Trọn gói (lump sum)",
+    "Open book"
+   ],
+   "compare": [
+    [
+     "Cách tính giá",
+     "Một giá cố định cho cả gói",
+     "Chi phí trực tiếp công khai + % lợi nhuận thoả thuận"
+    ],
+    [
+     "Ai chịu rủi ro",
+     "Nhà thầu chịu gần hết",
+     "Chia sẻ, nhà thầu chịu ít hơn"
+    ],
+    [
+     "Giá theo thị trường",
+     "Không đổi dù giá vật liệu tăng",
+     "Theo giá thị trường thực tế"
+    ],
+    [
+     "Lợi nhuận",
+     "Dễ bị bào mòn khi chi phí tăng",
+     "Giữ được biên lợi nhuận đã thoả thuận"
+    ]
+   ]
+  },
+  "speaking": {
+   "task": "Nói 1 phút trong buổi phỏng vấn thầu: giới thiệu cấu trúc bài thuyết trình và mở đầu bằng một câu hỏi để thu hút khách hàng.",
+   "starter": "Before we start, which matters most to you on this project: cost, time or quality? Keep that in mind, because our approach is built around it."
+  },
+  "transcriptTab": "06_Lesson_Library",
+  "preplyLogId": "PLMWY9WZ4Z9XN",
+  "newWords": [
+   {
+    "term": "pedestrian street",
+    "vi": "phố đi bộ",
+    "ipa": "/pəˈdes.tri.ən striːt/"
+   },
+   {
+    "term": "atmosphere",
+    "vi": "bầu không khí",
+    "ipa": "/ˈæt.mə.sfɪər/"
+   },
+   {
+    "term": "annually",
+    "vi": "hằng năm",
+    "ipa": "/ˈæn.ju.ə.li/"
+   },
+   {
+    "term": "props",
+    "vi": "đạo cụ",
+    "ipa": "/prɒps/"
+   },
+   {
+    "term": "skate park",
+    "vi": "công viên trượt ván",
+    "ipa": "/ˈskeɪt pɑːk/"
+   },
+   {
+    "term": "roller skate",
+    "vi": "giày trượt patin",
+    "ipa": "/ˈrəʊ.lə skeɪt/"
+   },
+   {
+    "term": "whale shark",
+    "vi": "cá mập voi",
+    "ipa": "/ˈweɪl ʃɑːk/"
+   },
+   {
+    "term": "interactive",
+    "vi": "tương tác",
+    "ipa": "/ˌɪn.təˈræk.tɪv/"
+   },
+   {
+    "term": "engage",
+    "vi": "thu hút sự tham gia",
+    "ipa": "/ɪnˈɡeɪdʒ/"
+   },
+   {
+    "term": "draw people's attention",
+    "vi": "thu hút sự chú ý",
+    "ipa": "/drɔː ˈpiː.pəlz əˈten.ʃən/"
+   },
+   {
+    "term": "negotiation",
+    "vi": "đàm phán",
+    "ipa": "/nəˌɡəʊ.ʃiˈeɪ.ʃən/"
+   },
+   {
+    "term": "lowest bid",
+    "vi": "giá dự thầu thấp nhất",
+    "ipa": "/ˈləʊ.ɪst bɪd/"
+   },
+   {
+    "term": "competition",
+    "vi": "cuộc cạnh tranh",
+    "ipa": "/ˌkɒm.pəˈtɪʃ.ən/"
+   },
+   {
+    "term": "transparency",
+    "vi": "sự minh bạch",
+    "ipa": "/trænˈspær.ən.si/"
+   },
+   {
+    "term": "stand out",
+    "vi": "nổi bật",
+    "ipa": "/stænd aʊt/"
+   },
+   {
+    "term": "competitors",
+    "vi": "đối thủ cạnh tranh",
+    "ipa": "/kəmˈpet.ɪ.təz/"
+   },
+   {
+    "term": "compromised",
+    "vi": "bị ảnh hưởng xấu, bị giảm",
+    "ipa": "/ˈkɒm.prə.maɪzd/"
+   },
+   {
+    "term": "open book",
+    "vi": "hợp đồng mở sổ chi phí",
+    "ipa": "/ˈəʊ.pən bʊk/"
+   },
+   {
+    "term": "specifications",
+    "vi": "yêu cầu kỹ thuật",
+    "ipa": "/ˌspes.ɪ.fɪˈkeɪ.ʃənz/"
+   },
+   {
+    "term": "subcontractor",
+    "vi": "nhà thầu phụ",
+    "ipa": "/ˌsʌb.kənˈtræk.tər/"
+   },
+   {
+    "term": "tariff",
+    "vi": "thuế quan",
+    "ipa": "/ˈtær.ɪf/"
+   },
+   {
+    "term": "delays",
+    "vi": "sự chậm trễ",
+    "ipa": "/dɪˈleɪz/"
+   },
+   {
+    "term": "adverse weather",
+    "vi": "thời tiết bất lợi",
+    "ipa": "/ˈæd.vɜːs ˈweð.ər/"
+   },
+   {
+    "term": "penalty",
+    "vi": "tiền phạt",
+    "ipa": "/ˈpen.əl.ti/"
+   },
+   {
+    "term": "force majeure",
+    "vi": "bất khả kháng",
+    "ipa": "/ˌfɔːs mæˈʒɜːr/"
+   },
+   {
+    "term": "typhoon",
+    "vi": "bão nhiệt đới",
+    "ipa": "/taɪˈfuːn/"
+   },
+   {
+    "term": "chatterbox",
+    "vi": "người nói nhiều",
+    "ipa": "/ˈtʃæt.ə.bɒks/"
+   },
+   {
+    "term": "fossilized",
+    "vi": "(lỗi) hoá thạch, lặp mãi",
+    "ipa": "/ˈfɒs.əl.aɪzd/"
+   }
+  ],
+  "audio": {
+   "name": "HeroHub_L29.m4a",
+   "duration": 3238.5,
+   "mb": 20,
+   "start": 0
+  }
+ },
+ {
   "id": "L28",
   "no": 28,
   "date": "2026-11-20",
