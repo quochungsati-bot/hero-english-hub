@@ -143,6 +143,12 @@ pre{white-space:pre-wrap;background:var(--soft);padding:16px;border-radius:12px;
 @media (max-width:600px){.lesson{flex-wrap:wrap}.lesson>div[style*='text-align:right']{text-align:left!important;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}.score{grid-template-columns:repeat(2,minmax(0,1fr))}.msg{max-width:94%}
  table{font-size:14px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{display:block;border:0;padding:3px 0;text-align:start}.stack td:empty{display:none}}
 .topbar{display:none;justify-content:space-between;align-items:center;margin-bottom:14px}
+.lvbig{font:700 34px/1.1 Inter,system-ui,sans-serif;letter-spacing:-.02em;font-variant-numeric:tabular-nums}.lvbig span{font-size:16px;font-weight:600;color:var(--mute);letter-spacing:0}
+.cefr{display:flex;gap:4px;margin-top:14px}.cg{min-width:0}.cg>span{display:block;font:600 12px Inter,sans-serif;color:var(--mute);margin-bottom:4px;padding-left:2px}.cg>div{display:flex;gap:2px}
+.cg i,.lg{flex:1;min-width:0;height:26px;border-radius:5px;background:var(--soft);color:var(--mute);font:600 11px/26px Inter,sans-serif;font-style:normal;text-align:center}
+.cg i.rg,.lg.rg{background:var(--tealbg);color:var(--teal)}.cg i.me,.lg.me{background:var(--teal);color:#fff}.cg i.tg,.lg.tg{box-shadow:inset 0 0 0 2px var(--amber);color:var(--amber)}
+.lg{display:inline-block;width:12px;height:12px;flex:none;vertical-align:-1px;margin-right:6px;border-radius:3px}
+.sk .bar{margin-top:6px}label.chip{cursor:pointer;font-weight:500}label.chip:focus-within{outline:2px solid var(--teal);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -155,7 +161,7 @@ pre{white-space:pre-wrap;background:var(--soft);padding:16px;border-radius:12px;
 <!-- HOME -->
 <section class="view" id="v-home">
  <div class="card profile" style="margin-bottom:16px"><div class="av" id="pfAv">H</div><div style="flex:1 1 260px"><div class="mute" style="margin:0">Hồ sơ học tập</div><b id="pfName" style="font-size:20px">Hùng</b><div class="mute" style="margin:0">Head of Bidding · Tổng thầu xây dựng · Giáo viên Preply: <span id="pfTeacher">Lorraine</span></div></div>
-  <div class="lv" aria-label="Lộ trình trình độ"><span class="on">B1</span><i></i><span class="cur">B2</span><i></i><span>C1</span><i></i><span>C2</span></div>
+  <div class="lv" aria-label="Lộ trình trình độ"><span class="on" id="pfLv">B1</span><i></i><span class="cur">B2</span><i></i><span>C1</span><i></i><span>C2</span></div>
   <div class="pfnext"><span class="mute" style="margin:0">Buổi Preply kế tiếp</span><b id="pfNext">—</b></div></div>
  <div class="row sp" style="margin-bottom:18px"><div><h1 id="hello">Chào buổi sáng</h1><p class="mute" id="today"></p></div>
  <div class="card" style="padding:12px 16px"><div class="row" style="gap:14px"><div class="stat"><b id="streakN">0</b><span>ngày liên tiếp</span></div><div class="days" id="days"></div></div></div></div>
@@ -179,7 +185,8 @@ pre{white-space:pre-wrap;background:var(--soft);padding:16px;border-radius:12px;
 
 <!-- ROADMAP -->
 <section class="view" id="v-roadmap">
- <h1>Lộ trình thăng hạng</h1><p class="mute">B1 hiện tại → B2 vững chắc → C1/C2 chuẩn Giám đốc Đấu thầu quốc tế. Hoàn thành 80% chặng trước để mở chặng sau.</p>
+ <h1>Lộ trình thăng hạng</h1><p class="mute" id="rmIntro">B1 hiện tại → B2 vững chắc → C1/C2 chuẩn Giám đốc Đấu thầu quốc tế. Hoàn thành 80% chặng trước để mở chặng sau.</p>
+ <div id="rmNow"></div>
  <div class="card" style="margin:16px 0 26px"><div class="row sp"><b>Tiến độ tổng</b><b id="rmPct">0%</b></div><div class="bar" style="margin-top:8px"><i id="rmBar" style="width:0"></i></div></div>
  <div id="stages"></div>
 </section>
@@ -220,9 +227,10 @@ pre{white-space:pre-wrap;background:var(--soft);padding:16px;border-radius:12px;
 <!-- PREPLY -->
 <section class="view" id="v-preply">
  <h1>Preply Bridge</h1>
- <div class="tabs" id="prTabs"><button data-t="plan" class="on">Giáo án 50 phút</button><button data-t="course">Khoá học Preply</button><button data-t="mist">Mistake Bank</button><button data-t="log">Nhật ký buổi học</button></div>
+ <div class="tabs" id="prTabs"><button data-t="sched" class="on">Lịch học</button><button data-t="plan">Giáo án 50 phút</button><button data-t="course">Khoá học Preply</button><button data-t="mist">Mistake Bank</button><button data-t="log">Nhật ký buổi học</button></div>
+ <div id="pr-sched"></div>
  <div id="pr-course" hidden><div id="courseList"></div></div>
- <div id="pr-plan"><div class="row sp" style="margin-bottom:12px"><p class="mute" style="margin:0">Tự gom tình huống sắp tới (03_Work_Agenda) + 3 lỗi chưa thuộc (02_Mistake_Bank) + bài trong khoá. Học viên nói ≥ 70% thời lượng.</p>
+ <div id="pr-plan" hidden><div class="row sp" style="margin-bottom:12px"><p class="mute" style="margin:0">Tự gom tình huống sắp tới (03_Work_Agenda) + 3 lỗi chưa thuộc (02_Mistake_Bank) + bài trong khoá. Học viên nói ≥ 70% thời lượng.</p>
   <div class="row"><select id="planWa" style="width:auto"></select><select id="planCl" style="width:auto"></select><button class="btn sm" id="planAI">AI chuốt giáo án</button><button class="btn pri sm" id="planCopy">Copy gửi giáo viên</button><a class="btn sm" id="planGo" target="_blank" rel="noopener">Vào lớp Preply</a></div></div><pre id="planTxt"></pre></div>
  <div id="pr-mist" hidden>
   <div class="row" style="margin-bottom:12px" id="mbFilter"></div>
@@ -232,7 +240,7 @@ pre{white-space:pre-wrap;background:var(--soft);padding:16px;border-radius:12px;
    <div><button class="btn pri sm">Thêm vào Mistake Bank</button></div></form>
  </div>
  <div id="pr-log" hidden>
-  <form id="fPL" class="card grid g2" style="margin-bottom:16px"><div><label for="pT">Chủ đề buổi học</label><input id="pT" required></div><div><label for="pC">Nhóm</label><select id="pC"><option>Pre-Tender</option><option>Tender Interview</option><option>Negotiation</option><option>Small Talk</option><option>Presentation</option><option>Writing</option></select></div>
+  <form id="fPL" class="card grid g2" style="margin-bottom:16px"><div><label for="pT">Chủ đề buổi học (tên bài trên Preply)</label><input id="pT" required></div><div><label for="pD">Ngày học</label><input id="pD" type="date" required></div><div><label for="pC">Nhóm</label><select id="pC"><option>Pre-Tender</option><option>Tender Interview</option><option>Negotiation</option><option>Small Talk</option><option>Daily Life</option><option>Current Affairs</option><option>Presentation</option><option>Writing</option></select></div>
    <div><label for="pN">Nhận xét của giáo viên</label><textarea id="pN" style="min-height:70px"></textarea></div><div><label for="pR">Tự đánh giá (1–5)</label><select id="pR"><option>5</option><option selected>4</option><option>3</option><option>2</option><option>1</option></select><div style="margin-top:12px"><button class="btn pri sm">Lưu buổi học</button></div></div></form>
   <div id="plList"></div>
  </div>
@@ -293,7 +301,7 @@ const daysTo=d=>Math.round((new Date(d)-new Date(todayISO()))/864e5);
 /* ================= data ================= */
 const T={pl:'01_Preply_Log',mb:'02_Mistake_Bank',wa:'03_Work_Agenda',kb:'04_Knowledge_Base',db:'05_Daily_Briefing'};
 const SEED={
-pl:[{id:'PL001',date:'2026-11-17',topic:'Clarifying scope at pre-tender meeting',category:'Pre-Tender',teacher_note:"Good use of 'Could you clarify…'. Work on linking words: however, therefore.",rating:'4'},{id:'PL002',date:'2026-11-20',topic:'Presenting construction schedule (PREP)',category:'Tender Interview',teacher_note:'Point came too late. Lead with the conclusion first.',rating:'3'},{id:'PL003',date:'2026-11-24',topic:'Small talk: FDI investment trends in Vietnam',category:'Small Talk',teacher_note:"Natural opener. Past tense errors with 'increase'.",rating:'4'}],
+pl:[],
 mb:[{id:'MB001',date:'2026-11-17',wrong_sentence:'We will discuss about the scope tomorrow.',correct_b2:'We will discuss the scope tomorrow.',error_type:'Grammar',context:'Pre-tender meeting',status:'Learning'},{id:'MB002',date:'2026-11-20',wrong_sentence:'Our company has many experience in data center.',correct_b2:'Our company has extensive experience in data centre projects.',error_type:'Vocabulary',context:'Tender interview',status:'Learning'},{id:'MB003',date:'2026-11-20',wrong_sentence:'The price is depend on the soil condition.',correct_b2:'The price depends on the ground conditions.',error_type:'Grammar',context:'Contract negotiation',status:'Learning'},{id:'MB004',date:'2026-11-24',wrong_sentence:'I agree with you but we cannot accept.',correct_b2:"I see your point; however, we're unable to accept that clause as drafted.",error_type:'Tone',context:'LD clause negotiation',status:'Learning'},{id:'MB005',date:'2026-11-24',wrong_sentence:'Please send us the drawing soonest.',correct_b2:'Could you please share the latest drawings by Friday?',error_type:'Tone',context:'RFI email',status:'Mastered'}],
 wa:[{id:'WA001',target_date:'2026-12-02',scenario:'Pre-tender site visit: Japanese FDI factory, Bac Ninh',stage:'Pre-Tender',key_goal:'Ask 5 scope-clarification questions on MEP interfaces',status:'Pending'},{id:'WA002',target_date:'2026-12-09',scenario:'Tender interview: Data Center Phase 1 (Singapore client)',stage:'Interview',key_goal:'Defend 2 VE proposals in under 3 minutes each',status:'Pending'},{id:'WA003',target_date:'2026-12-16',scenario:'Contract negotiation: LD cap and advance payment',stage:'Negotiation',key_goal:'Push LD cap to 10% and 15% advance payment',status:'Pending'}],
 kb:[["KB001","Liquidated Damages (LDs)","FIDIC","A pre-agreed amount the contractor pays for each day of delay, instead of proving actual loss.","We propose capping liquidated damages at 10% of the Contract Price."],["KB002","Extension of Time (EOT)","FIDIC","Extra time granted when delay is caused by the employer or a risk event, so LDs do not apply.","We will submit an EOT claim under Sub-Clause 8.5 within 28 days."],["KB003","Value Engineering (VE)","Bidding","Changing a design or method to cut cost or time without reducing required function or quality.","Our VE proposal reduces the steel tonnage by 8% with the same load capacity."],["KB004","Request for Information (RFI)","Bidding","A formal written question to the client or consultant to clarify tender documents.","We have raised RFI-012 to confirm the scope of the external drainage works."],["KB005","Bill of Quantities (BOQ)","Cost","A priced list of all work items and quantities, used to compare bids and value variations.","The BOQ excludes provisional sums for the chiller plant."],["KB006","Risk Contingency","RICS","A sum held in the budget to cover identified risks that may or may not happen.","We have allowed a 3% risk contingency for ground conditions."],["KB007","Design & Build (D&B)","Contract","The contractor is responsible for both design and construction under one contract.","Under a D&B route, single-point responsibility reduces interface risk for the employer."],["KB008","Yellow Book","FIDIC","FIDIC form for plant and design-build, where the contractor designs to the employer's requirements.","This project is procured under the FIDIC Yellow Book 2017."],["KB009","Critical Path","PMI","The longest chain of dependent activities; any delay here delays project completion.","The basement excavation sits on the critical path."],["KB010","Retention Money","Contract","A percentage held back from each payment until defects are fixed.","We request that retention be reduced to 5% and released against a bank guarantee."],["KB011","Advance Payment","Contract","Money paid to the contractor at the start, repaid by deductions from later payments.","A 15% advance payment would let us secure long-lead equipment early."],["KB012","Qualifications / Clarifications","Bidding","Conditions or assumptions the bidder attaches to its price.","Our offer is subject to the clarifications listed in Appendix B."],["KB013", "Bid", "Bidding", "A formal offer to execute a project or supply goods at a specified price. (VI: Đề xuất / Hồ sơ chào giá dự thầu)", "Our company will submit a formal bid tomorrow for the main tower package."], ["KB014", "Tender", "Bidding", "A formal invitation or offer to supply goods or execute construction works. (VI: Thông báo mời thầu chính thức từ CĐT)", "The government opened a public tender for the new highway construction."], ["KB015", "Proposal", "Bidding", "A detailed written plan submitted for Client approval. (VI: Hồ sơ đề xuất phương án & kỹ thuật)", "We prepared a comprehensive proposal outlining all technical details."], ["KB016", "Client", "Bidding", "The employer or owner requesting construction and tendering services. (VI: Chủ đầu tư / Khách hàng)", "The client asked for a competitive price and strict milestone schedule."], ["KB017", "Deadline", "Bidding", "The targeted final date or time by which a bid or project milestone must be completed. (VI: Thời hạn chót nộp hồ sơ / hoàn thành)", "The submission deadline for the commercial bid is Friday at 5 PM."], ["KB018", "Contract", "Bidding", "A legally binding agreement between Client and Contractor. (VI: Hợp đồng pháp lý giữa hai bên)", "Central Cons signed the contract after winning the high-rise tender."], ["KB019", "Technical Bid", "Bidding", "(VI: Hồ sơ dự thầu Kỹ thuật (Biện pháp, Vật liệu, Safety))", "Our technical bid explains our construction methods, safety plan, and experience."], ["KB020", "Financial Bid", "Bidding", "(VI: Hồ sơ dự thầu Tài chính ($500,000 Total Cost & Payment Terms))", "Our financial bid outlines the total project cost of $500,000 and payment terms."], ["KB021", "Diaphragm wall", "Technical", "(VI: Tường vây (tường chắn đất vĩnh cửu trong hố đào sâu))", "Central Cons executes 800mm-thick diaphragm walls with polymer slurry to prevent ground settlement."], ["KB022", "Top-down construction", "Technical", "(VI: Biện pháp thi công hầm từ trên xuống kết hợp phần thân)", "We deploy top-down construction to compress the critical path schedule by 20 calendar days."], ["KB023", "Ground settlement", "Technical", "(VI: Độ lún sụt nền đất xung quanh công trình)", "Real-time geotechnical sensors monitor ground settlement to protect adjacent historical buildings."], ["KB024", "King post", "Technical", "(VI: Cột thép hình chữ H cắm vào cọc khoan nhồi đỡ sàn tạm)", "Plunge steel king posts are vertically aligned with laser precision into bored piles."], ["KB025", "Dewatering system", "Technical", "(VI: Hệ thống bơm hạ mực nước ngầm trong hố đào)", "A deep-well dewatering system maintains a dry and stable basement excavation pit."], ["KB026", "Structural integrity", "Technical", "(VI: Độ an toàn chịu lực và tính toàn vẹn của kết cấu)", "Our technical method statement strictly guarantees the structural integrity of the basement perimeter."], ["KB027", "Method statement", "Technical", "(VI: Thuyết minh biện pháp kỹ thuật thi công)", "The engineer approved our technical method statement for deep basement excavation without reservations."], ["KB028", "Deflection limit", "Technical", "(VI: Giới hạn độ võng và chuyển vị ngang cho phép)", "Lateral wall deflection is strictly kept within the 15mm design limit throughout all excavation stages."], ["KB029", "BOQ Takeoff", "Cost", "The process of measuring and estimating material quantities from architectural and engineering drawings. (VI: Bóc tách khối lượng từ bản vẽ thi công)", "Estimators deploy AI software to automate BOQ takeoffs and eliminate scope gaps."], ["KB030", "FIDIC", "FIDIC", "International Federation of Consulting Engineers providing standard international contract conditions. (VI: Hiệp hội Quốc tế các Kỹ sư Tư vấn / Chuẩn Hợp đồng Quốc tế)", "We recommend incorporating FIDIC Clause 13.8 price adjustment formulas to hedge against inflation."]].map(r=>({id:r[0],term_or_phrase:r[1],category:r[2],b2_explanation:r[3],sample_sentence:r[4],status:'Learning'})),
@@ -307,6 +315,89 @@ let P=store.get('be_prog',{days:[],lessons:{}});
 {const od=store.get('exec_bid_days_v1',[]);if(Array.isArray(od)&&od.length){P.days=[...new Set([...P.days,...od])].sort().slice(-200);store.set('be_prog',P)}}
 const saveD=()=>store.set('be_data',D),saveC=()=>store.set('be_cfg',C),saveQ=()=>store.set('be_queue',Q),saveP=()=>store.set('be_prog',P);
 
+/* ================= Preply progress & schedule ================= */
+/* Preply không có API: điểm/buổi học nhập tay (data/preply-progress.json + form trong app) và lưu vào 01_Preply_Log.
+   Điểm kỹ năng là hàng category "Progress Check", teacher_note dạng: CEFR B1.1 (A2.3–B1.2) · Grammar 22 (Steady) · Vocabulary 38 (Steady) · Speaking 38 (+2) */
+const CEFR_G=[['A0',['']],['A1',['']],['A2',['1','2','3']],['B1',['1','2','3','4']],['B2',['1','2','3','4','5']],['C1+',['']]];
+const CEFR=CEFR_G.flatMap(([g,s])=>s.map(x=>x?g+'.'+x:g));
+const CEFR_TARGET='B2.1',PG_CAT='Progress Check',WD=['CN','T2','T3','T4','T5','T6','T7'];
+const SKILLS=[['grammar','Ngữ pháp','Grammar'],['vocabulary','Từ vựng','Vocabulary'],['speaking','Nói','Speaking']];
+let PRG={snapshots:[],lessons:[],schedule:null};
+const isProg=r=>r&&r.category===PG_CAT;
+const lessonsPL=()=>D.pl.filter(r=>!isProg(r));
+const lvIdx=v=>CEFR.indexOf(String(v||'').toUpperCase());
+function progNote(s){const tr=s.trend||{};return `CEFR ${s.cefr}${s.range?` (${s.range[0]}–${s.range[1]})`:''} · `+SKILLS.map(([k,,en])=>`${en} ${s[k]}${tr[k]?` (${tr[k]})`:''}`).join(' · ')}
+function parseProg(r){const t=String(r.teacher_note||'');const lv=t.match(/CEFR\s+([ABC]\d(?:\.\d)?\+?)/i);if(!lv)return null;
+ const rg=t.match(/\(([ABC]\d(?:\.\d)?\+?)\s*[–-]\s*([ABC]\d(?:\.\d)?\+?)\)/i);const o={id:r.id,date:normDate(r.date),cefr:lv[1].toUpperCase(),range:rg?[rg[1].toUpperCase(),rg[2].toUpperCase()]:null,trend:{}};
+ for(const [k,,en] of SKILLS){const m=t.match(new RegExp(en+'\\s+(\\d{1,3})(?:\\s*\\(([^)]{1,20})\\))?','i'));o[k]=m?Math.min(100,+m[1]):null;if(m&&m[2])o.trend[k]=m[2]}return o}
+function snapshots(){return D.pl.filter(isProg).map(parseProg).filter(Boolean).sort((a,b)=>String(a.date).localeCompare(String(b.date)))}
+function curLevel(){const s=snapshots();return s[s.length-1]||null}
+function trendOf(k,list,i){const s=list[i],p=list[i-1];if(p&&p[k]!=null&&s[k]!=null){const d=s[k]-p[k];return d>0?'+'+d:d<0?String(d):'Steady'}return s.trend[k]||''}
+const prgReady=fetch('data/preply-progress.json').then(r=>r.json()).then(j=>{PRG={snapshots:Array.isArray(j.snapshots)?j.snapshots:[],lessons:Array.isArray(j.lessons)?j.lessons:[],schedule:j.schedule||null}}).catch(()=>{});
+/* Ghi các buổi/điểm trong file vào 01_Preply_Log nếu Sheet chưa có (so theo ngày + chủ đề); mỗi máy chỉ ghi một lần. */
+function importPreply(){P.imported=P.imported||{};let n=0;const same=(r,d,t)=>normDate(r.date)===d&&String(r.topic||'').trim().toLowerCase()===t.toLowerCase();
+ for(const l of PRG.lessons){const k='L|'+l.date+'|'+l.topic;if(!P.imported[k]&&!D.pl.some(r=>same(r,l.date,l.topic))){addRow('pl',{id:uid('PL'),date:l.date,topic:l.topic,category:l.category||'Small Talk',teacher_note:l.note||'',rating:''});n++}P.imported[k]=1}
+ for(const s of PRG.snapshots){const k='S|'+s.date;if(!P.imported[k]&&!D.pl.some(r=>isProg(r)&&normDate(r.date)===s.date)){addRow('pl',{id:uid('PG'),date:s.date,topic:'Preply progress check',category:PG_CAT,teacher_note:progNote(s),rating:''});n++}P.imported[k]=1}
+ saveP();if(n){renderAll();toast(`Đã thêm ${n} mục từ Preply vào Nhật ký`)}}
+/* Lịch học: mẫu cố định (thứ + giờ) + các buổi đã đặt cụ thể */
+function sched(){const s=Object.assign({days:[3,5],time:'22:00',duration:50},PRG.schedule||{},C.sched||{});s.booked=Array.isArray(C.booked)?C.booked:[];return s}
+const isoOf=d=>localISO(d);
+function lessonEnded(iso,time,dur){const [h,m]=String(time||'22:00').split(':').map(Number);const d=new Date(iso+'T00:00');d.setHours(h||0,(m||0)+(+dur||50));return d<new Date()}
+function nextLessons(n=4){const s=sched(),today=todayISO(),done=new Set(lessonsPL().map(r=>normDate(r.date)));
+ const booked=s.booked.filter(b=>b.date>=today&&!(b.date===today&&lessonEnded(b.date,b.time||s.time,s.duration))).map(b=>({date:b.date,time:b.time||s.time,topic:b.topic||'',src:'booked'})).sort((a,b)=>a.date.localeCompare(b.date)||a.time.localeCompare(b.time));
+ const last=booked.length?booked[booked.length-1].date:'';const out=[...booked];const d=new Date(today+'T00:00');
+ for(let i=0;i<42&&out.length<n+booked.length;i++,d.setDate(d.getDate()+1)){const iso=isoOf(d);if(iso<=last||!s.days.includes(d.getDay()))continue;if(iso===today&&(done.has(iso)||lessonEnded(iso,s.time,s.duration)))continue;out.push({date:iso,time:s.time,topic:'',src:'pattern'})}
+ return out.slice(0,n)}
+function whenTxt(iso){const d=new Date(iso+'T00:00'),k=daysTo(iso);return (k===0?'Hôm nay':k===1?'Ngày mai':WD[d.getDay()])+' '+fmtD(iso)}
+function weekCount(){const d=new Date(todayISO()+'T00:00');d.setDate(d.getDate()-((d.getDay()+6)%7));const mon=isoOf(d);d.setDate(d.getDate()+6);const sun=isoOf(d);return lessonsPL().filter(r=>{const x=normDate(r.date);return x>=mon&&x<=sun}).length}
+
+function renderNow(){const el=$('#rmNow');if(!el)return;const list=snapshots(),s=list[list.length-1];
+ const form=`<details style="margin-top:14px"><summary style="cursor:pointer;font-weight:600">+ Cập nhật điểm mới từ Preply</summary><form id="fPG" class="grid g2" style="margin-top:8px">
+  <div><label for="gD">Ngày Preply cập nhật</label><input id="gD" type="date" required value="${todayISO()}"></div>
+  <div><label for="gL">Trình độ CEFR ước tính</label><select id="gL">${CEFR.map(c=>`<option${c===(s?s.cefr:'B1.1')?' selected':''}>${c}</option>`).join('')}</select></div>
+  <div><label for="gR1">Khoảng thường gặp: từ</label><select id="gR1">${CEFR.map(c=>`<option${c===(s&&s.range?s.range[0]:'A2.3')?' selected':''}>${c}</option>`).join('')}</select></div>
+  <div><label for="gR2">đến</label><select id="gR2">${CEFR.map(c=>`<option${c===(s&&s.range?s.range[1]:'B1.2')?' selected':''}>${c}</option>`).join('')}</select></div>
+  ${SKILLS.map(([k,vi,en])=>`<div><label for="g_${k}">${vi} (${en}) /100</label><input id="g_${k}" type="number" min="0" max="100" inputmode="numeric" required value="${s&&s[k]!=null?s[k]:''}"></div>`).join('')}
+  <div style="align-self:end"><button class="btn pri sm">Lưu điểm</button></div></form><p class="mute" style="margin-top:6px">Lấy số ở preply.com → Progress. Lưu vào tab 01_Preply_Log (nhóm “Progress Check”).</p></details>`;
+ if(!s){el.innerHTML=`<div class="card" style="margin:16px 0"><h3>Vị trí hiện tại</h3><p class="mute">Chưa có điểm Preply.</p>${form}</div>`;bindPG();return}
+ const i=lvIdx(s.cefr),r0=s.range?lvIdx(s.range[0]):i,r1=s.range?lvIdx(s.range[1]):i,ti=lvIdx(CEFR_TARGET),gap=Math.max(0,ti-i);
+ const scale=CEFR_G.map(([g,sub])=>`<div class="cg" style="flex:${sub.length}"><span>${g}</span><div>${sub.map(x=>{const c=x?g+'.'+x:g,k=lvIdx(c);return `<i class="${k===i?'me':k>=r0&&k<=r1?'rg':''} ${k===ti?'tg':''}" title="${c}">${x||'·'}</i>`}).join('')}</div></div>`).join('');
+ const vals=SKILLS.filter(([k])=>s[k]!=null),low=vals.length?vals.reduce((a,b)=>s[b[0]]<s[a[0]]?b:a):null,li=list.length-1;
+ const skills=vals.map(([k,vi,en])=>{const t=trendOf(k,list,li);return `<div class="sk"><div class="row sp"><b style="font-weight:600">${vi} <span class="mute">${en}</span></b><span><b>${s[k]}</b><span class="mute">/100</span></span></div><div class="bar"><i style="width:${s[k]}%;${low&&low[0]===k?'background:var(--amber)':''}"></i></div><div class="row" style="gap:6px;margin-top:4px">${t?`<span class="tag ${/^\+/.test(t)?'done':/^-/.test(t)?'new':''}">${esc(t==='Steady'?'Ổn định':t+' điểm')}</span>`:''}${low&&low[0]===k?'<span class="tag doing">Yếu nhất</span>':''}</div></div>`}).join('');
+ const focus=low?{grammar:'Ngữ pháp đang thấp nhất. Mỗi buổi Preply dành 10 phút sửa lỗi gốc trong Mistake Bank (số nhiều, quá khứ đơn, mạo từ, từ loại) và nói lại câu đúng 2 lần.',vocabulary:'Từ vựng đang thấp nhất. Mỗi ngày lật 5 thẻ trong Kho tri thức và dùng 3 cụm mới trong buổi Preply.',speaking:'Kỹ năng nói đang thấp nhất. Tập PREP 2 phút mỗi ngày và xin cô Lorraine để anh nói ≥ 70% thời lượng.'}[low[0]]:'';
+ const hist=list.length>1?`<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:600">Lịch sử điểm (${list.length})</summary>${[...list].reverse().map(x=>`<div class="lesson"><div><b style="font-weight:600">${esc(x.cefr)}</b> <span class="mute">${SKILLS.map(([k,vi])=>`${vi} ${x[k]??'—'}`).join(' · ')}</span></div><span class="mute">${esc(fmtD(x.date))}</span></div>`).join('')}</details>`:'';
+ el.innerHTML=`<div class="card now" style="margin:16px 0"><div class="row sp"><div><span class="lbl">Vị trí hiện tại · Preply ước tính ngày ${esc(fmtD(s.date))}</span><div class="lvbig">${esc(s.cefr)} <span>${i>=lvIdx('B2.1')?'Upper-Intermediate':i>=lvIdx('B1.1')?'Intermediate':'Elementary'}</span></div>${s.range?`<div class="mute">Khoảng thường gặp: ${esc(s.range[0])} – ${esc(s.range[1])}</div>`:''}</div>
+  <div style="text-align:right"><span class="lbl">Mục tiêu chặng 1</span><div class="lvbig" style="color:var(--amber)">${CEFR_TARGET}</div><div class="mute">${gap?`còn ${gap} bậc`:'Đã đạt'}</div></div></div>
+  <div class="cefr" role="img" aria-label="Thang CEFR: hiện tại ${esc(s.cefr)}, mục tiêu ${CEFR_TARGET}">${scale}</div>
+  <div class="row mute" style="gap:14px;font-size:13px;margin-top:6px"><span><i class="lg me"></i>Hiện tại</span><span><i class="lg rg"></i>Khoảng thường gặp</span><span><i class="lg tg"></i>Mục tiêu</span></div>
+  <div class="grid g3" style="margin-top:16px">${skills}</div>
+  ${focus?`<p style="margin:14px 0 0"><b style="font-weight:600">Trọng tâm 4 tuần tới:</b> ${focus} <a href="#preply" data-prt="mist">Mở Mistake Bank</a></p>`:''}${hist}${form}</div>`;
+ bindPG()}
+function bindPG(){const f=$('#fPG');if(!f)return;f.onsubmit=e=>{e.preventDefault();const s={date:$('#gD').value,cefr:$('#gL').value,range:[$('#gR1').value,$('#gR2').value],trend:{}};
+ if(lvIdx(s.range[0])>lvIdx(s.range[1]))s.range.reverse();for(const [k] of SKILLS){const v=Math.round(+$('#g_'+k).value);if(!(v>=0&&v<=100))return toast('Điểm phải từ 0 đến 100');s[k]=v}
+ addRow('pl',{id:uid('PG'),date:s.date,topic:'Preply progress check',category:PG_CAT,teacher_note:progNote(s),rating:''});active();renderAll();toast('Đã lưu điểm Preply')}}
+
+function renderSched(){const el=$('#pr-sched');if(!el)return;const s=sched(),nx=nextLessons(4),wk=weekCount(),per=(PRG.schedule&&PRG.schedule.perWeek)||2;
+ const recent=[...lessonsPL()].sort((a,b)=>String(b.date).localeCompare(String(a.date))).slice(0,5);
+ el.innerHTML=`<div class="grid g2">
+ <div class="card"><div class="row sp"><h3>Buổi học sắp tới</h3><span class="tag ${wk>=per?'done':'doing'}">Tuần này ${wk}/${per} buổi</span></div>
+  ${nx.length?nx.map((l,j)=>`<div class="lesson"><div><b style="font-weight:600">${esc(whenTxt(l.date))} · ${esc(l.time)}</b><div class="mute">${esc(l.topic||('Preply với '+(C.teacher||'giáo viên')+' · '+s.duration+' phút'))}${l.src==='pattern'?' · theo lịch cố định':' · đã đặt'}</div></div><div class="row" style="flex-wrap:nowrap">${j===0?`<button class="btn sm" data-prt="plan">Soạn giáo án</button>`:''}${l.src==='booked'?`<button class="btn sm ghost" data-unbook="${esc(l.date)}|${esc(l.time)}" aria-label="Xoá buổi đã đặt">Xoá</button>`:''}</div></div>`).join(''):'<div class="empty">Chưa có lịch. Chọn ngày học cố định bên dưới.</div>'}
+  <div class="row" style="margin-top:10px"><a class="btn pri sm" href="${esc(C.preply||'https://preply.com')}" target="_blank" rel="noopener">Vào lớp Preply</a></div>
+  <details style="margin-top:12px"><summary style="cursor:pointer;font-weight:600">+ Thêm buổi đã đặt (đổi lịch, học bù)</summary><form id="fBk" class="grid g2" style="margin-top:6px">
+   <div><label for="bkD">Ngày</label><input id="bkD" type="date" required min="${todayISO()}"></div><div><label for="bkT">Giờ</label><input id="bkT" type="time" value="${esc(s.time)}" required></div>
+   <div><label for="bkN">Chủ đề (nếu biết)</label><input id="bkN" placeholder="VD: Tender interview practice"></div><div style="align-self:end"><button class="btn pri sm">Thêm buổi</button></div></form></details></div>
+ <div class="card"><h3>Lịch cố định</h3><p class="mute" style="margin-top:0">${per} buổi/tuần × ${s.duration} phút với ${esc(C.teacher||'giáo viên')}. Chọn đúng ngày anh đặt trên Preply.</p>
+  <form id="fSc"><div class="row" style="gap:6px">${[1,2,3,4,5,6,0].map(d=>`<label class="chip ${s.days.includes(d)?'on':''}" style="margin:0"><input type="checkbox" value="${d}" ${s.days.includes(d)?'checked':''} style="position:absolute;opacity:0;width:1px;height:1px">${WD[d]}</label>`).join('')}</div>
+  <div class="grid g2" style="margin-top:8px"><div><label for="scT">Giờ học</label><input id="scT" type="time" value="${esc(s.time)}"></div><div><label for="scM">Thời lượng (phút)</label><input id="scM" type="number" min="25" max="120" step="5" value="${+s.duration||50}"></div></div>
+  <div style="margin-top:10px"><button class="btn sm">Lưu lịch</button></div></form>
+  <h3 style="margin-top:18px">Buổi đã học gần đây</h3>${recent.length?recent.map(p=>`<div class="lesson"><div><b style="font-weight:600">${esc(p.topic)}</b> <span class="tag t">${esc(p.category)}</span></div><span class="mute" style="white-space:nowrap">${esc(fmtD(p.date))}</span></div>`).join(''):'<div class="empty">Chưa có buổi học</div>'}
+  <button class="btn sm ghost" data-prt="log" style="margin-top:8px">Xem toàn bộ nhật ký →</button></div></div>`;
+ $('#fSc').onchange=e=>{const c=e.target.closest('label.chip');if(c)c.classList.toggle('on',c.querySelector('input').checked)};
+ $('#fSc').onsubmit=e=>{e.preventDefault();const days=$$('#fSc input[type=checkbox]:checked').map(x=>+x.value);if(!days.length)return toast('Chọn ít nhất 1 ngày');C.sched={days,time:$('#scT').value||'22:00',duration:+$('#scM').value||50};saveC();renderHome();renderSched();toast('Đã lưu lịch học')};
+ $('#fBk').onsubmit=e=>{e.preventDefault();C.booked=[...(C.booked||[]).filter(b=>b.date>=todayISO()),{date:$('#bkD').value,time:$('#bkT').value,topic:$('#bkN').value.trim()}];saveC();renderHome();renderSched();toast('Đã thêm buổi học')}}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-prt]');if(t){const b=$(`#prTabs button[data-t="${t.dataset.prt}"]`);if(b){if(location.hash!=='#preply')location.hash='#preply';setTimeout(()=>b.click(),0)}if(t.tagName==='A')e.preventDefault();return}
+ const u=e.target.closest('[data-unbook]');if(u){const [d,tm]=u.dataset.unbook.split('|');C.booked=(C.booked||[]).filter(b=>!(b.date===d&&b.time===tm));saveC();renderHome();renderSched()}});
+
 /* ================= sync with Apps Script ================= */
 function setSync(state,msg){for(const el of [$('#syncS'),$('#sync2')]){if(!el)continue;el.querySelector('.dot').className='dot '+state;const s=el.querySelector('span');if(s)s.textContent=msg}}
 async function api(body){
@@ -319,7 +410,7 @@ function normalizeD(){for(const k in D)(D[k]||[]).forEach(r=>{for(const f of ['d
 async function pull(){
  if(!C.url){setSync('','Dữ liệu trên máy');return}
  setSync('busy','Đang đồng bộ…');
- try{await flush();const j=await api({action:'read'});for(const k in T)if(Array.isArray(j.data[T[k]]))D[k]=j.data[T[k]];normalizeD();C.ai=!!j.ai;saveC();saveD();setSync('ok','Đã đồng bộ '+new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'}));renderAll()}
+ try{await flush();const j=await api({action:'read'});for(const k in T)if(Array.isArray(j.data[T[k]]))D[k]=j.data[T[k]];normalizeD();C.ai=!!j.ai;saveC();saveD();setSync('ok','Đã đồng bộ '+new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'}));renderAll();prgReady.then(importPreply)}
  catch(e){setSync('err',Q.length?`Ngoại tuyến · ${Q.length} thay đổi chờ`:'Không kết nối được Sheet')}}
 async function flush(){while(Q.length){await api(Q[0]);Q.shift();saveQ()}}
 function op(o){Q.push(o);saveQ();if(C.url)flush().then(()=>setSync('ok','Đã lưu lên Sheet')).catch(()=>setSync('err',`Ngoại tuyến · ${Q.length} thay đổi chờ`));else setSync('','Dữ liệu trên máy')}
@@ -372,7 +463,7 @@ function applyTheme(){if(C.theme)document.documentElement.dataset.theme=C.theme;
 function renderStreak(){$('#streakN').textContent=streak();const out=[];for(let i=6;i>=0;i--){const d=new Date(todayISO());d.setDate(d.getDate()-i);const iso=d.toISOString().slice(0,10);out.push(`<i class="${P.days.includes(iso)?'on':''}" title="${iso}">${'CN T2 T3 T4 T5 T6 T7'.split(' ')[d.getDay()]}</i>`)}$('#days').innerHTML=out.join('')}
 let talkIdx=0;
 function briefings(){return [...D.db].sort((a,b)=>String(b.date).localeCompare(String(a.date)))}
-function renderHome(){{const n=C.learner||'Hùng';$('#pfName').textContent=n;$('#pfAv').textContent=n.trim().charAt(0).toUpperCase();$('#pfTeacher').textContent=C.teacher||'—';$('#brandSub').textContent=n+' · B1 → C1';const nx=upcoming()[0];$('#pfNext').textContent=nx?`${fmtD(nx.target_date)} · ${nx.stage}`:'Chưa có lịch'}
+function renderHome(){{const n=C.learner||'Hùng';$('#pfName').textContent=n;$('#pfAv').textContent=n.trim().charAt(0).toUpperCase();$('#pfTeacher').textContent=C.teacher||'—';const lv=curLevel();$('#brandSub').textContent=n+' · '+(lv?lv.cefr:'B1')+' → B2';$('#pfLv').textContent=lv?lv.cefr:'B1';$('#pfLv').title=lv?`Preply ước tính ${fmtD(lv.date)}`:'';const nx=nextLessons(1)[0];$('#pfNext').textContent=nx?`${whenTxt(nx.date)} · ${nx.time}`:'Chưa có lịch'}
  const h=new Date().getHours();$('#hello').textContent=(h<11?'Chào buổi sáng':h<18?'Chào buổi chiều':'Chào buổi tối')+(C.learner?', '+C.learner:'');
  $('#today').textContent=new Date().toLocaleDateString('vi-VN',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+' · 10–15 phút small talk hôm nay';
  renderStreak();
@@ -392,6 +483,7 @@ function renderHome(){{const n=C.learner||'Hùng';$('#pfName').textContent=n;$('
  const next=[...D.wa].filter(w=>w.status!=='Done'&&daysTo(w.target_date)>=0).sort((a,b)=>String(a.target_date).localeCompare(String(b.target_date)))[0];
  $('#stats').innerHTML=[[rmPct()+'%','Lộ trình đã đi'],[mbOpen,'Lỗi cần ôn'],[`${kbM}/${D.kb.length}`,'Thuật ngữ đã thuộc'],[next?daysTo(next.target_date)+' ngày':'—','Đến sự kiện kế tiếp']].map(s=>`<div class="card stat"><b>${esc(s[0])}</b><span>${esc(s[1])}</span></div>`).join('');
  const todo=[];if(!P.days.includes(todayISO()))todo.push(['Luyện 1 câu small talk (bên trái)','#home']);
+ {const nl=nextLessons(1)[0];if(nl&&daysTo(nl.date)<=1)todo.push([`${daysTo(nl.date)?'Mai':'Hôm nay'} ${nl.time} học Preply: soạn giáo án gửi ${C.teacher||'giáo viên'}`,'#preply'])}
  if(next)todo.push([`Tập kịch bản “${next.stage}” cho ${fmtD(next.target_date)}`,'#lab']);
  if(mbOpen)todo.push([`Ôn ${Math.min(3,mbOpen)} lỗi trong Mistake Bank`,'#preply']);
  const nl=nextLesson();if(nl)todo.push([`Bài lộ trình: ${nl.t}`,'#roadmap']);
@@ -409,16 +501,16 @@ $('#bAI').onclick=async()=>{const vi=$('#bVi').value.trim();if(!vi)return toast(
 
 /* ================= ROADMAP ================= */
 const STAGES=[
-{id:'s1',t:'Chặng 1 · B1 → B2',s:'Vững nền thực chiến',l:[['Nghe bắt từ khoá trong họp Pre-Tender','listen'],['Viết RFI làm rõ phạm vi, lịch sự & chính xác','write'],['Email xác nhận biên bản họp (MoM)','write'],['Trình bày ý kiến 2–3 phút theo khung PREP','speak'],['Đặt câu hỏi Scope Clarification khi Site Visit','lab'],['Small talk mở đầu cuộc họp FDI','home']]},
+{id:'s1',t:'Chặng 1 · B1 → B2',s:'Vững nền thực chiến · đang học',l:[['Nghe bắt từ khoá trong họp Pre-Tender','listen'],['Viết RFI làm rõ phạm vi, lịch sự & chính xác','write'],['Email xác nhận biên bản họp (MoM)','write'],['Trình bày ý kiến 2–3 phút theo khung PREP','speak'],['Đặt câu hỏi Scope Clarification khi Site Visit','lab'],['Small talk mở đầu cuộc họp FDI','home'],['Sửa lỗi ngữ pháp gốc: số nhiều, quá khứ đơn, mạo từ (Mistake Bank)','mist']]},
 {id:'s2',t:'Chặng 2 · B2 → C1',s:'Phỏng vấn & giải pháp',l:[['Bảo vệ đề xuất Value Engineering','lab'],['Giải trình tiến độ & critical path','speak'],['Trình bày biện pháp thi công tầng hầm sâu','speak'],['Xử lý câu hỏi xoáy (Tough Q&A)','lab'],['Đọc hiểu điều khoản HSMT/Hợp đồng','read']]},
 {id:'s3',t:'Chặng 3 · C1 → C2',s:'Giám đốc Đấu thầu quốc tế',l:[['Thuyết trình chiến lược 45–60 phút','speak'],['Thương thảo LDs, tạm ứng, bảo lãnh','lab'],['Phân bổ rủi ro theo FIDIC','read'],['Dẫn dắt họp cấp C-level','lab'],['Viết thư phản hồi điều khoản rủi ro','write']]}];
-const LINK={listen:'#studio',write:'#studio',speak:'#studio',read:'#studio',lab:'#lab',home:'#home'};
+const LINK={listen:'#studio',write:'#studio',speak:'#studio',read:'#studio',lab:'#lab',home:'#home',mist:'#preply'};
 const lid=(s,i)=>s.id+'-'+i;
 function stagePct(s){return Math.round(s.l.filter((_,i)=>P.lessons[lid(s,i)]==='done').length/s.l.length*100)}
 function unlocked(si){return si===0||stagePct(STAGES[si-1])>=80}
 function rmPct(){const all=STAGES.flatMap(s=>s.l.map((_,i)=>lid(s,i)));return Math.round(all.filter(k=>P.lessons[k]==='done').length/all.length*100)}
 function nextLesson(){for(const [si,s] of STAGES.entries()){if(!unlocked(si))return null;for(const [i,l] of s.l.entries())if(P.lessons[lid(s,i)]!=='done')return{t:l[0]}}return null}
-function renderRoadmap(){const p=rmPct();$('#rmPct').textContent=p+'%';$('#rmBar').style.width=p+'%';
+function renderRoadmap(){{const lv=curLevel();$('#rmIntro').textContent=lv?`Preply ước tính anh đang ở ${lv.cefr} (${fmtD(lv.date)}). Mục tiêu chặng 1: B2 vững, sau đó C1/C2 chuẩn Giám đốc Đấu thầu quốc tế. Hoàn thành 80% chặng trước để mở chặng sau.`:'B1 hiện tại → B2 vững chắc → C1/C2 chuẩn Giám đốc Đấu thầu quốc tế. Hoàn thành 80% chặng trước để mở chặng sau.'}renderNow();const p=rmPct();$('#rmPct').textContent=p+'%';$('#rmBar').style.width=p+'%';
  $('#stages').innerHTML=STAGES.map((s,si)=>{const open=unlocked(si),pc=stagePct(s);return `<div class="stage ${open&&pc<100?'cur':''}"><div class="row sp"><div><h2 style="margin:0">${s.t}</h2><span class="mute">${s.s}</span></div><span class="tag ${pc===100?'done':open?'doing':''}">${open?pc+'%':'Chưa mở'}</span></div>
  <div class="bar" style="margin:10px 0 4px"><i style="width:${pc}%"></i></div>
  ${s.l.map((l,i)=>{const st=P.lessons[lid(s,i)];const lab=st==='done'?'<span class="tag done">Hoàn thành</span>':st==='doing'?'<span class="tag doing">Đang học</span>':open?'<span class="tag">Chưa học</span>':'<span class="tag">Chưa mở</span>';
@@ -576,7 +668,7 @@ $('#fKB').onsubmit=e=>{e.preventDefault();addRow('kb',{id:uid('KB'),term_or_phra
 $('#kAI').onclick=async()=>{const t=$('#kT').value.trim();if(!t)return toast('Nhập thuật ngữ trước');try{const r=parseJSON(await ai(COACH,[{role:'user',content:`Term used by international general contractors: "${t}" (category ${$('#kC').value}). Return JSON only: {"b2_explanation":"one plain-English B2 sentence","sample_sentence":"one realistic sentence a bidding manager would say to an FDI client"}`}],300)||'');if(!r)return needAI();$('#kE').value=r.b2_explanation||'';$('#kS').value=r.sample_sentence||''}catch(e){toast(e.message)}};
 
 /* ================= PREPLY ================= */
-$('#prTabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;$$('#prTabs button').forEach(x=>x.classList.toggle('on',x===b));['plan','course','mist','log'].forEach(k=>$('#pr-'+k).hidden=k!==b.dataset.t)};
+$('#prTabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;$$('#prTabs button').forEach(x=>x.classList.toggle('on',x===b));['sched','plan','course','mist','log'].forEach(k=>$('#pr-'+k).hidden=k!==b.dataset.t)};
 /* Preply course (8 bài với giáo viên) */
 const courseDone=l=>P.course?.[l.id]??/completed/i.test(l.status||'');
 function renderCourse(){const el=$('#courseList');if(!COURSE.length){el.innerHTML='<div class="empty">Chưa tải được data/preply-lessons.json</div>';return}
@@ -599,7 +691,7 @@ $('#courseList').addEventListener('click',async e=>{const t=e.target.closest('[d
  const l=COURSE.find(x=>x.id==(t.dataset.cdone||t.dataset.crole||t.dataset.cplan||t.dataset.cai));
  if(t.dataset.cdone){P.course=P.course||{};P.course[l.id]=!courseDone(l);saveP();active();renderCourse();$(`[data-cl="${l.id}"]`).open=true;return}
  if(t.dataset.crole){const c=l.challengeScenario;SCN.custom={t:c.title,d:c.contextVi,tag:'Khoá Preply',timed:false,role:`Roleplay from the learner's Preply course. Situation: ${c.contextEn} The learner's task: ${c.task} You play the client-side person who raises the concern. Challenge the learner's arguments with technical follow-up questions.`,phr:(l.bulletPoints||[]).slice(0,3).map(b=>b.en.split(/[,.]/)[0]+'…').concat(['Let me give you a concrete example.','To sum up,…']),q:(l.anticipatedQA||[]).map(q=>q.qEn).concat([c.contextEn+' How do you respond?'])};location.hash='#lab';setTimeout(()=>startLab('custom'),50);return}
- if(t.dataset.cplan){$('#planCl').value=l.id;$('#planTxt').textContent=buildPlan();$$('#prTabs button')[0].click();return}
+ if(t.dataset.cplan){$('#planCl').value=l.id;$('#planTxt').textContent=buildPlan();$('#prTabs button[data-t="plan"]').click();return}
  if(t.dataset.cai){const out=$(`[data-caiout="${l.id}"]`);if(!C.ai)return needAI();out.innerHTML='<p class="mute">AI đang soạn…</p>';try{const o=await ai(COACH,[{role:'user',content:`Prepare me for this Preply lesson with my teacher ${C.teacher}: "${l.title}" (topic: ${l.topic}). Give: 1) a 60-second opening pitch I can say (English), 2) 8 key terms with IPA and Vietnamese meaning, 3) 2 grammar patterns with examples, 4) 5 questions the teacher-as-client may ask, with short hints, 5) one roleplay scenario. Plain text, no markdown symbols.`}],2000);out.innerHTML=`<pre>${esc(o)}</pre>`}catch(x){out.textContent=x.message}}});
 fetch('data/preply-lessons.json').then(r=>r.json()).then(j=>{COURSE=Array.isArray(j)?j:[];renderCourse();renderPreply()}).catch(()=>renderCourse());
 function upcoming(){return [...D.wa].filter(w=>w.status!=='Done').sort((a,b)=>String(a.target_date).localeCompare(String(b.target_date)))}
@@ -624,11 +716,11 @@ function agendaEn(a){const t=STAGE_EN[a.stage]||['Real work situation with an in
  return{sc,g,bits}}
 function buildPlan(){const wa=D.wa.find(w=>w.id===$('#planWa').value)||upcoming()[0];const more=upcoming().filter(w=>w!==wa).slice(0,1);
  const ms=D.mb.filter(m=>m.status!=='Mastered').sort((a,b)=>String(b.date).localeCompare(String(a.date))).slice(0,3);
- const br=briefings().find(b=>b.status!=='Done')||briefings()[0];const lastLog=[...D.pl].sort((a,b)=>String(b.date).localeCompare(String(a.date)))[0];const cl=COURSE.find(x=>String(x.id)===$('#planCl').value);
+ const br=briefings().find(b=>b.status!=='Done')||briefings()[0];const lastLog=[...lessonsPL()].filter(r=>normDate(r.date)<=todayISO()).sort((a,b)=>String(b.date).localeCompare(String(a.date)))[0];const cl=COURSE.find(x=>String(x.id)===$('#planCl').value);
  const sc=x=>{const e=agendaEn(x);return `- ${x.stage}, ${fmtD(x.target_date)}: ${e.sc}\n  My goal: ${e.g}${e.bits.length?`\n  Target language: ${e.bits.join(', ')}`:''}`};
  const topic=br?(enOnly(br.category)||'Daily speaking drill'):'';
  return `50-MINUTE PREPLY LESSON PLAN${C.teacher?`\nTeacher: ${C.teacher}`:''}
-Student: ${C.learner&&!isVi(C.learner)?C.learner:'Hung'}, Head of Bidding at a Vietnamese general contractor (B1 to B2).${cl?`\nCourse unit: ${cl.title} (${cl.topic})`:''}
+Student: ${C.learner&&!isVi(C.learner)?C.learner:'Hung'}, Head of Bidding at a Vietnamese general contractor (B1 to B2).${(()=>{const lv=curLevel();if(!lv)return'';const w=SKILLS.filter(([k])=>lv[k]!=null).sort((a,b)=>lv[a[0]]-lv[b[0]])[0];return `\nPreply estimate (${fmtD(lv.date)}): ${lv.cefr}. Scores: ${SKILLS.map(([k,,en])=>`${en} ${lv[k]??'-'}`).join(', ')}.${w?` Weakest: ${w[2].toLowerCase()}, so please give extra feedback on it.`:''}`})()}${cl?`\nCourse unit: ${cl.title} (${cl.topic})`:''}
 Goal: student speaking time at least 70%. Please correct only errors that block meaning during role-play; save the rest for feedback.${lastLog&&!isVi(lastLog.teacher_note)&&lastLog.teacher_note?`\nLast lesson (${fmtD(lastLog.date)}): ${enOnly(lastLog.topic)||'—'}. Your note: ${lastLog.teacher_note}`:''}
 
 1. WARM-UP SMALL TALK (8 min)
@@ -647,7 +739,7 @@ ${wa?sc(wa):'- Practise a 2-minute PREP pitch for a Value Engineering proposal.'
 
 5. RECAP & HOMEWORK (3 min)
 - One short written answer (120-150 words) to your hardest question.`}
-function renderPreply(){const pg=$('#planGo');if(pg){pg.href=C.preply||'https://preply.com';}const up=upcoming();const prevCl=$('#planCl').value;$('#planCl').innerHTML='<option value="">Bài trong khoá: không</option>'+COURSE.map(l=>`<option value="${l.id}">${esc(l.title.split(':')[0])}</option>`).join('');$('#planCl').value=prevCl||'';$('#planWa').innerHTML=up.length?up.map(w=>`<option value="${esc(w.id)}">${esc(fmtD(w.target_date))} · ${esc(w.stage)}</option>`).join(''):'<option value="">Không có lịch</option>';$('#planTxt').textContent=buildPlan();renderMB();renderPL()}
+function renderPreply(){const pg=$('#planGo');if(pg){pg.href=C.preply||'https://preply.com';}const up=upcoming();const prevCl=$('#planCl').value;$('#planCl').innerHTML='<option value="">Bài trong khoá: không</option>'+COURSE.map(l=>`<option value="${l.id}">${esc(l.title.split(':')[0])}</option>`).join('');$('#planCl').value=prevCl||'';$('#planWa').innerHTML=up.length?up.map(w=>`<option value="${esc(w.id)}">${esc(fmtD(w.target_date))} · ${esc(w.stage)}</option>`).join(''):'<option value="">Không có lịch</option>';$('#planTxt').textContent=buildPlan();renderMB();renderPL();renderSched()}
 $('#planWa').onchange=$('#planCl').onchange=()=>$('#planTxt').textContent=buildPlan();
 $('#planCopy').onclick=()=>copy($('#planTxt').textContent);
 $('#planAI').onclick=async()=>{if(!C.ai)return needAI();const t=await nda($('#planTxt').textContent);if(t==null)return;$('#planTxt').textContent='AI đang chuốt…';try{$('#planTxt').textContent=await ai(COACH,[{role:'user',content:`Polish this 50-minute Preply lesson plan for my English teacher. Keep the same timings and structure, keep it in English, add 6 sample client questions for the role-play and 5 target phrases. Plain text only, no markdown symbols.\n\n${t}`}],1500)}catch(e){$('#planTxt').textContent=buildPlan();toast(e.message)}};
@@ -661,8 +753,9 @@ $('#mbBody').onclick=e=>{const b=e.target.closest('[data-sy]');if(b)say(D.mb.fin
 $('#fMB').onsubmit=async e=>{e.preventDefault();const w=$('#mW').value.trim();let r=$('#mR').value.trim();
  if(!r){if(!C.ai)return toast('Nhập câu đúng, hoặc kết nối AI để tự sửa');try{r=(await ai(COACH,[{role:'user',content:`Correct this sentence to natural B2 business English for a construction context. Return only the corrected sentence.\n\n${w}`}],200)).trim()}catch(x){return toast(x.message)}}
  addRow('mb',{id:uid('MB'),date:todayISO(),wrong_sentence:w,correct_b2:r,error_type:$('#mT').value,context:$('#mC').value.trim(),status:'Learning'});e.target.reset();renderMB();$('#planTxt').textContent=buildPlan();toast('Đã thêm lỗi')};
-function renderPL(){const l=[...D.pl].sort((a,b)=>String(b.date).localeCompare(String(a.date)));$('#plList').innerHTML=l.length?l.map(p=>`<div class="lesson"><div><b style="font-weight:600">${esc(p.topic)}</b> <span class="tag t">${esc(p.category)}</span><div class="mute">${esc(p.teacher_note)}</div></div><div style="text-align:right;white-space:nowrap"><div>${'★'.repeat(+p.rating||0)}<span class="mute">${'★'.repeat(5-(+p.rating||0))}</span></div><span class="mute">${esc(fmtD(p.date))}</span></div></div>`).join(''):'<div class="empty">Chưa có buổi học</div>'}
-$('#fPL').onsubmit=e=>{e.preventDefault();addRow('pl',{id:uid('PL'),date:todayISO(),topic:$('#pT').value.trim(),category:$('#pC').value,teacher_note:$('#pN').value.trim(),rating:$('#pR').value});e.target.reset();renderPL();active();toast('Đã lưu buổi học')};
+function renderPL(){const l=[...D.pl].sort((a,b)=>String(b.date).localeCompare(String(a.date)));$('#plList').innerHTML=l.length?l.map(p=>{if(isProg(p)){const g=parseProg(p);return `<div class="lesson"><div><b style="font-weight:600">Điểm Preply: ${esc(g?g.cefr:'')}</b> <span class="tag doing">${esc(p.category)}</span><div class="mute">${esc(g?SKILLS.map(([k,vi])=>`${vi} ${g[k]??'—'}`).join(' · '):p.teacher_note)}</div></div><div style="text-align:right;white-space:nowrap"><span class="mute">${esc(fmtD(p.date))}</span></div></div>`}return `<div class="lesson"><div><b style="font-weight:600">${esc(p.topic)}</b> <span class="tag t">${esc(p.category)}</span><div class="mute">${esc(p.teacher_note||'Chưa ghi nhận xét')}</div></div><div style="text-align:right;white-space:nowrap">${+p.rating?`<div>${'★'.repeat(+p.rating)}<span class="mute">${'★'.repeat(5-(+p.rating))}</span></div>`:''}<span class="mute">${esc(fmtD(p.date))}</span></div></div>`}).join(''):'<div class="empty">Chưa có buổi học</div>'}
+$('#fPL').onsubmit=e=>{e.preventDefault();addRow('pl',{id:uid('PL'),date:$('#pD').value||todayISO(),topic:$('#pT').value.trim(),category:$('#pC').value,teacher_note:$('#pN').value.trim(),rating:$('#pR').value});e.target.reset();$('#pD').value=todayISO();renderPreply();renderHome();active();toast('Đã lưu buổi học')};
+$('#pD').value=todayISO();
 
 /* ================= CONFIG ================= */
 function renderConfig(){$('#cName').value=C.learner||'';$('#cTeacher').value=C.teacher||'';$('#cPreply').value=C.preply||'';$('#cUrl').value=C.url;$('#cTok').value=C.token;$('#cTheme').value=C.theme||'';$('#cLockMin').value=String(C.lockMin||10);$('#qInfo').textContent=Q.length?`${Q.length} thay đổi đang chờ đẩy lên Sheet.`:'Không có thay đổi chờ.';$('#cStat').textContent=C.url?(C.ai?'AI: đã bật':'AI: chưa có ANTHROPIC_API_KEY'):'Chưa kết nối: app đang dùng dữ liệu mẫu trên máy.'}
@@ -695,6 +788,7 @@ applyTheme();renderAll();renderListen();renderRead();renderWrite();renderSpeak()
 let unl=false;try{unl=sessionStorage.getItem('be_unlocked')==='1'}catch(e){}
 if(C.pinHash&&!unl)lockUI('unlock');else if(!C.pinHash&&!C.pinSkipped)lockUI('set');
 pull();
+prgReady.then(()=>{if(!C.url)importPreply();renderAll()});
 if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
 }
 </script>
