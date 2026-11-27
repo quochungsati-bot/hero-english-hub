@@ -9,11 +9,14 @@
  *   POST {action:"read", token}                         → {status:"success", data:{tab:[rows]}}
  *   POST {action:"update_status", sheet, id, status, token}
  *   POST {action:"add_row", sheet, row:{...}, token}
+ *   POST {action:"audio", name, offset, length, token}   → {status, size, mime, data(base64)}
+ *        Đọc từng đoạn file audio buổi học trong Google Drive của anh (tìm theo tên file,
+ *        ví dụ HeroHub_L11.m4a). File vẫn để chế độ riêng tư; chỉ ai có token mới nghe được.
  *   GET  ?token=...  (giữ để tương thích bản cũ; app mới dùng POST)
  * Ngày được trả về dạng chữ yyyy-MM-dd theo giờ của Sheet, không còn bị lệch UTC.
  */
 var TABS = ['01_Preply_Log', '02_Mistake_Bank', '03_Work_Agenda', '04_Knowledge_Base', '05_Daily_Briefing', '06_Lesson_Library'];
-// 06_Lesson_Library: id | lesson_id | date | part | time | topic | transcript | hero_lines | corrections
+// 06_Lesson_Library: id | lesson_id | date | part | time | topic | transcript | hero_lines | corrections | b2_fixes | line_times
 // (toàn văn từng phân đoạn buổi học; tab chưa có thì bỏ qua, app vẫn chạy)
 var OPTIONAL_TABS = ['06_Lesson_Library'];
 
@@ -56,6 +59,7 @@ function doPost(e) {
     var b = JSON.parse((e.postData && e.postData.contents) || '{}');
     auth_(b.token);
     if (b.action === 'read') return out_({ status: 'success', data: readAll_() });
+    if (b.action === 'audio') return out_(audioChunk_(b));
 
     lock.waitLock(10000);
     var sh = sheet_(b.sheet);
@@ -81,4 +85,22 @@ function doPost(e) {
   } finally {
     try { lock.releaseLock(); } catch (x) {}
   }
+}
+
+/** Audio buổi học: đọc một đoạn (mặc định 4 MB) của file trong Drive, trả về base64. */
+function audioChunk_(b) {
+  var name = String(b.name || '');
+  if (!/^HeroHub_[A-Za-z0-9_-]+\.(m4a|mp3|webm|ogg)$/.test(name)) throw new Error('Tên file audio không hợp lệ');
+  var it = DriveApp.getFilesByName(name);
+  if (!it.hasNext()) throw new Error('Không tìm thấy ' + name + ' trong Google Drive');
+  var f = it.next(), size = f.getSize();
+  var off = Math.max(0, Number(b.offset) || 0), len = Math.min(Number(b.length) || 4194304, 6291456);
+  if (off >= size) return { status: 'success', size: size, mime: f.getMimeType(), data: '' };
+  var end = Math.min(size, off + len) - 1;
+  var r = UrlFetchApp.fetch('https://www.googleapis.com/drive/v3/files/' + f.getId() + '?alt=media', {
+    headers: { Authorization: 'Bearer ' + ScriptApp.getOAuthToken(), Range: 'bytes=' + off + '-' + end },
+    muteHttpExceptions: true
+  });
+  if (r.getResponseCode() >= 300) throw new Error('Drive trả lỗi ' + r.getResponseCode());
+  return { status: 'success', size: size, mime: f.getMimeType(), data: Utilities.base64Encode(r.getContent()) };
 }

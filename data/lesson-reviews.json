@@ -862,6 +862,143 @@
    "task": "Nói 1 phút theo PREP với Chủ đầu tư: phạt hợp đồng (LDs) hay cùng tìm nguyên nhân gốc khi dự án chậm?",
    "starter": "Rather than relying on penalties, we propose a joint recovery plan to keep the project on track."
   },
-  "transcriptTab": "06_Lesson_Library"
+  "transcriptTab": "06_Lesson_Library",
+  "newWords": [
+   {
+    "term": "mythology",
+    "vi": "thần thoại",
+    "ipa": "/mɪˈθɒl.ə.dʒi/"
+   },
+   {
+    "term": "prophesied",
+    "vi": "được tiên tri, báo trước",
+    "ipa": ""
+   },
+   {
+    "term": "overthrown",
+    "vi": "bị lật đổ",
+    "ipa": ""
+   },
+   {
+    "term": "devoured",
+    "vi": "nuốt chửng, ăn ngấu nghiến",
+    "ipa": "/dɪˈvaʊəd/"
+   },
+   {
+    "term": "ruthlessly",
+    "vi": "một cách tàn nhẫn",
+    "ipa": ""
+   },
+   {
+    "term": "toxic control",
+    "vi": "kiểm soát độc hại",
+    "ipa": ""
+   },
+   {
+    "term": "authority",
+    "vi": "quyền lực, uy quyền",
+    "ipa": "/ɔːˈθɒr.ə.ti/"
+   },
+   {
+    "term": "suppress",
+    "vi": "đàn áp, kìm nén",
+    "ipa": ""
+   },
+   {
+    "term": "testing boundaries",
+    "vi": "thử giới hạn",
+    "ipa": ""
+   },
+   {
+    "term": "set firm boundaries",
+    "vi": "đặt ranh giới rõ ràng",
+    "ipa": ""
+   },
+   {
+    "term": "safe haven",
+    "vi": "nơi trú ẩn an toàn",
+    "ipa": ""
+   },
+   {
+    "term": "educator",
+    "vi": "nhà giáo dục",
+    "ipa": ""
+   },
+   {
+    "term": "disciplinarian",
+    "vi": "người giữ kỷ luật",
+    "ipa": "/ˌdɪs.ə.plɪˈneə.ri.ən/"
+   },
+   {
+    "term": "corporal punishment",
+    "vi": "trừng phạt thân thể",
+    "ipa": "/ˈkɔː.pər.əl ˈpʌn.ɪʃ.mənt/"
+   },
+   {
+    "term": "crowd psychology",
+    "vi": "tâm lý đám đông",
+    "ipa": ""
+   },
+   {
+    "term": "endurance",
+    "vi": "sức bền, sức chịu đựng",
+    "ipa": "/ɪnˈdʒʊə.rəns/"
+   },
+   {
+    "term": "strict parenting",
+    "vi": "nuôi dạy con nghiêm khắc",
+    "ipa": ""
+   },
+   {
+    "term": "secrecy",
+    "vi": "sự giấu giếm",
+    "ipa": ""
+   },
+   {
+    "term": "companionship",
+    "vi": "sự đồng hành",
+    "ipa": "/kəmˈpæn.jən.ʃɪp/"
+   },
+   {
+    "term": "empathy",
+    "vi": "sự thấu cảm",
+    "ipa": "/ˈem.pə.θi/"
+   },
+   {
+    "term": "flexible",
+    "vi": "linh hoạt",
+    "ipa": ""
+   },
+   {
+    "term": "adaptive",
+    "vi": "dễ thích nghi",
+    "ipa": ""
+   },
+   {
+    "term": "evolve",
+    "vi": "phát triển, tiến hoá",
+    "ipa": ""
+   },
+   {
+    "term": "consequence",
+    "vi": "hậu quả",
+    "ipa": "/ˈkɒn.sɪ.kwəns/"
+   },
+   {
+    "term": "children's rights",
+    "vi": "quyền trẻ em",
+    "ipa": ""
+   },
+   {
+    "term": "quantifiers",
+    "vi": "lượng từ",
+    "ipa": ""
+   }
+  ],
+  "audio": {
+   "name": "HeroHub_L11.m4a",
+   "duration": 3539.58,
+   "mb": 22
+  }
  }
 ]
