@@ -500,6 +500,150 @@
       "explain": "Câu hỏi: đảo Is lên đầu."
      }
     ]
+   },
+   {
+    "id": "s6",
+    "title": "Bài 6 · Từ nhận xét Preply (5 lỗi + từ mới)",
+    "items": [
+     {
+      "type": "choice",
+      "q": "How about in ___?",
+      "options": [
+       "Philippine",
+       "Philippines",
+       "the Philippines"
+      ],
+      "answer": [
+       "the Philippines"
+      ],
+      "explain": "Tên nước số nhiều đi với the."
+     },
+     {
+      "type": "choice",
+      "q": "Three ___ give the final offer.",
+      "options": [
+       "contractor",
+       "contractors",
+       "contractor's"
+      ],
+      "answer": [
+       "contractors"
+      ],
+      "explain": "three + danh từ số nhiều."
+     },
+     {
+      "type": "choice",
+      "q": "They submit their offers, and they ___ at the same time.",
+      "options": [
+       "are one",
+       "do it",
+       "does it"
+      ],
+      "answer": [
+       "do it"
+      ],
+      "explain": "they + do it; 'cùng lúc' = at the same time."
+     },
+     {
+      "type": "choice",
+      "q": "The AE contractor ___ to the first room.",
+      "options": [
+       "come",
+       "comes",
+       "coming"
+      ],
+      "answer": [
+       "comes"
+      ],
+      "explain": "Chủ ngữ số ít → comes."
+     },
+     {
+      "type": "choice",
+      "q": "Some clients fail and some clients ___.",
+      "options": [
+       "not fail",
+       "do not fail",
+       "does not fail"
+      ],
+      "answer": [
+       "do not fail"
+      ],
+      "explain": "Phủ định hiện tại đơn: do not + V (chủ ngữ số nhiều)."
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'And I get many situation like that.'",
+      "answer": [
+       "and i get many situations like that",
+       "i get many situations like that",
+       "and i've been in many situations like that",
+       "i've been in many situations like that",
+       "and i have been in many situations like that"
+      ],
+      "explain": "many + danh từ số nhiều: many situations."
+     },
+     {
+      "type": "text",
+      "q": "Viết câu phủ định đúng: 'Some contractor not accept the risk.'",
+      "answer": [
+       "some contractors do not accept the risk",
+       "some contractors don't accept the risk"
+      ],
+      "explain": "Some + số nhiều; phủ định: do not / don't + V."
+     },
+     {
+      "type": "choice",
+      "q": "The client finally gave us the ___ to start mobilisation.",
+      "options": [
+       "green light",
+       "red light",
+       "ceiling price"
+      ],
+      "answer": [
+       "green light"
+      ],
+      "explain": "give sb the green light = cho phép bắt đầu."
+     },
+     {
+      "type": "choice",
+      "q": "Open your presentation with a question to ___ the panel's attention.",
+      "options": [
+       "catch",
+       "take",
+       "make"
+      ],
+      "answer": [
+       "catch"
+      ],
+      "explain": "catch someone's attention."
+     },
+     {
+      "type": "choice",
+      "q": "A shorter programme helped our bid ___ from the competitors.",
+      "options": [
+       "stand up",
+       "stand out",
+       "outstand"
+      ],
+      "answer": [
+       "stand out"
+      ],
+      "explain": "stand out from = nổi bật so với."
+     },
+     {
+      "type": "choice",
+      "q": "We cannot ___ the price any further without cutting quality.",
+      "options": [
+       "low",
+       "lower",
+       "down"
+      ],
+      "answer": [
+       "lower"
+      ],
+      "explain": "lower (động từ) the price = hạ giá."
+     }
+    ]
    }
   ],
   "rewrites": [
@@ -845,6 +989,268 @@
    "duration": 3238.5,
    "mb": 20,
    "start": 0
+  },
+  "insights": {
+   "source": "Preply Lesson Insights (AI tự tạo, có thể sai)",
+   "scores": [
+    [
+     "Ngữ pháp",
+     22,
+     "Ổn định"
+    ],
+    [
+     "Từ vựng",
+     38,
+     "Ổn định"
+    ],
+    [
+     "Nói",
+     38,
+     "+2 điểm"
+    ]
+   ],
+   "talk": {
+    "you": 26,
+    "teacher": 19,
+    "youPct": 58,
+    "target": 70
+   },
+   "topics": [
+    {
+     "t": "Ngày lễ ở thành phố và đi chơi cùng gia đình",
+     "b": [
+      "Tả phố đi bộ trung tâm, trang phục truyền thống và âm nhạc",
+      "Giải thích lịch lễ hội 3 ngày và vì sao ngày mai ở nhà"
+     ]
+    },
+    {
+     "t": "Con cái và hoạt động cuối tuần",
+     "b": [
+      "Con của Lorraine tập trượt patin và đi xe đạp không bánh phụ",
+      "Kế hoạch cho con trai đi đá bóng khi bé sẵn sàng"
+     ]
+    },
+    {
+     "t": "Thuyết trình và quy trình đấu thầu",
+     "b": [
+      "Mẹo thu hút khách hàng: mở đầu bằng một câu hỏi",
+      "Vòng kỹ thuật và vòng thương mại, cách nộp giá cuối",
+      "Cạnh tranh giá và các rủi ro nhà thầu thường chấp nhận"
+     ]
+    }
+   ],
+   "well": [
+    {
+     "said": "Relax at home tomorrow.",
+     "type": "Câu mệnh lệnh",
+     "vi": "Dùng câu mệnh lệnh để khuyên ngắn gọn, tự nhiên."
+    },
+    {
+     "said": "Tomorrow is the main day.",
+     "type": "Hiện tại đơn cho lịch cố định",
+     "vi": "Dùng hiện tại đơn cho sự kiện tương lai đã có lịch."
+    }
+   ],
+   "fixes": [
+    {
+     "said": "How about in Philippine?",
+     "fix": "How about in the Philippines?",
+     "type": "Mạo từ",
+     "recurring": true,
+     "vi": "Tên nước ở dạng số nhiều hoặc có Kingdom/States/Republic đi với the: the Philippines, the Netherlands, the UK. Lỗi này đã có trong Mistake Bank (M33, buổi 18/09).",
+     "c1": "What's the situation like in the Philippines?"
+    },
+    {
+     "said": "Three contractor give the final offer, and they are one in the same time.",
+     "fix": "Three contractors give the final offer, and they do it at the same time.",
+     "type": "Số nhiều + hiện tại đơn",
+     "recurring": true,
+     "vi": "Three + danh từ số nhiều. Muốn nói 'họ làm việc đó' thì dùng do it, không dùng are. 'Cùng lúc' là at the same time.",
+     "c1": "The three shortlisted contractors submit their best and final offers simultaneously."
+    },
+    {
+     "said": "And I get many situation like that.",
+     "fix": "And I get many situations like that.",
+     "type": "Lượng từ",
+     "recurring": true,
+     "vi": "many + danh từ số nhiều. Cùng nhóm lỗi với M19 (many project).",
+     "c1": "I've come across many situations like that."
+    },
+    {
+     "said": "The AE contractor come to the first room, the second to the second room, and the third.",
+     "fix": "The AE contractor comes to the first room, the second to the second room, and the third to the third room.",
+     "type": "Ngôi 3 số ít",
+     "recurring": true,
+     "vi": "Chủ ngữ số ít (the contractor) → động từ thêm -s: comes. Câu liệt kê phải đủ vế: the third to the third room.",
+     "c1": "Each contractor is called into a separate room in turn."
+    },
+    {
+     "said": "Some client fail and some client not fail.",
+     "fix": "Some clients fail and some clients do not fail.",
+     "type": "Phủ định hiện tại đơn",
+     "recurring": true,
+     "vi": "Phủ định hiện tại đơn cần trợ động từ: do not / does not + V. Không nói 'not fail'. Some + số nhiều.",
+     "c1": "Some clients get it wrong; others don't."
+    }
+   ],
+   "vocab": [
+    [
+     "costume",
+     "A2",
+     "danh từ",
+     "trang phục (lễ hội, biểu diễn)"
+    ],
+    [
+     "attract",
+     "A2",
+     "động từ",
+     "thu hút"
+    ],
+    [
+     "skate park",
+     "A2",
+     "danh từ",
+     "công viên trượt ván"
+    ],
+    [
+     "foot",
+     "A1",
+     "danh từ",
+     "bàn chân; on foot = đi bộ"
+    ],
+    [
+     "catch someone's attention",
+     "A2",
+     "cụm",
+     "thu hút sự chú ý của ai"
+    ],
+    [
+     "bid",
+     "B1",
+     "danh từ",
+     "hồ sơ / giá dự thầu"
+    ],
+    [
+     "stand out",
+     "B1",
+     "cụm",
+     "nổi bật"
+    ],
+    [
+     "lower the price",
+     "A2",
+     "cụm",
+     "hạ giá"
+    ],
+    [
+     "green light",
+     "C1",
+     "danh từ",
+     "sự cho phép, 'bật đèn xanh'"
+    ],
+    [
+     "pedestrian",
+     "B1",
+     "tính từ",
+     "dành cho người đi bộ"
+    ],
+    [
+     "atmosphere",
+     "B1",
+     "danh từ",
+     "bầu không khí"
+    ],
+    [
+     "custom",
+     "B1",
+     "danh từ",
+     "phong tục"
+    ],
+    [
+     "program",
+     "A2",
+     "danh từ",
+     "chương trình (Anh-Anh: programme)"
+    ],
+    [
+     "presentation",
+     "B2",
+     "danh từ",
+     "bài thuyết trình"
+    ],
+    [
+     "competition",
+     "B1",
+     "danh từ",
+     "sự cạnh tranh"
+    ],
+    [
+     "negotiate",
+     "B1",
+     "động từ",
+     "đàm phán"
+    ],
+    [
+     "transparency",
+     "B2",
+     "danh từ",
+     "sự minh bạch"
+    ]
+   ],
+   "pron": [
+    {
+     "word": "program",
+     "ctx": "... many program for ...",
+     "ipa": "/ˈprəʊ.ɡræm/",
+     "tip": "Nhấn PRO, âm sau /ɡræm/ rõ /æ/. Lưu ý thêm -s: many programmes."
+    },
+    {
+     "word": "commercial",
+     "ctx": "... the commercial final ...",
+     "ipa": "/kəˈmɜː.ʃəl/",
+     "tip": "Nhấn âm thứ hai MER, âm đầu nhẹ /kə/."
+    },
+    {
+     "word": "lower",
+     "ctx": "... right lower until ...",
+     "ipa": "/ˈləʊ.ər/",
+     "tip": "Nguyên âm đôi /əʊ/ như 'low', không đọc thành 'lơ'."
+    },
+    {
+     "word": "kilometer",
+     "ctx": "... one kilometer for ...",
+     "ipa": "/ˈkɪl.əˌmiː.tər/ hoặc /kɪˈlɒm.ɪ.tər/",
+     "tip": "Hai cách nhấn đều đúng, chọn một và giữ nhất quán. Sau 'one' giữ số ít; từ 2 trở lên: kilometres."
+    }
+   ],
+   "pronNote": "Lorraine khen phát âm program, lower, commercial trong buổi, nhưng AI của Preply vẫn gắn cờ 3 từ này. Nên coi đây là mức ưu tiên thấp: nghe nút 'You' và 'Example' trên Preply để tự so sánh.",
+   "homework": [
+    "Present simple for general truths and traits (ngữ pháp, 3 phút)",
+    "From your last lesson (luyện tập, 3 phút)",
+    "The Website Refresh Bid (luyện nói, 5 phút)"
+   ],
+   "plan": [
+    {
+     "when": "Trước buổi kế tiếp (27/11, 22:00)",
+     "what": "Làm Bài 6 (từ nhận xét Preply) và 3 bài homework trong app Preply. Nói to 5 câu sửa ở trên, mỗi câu 2 lần."
+    },
+    {
+     "when": "Trong buổi học",
+     "what": "Nhờ Lorraine bắt lỗi do/does và số nhiều mỗi khi anh nói sai. Mục tiêu: anh nói ≥ 70% thời lượng (buổi 23/11 là 58%)."
+    },
+    {
+     "when": "Sau buổi 2 ngày",
+     "what": "Làm lại các câu sai của Bài 2 và Bài 6. Ôn 17 từ bằng flashcard, đặt câu cho green light, stand out, lower the price."
+    },
+    {
+     "when": "Sau buổi 4–5 ngày",
+     "what": "Viết email 5 câu cho [CLIENT] về vòng giá cuối, có dùng at the same time, transparency, negotiate. Gửi Claude để sửa B2/C1."
+    },
+    {
+     "when": "Sau 1 tuần",
+     "what": "Làm lại toàn bộ bài. Đúng ≥ 85% thì đổi lỗi tương ứng trong Mistake Bank sang Mastered."
+    }
+   ]
   }
  },
  {
