@@ -158,6 +158,7 @@ pre{white-space:pre-wrap;background:var(--soft);padding:16px;border-radius:12px;
 .player{position:sticky;top:0;z-index:5;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 14px;box-shadow:0 4px 14px rgba(0,0,0,.06)}
 .tl{display:flex;gap:10px;align-items:flex-start;padding:6px 8px;border-radius:8px;line-height:1.6}.tl.now{background:var(--amberbg)}.tl .spk{flex:none;border:0;background:var(--soft);border-radius:6px;font:600 12px Inter,sans-serif;padding:3px 8px;color:var(--mute);min-width:84px;text-align:left;margin-top:2px}.tl.me .spk{background:var(--tealbg);color:var(--teal)}.tl .tx{flex:1}
 #aPlayer{margin-bottom:10px}#aPlayer input[type=range]{accent-color:#9a4a26;flex:1;min-height:0;padding:0;margin:0;border:0;background:none}.au-seek{margin-top:10px;flex-wrap:nowrap;gap:10px}.au-seek .mute{white-space:nowrap;font-variant-numeric:tabular-nums}.au-opt{margin-top:4px}.au-opt label{margin:0;font-weight:400;font-size:13px}.au-opt input{width:auto;min-height:0}.au-opt .btn{font-size:13px;padding:4px 8px;min-height:0}
+details.ttsalt{margin:0 0 10px}details.ttsalt summary{cursor:pointer;padding:4px 2px}.player.alt{position:static;margin-top:6px}.src-real{font-size:13px;font-weight:600;color:#9a4a26;margin-bottom:8px}
 mark.err{background:var(--redbg);color:inherit;border-bottom:2px solid var(--red);border-radius:3px;padding:0 2px;cursor:pointer}mark.nw{background:var(--amberbg);color:inherit;border-bottom:2px dotted var(--amber);border-radius:3px;padding:0 1px;cursor:pointer}mark.err mark.nw{background:transparent}
 .fxbox{margin:2px 0 8px 100px;padding:10px 12px;background:var(--soft);border-radius:10px;font-size:15px}.tpart{padding:8px 0 12px;border-bottom:1px solid var(--line)}.tpart:last-child{border:0}
 @media (max-width:600px){.tl{flex-direction:column;gap:2px;padding:6px 4px}.tl .spk{min-width:0}.fxbox{margin-left:0}.player{top:0;border-radius:0 0 14px 14px;margin:0 -4px}}
@@ -807,10 +808,10 @@ function trView(l){const ps=libParts(l.id),q=LIBQ.trim().toLowerCase(),tab=esc(l
   v.ls.map((x,j)=>{const i=li++;TP.lines.push({spk:x.spk,t:trT(v.p,j),text:x.text.replace(/\((laughs|cười)\)/gi,'').trim()});return `<div class="tl ${x.spk==='Hero'?'me':''}" data-li="${i}"><button class="spk" data-tplay="${i}" title="Nghe từ dòng này">▶ ${esc(x.spk||'…')}</button><span class="tx">${trLineHtml(x.text,x.spk,v.fx,words,esc(pk))}</span></div><div class="fxbox" data-fxbox="${i}" hidden></div>`}).join('')+
   `${v.p.corrections?`<details style="margin:6px 0 4px"><summary class="mute" style="cursor:pointer">Bản nâng cấp của báo cáo (C-level)</summary><div class="tr mute">${esc(v.p.corrections)}</div></details>`:''}</section>`}).join('');
  const aud=l.audio?`<div class="player au" id="aPlayer">${auBar(l)}</div>`:'';
- return (aRdy?aud:`${aud}<div class="player" id="tPlayer"><div class="row" style="gap:8px"><button class="btn pri sm" id="tpPlay">${TP.on?'❚❚ Tạm dừng':'▶ Nghe cả buổi'}</button><button class="btn sm" id="tpPrev" aria-label="Dòng trước">⏮</button><button class="btn sm" id="tpNext" aria-label="Dòng sau">⏭</button>
+ return (aRdy?aud:`${aud}${l.audio?`<details class="ttsalt"${TP.alt?' open':''}><summary class="mute">Hoặc nghe máy đọc tạm (giọng máy, không phải giọng thật)</summary>`:''}<div class="player${l.audio?' alt':''}" id="tPlayer"><div class="row" style="gap:8px"><button class="btn pri sm" id="tpPlay">${TP.on?'❚❚ Tạm dừng':'▶ Máy đọc cả buổi'}</button><button class="btn sm" id="tpPrev" aria-label="Dòng trước">⏮</button><button class="btn sm" id="tpNext" aria-label="Dòng sau">⏭</button>
   <select id="tpRate" style="width:auto;min-height:36px;padding:4px 8px" aria-label="Tốc độ">${[.75,.9,1,1.15,1.3].map(r=>`<option value="${r}"${r===TP.rate?' selected':''}>${r}×</option>`).join('')}</select>
   <label class="chip" style="margin:0"><input type="checkbox" id="tpHero" style="width:auto;min-height:0"${TP.heroOnly?' checked':''}> Chỉ câu của anh</label></div>
-  <div class="mute" id="tpStat" style="margin-top:6px">Giọng máy đọc lại lời thoại (không phải bản ghi âm gốc). Chạm ▶ ở đầu dòng để nghe từ đó.</div></div>`)+`
+  <div class="mute" id="tpStat" style="margin-top:6px">🤖 Giọng máy đọc lại lời thoại, không phải bản ghi âm gốc. Chạm ▶ ở đầu dòng để nghe từ đó.</div></div>${l.audio?'</details>':''}`)+`
  <div class="row" style="margin:12px 0"><input id="libQ" placeholder="Tìm trong toàn văn…" value="${esc(LIBQ)}" style="max-width:280px"><button class="chip ${TRF?'on':''}" data-trf="1">Chỉ đoạn có câu sai (${nErr})</button>${aRdy?'<div class="mute" style="flex-basis:100%">Đang nghe audio gốc. Chạm ▶ ở đầu dòng để nghe từ câu đó. Mốc thời gian từng câu là ước lượng, có thể lệch; dùng −10s / +10s để chỉnh.</div>':''}<span class="mute"><mark class="err">câu sai</mark> chạm để xem bản sửa · <mark class="nw">từ mới</mark> chạm để xem nghĩa</span></div>
  <div class="card">${body||'<div class="empty">Không có phân đoạn khớp</div>'}</div>`}
 function trT(p,j){const v=String(p.line_times||'').split(',')[j];return v!=null&&v.trim()!==''&&isFinite(+v)?+v:null}
@@ -819,7 +820,7 @@ function trVoices(){const v=(window.speechSynthesis?.getVoices?.()||[]).filter(x
  const m=v.find(x=>/en-GB/i.test(x.lang)&&/Daniel|George|Ryan|Arthur|Oliver|Male|Thomas/i.test(x.name))||v.find(x=>/Daniel|George|Ryan|Male|Guy|Alex|Fred|David|Mark/i.test(x.name))||VOICE||v[0]||null;
  const f=v.find(x=>/Samantha|Zira|Jenny|Aria|Female|Karen|Moira|Serena|Libby|Sonia|Susan|Victoria|Tessa|Google US English/i.test(x.name)&&x!==m)||v.find(x=>x!==m)||m;return{m,f,same:!m||!f||m===f}}
 function tpMark(){$$('#pr-lib .tl.now').forEach(x=>x.classList.remove('now'));const el=$(`#pr-lib .tl[data-li="${TP.i}"]`);if(el&&TP.on){el.classList.add('now');el.scrollIntoView({block:'center',behavior:'smooth'})}
- const b=$('#tpPlay');if(b)b.textContent=TP.on?'❚❚ Tạm dừng':'▶ Nghe cả buổi';const s=$('#tpStat');if(s&&TP.on)s.textContent=`Đang đọc dòng ${TP.i+1}/${TP.lines.length} · ${TP.lines[TP.i]?.spk||''}`}
+ const b=$('#tpPlay');if(b)b.textContent=TP.on?'❚❚ Tạm dừng':'▶ Máy đọc cả buổi';const s=$('#tpStat');if(s&&TP.on)s.textContent=`Đang đọc dòng ${TP.i+1}/${TP.lines.length} · ${TP.lines[TP.i]?.spk||''}`}
 function tpNextIdx(i){while(i<TP.lines.length&&TP.heroOnly&&TP.lines[i].spk!=='Hero')i++;return i}
 function tpGo(i){if(!('speechSynthesis' in window))return toast('Trình duyệt không hỗ trợ đọc');speechSynthesis.cancel();const run=++TP.run;i=tpNextIdx(Math.max(0,i));if(i>=TP.lines.length){TP.on=false;TP.i=0;tpMark();toast('Đã nghe hết buổi học');return}
  TP.on=true;TP.i=i;if(typeof AUD!=='undefined')AUD.pause();tpMark();const L=TP.lines[i],V=trVoices(),hero=L.spk==='Hero';const parts=L.text.match(/[^.!?]+[.!?…]*/g)||[L.text];let k=0;
@@ -830,7 +831,7 @@ $('#pr-lib').addEventListener('click',e=>{if(LIBT!=='tr')return;const t=e.target
  if(t.closest('#tpPlay')){TP.on?tpStop():tpGo(TP.i);return}
  if(t.closest('#tpPrev')){tpGo(Math.max(0,TP.i-1));return}
  if(t.closest('#tpNext')){tpGo(TP.i+1);return}
- const pl=t.closest('[data-tplay]');if(pl){const i=+pl.dataset.tplay,l=LIB.find(x=>x.id===LIBO),T=TP.lines[i]?.t;if(l&&auReady(l)&&T!=null){tpStop();AUD.currentTime=T;AUD.play().catch(x=>toast('Không phát được: '+x.message))}else tpGo(i);return}
+ const pl=t.closest('[data-tplay]');if(pl){const i=+pl.dataset.tplay,l=LIB.find(x=>x.id===LIBO),T=TP.lines[i]?.t;if(l&&auReady(l)&&T!=null){tpStop();AUD.currentTime=T;AUD.play().catch(x=>toast('Không phát được: '+x.message))}else if(l&&l.audio&&!auReady(l)&&!$('#pr-lib details.ttsalt[open]')&&!TP.on){toast(AU.state==='loading'?'Audio gốc đang tải, chờ một chút rồi chạm lại':'Chưa có audio gốc trên máy này: bấm "Tải từ Google Drive của anh" ở trên');$('#aPlayer')?.scrollIntoView({block:'center',behavior:'smooth'})}else tpGo(i);return}
  if(t.closest('[data-trf]')){TRF=!TRF;tpStop();renderLib();return}
  if(t.closest('[data-trpull]')){pull().then(()=>{renderLib();if(!libParts(LIBO).length)toast('Chưa thấy toàn văn: kiểm tra lại bước Deploy → New version')});return}
  const er=t.closest('mark.err[data-fx]'),nw=t.closest('mark.nw[data-nw]'),line=t.closest('.tl');
@@ -847,7 +848,7 @@ const IDB={p:null,open(){return this.p||(this.p=new Promise((res,rej)=>{try{cons
 const AUD=new Audio();AUD.preload='auto';const AU={id:'',state:'',pct:0,err:'',cur:-1,follow:true,tried:''};
 const fmtT=s=>{s=Math.max(0,Math.floor(s||0));return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`};
 function auSet(l,blob){if(AUD.src)URL.revokeObjectURL(AUD.src);AUD.src=URL.createObjectURL(blob);AUD.playbackRate=TP.rate;AU.id=l.id;AU.err='';AU.cur=-1}
-async function auCached(l){if(AU.tried===l.id)return;AU.tried=l.id;try{const b=await IDB.get('audio:'+l.id);if(b&&LIBO===l.id){auSet(l,b);if(LIBT==='tr')renderLib()}}catch(e){}}
+async function auCached(l){if(AU.tried===l.id)return;AU.tried=l.id;let b=null;try{b=await IDB.get('audio:'+l.id)}catch(e){}if(b&&LIBO===l.id){auSet(l,b);if(LIBT==='tr')renderLib();return}if(C.url&&C.token&&!AU.auto&&LIBO===l.id&&LIBT==='tr'&&AU.state!=='loading'){AU.auto=true;auDrive(l)}}
 async function auDrive(l){if(!C.url)return toast('Hãy kết nối Sheet trong Cài đặt trước');AU.state='loading';AU.pct=0;AU.err='';renderLib();
  try{let off=0,size=1,mime='audio/mp4';const parts=[];while(off<size){const j=await api({action:'audio',name:l.audio.name,offset:off,length:4194304});size=+j.size||0;mime=j.mime||mime;if(!j.data)break;const bin=atob(j.data),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);parts.push(u);off+=u.length;AU.pct=size?Math.round(off/size*100):0;const pe=$('#auPct');if(pe)pe.textContent=AU.pct+'%'}
   const blob=new Blob(parts,{type:mime});await IDB.put('audio:'+l.id,blob).catch(()=>{});auSet(l,blob);AU.state='';renderLib();toast('Đã tải audio. Lần sau mở là nghe ngay.')}
@@ -858,11 +859,11 @@ function auUI(){const b=$('#auPlay');if(b)b.textContent=AUD.paused?'▶ Phát':'
  const i=auLineAt(AUD.currentTime);if(i!==AU.cur){AU.cur=i;$$('#pr-lib .tl.now').forEach(x=>x.classList.remove('now'));const el=$(`#pr-lib .tl[data-li="${i}"]`);if(el){el.classList.add('now');if(AU.follow&&!AUD.paused)el.scrollIntoView({block:'center',behavior:'smooth'})}}}
 ['timeupdate','play','pause','loadedmetadata','seeked'].forEach(ev=>AUD.addEventListener(ev,auUI));
 function auBar(l){if(!l.audio)return '';
- if(AU.id===l.id&&AUD.src)return `<div class="row" style="gap:8px"><button class="btn pri sm" id="auPlay">${AUD.paused?'▶ Phát':'❚❚ Dừng'}</button><button class="btn sm" id="auBack" aria-label="Lùi 10 giây">−10s</button><button class="btn sm" id="auFwd" aria-label="Tiến 10 giây">+10s</button>
+ if(AU.id===l.id&&AUD.src)return `<div class="src-real">🎧 Giọng thật: bản ghi âm buổi học</div><div class="row" style="gap:8px"><button class="btn pri sm" id="auPlay">${AUD.paused?'▶ Phát':'❚❚ Dừng'}</button><button class="btn sm" id="auBack" aria-label="Lùi 10 giây">−10s</button><button class="btn sm" id="auFwd" aria-label="Tiến 10 giây">+10s</button>
   <select id="tpRate" style="width:auto;min-height:36px;padding:4px 8px" aria-label="Tốc độ">${[.75,.9,1,1.15,1.3].map(r=>`<option value="${r}"${r===TP.rate?' selected':''}>${r}×</option>`).join('')}</select></div>
   <div class="row au-seek"><input type="range" id="auSeek" min="0" max="${Math.floor(AUD.duration||l.audio.duration||0)}" value="${Math.floor(AUD.currentTime)}" step="1" aria-label="Tua audio"><span class="mute" id="auTime">${fmtT(AUD.currentTime)} / ${fmtT(AUD.duration||l.audio.duration)}</span></div>
   <div class="row sp au-opt"><label class="mute"><input type="checkbox" id="auFollow"${AU.follow?' checked':''}> Tự cuộn theo câu</label><button class="btn sm ghost" id="auForget">Gỡ audio khỏi máy</button></div>`;
- return `<div><b>Nghe audio gốc của buổi học</b> <span class="mute">(${esc(fmtT(l.audio.duration))}, riêng tư, không nằm trong repo)</span></div>
+ return `<div><b>🎧 Nghe giọng thật (bản ghi âm buổi học)</b> <span class="mute">(${esc(fmtT(l.audio.duration))}, riêng tư, không nằm trong repo)</span></div>
   ${AU.state==='loading'?`<p class="mute">Đang tải từ Google Drive… <b id="auPct">${AU.pct}%</b></p>`:`<div class="row" style="margin-top:8px"><button class="btn pri sm" id="auDrive">Tải từ Google Drive của anh</button><label class="btn sm" style="cursor:pointer;margin:0">Chọn file trên máy<input type="file" id="auPick" accept="audio/*,.m4a" hidden></label></div>`}
   ${AU.err?`<p style="color:var(--red);margin:6px 0 0">${esc(AU.err)}</p>`:''}
   <p class="mute" style="margin:6px 0 0">Tải 1 lần (~${esc(l.audio.mb||'')} MB), app lưu lại trên máy này để lần sau nghe ngay, kể cả khi mất mạng. File trong Drive phải tên đúng <b>${esc(l.audio.name)}</b>.</p>`}
@@ -871,8 +872,9 @@ $('#pr-lib').addEventListener('click',e=>{if(LIBT!=='tr')return;const t=e.target
  if(t.closest('#auBack')){AUD.currentTime=Math.max(0,AUD.currentTime-10);return}
  if(t.closest('#auFwd')){AUD.currentTime=Math.min(AUD.duration||1e9,AUD.currentTime+10);return}
  if(t.closest('#auDrive')){auDrive(l);return}
- if(t.closest('#auForget')){AUD.pause();IDB.drop('audio:'+l.id).then(()=>{AUD.removeAttribute('src');AUD.load();AU.id='';AU.tried='';renderLib();toast('Đã gỡ audio khỏi máy này')});return}});
+ if(t.closest('#auForget')){AUD.pause();IDB.drop('audio:'+l.id).then(()=>{AUD.removeAttribute('src');AUD.load();AU.id='';AU.tried='';AU.auto=true;renderLib();toast('Đã gỡ audio khỏi máy này')});return}});
 $('#pr-lib').addEventListener('change',e=>{const l=LIB.find(x=>x.id===LIBO);if(!l)return;if(e.target.id==='auPick')auFile(l,e.target.files[0]);if(e.target.id==='auFollow')AU.follow=e.target.checked;if(e.target.id==='tpRate')AUD.playbackRate=+e.target.value});
+$('#pr-lib').addEventListener('toggle',e=>{if(e.target.matches?.('details.ttsalt')){TP.alt=e.target.open;if(!TP.alt)tpStop()}},true);
 $('#pr-lib').addEventListener('input',e=>{if(e.target.id==='auSeek'){AUD.currentTime=+e.target.value;auUI()}});
 
 function libAns(k,v){const l=LIB.find(x=>x.id===LIBO);if(!l)return;const [eid,i]=k.split('-');const q=l.exercises.find(x=>x.id===eid)?.items[+i];if(!q)return;
