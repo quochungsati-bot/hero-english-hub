@@ -375,6 +375,7 @@ kb:[["KB001","Liquidated Damages (LDs)","FIDIC","A pre-agreed amount the contrac
 db:[{id:'DB001',date:'2026-11-26',category:'Data Center',vi_summary:'Nhu cầu data center tại Việt Nam tăng nhanh nhờ dòng vốn công nghệ và cloud.',en_quick_talk:"Have you seen how fast data centre demand is growing in Vietnam? It feels like every month there's a new hyperscale announcement.",status:'Pending'},{id:'DB002',date:'2026-11-25',category:'FDI',vi_summary:'Dòng vốn FDI vào sản xuất công nghiệp miền Bắc tiếp tục là điểm sáng.',en_quick_talk:'Northern Vietnam is still attracting a lot of manufacturing investment. Is your group looking at any new sites this year?',status:'Pending'},{id:'DB003',date:'2026-11-24',category:'Weather',vi_summary:'Mùa khô bắt đầu, thuận lợi cho thi công móng và tầng hầm.',en_quick_talk:'The dry season has finally started, which is great news for our basement works.',status:'Done'}]};
 let D=store.get('be_data',null)||JSON.parse(JSON.stringify(SEED));
 let C=Object.assign({url:'',token:'',theme:'',lockMin:10,pinHash:'',pinSalt:'',pinSkipped:false,ai:false,learner:'Hùng',teacher:'Lorraine',preply:'https://preply.com/edu/english/classroom-v2/10523965'},store.get('be_cfg',{}));
+if(C.sched&&JSON.stringify(C.sched.days)==='[3,5]'&&!C.schedFix){C.sched.days=[1,5];C.schedFix=1;store.set('be_cfg',C)}
 {const old=store.get('exec_bid_cfg_v1',null);if(old&&!store.get('be_cfg',null)){C.url=old.url||'';C.token=old.token||'';if(old.pinHash){C.pinHash=old.pinHash;C.pinSalt=''}if(old.dark)C.theme='dark';store.set('be_cfg',C)}}
 let COURSE=[],LIB=[],LIBO='',LIBT='sum',LIBQ='';if(!Array.isArray(D.ll))D.ll=[];
 let Q=store.get('be_queue',[]);
@@ -407,7 +408,7 @@ function importPreply(){P.imported=P.imported||{};let n=0;const same=(r,d,t)=>no
  for(const s of PRG.snapshots){const k='S|'+s.date;if(!P.imported[k]&&!D.pl.some(r=>isProg(r)&&normDate(r.date)===s.date)){addRow('pl',{id:uid('PG'),date:s.date,topic:'Preply progress check',category:PG_CAT,teacher_note:progNote(s),rating:''});n++}P.imported[k]=1}
  saveP();if(n){renderAll();toast(`Đã thêm ${n} mục từ Preply vào Nhật ký`)}}
 /* Lịch học: mẫu cố định (thứ + giờ) + các buổi đã đặt cụ thể */
-function sched(){const s=Object.assign({days:[3,5],time:'22:00',duration:50},PRG.schedule||{},C.sched||{});s.booked=Array.isArray(C.booked)?C.booked:[];return s}
+function sched(){const s=Object.assign({days:[1,5],time:'22:00',duration:50},PRG.schedule||{},C.sched||{});s.booked=Array.isArray(C.booked)?C.booked:[];return s}
 const isoOf=d=>localISO(d);
 function lessonEnded(iso,time,dur){const [h,m]=String(time||'22:00').split(':').map(Number);const d=new Date(iso+'T00:00');d.setHours(h||0,(m||0)+(+dur||50));return d<new Date()}
 function nextLessons(n=4){const s=sched(),today=todayISO(),done=new Set(lessonsPL().map(r=>normDate(r.date)));
@@ -471,7 +472,7 @@ function renderSched(){const el=$('#pr-sched');if(!el)return;const s=sched(),nx=
   <button class="btn sm ghost" data-prt="log" style="margin-top:8px">Xem toàn bộ nhật ký →</button></div></div>`;
  updJoin();
  $('#fSc').onchange=e=>{const c=e.target.closest('label.chip');if(c)c.classList.toggle('on',c.querySelector('input').checked)};
- $('#fSc').onsubmit=e=>{e.preventDefault();const days=$$('#fSc input[type=checkbox]:checked').map(x=>+x.value);if(!days.length)return toast('Chọn ít nhất 1 ngày');C.sched={days,time:$('#scT').value||'22:00',duration:+$('#scM').value||50};saveC();renderHome();renderSched();toast('Đã lưu lịch học')};
+ $('#fSc').onsubmit=e=>{e.preventDefault();const days=$$('#fSc input[type=checkbox]:checked').map(x=>+x.value);if(!days.length)return toast('Chọn ít nhất 1 ngày');C.sched={days,time:$('#scT').value||'22:00',duration:+$('#scM').value||50};saveC();renderHome();renderSched();if(typeof renderToday==='function'){renderPlan();renderToday();renderIcsBox()}toast('Đã lưu lịch học')};
  $('#fBk').onsubmit=e=>{e.preventDefault();C.booked=[...(C.booked||[]).filter(b=>b.date>=todayISO()),{date:$('#bkD').value,time:$('#bkT').value,topic:$('#bkN').value.trim()}];saveC();renderHome();renderSched();toast('Đã thêm buổi học')}}
 document.addEventListener('click',e=>{const t=e.target.closest('[data-prt]');if(t){if(t.dataset.lib){LIBO=t.dataset.lib;LIBT='sum';renderLib()}const b=$(`#prTabs button[data-t="${t.dataset.prt}"]`);if(b){if(location.hash!=='#preply')location.hash='#preply';setTimeout(()=>b.click(),0)}if(t.tagName==='A')e.preventDefault();return}
  const u=e.target.closest('[data-unbook]');if(u){const [d,tm]=u.dataset.unbook.split('|');C.booked=(C.booked||[]).filter(b=>!(b.date===d&&b.time===tm));saveC();renderHome();renderSched()}});
@@ -608,12 +609,12 @@ const dow=()=>((new Date(todayISO()+'T00:00').getDay()+6)%7)+1;
 function planWeek(){return Math.floor((new Date(monOf(todayISO())+'T00:00')-new Date(PLAN.start+'T00:00'))/6048e5)+1}
 function planMonth(){const ym=todayISO().slice(0,7),ms=PLAN.months;if(ym<ms[0].ym)return 0;const i=ms.findIndex(m=>m.ym===ym);return i<0?ms.length:i+1}
 function weekDone(wk){return Object.values(PS.log[wk]||{}).reduce((a,b)=>a+(+b||0),0)}
-function planToday(){if(!PLAN)return null;const t=planTier(),wk=monOf(todayISO()),lg=PS.log[wk]||{},bl=t.blocks.filter(b=>b.day===dow());return{left:bl.filter(b=>!lg[b.id]),all:bl}}
+function planToday(){if(!PLAN)return null;const t=planTier(),wk=monOf(todayISO()),lg=PS.log[wk]||{},bl=t.blocks.filter(b=>bDay(b)===dow());return{left:bl.filter(b=>!lg[b.id]),all:bl}}
 const hTxt=m=>(Math.round(m/6)/10).toLocaleString('vi-VN')+' giờ';
 function renderPlan(){const el=$('#c1plan');if(!el||!PLAN)return;const t=planTier(),tk=PS.tier&&PLAN.tiers[PS.tier]?PS.tier:PLAN.defaultTier,K=PLAN.kinds;
  const w=planWeek(),mi=planMonth(),cur=PLAN.months[Math.min(Math.max(mi,1),12)-1],wk=monOf(todayISO()),lg=PS.log[wk]||{},done=weekDone(wk),pc=Math.min(100,Math.round(done/t.minutes*100)),td=dow();
  const wl=w<1?`Bắt đầu thứ Hai ${fmtD(PLAN.start)} · tuần này là tuần khởi động`:w>PLAN.weeks?'Đã hết 52 tuần: làm bài thi chính thức và đặt mục tiêu mới':`Tuần ${w}/${PLAN.weeks} · Tháng ${mi}: ${cur.t}`;
- const days=[1,2,3,4,5,6,7].map(d=>`<div class="wd ${d===td?'today':''}"><b>${DN[d]}${d===td?' · hôm nay':''}</b><div>${t.blocks.filter(b=>b.day===d).map((b,i,a)=>`${b.at&&(i===0||a[i-1].at!==b.at)?`<div class="ss">${esc(b.at)} · ${esc(b.s)}</div>`:''}<label class="pb ${lg[b.id]?'ok':''}" title="${esc(K[b.k].d)}"><input type="checkbox" data-pb="${esc(b.id)}" data-min="${b.min}" ${lg[b.id]?'checked':''}><span>${esc(K[b.k].t)} · ${b.min}′</span></label>`).join('')}</div></div>`).join('');
+ const days=[1,2,3,4,5,6,7].map(d=>`<div class="wd ${d===td?'today':''}"><b>${DN[d]}${d===td?' · hôm nay':''}</b><div>${t.blocks.filter(b=>bDay(b)===d).map((b,i,a)=>`${b.at&&(i===0||a[i-1].at!==b.at)?`<div class="ss">${esc(b.at)} · ${esc(b.s)}</div>`:''}<label class="pb ${lg[b.id]?'ok':''}" title="${esc(K[b.k].d)}"><input type="checkbox" data-pb="${esc(b.id)}" data-min="${b.min}" ${lg[b.id]?'checked':''}><span>${esc(K[b.k].t)} · ${b.min}′</span></label>`).join('')}</div></div>`).join('');
  const hist=[];for(let i=7;i>=0;i--){const d=new Date(wk+'T00:00');d.setDate(d.getDate()-7*i);const k=isoOf(d),v=weekDone(k),p=Math.min(100,Math.round(v/t.minutes*100));hist.push(`<i class="${p>=80?'on':''}" style="height:${Math.max(3,p)}%" title="Tuần từ ${fmtD(k)}: ${hTxt(v)}"></i>`)}
  const guide=Object.entries(K).filter(([k])=>t.blocks.some(b=>b.k===k)).map(([k,v])=>`<li><b style="font-weight:600">${esc(v.t)}:</b> ${esc(v.d)} <a href="${esc(v.link)}">Mở</a></li>`).join('');
  const months=PLAN.phases.map(ph=>`<h3 style="margin:18px 0 4px">${esc(ph.t)} <span class="tag t">${esc(ph.cefr)}</span> <span class="tag">${esc(ph.stage)}</span></h3><p class="mute" style="margin:0 0 6px">${esc(ph.why)}</p>`+PLAN.months.filter(m=>m.n>=ph.m[0]&&m.n<=ph.m[1]).map(m=>{const isC=m.n===mi,cp=PLAN.checkpoints.find(c=>c.month===m.n);return `<details class="mo ${isC?'cur':''}" ${isC||(mi===0&&m.n===1)?'open':''}><summary>Tháng ${m.n} · ${esc(m.ym.slice(5)+'/'+m.ym.slice(0,4))} · ${esc(m.t)} ${isC?'<span class="tag doing">Đang học</span>':m.n<mi?'<span class="tag done">Đã qua</span>':''}${cp?' <span class="tag new">Mốc '+cp.n+'</span>':''}</summary>
@@ -642,7 +643,9 @@ $('#c1plan').addEventListener('change',e=>{const c=e.target.closest('[data-pb]')
 
 
 /* ================= LỊCH HỌC TỪNG NGÀY ================= */
-const addMin=(at,m)=>{const [h,mi]=at.split(':').map(Number),t=h*60+mi+m;return String(Math.floor(t/60)%24).padStart(2,'0')+':'+String(t%60).padStart(2,'0')};
+function planMap(){const P=[...new Set((sched().days||[]).map(Number))].filter(d=>d>=1&&d<=5).sort();if(P.length!==2)return{1:1,2:2,3:3,4:4,5:5,6:6,7:7};const n=[1,2,3,4,5].filter(d=>!P.includes(d));return{1:P[0],5:P[1],2:n[0],3:n[1],4:n[2],6:6,7:7}}
+function bDay(b){return planMap()[b.day]}
+const addMin=(at,m)=>{const [h,mi]=at.split(':').map(Number),t=((h*60+mi+m)%1440+1440)%1440;return String(Math.floor(t/60)%24).padStart(2,'0')+':'+String(t%60).padStart(2,'0')};
 const dowOf=iso=>((new Date(iso+'T00:00').getDay()+6)%7)+1;
 function dayInfo(iso){if(!PLAN)return null;const t=planTier(),ms=PLAN.months,ym=iso.slice(0,7);let mi=ms.findIndex(m=>m.ym===ym)+1;if(!mi)mi=ym<ms[0].ym?1:12;const m=ms[mi-1],dd=+iso.slice(8,10),wim=ym<ms[0].ym?1:Math.min(4,Math.floor((dd-1)/7)+1);
  const di=Math.max(0,Math.round((new Date(iso+'T00:00')-new Date(PLAN.start+'T00:00'))/864e5)),terms=m.pmi?m.pmi.terms:[''],term=terms[di%terms.length],sent=m.lang[di%m.lang.length],g=wim<4?m.grammar[(wim-1)%m.grammar.length]:'';
@@ -656,14 +659,15 @@ function dayInfo(iso){if(!PLAN)return null;const t=planTier(),ms=PLAN.months,ym=
   speak2:`Hội thoại tự do 30 phút về: ${m.scenario}.`,
   work:`Viết 1 email hoặc RFI thật (đã ẩn danh) liên quan: ${m.scenario}. Nâng cấp lên bản B2 và C1.`,
   prep:`Nói lại 5 lỗi gần nhất trong Mistake Bank. Chuẩn bị 3 câu hỏi về: ${m.scenario}.${dd<=7?' Đầu tháng: gửi Ms. Lorraine lời nhắn của tháng (tab Lộ trình).':''}`,
-  preply:`22:00 với Ms. Lorraine. Trọng tâm: ${g||'ôn tập cuối tháng'}. Anh nói ≥ 70% thời lượng.`,
+  preply:`${sched().time||'22:00'} với Ms. Lorraine. Trọng tâm: ${g||'ôn tập cuối tháng'}. Anh nói ≥ 70% thời lượng.`,
   deep:wim<4?`Đọc 1 tài liệu thầu tiếng Anh (đã ẩn danh) 40 phút, rồi viết 250–300 từ cho: ${m.output}.`:`Tuần cuối tháng: hoàn thiện sản phẩm tháng: ${m.output}.`,
   mock:`Ghi âm phần nói của: ${m.output}. Nghe lại, đánh dấu 3 lỗi, ghi vào Mistake Bank.`,
   review:`Tổng kết tuần: cập nhật Mistake Bank, tick lịch, chọn tình huống cho tuần sau.${lastWk?' Cuối tháng: nhập điểm Preply mới (tab Lộ trình).':''}`};
- const bl=t.blocks.filter(b=>b.day===dowOf(iso)),ss=[];for(const b of bl){let s=ss.find(x=>x.at===b.at&&x.s===b.s);if(!s){s={s:b.s||'Buổi học',at:b.at||'21:00',blocks:[],min:0};ss.push(s)}s.blocks.push({...b,t:PLAN.kinds[b.k].t,what:W[b.k]||PLAN.kinds[b.k].d,link:PLAN.kinds[b.k].link});s.min+=b.min}
+ const bl=t.blocks.filter(b=>bDay(b)===dowOf(iso)),ss=[];for(const b of bl){let s=ss.find(x=>x.at===b.at&&x.s===b.s);if(!s){s={s:b.s||'Buổi học',at:b.at||'21:00',blocks:[],min:0};ss.push(s)}s.blocks.push({...b,t:PLAN.kinds[b.k].t,what:W[b.k]||PLAN.kinds[b.k].d,link:PLAN.kinds[b.k].link});s.min+=b.min}
+ {const tm=sched().time||'22:00';ss.forEach(s=>{if(s.blocks.some(b=>b.k==='preply'))s.at=s.blocks[0].k==='prep'?addMin(tm,-s.blocks[0].min):tm})}
  ss.forEach(s=>s.end=addMin(s.at,s.min));return{iso,m,mi,wim,term,cp:PLAN.checkpoints.find(c=>c.date===iso),sessions:ss,min:bl.reduce((a,b)=>a+b.min,0)}}
 var CALM='',SELD='';
-function dayPct(iso){const t=planTier(),bl=t.blocks.filter(b=>b.day===dowOf(iso)),lg=PS.log[monOf(iso)]||{};const tot=bl.reduce((a,b)=>a+b.min,0);return tot?bl.reduce((a,b)=>a+(lg[b.id]?b.min:0),0)/tot:0}
+function dayPct(iso){const t=planTier(),bl=t.blocks.filter(b=>bDay(b)===dowOf(iso)),lg=PS.log[monOf(iso)]||{};const tot=bl.reduce((a,b)=>a+b.min,0);return tot?bl.reduce((a,b)=>a+(lg[b.id]?b.min:0),0)/tot:0}
 function renderToday(){const el=$('#tdDay');if(!el||!PLAN)return;const today=todayISO(),iso=SELD||today,I=dayInfo(iso),lg=PS.log[monOf(iso)]||{},isT=iso===today,canTick=iso<=today;
  const head=`${isT?'':WD[new Date(iso+'T00:00').getDay()]+' '+fmtD(iso)+' · '}${hTxt(I.min)} · Tháng ${I.mi}: ${I.m.t}`;
  el.innerHTML=`<div class="card" style="margin:16px 0"><span class="lbl">${isT?'Hôm nay':'Ngày đã chọn'} · ${esc(fmtD(iso))}${iso<PLAN.start?' · tuần khởi động':''}</span><h2 style="margin:4px 0 2px">${esc(head)}</h2>
@@ -674,11 +678,12 @@ function renderToday(){const el=$('#tdDay');if(!el||!PLAN)return;const today=tod
  renderCal()}
 function renderCal(){const el=$('#cal');if(!el||!PLAN)return;const today=todayISO();if(!CALM)CALM=today.slice(0,7);const [y,mo]=CALM.split('-').map(Number),first=new Date(y,mo-1,1),off=(first.getDay()+6)%7,n=new Date(y,mo,0).getDate(),end=PLAN.months[PLAN.months.length-1].ym+'-31',sel=SELD||today;
  $('#calT').textContent=`Tháng ${mo}/${y}`;const cells=['T2','T3','T4','T5','T6','T7','CN'].map(d=>`<div class="hd">${d}</div>`);for(let i=0;i<off;i++)cells.push('<div></div>');
- for(let d=1;d<=n;d++){const iso=`${CALM}-${String(d).padStart(2,'0')}`,inP=iso>=PLAN.start&&iso<=end||iso>=today&&iso<PLAN.start,bl=planTier().blocks.filter(b=>b.day===dowOf(iso)),pre=bl.some(b=>b.k==='preply'),cp=PLAN.checkpoints.some(c=>c.date===iso),ok=iso<=today&&dayPct(iso)>=.8;
+ for(let d=1;d<=n;d++){const iso=`${CALM}-${String(d).padStart(2,'0')}`,inP=iso>=PLAN.start&&iso<=end||iso>=today&&iso<PLAN.start,bl=planTier().blocks.filter(b=>bDay(b)===dowOf(iso)),pre=bl.some(b=>b.k==='preply'),cp=PLAN.checkpoints.some(c=>c.date===iso),ok=iso<=today&&dayPct(iso)>=.8;
   cells.push(`<button data-seld="${iso}" class="${iso===today?'td':''} ${iso===sel?'sel':''} ${ok?'ok':''}" ${inP?'':'disabled'} aria-label="${esc(fmtD(iso))}"><b>${d}</b><span class="tg">${pre?'<i class="cpp">P</i>':''}${cp?'<i class="cpm">M</i>':''}</span></button>`)}
  el.innerHTML=cells.join('');$('#calP').disabled=CALM<=PLAN.start.slice(0,7)&&CALM<=today.slice(0,7);$('#calN').disabled=CALM>=PLAN.months[PLAN.months.length-1].ym}
 function renderIcsBox(){const el=$('#icsBox');if(!el||!PLAN)return;el.innerHTML=`<h2 style="margin:0">Nhắc hẹn hằng ngày</h2><p class="mute" style="margin:4px 0 10px">Đưa lịch học vào Lịch của iPhone và laptop. Mỗi buổi có báo thức trước 5 phút, phần ghi chú ghi rõ hôm đó học gì.</p>
- <div class="row"><a class="btn pri sm" href="calendar/hero-plan-12m.ics">Thêm cả 12 tháng (lịch chính)</a><button class="btn sm" data-ics="28">Tải 4 tuần tới theo mức đang chọn</button></div>
+ <p style="margin:0 0 10px">Ngày Preply đang dùng: <b>${esc(sched().days.map(d=>WD[d%7]).join(' và '))} lúc ${esc(sched().time)}</b> (khớp trang preply.com/en/lessons ngày 27/11: mỗi T2 và T6, 22:00). Khi lịch trên Preply đổi, sửa ở <a href="#preply" data-prt="sched">Preply → Lịch học</a>, kế hoạch và nút tải bên dưới tự đổi theo.</p>
+ <div class="row"><a class="btn pri sm" href="calendar/hero-plan-12m.ics">Thêm cả 12 tháng (T2, T6 Preply)</a><button class="btn sm" data-ics="364">Tải 12 tháng theo lịch hiện tại</button><button class="btn sm" data-ics="28">Tải 4 tuần tới</button></div>
  <ol style="margin:12px 0 0;padding-left:20px"><li><b style="font-weight:600">iPhone:</b> mở trang này bằng Safari, bấm “Thêm cả 12 tháng”, chọn <i>Thêm tất cả</i>. Nên tạo riêng một lịch tên “Hero English” để dễ xoá hoặc thay sau này.</li>
  <li><b style="font-weight:600">Laptop:</b> tải cùng file rồi mở bằng Lịch (Calendar) hoặc Outlook. Nếu anh dùng Google Calendar: Cài đặt → Nhập và xuất → chọn file, lịch sẽ tự đồng bộ sang điện thoại. Chỉ nhập ở một nơi để không bị nhắc hai lần.</li>
  <li>Khi đổi giờ học, xoá lịch “Hero English” cũ rồi nhập lại file mới.</li></ol>`}
@@ -692,7 +697,7 @@ function buildICS(from,days){const L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-/
    L.push('BEGIN:VEVENT',`UID:${dt}-${s.at.replace(':','')}-${s.s.normalize('NFD').replace(/[^A-Za-z]/g,'')}@hero-english-hub`,`DTSTAMP:${stamp}`,`DTSTART:${dt}T${st}`,`DTEND:${dt}T${en}`,
     icsFold('SUMMARY:'+icsEsc(`${s.s}: ${s.blocks.map(b=>b.t).join(' + ')}`)),icsFold('DESCRIPTION:'+icsEsc(desc)),'BEGIN:VALARM','ACTION:DISPLAY','TRIGGER:-PT5M',icsFold('DESCRIPTION:'+icsEsc('Hero English: '+s.s+' '+s.at)),'END:VALARM','END:VEVENT')}}
  L.push('END:VCALENDAR');return L.join('\r\n')+'\r\n'}
-function dlICS(days){const from=todayISO()<PLAN.start&&days>200?PLAN.start:todayISO(),b=new Blob([buildICS(from,days)],{type:'text/calendar;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`hero-english-${from}.ics`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)}
+function dlICS(days){const from=days>200?(todayISO()<PLAN.start?PLAN.start:todayISO()):todayISO();if(days>200){const e=new Date(PLAN.start+'T00:00');e.setDate(e.getDate()+364);days=Math.max(1,Math.round((e-new Date(from+'T00:00'))/864e5))}const b=new Blob([buildICS(from,days)],{type:'text/calendar;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`hero-english-${from}.ics`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)}
 $('#v-today').addEventListener('click',e=>{const sd=e.target.closest('[data-seld]'),ic=e.target.closest('[data-ics]');
  if(sd){SELD=sd.dataset.seld;if(SELD)CALM=SELD.slice(0,7);renderToday();if(SELD&&innerWidth<900)$('#tdDay').scrollIntoView({behavior:'smooth'})}
  if(ic)dlICS(+ic.dataset.ics)});

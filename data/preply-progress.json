@@ -1,6 +1,6 @@
 {
  "_note": "Ảnh chụp tiến độ Preply (nhập tay, Preply không có API). App tự ghi các mục chưa có vào tab 01_Preply_Log. Thêm điểm/buổi mới ngay trong app: Lộ trình → Cập nhật điểm, Preply → Lịch học.",
- "schedule": {"perWeek": 2, "days": [3, 5], "time": "22:00", "duration": 50},
+ "schedule": {"perWeek": 2, "days": [1, 5], "time": "22:00", "duration": 50},
  "snapshots": [
   {"date": "2026-11-23", "cefr": "B1.1", "range": ["A2.3", "B1.2"], "grammar": 22, "vocabulary": 38, "speaking": 38, "trend": {"grammar": "Steady", "vocabulary": "Steady", "speaking": "+2"}}
  ],
