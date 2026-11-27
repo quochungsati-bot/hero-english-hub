@@ -1,5 +1,863 @@
 [
  {
+  "id": "L28",
+  "no": 28,
+  "date": "2026-11-20",
+  "duration": 53,
+  "title": "Buổi 28 · Everyday Life & Current Events",
+  "topic": "Bé cai sữa, ngày nghỉ mới ở VN · đầu tư nước ngoài, sức khoẻ, gạo · tin công nghệ Mỹ, nhóm lợi ích · tự đào tạo đội ngũ",
+  "summary": "Buổi học thứ Sáu 20/11 (Preply: \"Everyday life and current events\"). Mở đầu bằng chuyện bé nhà anh ăn, ngủ và cai sữa ở khoảng 30 tháng, vợ anh quay lại dạy yoga, và ngày nghỉ mới cho Văn hoá Việt Nam. Phần thời sự: thoả thuận Philippines – Mỹ, buổi họp của anh với khách châu Âu và làn sóng công ty châu Âu sang Việt Nam, lo ngại về sức khoẻ và hoá chất trong nông nghiệp, gạo trắng/gạo lứt. Sau đó là tin về CEO một hãng chip lớn của Mỹ, chiến lược 'tằm ăn dâu' và các nhóm lợi ích. Cuối buổi anh chia sẻ cách tự upskill và tự đào tạo đội ngũ. Lorraine khen anh nói chậm, rõ hơn, và nhắc mạo từ a, thiếu động từ is, ngôi 3 has.",
+  "strengths": [
+   "Nói chậm và nhấn rõ từng từ hơn, Lorraine khen 'level', 'evening' nghe rất tốt.",
+   "Nhiều câu đúng ngữ pháp hoàn toàn, Lorraine ghi nhận trong phần nhận xét.",
+   "Tự kể chuyện công việc thật (buổi họp với khách châu Âu) và có quan điểm rõ về đầu tư nước ngoài.",
+   "Trình bày được chiến lược tự đào tạo đội ngũ: 'That's my strategy.'"
+  ],
+  "focus": [
+   "Ngôi 3 số ít: my wife has, the government has, everyone has (Lorraine sửa)",
+   "Mạo từ a khi nhắc lần đầu: a meeting, a day off, a school teacher",
+   "Câu thiếu động từ to be: it is convenient, I'm listening, when I'm productive",
+   "Kể chuyện đã qua dùng quá khứ: stopped, was born, moved",
+   "Danh từ số nhiều/không đếm được: chemicals, energy, team members",
+   "Từ dễ nhầm: health/hell, hungry/hurry, loyalty/royalty, staff/stuff, divide/device"
+  ],
+  "errors": [
+   {
+    "group": "Ngôi 3 số ít (has / does)",
+    "n": 7,
+    "repeat": true,
+    "ex": "my wife have the time / the government have one more reason / everyone, have to upskill",
+    "fix": "my wife has time / the government has one more reason / everyone has to upskill"
+   },
+   {
+    "group": "Thiếu mạo từ a / dùng the sai",
+    "n": 6,
+    "repeat": true,
+    "ex": "I have the meeting with some guy from Europe / that is holiday off",
+    "fix": "I have a meeting with some people from Europe / It's a day off"
+   },
+   {
+    "group": "Thiếu động từ to be",
+    "n": 6,
+    "repeat": true,
+    "ex": "very convenient for us to stop… / so I just listening / when I productive",
+    "fix": "it was very convenient for us to… / so I'm just listening / when I'm productive"
+   },
+   {
+    "group": "Hiện tại cho chuyện đã qua",
+    "n": 5,
+    "repeat": true,
+    "ex": "we stop winning late around 30 months / he's born in Taiwan… they come to the US",
+    "fix": "We stopped breastfeeding at around 30 months / He was born in Taiwan… then he moved to the US"
+   },
+   {
+    "group": "Số nhiều, đếm được / không đếm được",
+    "n": 5,
+    "repeat": true,
+    "ex": "many chemical / the more energies / my team member",
+    "fix": "a lot of chemicals / more energy / my team members"
+   },
+   {
+    "group": "Câu hỏi thiếu trợ động từ",
+    "n": 4,
+    "repeat": true,
+    "ex": "your country have the situation like that? / How many average lessons…",
+    "fix": "Does your country have a situation like that? / On average, how many lessons…"
+   },
+   {
+    "group": "So sánh và cấu trúc",
+    "n": 4,
+    "repeat": false,
+    "ex": "you teach so much than teacher at school / get some difficult to work",
+    "fix": "you teach much more than a school teacher / find it difficult to work"
+   },
+   {
+    "group": "Từ dễ nhầm",
+    "n": 8,
+    "repeat": false,
+    "ex": "hell / hurry / royalty / stuff / the line / chong / development countries",
+    "fix": "health / hungry / loyalty / staff / life / strong / developed countries"
+   }
+  ],
+  "grammar": [
+   {
+    "title": "Ngôi 3 số ít ở hiện tại đơn",
+    "formula": "he / she / it / my wife / the government / everyone + V-s/es (have → has)",
+    "rule": "Lorraine sửa 3 lần trong buổi: my wife has, the government has. 'everyone', 'the company', 'the client' cũng là số ít.",
+    "right": [
+     "My wife has time to start teaching yoga again.",
+     "Maybe the government has one more reason to relax.",
+     "Everyone has to upskill by themselves."
+    ],
+    "wrong": [
+     "My wife have the time…",
+     "The government have one more reason…"
+    ]
+   },
+   {
+    "title": "Mạo từ a / an khi nhắc lần đầu",
+    "formula": "a / an + danh từ đếm được số ít (lần đầu) → the + danh từ đó (lần sau)",
+    "rule": "Lorraine: 'This afternoon I have a meeting' (indefinite article). Nói chung chung một nghề, một loại: a school teacher, a day off.",
+    "right": [
+     "This afternoon I have a meeting with some people from Europe.",
+     "It's a day off for culture.",
+     "You teach more than a school teacher."
+    ],
+    "wrong": [
+     "I have the meeting with some guy from Europe."
+    ]
+   },
+   {
+    "title": "Câu phải có động từ to be",
+    "formula": "S + am / is / are / was + tính từ / V-ing / to V",
+    "rule": "Trước tính từ (convenient, productive, adapted) và V-ing luôn cần to be. Lorraine: 'This class is missing the verb is.'",
+    "right": [
+     "It was very convenient for us to wean him.",
+     "He is more adapted to solid food now.",
+     "When I'm productive, I build my knowledge."
+    ],
+    "wrong": [
+     "very convenient for us to stop…",
+     "when I productive…"
+    ]
+   },
+   {
+    "title": "Quá khứ đơn khi kể chuyện",
+    "formula": "S + V-ed / V2 · be born → was born",
+    "rule": "Chuyện đã xong (cai sữa, ai đó sinh ra ở đâu, chuyển đi đâu) dùng quá khứ. 'born' luôn đi với was/were.",
+    "right": [
+     "We stopped breastfeeding at around 30 months.",
+     "He was born in Taiwan and then he moved to the US."
+    ],
+    "wrong": [
+     "We stop winning late around 30 months.",
+     "He's born in Taiwan… they come to the US."
+    ]
+   },
+   {
+    "title": "find it + tính từ + to V · make it easy for",
+    "formula": "S + find it difficult / easy + to V · make it easy for + N + to V",
+    "rule": "Diễn đạt 'thấy khó/dễ làm gì' và 'tạo điều kiện cho ai làm gì' rất hữu ích khi nói về thị trường, chính sách.",
+    "right": [
+     "European firms may find it difficult to work there.",
+     "The new law makes it easy for those companies to do business."
+    ],
+    "wrong": [
+     "they get some difficult to to work",
+     "make the law for that company easy to get the business"
+    ]
+   },
+   {
+    "title": "Từ dễ nhầm khi nói nhanh",
+    "formula": "health /helθ/ ≠ hell · hungry ≠ hurry · loyalty ≠ royalty · staff ≠ stuff · device /dɪˈvaɪs/ ≠ divide /dɪˈvaɪd/",
+    "rule": "Nhiều lỗi do phát âm/chọn từ gần giống. Nói chậm, nhấn âm cuối như Lorraine khen.",
+    "right": [
+     "Vietnamese people's health is getting worse.",
+     "Training builds loyalty among the staff."
+    ],
+    "wrong": [
+     "the hell Vietnamese people",
+     "create the royalty for the staff"
+    ]
+   }
+  ],
+  "exercises": [
+   {
+    "id": "s1",
+    "title": "Bài 1 · Ngôi 3 số ít",
+    "items": [
+     {
+      "type": "choice",
+      "q": "The client ___ a meeting with us this afternoon.",
+      "options": [
+       "have",
+       "has",
+       "having"
+      ],
+      "answer": [
+       "has"
+      ],
+      "explain": "the client (số ít) → has."
+     },
+     {
+      "type": "choice",
+      "q": "Maybe the government ___ one more reason to relax.",
+      "options": [
+       "have",
+       "has",
+       "is have"
+      ],
+      "answer": [
+       "has"
+      ],
+      "explain": "Lorraine sửa: the government has."
+     },
+     {
+      "type": "choice",
+      "q": "Everyone in my team ___ to upskill by themselves.",
+      "options": [
+       "have",
+       "has",
+       "are"
+      ],
+      "answer": [
+       "has"
+      ],
+      "explain": "everyone luôn là số ít."
+     },
+     {
+      "type": "choice",
+      "q": "My wife ___ yoga three times a week.",
+      "options": [
+       "teach",
+       "teaches",
+       "teaching"
+      ],
+      "answer": [
+       "teaches"
+      ],
+      "explain": "Ngôi 3 → teaches."
+     },
+     {
+      "type": "choice",
+      "q": "___ your company provide any training for new staff?",
+      "options": [
+       "Do",
+       "Does",
+       "Is"
+      ],
+      "answer": [
+       "Does"
+      ],
+      "explain": "your company (số ít) → Does."
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "title": "Bài 2 · Mạo từ a / the",
+    "items": [
+     {
+      "type": "choice",
+      "q": "This afternoon I have ___ meeting with a European contractor.",
+      "options": [
+       "the",
+       "a",
+       "—"
+      ],
+      "answer": [
+       "a"
+      ],
+      "explain": "Nhắc lần đầu → a meeting."
+     },
+     {
+      "type": "choice",
+      "q": "Next week we have ___ day off for Vietnamese culture.",
+      "options": [
+       "a",
+       "the",
+       "—"
+      ],
+      "answer": [
+       "a"
+      ],
+      "explain": "a day off = một ngày nghỉ."
+     },
+     {
+      "type": "choice",
+      "q": "Lorraine teaches more than ___ school teacher.",
+      "options": [
+       "a",
+       "the",
+       "—"
+      ],
+      "answer": [
+       "a"
+      ],
+      "explain": "Nói chung chung một nghề → a."
+     },
+     {
+      "type": "choice",
+      "q": "We signed the contract last month. ___ contract is worth [AMOUNT].",
+      "options": [
+       "A",
+       "The",
+       "—"
+      ],
+      "answer": [
+       "The"
+      ],
+      "explain": "Đã nhắc trước đó → the."
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'I have the meeting with some guy from Europe.'",
+      "answer": [
+       "i have a meeting with some people from europe.",
+       "i have a meeting with some people from europe"
+      ],
+      "explain": "a meeting; some + số nhiều (people)."
+     }
+    ]
+   },
+   {
+    "id": "s3",
+    "title": "Bài 3 · Đừng quên to be",
+    "items": [
+     {
+      "type": "choice",
+      "q": "It ___ very convenient for us to wean him at 30 months.",
+      "options": [
+       "—",
+       "was",
+       "did"
+      ],
+      "answer": [
+       "was"
+      ],
+      "explain": "Trước tính từ convenient cần to be."
+     },
+     {
+      "type": "choice",
+      "q": "My boss will host, so I ___ just listening.",
+      "options": [
+       "—",
+       "am",
+       "do"
+      ],
+      "answer": [
+       "am"
+      ],
+      "explain": "Tiếp diễn: am + V-ing."
+     },
+     {
+      "type": "choice",
+      "q": "He ___ more adapted to solid food now.",
+      "options": [
+       "—",
+       "is",
+       "has"
+      ],
+      "answer": [
+       "is"
+      ],
+      "explain": "be adapted to + danh từ."
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'When I productive, I can share knowledge with my team.'",
+      "answer": [
+       "when i'm productive, i can share knowledge with my team.",
+       "when i'm productive, i can share knowledge with my team",
+       "when i am productive, i can share knowledge with my team.",
+       "when i am productive, i can share knowledge with my team",
+       "when i'm productive, i can share my knowledge with my team.",
+       "when i'm productive, i can share my knowledge with my team",
+       "when i am productive, i can share my knowledge with my team.",
+       "when i am productive, i can share my knowledge with my team"
+      ],
+      "explain": "I + am + tính từ."
+     }
+    ]
+   },
+   {
+    "id": "s4",
+    "title": "Bài 4 · Quá khứ đơn khi kể chuyện",
+    "items": [
+     {
+      "type": "choice",
+      "q": "We ___ breastfeeding quite late, at around 30 months.",
+      "options": [
+       "stop",
+       "stopped",
+       "stopping"
+      ],
+      "answer": [
+       "stopped"
+      ],
+      "explain": "Chuyện đã xong → quá khứ."
+     },
+     {
+      "type": "choice",
+      "q": "He ___ born in Taiwan.",
+      "options": [
+       "is",
+       "was",
+       "has"
+      ],
+      "answer": [
+       "was"
+      ],
+      "explain": "be born → was born."
+     },
+     {
+      "type": "choice",
+      "q": "After that, he ___ to the US.",
+      "options": [
+       "move",
+       "moved",
+       "moves"
+      ],
+      "answer": [
+       "moved"
+      ],
+      "explain": "Kể tiếp chuyện quá khứ → moved."
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'Last year some European firms come to Vietnam find opportunity.'",
+      "answer": [
+       "last year some european firms came to vietnam to find opportunities.",
+       "last year some european firms came to vietnam to find opportunities",
+       "last year, some european firms came to vietnam to find opportunities.",
+       "last year, some european firms came to vietnam to find opportunities",
+       "last year some european firms came to vietnam to find business opportunities.",
+       "last year some european firms came to vietnam to find business opportunities"
+      ],
+      "explain": "Last year → came; to + V chỉ mục đích; opportunities số nhiều."
+     }
+    ]
+   },
+   {
+    "id": "s5",
+    "title": "Bài 5 · Cấu trúc và từ dễ nhầm",
+    "items": [
+     {
+      "type": "choice",
+      "q": "Foreign contractors may find ___ difficult to work in a new market.",
+      "options": [
+       "—",
+       "it",
+       "this"
+      ],
+      "answer": [
+       "it"
+      ],
+      "explain": "find it difficult to + V."
+     },
+     {
+      "type": "choice",
+      "q": "Training our own team builds ___ among the staff.",
+      "options": [
+       "royalty",
+       "loyalty"
+      ],
+      "answer": [
+       "loyalty"
+      ],
+      "explain": "loyalty = lòng trung thành."
+     },
+     {
+      "type": "choice",
+      "q": "I will share my experience with my ___.",
+      "options": [
+       "stuff",
+       "staff"
+      ],
+      "answer": [
+       "staff"
+      ],
+      "explain": "staff = nhân viên; stuff = đồ đạc."
+     },
+     {
+      "type": "choice",
+      "q": "Vietnamese people's ___ has declined since COVID.",
+      "options": [
+       "hell",
+       "health"
+      ],
+      "answer": [
+       "health"
+      ],
+      "explain": "health /helθ/."
+     },
+     {
+      "type": "choice",
+      "q": "When he feels ___, she feeds him.",
+      "options": [
+       "hurry",
+       "hungry"
+      ],
+      "answer": [
+       "hungry"
+      ],
+      "explain": "hungry = đói."
+     },
+     {
+      "type": "choice",
+      "q": "Germany and Japan are ___ countries.",
+      "options": [
+       "development",
+       "developed",
+       "developing"
+      ],
+      "answer": [
+       "developed"
+      ],
+      "explain": "developed countries = nước phát triển."
+     },
+     {
+      "type": "choice",
+      "q": "Lorraine teaches much ___ than a school teacher.",
+      "options": [
+       "much",
+       "more",
+       "so much"
+      ],
+      "answer": [
+       "more"
+      ],
+      "explain": "So sánh hơn: much more than."
+     }
+    ]
+   }
+  ],
+  "rewrites": [
+   {
+    "orig": "this afternoon I have the meeting with some guy from Europe",
+    "err": "Mạo từ a; some + số nhiều",
+    "b2": "This afternoon I have a meeting with some people from Europe.",
+    "c1": "I've got a meeting this afternoon with a delegation from a European firm.",
+    "work": "This afternoon we're meeting a European contractor to explore a possible joint venture."
+   },
+   {
+    "orig": "and my wife have the time to stop teaching yoga",
+    "err": "Ngôi 3 + chọn sai từ",
+    "b2": "and my wife has time to start teaching yoga again",
+    "c1": "so my wife finally has the time to get back into teaching yoga",
+    "work": "Now that the tender is submitted, our team has time to get back to the cost review."
+   },
+   {
+    "orig": "so that's why I feel now the political in Europe maybe in the future they get some difficult to to work",
+    "err": "find it difficult to + V",
+    "b2": "That's why I feel that, because of politics in Europe, they may find it difficult to work there in the future.",
+    "c1": "Given the political uncertainty in Europe, they may struggle to operate there in the long run.",
+    "work": "Given the uncertainty in their home market, they're looking to diversify into Southeast Asia."
+   },
+   {
+    "orig": "The big fund will invest to meet Nam so much.",
+    "err": "invest in + nơi",
+    "b2": "Big funds are investing heavily in Vietnam.",
+    "c1": "Major funds are pouring capital into Vietnam.",
+    "work": "Several major funds are pouring capital into industrial projects in [PROJECT LOCATION]."
+   },
+   {
+    "orig": "the health of Vietnamese after the COVID, they've downed so much",
+    "err": "Hiện tại hoàn thành + since",
+    "b2": "Vietnamese people's health has declined a lot since COVID.",
+    "c1": "Public health in Vietnam has deteriorated noticeably since the pandemic.",
+    "work": "Site productivity has declined since the rainy season started."
+   },
+   {
+    "orig": "everyone, have to upskill by myself.",
+    "err": "everyone + has; by themselves",
+    "b2": "Everyone has to upskill by themselves.",
+    "c1": "Everyone is expected to take ownership of their own development.",
+    "work": "With no formal training programme, each estimator has to upskill on their own."
+   },
+   {
+    "orig": "to create the royalty for the staff",
+    "err": "loyalty vs royalty",
+    "b2": "to build loyalty among the staff",
+    "c1": "to foster loyalty and retain talent",
+    "work": "Investing in training helps us foster loyalty and retain our best estimators."
+   },
+   {
+    "orig": "So the good way you trained in my team member?",
+    "err": "the best way is to + V",
+    "b2": "So the best way is to train my own team members.",
+    "c1": "So growing talent in-house is the most effective approach.",
+    "work": "Developing talent in-house is the most effective way to keep our bidding culture consistent."
+   }
+  ],
+  "pron": [
+   {
+    "word": "health",
+    "ipa": "/helθ/",
+    "tip": "Kết thúc bằng /θ/ (lưỡi giữa răng). Thiếu /θ/ sẽ thành 'hell'.",
+    "example": "Vietnamese people's health is getting worse."
+   },
+   {
+    "word": "device",
+    "ipa": "/dɪˈvaɪs/",
+    "tip": "Lorraine nhắc: anh nói thành 'divide'. device kết thúc /s/, divide kết thúc /d/.",
+    "example": "My wife bought a new device for the baby."
+   },
+   {
+    "word": "level",
+    "ipa": "/ˈlev.əl/",
+    "tip": "Lorraine khen âm này. Giữ cách đọc chậm, rõ như vậy.",
+    "example": "We need to level up our team."
+   },
+   {
+    "word": "weaning",
+    "ipa": "/ˈwiː.nɪŋ/",
+    "tip": "Âm /w/ tròn môi rồi /iː/ dài; máy nghe thành 'winning'.",
+    "example": "Weaning at 30 months was convenient for us."
+   },
+   {
+    "word": "strong",
+    "ipa": "/strɒŋ/",
+    "tip": "Cụm /str/ không chèn nguyên âm, kết thúc /ŋ/. Máy nghe thành 'chong'.",
+    "example": "If you're strong, you can win."
+   },
+   {
+    "word": "loyalty",
+    "ipa": "/ˈlɔɪ.əl.ti/",
+    "tip": "Bắt đầu bằng /l/, không phải /r/ (royalty).",
+    "example": "Training builds loyalty among the staff."
+   }
+  ],
+  "prep": {
+   "upgrades": [
+    {
+     "b1": "Some company from Europe come to Vietnam find opportunity because the political in Europe is difficult.",
+     "c1": "Given the political uncertainty at home, several European firms are now exploring opportunities in Vietnam."
+    },
+    {
+     "b1": "My company develop so fast, so everyone have to upskill by myself.",
+     "c1": "Our company is scaling so fast that everyone has to take ownership of their own upskilling."
+    },
+    {
+     "b1": "I train my team because outside guy cannot adapt the culture.",
+     "c1": "I prefer to develop talent in-house, because external hires often struggle to adapt to our culture."
+    }
+   ],
+   "vocab": [
+    {
+     "term": "proactive",
+     "ipa": "/prəʊˈæk.tɪv/",
+     "vi": "chủ động",
+     "example": "You have to be proactive and upskill yourself."
+    },
+    {
+     "term": "upskill",
+     "ipa": "/ˈʌp.skɪl/",
+     "vi": "nâng cao kỹ năng",
+     "example": "Our estimators need to upskill in BIM."
+    },
+    {
+     "term": "expand",
+     "ipa": "/ɪkˈspænd/",
+     "vi": "mở rộng",
+     "example": "They want to expand their business into Vietnam."
+    },
+    {
+     "term": "desirable",
+     "ipa": "/dɪˈzaɪə.rə.bəl/",
+     "vi": "đáng mong muốn",
+     "example": "Given the situation now, it's not desirable."
+    },
+    {
+     "term": "the tip of the iceberg",
+     "ipa": "/ðə tɪp əv ðə ˈaɪs.bɜːɡ/",
+     "vi": "phần nổi của tảng băng",
+     "example": "What we read in the news is just the tip of the iceberg."
+    },
+    {
+     "term": "iron it out",
+     "ipa": "/ˈaɪən ɪt aʊt/",
+     "vi": "giải quyết êm, dàn xếp",
+     "example": "We ironed out the contract issues before signing."
+    },
+    {
+     "term": "struggle to adapt",
+     "ipa": "/ˈstrʌɡ.əl tu əˈdæpt/",
+     "vi": "khó thích nghi",
+     "example": "External hires often struggle to adapt to our culture."
+    },
+    {
+     "term": "resourceful",
+     "ipa": "/rɪˈzɔː.sfəl/",
+     "vi": "tháo vát",
+     "example": "A resourceful bid manager always finds a way."
+    }
+   ],
+   "compareTitle": "Tự đào tạo đội ngũ hay tuyển người bên ngoài",
+   "compareHead": [
+    "Tiêu chí",
+    "Tự đào tạo nội bộ",
+    "Tuyển người bên ngoài"
+   ],
+   "compare": [
+    [
+     "Văn hoá công ty",
+     "Hiểu và giữ được văn hoá",
+     "Dễ 'struggle to adapt'"
+    ],
+    [
+     "Kiến thức chuyên môn",
+     "Sát với công việc thật của đội",
+     "Có thể giỏi nhưng chung chung"
+    ],
+    [
+     "Lòng trung thành",
+     "Tạo loyalty, giữ người lâu",
+     "Dễ rời đi khi có lời mời tốt hơn"
+    ],
+    [
+     "Thời gian của trưởng nhóm",
+     "Tốn lúc đầu, về sau nhẹ gánh",
+     "Tiết kiệm lúc đầu, phải kèm lại"
+    ]
+   ]
+  },
+  "speaking": {
+   "task": "Nói 1 phút với đối tác châu Âu: vì sao bây giờ là thời điểm tốt để hợp tác với công ty anh ở Việt Nam?",
+   "starter": "Given the uncertainty in Europe, Vietnam offers a stable market, and our team has grown fast and knows the local market well."
+  },
+  "transcriptTab": "06_Lesson_Library",
+  "preplyLogId": "PLMWY9WZ4X8Q5",
+  "newWords": [
+   {
+    "term": "crocodile smile",
+    "vi": "nụ cười 'cá sấu' (cười toe toét)",
+    "ipa": "/ˈkrɒk.ə.daɪl smaɪl/"
+   },
+   {
+    "term": "breastfeeding",
+    "vi": "cho con bú sữa mẹ",
+    "ipa": "/ˈbrest.fiː.dɪŋ/"
+   },
+   {
+    "term": "formula",
+    "vi": "sữa công thức",
+    "ipa": "/ˈfɔː.mjə.lə/"
+   },
+   {
+    "term": "toddler",
+    "vi": "trẻ mới biết đi",
+    "ipa": "/ˈtɒd.lər/"
+   },
+   {
+    "term": "solid food",
+    "vi": "đồ ăn đặc (ăn dặm)",
+    "ipa": "/ˈsɒl.ɪd fuːd/"
+   },
+   {
+    "term": "current events",
+    "vi": "tin thời sự",
+    "ipa": "/ˈkʌr.ənt ɪˈvents/"
+   },
+   {
+    "term": "military",
+    "vi": "quân đội",
+    "ipa": "/ˈmɪl.ɪ.tər.i/"
+   },
+   {
+    "term": "invest",
+    "vi": "đầu tư",
+    "ipa": "/ɪnˈvest/"
+   },
+   {
+    "term": "expand",
+    "vi": "mở rộng",
+    "ipa": "/ɪkˈspænd/"
+   },
+   {
+    "term": "data centers",
+    "vi": "trung tâm dữ liệu",
+    "ipa": "/ˈdeɪ.tə ˌsen.təz/"
+   },
+   {
+    "term": "desirable",
+    "vi": "đáng mong muốn",
+    "ipa": "/dɪˈzaɪə.rə.bəl/"
+   },
+   {
+    "term": "production",
+    "vi": "sản lượng, sản xuất",
+    "ipa": "/prəˈdʌk.ʃən/"
+   },
+   {
+    "term": "brown rice",
+    "vi": "gạo lứt",
+    "ipa": "/braʊn raɪs/"
+   },
+   {
+    "term": "detox",
+    "vi": "thải độc",
+    "ipa": "/ˈdiː.tɒks/"
+   },
+   {
+    "term": "diabetic",
+    "vi": "bị tiểu đường",
+    "ipa": "/ˌdaɪ.əˈbet.ɪk/"
+   },
+   {
+    "term": "similarities",
+    "vi": "điểm giống nhau",
+    "ipa": "/ˌsɪm.ɪˈlær.ə.tiz/"
+   },
+   {
+    "term": "adultery",
+    "vi": "ngoại tình",
+    "ipa": "/əˈdʌl.tər.i/"
+   },
+   {
+    "term": "spy",
+    "vi": "gián điệp",
+    "ipa": "/spaɪ/"
+   },
+   {
+    "term": "speculations",
+    "vi": "suy đoán, đồn đoán",
+    "ipa": "/ˌspek.jəˈleɪ.ʃənz/"
+   },
+   {
+    "term": "disruptions",
+    "vi": "sự gián đoạn",
+    "ipa": "/dɪsˈrʌp.ʃənz/"
+   },
+   {
+    "term": "iceberg",
+    "vi": "tảng băng (chìm)",
+    "ipa": "/ˈaɪs.bɜːɡ/"
+   },
+   {
+    "term": "dynasty",
+    "vi": "triều đại, dòng họ quyền lực",
+    "ipa": "/ˈdɪn.ə.sti/"
+   },
+   {
+    "term": "privilege",
+    "vi": "đặc quyền",
+    "ipa": "/ˈprɪv.əl.ɪdʒ/"
+   },
+   {
+    "term": "upskill",
+    "vi": "nâng cao kỹ năng",
+    "ipa": "/ˈʌp.skɪl/"
+   },
+   {
+    "term": "proactive",
+    "vi": "chủ động",
+    "ipa": "/prəʊˈæk.tɪv/"
+   },
+   {
+    "term": "resourceful",
+    "vi": "tháo vát",
+    "ipa": "/rɪˈzɔː.sfəl/"
+   },
+   {
+    "term": "productive",
+    "vi": "làm việc hiệu quả",
+    "ipa": "/prəˈdʌk.tɪv/"
+   },
+   {
+    "term": "struggle to adapt",
+    "vi": "khó thích nghi",
+    "ipa": "/ˈstrʌɡ.əl tu əˈdæpt/"
+   }
+  ],
+  "audio": {
+   "name": "HeroHub_L28.m4a",
+   "duration": 3195.5,
+   "mb": 20,
+   "start": 0
+  }
+ },
+ {
   "id": "L11",
   "no": 11,
   "date": "2026-09-18",
