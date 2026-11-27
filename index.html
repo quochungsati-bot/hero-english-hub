@@ -17,13 +17,10 @@
    COLOUR and TYPE: white / ink, deep teal #0b5d63 lead, amber stamp accent; Libre Caslon titles + Inter body
    LAYOUT: sidebar nav on wide screens, bottom bar on phones, one working column up to 1100px */
 :root{color-scheme:light dark;
-/* Warm earth theme: cream paper, earth-brown lead (--teal keeps its old name so other code stays compatible), gold and terracotta accents, no green.
-   Every text/background pair below passes WCAG AA (4.5:1) in both light and dark mode. */
---bg:light-dark(#faf6ef,#17110c);--panel:light-dark(#fffdf9,#201811);--soft:light-dark(#f3ebdf,#2a2018);
---ink:light-dark(#2b1f16,#f2e9de);--mute:light-dark(#6b5a4b,#b5a492);--line:light-dark(#e6dccd,#3a2d22);
---teal:light-dark(#8b4a22,#e3a56f);--tealbg:light-dark(#f5e7da,#3b2717);--onpri:light-dark(#fff,#1a120c);--amber:light-dark(#8f5f00,#ebc15f);--amberbg:light-dark(#fbefd3,#3a2c12);
---red:light-dark(#a33a22,#ff9c86);--redbg:light-dark(#fbe6df,#3d1a14);--green:light-dark(#5f5a12,#d2c86e);--greenbg:light-dark(#f0edd2,#2e2b12);
---hero:linear-gradient(135deg,#6e3a1b 0%,#9a4a26 100%);--lockbg:linear-gradient(160deg,#5b2f17 0%,#8c3b1f 100%);--gold:#f1c66a}
+--bg:light-dark(#fbfbfa,#0d1416);--panel:light-dark(#ffffff,#141d20);--soft:light-dark(#f2f4f3,#1a2528);
+--ink:light-dark(#14161a,#e8eeee);--mute:light-dark(#5d6670,#9aa8ab);--line:light-dark(#e3e6e6,#263336);
+--teal:light-dark(#0b5d63,#4fb7bd);--tealbg:light-dark(#e6f1f1,#123236);--amber:light-dark(#a15c00,#f0b45a);--amberbg:light-dark(#fdf1df,#3a2a12);
+--red:light-dark(#b42318,#ff8a80);--redbg:light-dark(#fdecea,#3a1714);--green:light-dark(#1f7a3a,#7ad493);--greenbg:light-dark(#e7f5eb,#15301d)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 html{scroll-padding-top:72px}
@@ -36,7 +33,9 @@ button,select,input,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
 .btn{min-height:44px;padding:0 16px;border-radius:10px;border:1px solid var(--line);background:var(--panel);font-weight:500;display:inline-flex;align-items:center;gap:8px;justify-content:center}
 .btn:hover{border-color:var(--teal)}
-.btn.pri{background:var(--teal);border-color:var(--teal);color:var(--onpri)}
+.btn.pri{background:var(--teal);border-color:var(--teal);color:#fff}
+:root[data-theme=dark] .btn.pri{color:#0d1416}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .btn.pri{color:#0d1416}}
 .btn.sm{min-height:36px;padding:0 12px;font-size:14px}
 .btn.ghost{border-color:transparent;background:transparent}
 .btn:disabled{opacity:.5;cursor:not-allowed}
@@ -57,11 +56,13 @@ main{padding:clamp(20px,3.5vw,44px) max(4vw,16px) 110px;max-width:1140px;width:1
 .view{display:none}.view.on{display:block}
 .grid{display:grid;gap:16px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
-.card.hero{background:var(--hero);color:#fff;border:0;padding:24px}
+.card.hero{background:var(--teal);color:#fff;border:0;padding:24px}
+:root[data-theme=dark] .card.hero{color:#0d1416}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .card.hero{color:#0d1416}}
 .hero .lbl{opacity:.8;font-size:14px}
 .hero .talk{font-family:"Libre Caslon Text",serif;font-size:clamp(20px,2.6vw,27px);line-height:1.35;margin:10px 0 14px}
 .hero .btn{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:inherit}
-.hero .btn.pri{background:#fff;color:#6e3a1b;border-color:#fff}
+.hero .btn.pri{background:#fff;color:#0b5d63;border-color:#fff}
 .stat b{display:block;font-size:30px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
 .stat span{font-size:14px;color:var(--mute)}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
@@ -70,7 +71,7 @@ main{padding:clamp(20px,3.5vw,44px) max(4vw,16px) 110px;max-width:1140px;width:1
 button.chip:hover{border-color:var(--teal)}.chip.on{background:var(--tealbg);border-color:var(--teal);color:var(--teal);font-weight:600}
 .tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:6px;background:var(--soft);color:var(--mute);white-space:nowrap}
 .tag.done{background:var(--greenbg);color:var(--green)}.tag.doing{background:var(--amberbg);color:var(--amber)}.tag.new{background:var(--redbg);color:var(--red)}.tag.t{background:var(--tealbg);color:var(--teal)}
-.days{display:flex;gap:6px}.days i{width:26px;height:26px;border-radius:7px;background:var(--soft);display:grid;place-items:center;font:600 11px Inter;font-style:normal;color:var(--mute)}.days i.on{background:var(--teal);color:var(--onpri)}
+.days{display:flex;gap:6px}.days i{width:26px;height:26px;border-radius:7px;background:var(--soft);display:grid;place-items:center;font:600 11px Inter;font-style:normal;color:var(--mute)}.days i.on{background:var(--teal);color:#fff}
 .bar{height:8px;border-radius:9px;background:var(--soft);overflow:hidden}.bar>i{display:block;height:100%;background:var(--teal);border-radius:9px;transition:width .4s}
 .stage{border-left:3px solid var(--line);padding-left:18px;margin:0 0 26px}.stage.cur{border-color:var(--teal)}
 .lesson{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}
@@ -106,18 +107,18 @@ td{padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
 td .wrong{color:var(--red);text-decoration:line-through;text-decoration-thickness:1px}
 td .right{color:var(--green);font-weight:500}
 pre{white-space:pre-wrap;background:var(--soft);padding:16px;border-radius:12px;font:14px/1.6 ui-monospace,Menlo,monospace;max-height:60vh;overflow:auto}
-.modal{position:fixed;inset:0;background:rgba(30,20,12,.55);display:none;place-items:center;z-index:50;padding:16px}
+.modal{position:fixed;inset:0;background:rgba(10,15,17,.55);display:none;place-items:center;z-index:50;padding:16px}
 .modal.on{display:grid}
 .modal .box{background:var(--panel);border-radius:16px;max-width:560px;width:100%;padding:22px;max-height:90vh;overflow:auto}
 .flag{background:var(--redbg);color:var(--red);border-radius:6px;padding:1px 5px;font-weight:600}
 .toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:14px;z-index:60;opacity:0;transition:opacity .25s;pointer-events:none;max-width:90vw}
 .toast.on{opacity:1}
-.lock{position:fixed;inset:0;background:var(--lockbg);z-index:80;display:none;place-items:center;color:#fff;padding:20px}
+.lock{position:fixed;inset:0;background:var(--teal);z-index:80;display:none;place-items:center;color:#fff;padding:20px}
 .lock.on{display:grid}
 .lock .box{text-align:center;max-width:320px;width:100%}
 .lock h1{color:#fff}
 .pin{display:flex;gap:10px;justify-content:center;margin:20px 0}
-.pin i{width:16px;height:16px;border-radius:50%;border:2px solid var(--gold)}.pin i.f{background:var(--gold)}
+.pin i{width:16px;height:16px;border-radius:50%;border:2px solid #fff}.pin i.f{background:#fff}
 .pad{display:grid;grid-template-columns:repeat(3,72px);gap:12px;justify-content:center}
 .pad button{height:64px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.08);color:#fff;font:600 22px Inter}
 .score{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:10px 0}
@@ -129,7 +130,7 @@ pre{white-space:pre-wrap;background:var(--soft);padding:16px;border-radius:12px;
 .bottom{display:none}
 .profile{display:flex;gap:18px;align-items:center;flex-wrap:wrap;border-left:4px solid var(--teal)}
 .av{width:56px;height:56px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font:700 22px "Libre Caslon Text",serif;flex:none}
-.lv{display:flex;align-items:center;gap:6px}.lv span{font:600 13px Inter;padding:4px 10px;border-radius:8px;background:var(--soft);color:var(--mute)}.lv span.on{background:var(--tealbg);color:var(--teal)}.lv span.cur{background:var(--teal);color:var(--onpri)}.lv i{width:14px;height:2px;background:var(--line)}
+.lv{display:flex;align-items:center;gap:6px}.lv span{font:600 13px Inter;padding:4px 10px;border-radius:8px;background:var(--soft);color:var(--mute)}.lv span.on{background:var(--tealbg);color:var(--teal)}.lv span.cur{background:var(--teal);color:#fff}.lv i{width:14px;height:2px;background:var(--line)}
 .pfnext{display:flex;flex-direction:column;min-width:160px}.pfnext b{font-size:16px}
 .hg{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}.wg{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}
 @media (max-width:900px){
@@ -145,10 +146,26 @@ pre{white-space:pre-wrap;background:var(--soft);padding:16px;border-radius:12px;
 .lvbig{font:700 34px/1.1 Inter,system-ui,sans-serif;letter-spacing:-.02em;font-variant-numeric:tabular-nums}.lvbig span{font-size:16px;font-weight:600;color:var(--mute);letter-spacing:0}
 .cefr{display:flex;gap:4px;margin-top:14px}.cg{min-width:0}.cg>span{display:block;font:600 12px Inter,sans-serif;color:var(--mute);margin-bottom:4px;padding-left:2px}.cg>div{display:flex;gap:2px}
 .cg i,.lg{flex:1;min-width:0;height:26px;border-radius:5px;background:var(--soft);color:var(--mute);font:600 11px/26px Inter,sans-serif;font-style:normal;text-align:center}
-.cg i.rg,.lg.rg{background:var(--tealbg);color:var(--teal)}.cg i.me,.lg.me{background:var(--teal);color:var(--onpri)}.cg i.tg,.lg.tg{box-shadow:inset 0 0 0 2px var(--amber);color:var(--amber)}
+.cg i.rg,.lg.rg{background:var(--tealbg);color:var(--teal)}.cg i.me,.lg.me{background:var(--teal);color:#fff}.cg i.tg,.lg.tg{box-shadow:inset 0 0 0 2px var(--amber);color:var(--amber)}
 .lg{display:inline-block;width:12px;height:12px;flex:none;vertical-align:-1px;margin-right:6px;border-radius:3px}
 .sk .bar{margin-top:6px}label.chip{cursor:pointer;font-weight:500}label.chip:focus-within{outline:2px solid var(--teal);outline-offset:2px}
-.av{color:var(--onpri)}
+/* WARM EARTH THEME: cream paper, earth-brown lead, gold and terracotta accents, no green.
+   Kept as one override block so the base rules above stay untouched; --teal keeps its old name
+   (it now holds the earth brown) so the rest of the code stays compatible.
+   Every text/background pair passes WCAG AA (4.5:1) in light and dark mode. */
+:root{
+--bg:light-dark(#faf6ef,#17110c);--panel:light-dark(#fffdf9,#201811);--soft:light-dark(#f3ebdf,#2a2018);
+--ink:light-dark(#2b1f16,#f2e9de);--mute:light-dark(#6b5a4b,#b5a492);--line:light-dark(#e6dccd,#3a2d22);
+--teal:light-dark(#8b4a22,#e3a56f);--tealbg:light-dark(#f5e7da,#3b2717);--onpri:light-dark(#fff,#1a120c);
+--amber:light-dark(#8f5f00,#ebc15f);--amberbg:light-dark(#fbefd3,#3a2c12);
+--red:light-dark(#a33a22,#ff9c86);--redbg:light-dark(#fbe6df,#3d1a14);--green:light-dark(#5f5a12,#d2c86e);--greenbg:light-dark(#f0edd2,#2e2b12);
+--hero:linear-gradient(135deg,#6e3a1b 0%,#9a4a26 100%);--lockbg:linear-gradient(160deg,#5b2f17 0%,#8c3b1f 100%);--gold:#f1c66a}
+:root:root .btn.pri,.days i.on,.lv span.cur,.cg i.me,.lg.me,.av{color:var(--onpri)}
+:root:root .card.hero{background:var(--hero);color:#fff}
+.hero .btn.pri{color:#6e3a1b}
+.modal{background:rgba(30,20,12,.55)}
+.lock{background:var(--lockbg)}
+.pin i{border-color:var(--gold)}.pin i.f{background:var(--gold)}
 .pad button:hover{background:rgba(255,255,255,.16)}.pad button:active{background:rgba(241,198,106,.28)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
