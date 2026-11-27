@@ -74,51 +74,51 @@
   "hung": {
    "label": "Lịch chính · 16 giờ/tuần",
    "forecast": "Với 16 giờ/tuần (khoảng 830 giờ/năm, tính cả PMI): đủ giờ để chạm C1 trong khoảng 12 tháng nếu giữ đều.",
-   "note": "T2–T6 mỗi ngày ít nhất 2 giờ (sáng 30 phút, trưa 30 phút, tối 60–80 phút), T7 và CN mỗi ngày 3 giờ. Preply T4 và T6 lúc 22:00. Khoảng 1/4 thời gian là tiếng Anh chuyên môn PMI.",
+   "note": "T2–T6 mỗi ngày ít nhất 2 giờ (sáng 30 phút, trưa 30 phút, tối 60–80 phút), T7 và CN mỗi ngày 3 giờ. Preply T2 và T6 lúc 22:00 (theo preply.com, tự đổi theo Preply → Lịch học). Khoảng 1/4 thời gian là tiếng Anh chuyên môn PMI.",
    "sessions": [
     {
      "day": 1,
      "s": "Sáng",
      "at": "06:00",
-     "min": 30
-    },
-    {
-     "day": 1,
-     "s": "Trưa",
-     "at": "12:15",
-     "min": 30
-    },
-    {
-     "day": 1,
-     "s": "Tối",
-     "at": "21:00",
-     "min": 60
-    },
-    {
-     "day": 2,
-     "s": "Sáng",
-     "at": "06:00",
-     "min": 30
-    },
-    {
-     "day": 2,
-     "s": "Trưa",
-     "at": "12:15",
-     "min": 30
-    },
-    {
-     "day": 2,
-     "s": "Tối",
-     "at": "21:00",
-     "min": 60
-    },
-    {
-     "day": 3,
-     "s": "Sáng",
-     "at": "06:00",
      "min": 20
     },
     {
+     "day": 1,
+     "s": "Trưa",
+     "at": "12:15",
+     "min": 30
+    },
+    {
+     "day": 1,
+     "s": "Tối",
+     "at": "21:30",
+     "min": 80
+    },
+    {
+     "day": 2,
+     "s": "Sáng",
+     "at": "06:00",
+     "min": 30
+    },
+    {
+     "day": 2,
+     "s": "Trưa",
+     "at": "12:15",
+     "min": 30
+    },
+    {
+     "day": 2,
+     "s": "Tối",
+     "at": "21:00",
+     "min": 60
+    },
+    {
+     "day": 3,
+     "s": "Sáng",
+     "at": "06:00",
+     "min": 30
+    },
+    {
      "day": 3,
      "s": "Trưa",
      "at": "12:15",
@@ -127,8 +127,8 @@
     {
      "day": 3,
      "s": "Tối",
-     "at": "21:30",
-     "min": 80
+     "at": "21:00",
+     "min": 60
     },
     {
      "day": 4,
@@ -193,10 +193,10 @@
    ],
    "blocks": [
     {
-     "id": "d1Score0",
+     "id": "d1Spmi0",
      "day": 1,
-     "k": "core",
-     "min": 30,
+     "k": "pmi",
+     "min": 20,
      "s": "Sáng",
      "at": "06:00"
     },
@@ -217,20 +217,20 @@
      "at": "12:15"
     },
     {
-     "id": "d1Tpmi0",
+     "id": "d1Tprep0",
      "day": 1,
-     "k": "pmi",
+     "k": "prep",
      "min": 30,
      "s": "Tối",
-     "at": "21:00"
+     "at": "21:30"
     },
     {
-     "id": "d1Tspeak1",
+     "id": "d1Tpreply1",
      "day": 1,
-     "k": "speak",
-     "min": 30,
+     "k": "preply",
+     "min": 50,
      "s": "Tối",
-     "at": "21:00"
+     "at": "21:30"
     },
     {
      "id": "d2Score0",
@@ -265,18 +265,18 @@
      "at": "21:00"
     },
     {
-     "id": "d2Twork1",
+     "id": "d2Tspeak1",
      "day": 2,
-     "k": "work",
+     "k": "speak",
      "min": 30,
      "s": "Tối",
      "at": "21:00"
     },
     {
-     "id": "d3Spmi0",
+     "id": "d3Score0",
      "day": 3,
-     "k": "pmi",
-     "min": 20,
+     "k": "core",
+     "min": 30,
      "s": "Sáng",
      "at": "06:00"
     },
@@ -297,20 +297,20 @@
      "at": "12:15"
     },
     {
-     "id": "d3Tprep0",
+     "id": "d3Tpmi0",
      "day": 3,
-     "k": "prep",
+     "k": "pmi",
      "min": 30,
      "s": "Tối",
-     "at": "21:30"
+     "at": "21:00"
     },
     {
-     "id": "d3Tpreply1",
+     "id": "d3Twork1",
      "day": 3,
-     "k": "preply",
-     "min": 50,
+     "k": "work",
+     "min": 30,
      "s": "Tối",
-     "at": "21:30"
+     "at": "21:00"
     },
     {
      "id": "d4Score0",
@@ -483,8 +483,8 @@
     {
      "day": 1,
      "s": "Tối",
-     "at": "21:00",
-     "min": 45
+     "at": "22:00",
+     "min": 50
     },
     {
      "day": 2,
@@ -495,8 +495,8 @@
     {
      "day": 3,
      "s": "Tối",
-     "at": "22:00",
-     "min": 50
+     "at": "21:00",
+     "min": 45
     },
     {
      "day": 4,
@@ -525,28 +525,12 @@
    ],
    "blocks": [
     {
-     "id": "d1Tcore0",
+     "id": "d1Tpreply0",
      "day": 1,
-     "k": "core",
-     "min": 20,
+     "k": "preply",
+     "min": 50,
      "s": "Tối",
-     "at": "21:00"
-    },
-    {
-     "id": "d1Tpmi1",
-     "day": 1,
-     "k": "pmi",
-     "min": 15,
-     "s": "Tối",
-     "at": "21:00"
-    },
-    {
-     "id": "d1Tvocab2",
-     "day": 1,
-     "k": "vocab",
-     "min": 10,
-     "s": "Tối",
-     "at": "21:00"
+     "at": "22:00"
     },
     {
      "id": "d2Tshadow0",
@@ -573,12 +557,28 @@
      "at": "21:00"
     },
     {
-     "id": "d3Tpreply0",
+     "id": "d3Tcore0",
      "day": 3,
-     "k": "preply",
-     "min": 50,
+     "k": "core",
+     "min": 20,
      "s": "Tối",
-     "at": "22:00"
+     "at": "21:00"
+    },
+    {
+     "id": "d3Tpmi1",
+     "day": 3,
+     "k": "pmi",
+     "min": 15,
+     "s": "Tối",
+     "at": "21:00"
+    },
+    {
+     "id": "d3Tvocab2",
+     "day": 3,
+     "k": "vocab",
+     "min": 10,
+     "s": "Tối",
+     "at": "21:00"
     },
     {
      "id": "d4Tcore0",
