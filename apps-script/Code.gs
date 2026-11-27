@@ -87,20 +87,38 @@ function doPost(e) {
   }
 }
 
-/** Audio buổi học: đọc một đoạn (mặc định 4 MB) của file trong Drive, trả về base64. */
+/** Audio buổi học: đọc một đoạn (mặc định 4 MB) của file trong Drive, trả về base64.
+ *  File có thể là 1 file (HeroHub_L11.m4a) hoặc nhiều phần nối tiếp
+ *  (HeroHub_L11.m4a.001, .002, …) khi file quá lớn để tải lên một lần. */
+function audioFiles_(name) {
+  var it = DriveApp.getFilesByName(name);
+  if (it.hasNext()) return [it.next()];
+  var parts = [];
+  for (var i = 1; i < 100; i++) {
+    var p = DriveApp.getFilesByName(name + '.' + ('00' + i).slice(-3));
+    if (!p.hasNext()) break;
+    parts.push(p.next());
+  }
+  return parts;
+}
 function audioChunk_(b) {
   var name = String(b.name || '');
   if (!/^HeroHub_[A-Za-z0-9_-]+\.(m4a|mp3|webm|ogg)$/.test(name)) throw new Error('Tên file audio không hợp lệ');
-  var it = DriveApp.getFilesByName(name);
-  if (!it.hasNext()) throw new Error('Không tìm thấy ' + name + ' trong Google Drive');
-  var f = it.next(), size = f.getSize();
+  var files = audioFiles_(name);
+  if (!files.length) throw new Error('Không tìm thấy ' + name + ' trong Google Drive');
+  var mime = /\.m4a$/.test(name) ? 'audio/mp4' : files[0].getMimeType();
+  var sizes = files.map(function (f) { return f.getSize(); });
+  var size = sizes.reduce(function (a, x) { return a + x; }, 0);
   var off = Math.max(0, Number(b.offset) || 0), len = Math.min(Number(b.length) || 4194304, 6291456);
-  if (off >= size) return { status: 'success', size: size, mime: f.getMimeType(), data: '' };
-  var end = Math.min(size, off + len) - 1;
-  var r = UrlFetchApp.fetch('https://www.googleapis.com/drive/v3/files/' + f.getId() + '?alt=media', {
-    headers: { Authorization: 'Bearer ' + ScriptApp.getOAuthToken(), Range: 'bytes=' + off + '-' + end },
+  if (off >= size) return { status: 'success', size: size, mime: mime, data: '' };
+  // tìm phần chứa offset; mỗi lần chỉ trả trong phạm vi 1 phần (app tự gọi tiếp)
+  var k = 0, base = 0;
+  while (off >= base + sizes[k]) { base += sizes[k]; k++; }
+  var from = off - base, to = Math.min(sizes[k], from + len) - 1;
+  var r = UrlFetchApp.fetch('https://www.googleapis.com/drive/v3/files/' + files[k].getId() + '?alt=media', {
+    headers: { Authorization: 'Bearer ' + ScriptApp.getOAuthToken(), Range: 'bytes=' + from + '-' + to },
     muteHttpExceptions: true
   });
   if (r.getResponseCode() >= 300) throw new Error('Drive trả lỗi ' + r.getResponseCode());
-  return { status: 'success', size: size, mime: f.getMimeType(), data: Utilities.base64Encode(r.getContent()) };
+  return { status: 'success', size: size, mime: mime, data: Utilities.base64Encode(r.getContent()) };
 }
