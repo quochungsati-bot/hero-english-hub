@@ -1764,6 +1764,97 @@
       "explain": "So sánh hơn: much more than."
      }
     ]
+   },
+   {
+    "id": "s6",
+    "title": "Bài 6 · Từ nhận xét Preply",
+    "items": [
+     {
+      "type": "choice",
+      "q": "This afternoon, I have ___ meeting with a client from Europe.",
+      "options": [
+       "the",
+       "a",
+       "an"
+      ],
+      "answer": [
+       "a"
+      ],
+      "explain": "Nhắc lần đầu: a meeting."
+     },
+     {
+      "type": "choice",
+      "q": "It ___ very convenient for us.",
+      "options": [
+       "—",
+       "is",
+       "are"
+      ],
+      "answer": [
+       "is"
+      ],
+      "explain": "Trước tính từ phải có to be."
+     },
+     {
+      "type": "choice",
+      "q": "My wife ___ more time now.",
+      "options": [
+       "have",
+       "has",
+       "having"
+      ],
+      "answer": [
+       "has"
+      ],
+      "explain": "Chủ ngữ số ít → has."
+     },
+     {
+      "type": "choice",
+      "q": "Maybe the government ___ one more reason to relax the rules.",
+      "options": [
+       "have",
+       "has"
+      ],
+      "answer": [
+       "has"
+      ],
+      "explain": "the government → has."
+     },
+     {
+      "type": "choice",
+      "q": "He's more ___ to the new routine now.",
+      "options": [
+       "adapt",
+       "adapted",
+       "adaptation"
+      ],
+      "answer": [
+       "adapted"
+      ],
+      "explain": "be adapted to = đã quen, thích nghi với."
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'The client have many opportunity in Vietnam.'",
+      "answer": [
+       "the client has many opportunities in vietnam"
+      ],
+      "explain": "Chủ ngữ số ít → has; many + số nhiều → opportunities."
+     },
+     {
+      "type": "choice",
+      "q": "We are happy to ___ with European partners on this project.",
+      "options": [
+       "cooperate",
+       "cooperation",
+       "cooperative"
+      ],
+      "answer": [
+       "cooperate"
+      ],
+      "explain": "cooperate with sb (động từ)."
+     }
+    ]
    }
   ],
   "rewrites": [
@@ -2109,6 +2200,243 @@
    "duration": 3195.5,
    "mb": 20,
    "start": 0
+  },
+  "insights": {
+   "source": "Preply Lesson Insights (AI tự tạo, có thể sai)",
+   "scores": [
+    [
+     "Ngữ pháp",
+     22,
+     "Ổn định"
+    ],
+    [
+     "Từ vựng",
+     38,
+     "Ổn định"
+    ],
+    [
+     "Nói",
+     36,
+     "+1 điểm"
+    ]
+   ],
+   "talk": {
+    "you": 27,
+    "teacher": 19,
+    "youPct": 58,
+    "target": 70
+   },
+   "topics": [
+    {
+     "t": "Gia đình và sinh hoạt hằng ngày",
+     "b": [
+      "Kể chuyện con ăn ngủ và việc cai sữa",
+      "Việc nhà: dắt chó đi dạo, thói quen ăn uống",
+      "Lợi ích khi vợ đi làm lại sau khi cai sữa cho con"
+     ]
+    },
+    {
+     "t": "Công việc và cơ hội kinh doanh",
+     "b": [
+      "Nhà thầu châu Âu sang Việt Nam tìm hiểu đầu tư",
+      "Công ty tăng trưởng và rủi ro từ bất ổn chính trị",
+      "Vai trò của anh trong cuộc họp: lắng nghe và nắm nội dung"
+     ]
+    },
+    {
+     "t": "Sức khoẻ, thực phẩm và thời sự",
+     "b": [
+      "Lo ngại hoá chất nông nghiệp và sức khoẻ cộng đồng",
+      "So sánh gạo trắng, gạo lứt và chế độ ăn",
+      "Tin công nghệ và chính trị gần đây"
+     ]
+    }
+   ],
+   "well": [
+    {
+     "said": "My wife devised many meals.",
+     "type": "Quá khứ đơn",
+     "vi": "Dùng đúng quá khứ đơn khi kể chuyện (Preply có thể nghe nhầm từ 'devised')."
+    }
+   ],
+   "fixes": [
+    {
+     "said": "This afternoon, I have the meeting with some guy from Europe.",
+     "fix": "This afternoon, I have a meeting with some guy from Europe.",
+     "type": "Mạo từ",
+     "recurring": true,
+     "vi": "Nhắc lần đầu dùng a: a meeting. Chỉ dùng the khi người nghe đã biết cuộc họp nào.",
+     "c1": "This afternoon I'm meeting a delegation of European contractors."
+    },
+    {
+     "said": "It very convenient for us to stop weaning.",
+     "fix": "It is very convenient for us to stop weaning.",
+     "type": "Thiếu to be",
+     "recurring": true,
+     "vi": "Trước tính từ phải có to be: It is very convenient. Preply chép thành 'stop winning', có lẽ ý anh là 'weaning' (cai sữa).",
+     "c1": "Now is a good time for us to wean him."
+    },
+    {
+     "said": "My wife have the time to stop teaching yoga again.",
+     "fix": "My wife has the time to stop teaching yoga again.",
+     "type": "Ngôi 3 số ít",
+     "recurring": true,
+     "vi": "Chủ ngữ số ít (my wife) → has. Cùng nhóm với M27 (the government have).",
+     "c1": "My wife now has time to go back to teaching yoga."
+    },
+    {
+     "said": "He's more adapt to that.",
+     "fix": "He's more adapted to that.",
+     "type": "Từ loại",
+     "recurring": true,
+     "vi": "adapt là động từ. Muốn nói 'quen/thích nghi hơn' dùng be adapted to hoặc be used to.",
+     "c1": "He's adjusted to it much better now."
+    },
+    {
+     "said": "Maybe the government have one more reason to relax.",
+     "fix": "Maybe the government has one more reason to relax.",
+     "type": "Ngôi 3 số ít",
+     "recurring": true,
+     "vi": "the government là danh từ số ít trong tiếng Anh quốc tế → has. Lỗi này đã có trong Mistake Bank (M27).",
+     "c1": "That gives the government one more reason to ease restrictions."
+    }
+   ],
+   "vocab": [
+    [
+     "culture",
+     "A2",
+     "danh từ",
+     "văn hoá"
+    ],
+    [
+     "holiday",
+     "A2",
+     "danh từ",
+     "ngày lễ, kỳ nghỉ"
+    ],
+    [
+     "bark",
+     "A2",
+     "động từ",
+     "(chó) sủa"
+    ],
+    [
+     "greeting",
+     "A1",
+     "danh từ",
+     "lời chào"
+    ],
+    [
+     "diabetic",
+     "B2",
+     "tính từ",
+     "bị tiểu đường"
+    ],
+    [
+     "applicator",
+     "B1",
+     "danh từ",
+     "dụng cụ bôi / phun"
+    ],
+    [
+     "recognize",
+     "A2",
+     "động từ",
+     "nhận ra"
+    ],
+    [
+     "adapt",
+     "B2",
+     "động từ",
+     "thích nghi"
+    ],
+    [
+     "detox",
+     "B2",
+     "danh từ",
+     "thải độc"
+    ],
+    [
+     "speculation",
+     "B2",
+     "danh từ",
+     "suy đoán; đầu cơ"
+    ],
+    [
+     "cooperate",
+     "B1",
+     "động từ",
+     "hợp tác"
+    ],
+    [
+     "agriculture",
+     "B1",
+     "danh từ",
+     "nông nghiệp"
+    ],
+    [
+     "opportunity",
+     "B1",
+     "danh từ",
+     "cơ hội"
+    ]
+   ],
+   "synonyms": [
+    [
+     "Do we have just white rice?",
+     "Do we have only white rice?"
+    ]
+   ],
+   "pron": [
+    {
+     "word": "culture",
+     "ctx": "Vietnamese culture.",
+     "ipa": "/ˈkʌl.tʃər/",
+     "tip": "Âm giữa là /tʃ/ như 'ch', không đọc 'cun-tu'. Nhấn CUL."
+    },
+    {
+     "word": "level",
+     "ctx": "... survey level just ...",
+     "ipa": "/ˈlev.əl/",
+     "tip": "Kết thúc bằng /l/ tối (lưỡi chạm lợi), không bỏ âm cuối."
+    },
+    {
+     "word": "teach",
+     "ctx": "... you teach somewhat ...",
+     "ipa": "/tiːtʃ/",
+     "tip": "/iː/ dài và bật rõ /tʃ/ cuối, nếu không sẽ thành 'tea'."
+    },
+    {
+     "word": "evening",
+     "ctx": "... to evening from ...",
+     "ipa": "/ˈiːv.nɪŋ/",
+     "tip": "Chỉ có 2 âm tiết: EEV-ning, không đọc 'e-vơ-ning'."
+    }
+   ],
+   "pronNote": "Đây là đánh giá tự động theo giọng Mỹ. Nghe nút 'You' và 'Example' trên Preply để tự so sánh.",
+   "homework": [
+    "Present simple for general truths and traits (ngữ pháp, 3 phút)",
+    "From your last lesson (luyện tập, 3 phút)",
+    "The Website Refresh Bid (luyện nói, 5 phút)"
+   ],
+   "plan": [
+    {
+     "when": "Trước buổi kế tiếp",
+     "what": "Làm Bài 6 và nói to 5 câu sửa, mỗi câu 2 lần. Tập trung has/does với chủ ngữ số ít."
+    },
+    {
+     "when": "Trong buổi học",
+     "what": "Mỗi khi kể về gia đình hay công ty, tự kiểm tra: chủ ngữ số ít → has / does / -s."
+    },
+    {
+     "when": "Sau buổi 2 ngày",
+     "what": "Làm lại Bài 1 (ngôi 3) và Bài 6. Đặt 3 câu công việc với opportunity, cooperate, speculation."
+    },
+    {
+     "when": "Sau 1 tuần",
+     "what": "Làm lại toàn bộ bài. Đúng ≥ 85% thì đổi lỗi tương ứng trong Mistake Bank sang Mastered."
+    }
+   ]
   }
  },
  {
@@ -2622,6 +2950,100 @@
       "explain": "Cho con đi học = send children to school."
      }
     ]
+   },
+   {
+    "id": "s6",
+    "title": "Bài 6 · Từ nhận xét Preply",
+    "items": [
+     {
+      "type": "choice",
+      "q": "___ the children still studying there?",
+      "options": [
+       "On",
+       "Are",
+       "Do"
+      ],
+      "answer": [
+       "Are"
+      ],
+      "explain": "Hiện tại tiếp diễn: Are + S + V-ing?"
+     },
+     {
+      "type": "choice",
+      "q": "There are so many ___ in Hanoi.",
+      "options": [
+       "university",
+       "universities"
+      ],
+      "answer": [
+       "universities"
+      ],
+      "explain": "many + số nhiều."
+     },
+     {
+      "type": "choice",
+      "q": "For student fees, ___ the government provide any support?",
+      "options": [
+       "do",
+       "does",
+       "is"
+      ],
+      "answer": [
+       "does"
+      ],
+      "explain": "Câu hỏi với chủ ngữ số ít: does + V."
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'I think many aspect, like map, art, singing.'",
+      "answer": [
+       "i think there are many aspects, like maps, art and singing",
+       "i think there are many aspects, like maps, art, and singing",
+       "there are many aspects, like maps, art and singing",
+       "i think there are many aspects like maps, art and singing"
+      ],
+      "explain": "there are + many aspects; maps số nhiều."
+     },
+     {
+      "type": "choice",
+      "q": "A problem like that is very ___ to happen.",
+      "options": [
+       "difficult",
+       "unlikely",
+       "hardly"
+      ],
+      "answer": [
+       "unlikely"
+      ],
+      "explain": "be unlikely to happen = khó xảy ra."
+     },
+     {
+      "type": "choice",
+      "q": "We need to ___ more budget to temporary works.",
+      "options": [
+       "allocate",
+       "locate",
+       "allow"
+      ],
+      "answer": [
+       "allocate"
+      ],
+      "explain": "allocate budget/resources to sth = phân bổ."
+     },
+     {
+      "type": "choice",
+      "q": "The consultant rejected the ___ materials on site.",
+      "options": [
+       "standard",
+       "substandard",
+       "understandard"
+      ],
+      "answer": [
+       "substandard"
+      ],
+      "explain": "substandard = dưới chuẩn."
+     }
+    ]
    }
   ],
   "rewrites": [
@@ -2956,6 +3378,245 @@
    "duration": 3538.2,
    "mb": 22,
    "start": 77.0
+  },
+  "insights": {
+   "source": "Preply Lesson Insights (AI tự tạo, có thể sai)",
+   "scores": [
+    [
+     "Ngữ pháp",
+     20,
+     "Ổn định"
+    ],
+    [
+     "Từ vựng",
+     "—",
+     "Chưa mở khoá"
+    ],
+    [
+     "Nói",
+     "—",
+     "Chưa mở khoá"
+    ]
+   ],
+   "talk": {
+    "you": 21,
+    "teacher": 22,
+    "youPct": 49,
+    "target": 70
+   },
+   "topics": [
+    {
+     "t": "Một ngày đưa đón con",
+     "b": [
+      "Giờ học 8:00–14:30, ăn trưa cùng con mỗi ngày",
+      "Trường gần nhà, đi bộ 10 phút"
+     ]
+    },
+    {
+     "t": "Trường tư và trường công",
+     "b": [
+      "So sánh trường tư, trường công và học bổng cho học sinh giỏi",
+      "Mẫu giáo, trường Công giáo, chương trình khác nhau từ lớp 1"
+     ]
+    },
+    {
+     "t": "Thi cử và gian lận",
+     "b": [
+      "Tin gian lận thi đầu vào và quyết định cho thi lại",
+      "Nguyên nhân: áp lực thành tích từ phụ huynh và giáo viên"
+     ]
+    }
+   ],
+   "well": [
+    {
+     "said": "We come back to our topic today.",
+     "type": "Cụm động từ",
+     "vi": "come back to dùng đúng."
+    },
+    {
+     "said": "Your children study at private school.",
+     "type": "Giới từ",
+     "vi": "at school dùng đúng."
+    },
+    {
+     "said": "You look tired.",
+     "type": "Từ loại",
+     "vi": "look + tính từ (tired) đúng."
+    },
+    {
+     "said": "Nice to meet you again.",
+     "type": "Động từ nguyên mẫu",
+     "vi": "Nice to meet dùng đúng."
+    }
+   ],
+   "fixes": [
+    {
+     "said": "On children still on study there?",
+     "fix": "Are the children still studying there?",
+     "type": "Câu hỏi hiện tại tiếp diễn",
+     "recurring": false,
+     "vi": "Câu hỏi về việc đang diễn ra: Are + S + V-ing? Giáo viên trực tiếp sửa câu này.",
+     "c1": "Are the children still enrolled there?"
+    },
+    {
+     "said": "So many university in BC, Ho Chi Minh or Hanoi.",
+     "fix": "There are so many universities in HCMC or Hanoi.",
+     "type": "Lượng từ",
+     "recurring": true,
+     "vi": "many + số nhiều: universities. Thêm There are cho đủ câu. Cùng nhóm M19.",
+     "c1": "Most universities are concentrated in HCMC and Hanoi."
+    },
+    {
+     "said": "Any fees, for the fee for student, the government have any support?",
+     "fix": "Are there any fees? For student fees, does the government provide any support?",
+     "type": "Câu hỏi + giới từ",
+     "recurring": true,
+     "vi": "Câu hỏi cần trợ động từ (Are there / does). Giới từ for phải đi với một cụm danh từ đầy đủ.",
+     "c1": "Are there tuition fees, and does the government subsidise them?"
+    },
+    {
+     "said": "I think many aspect, like map, art, singing.",
+     "fix": "I think there are many aspects, like maps, art and singing.",
+     "type": "Lượng từ",
+     "recurring": true,
+     "vi": "many + số nhiều: aspects, maps. Câu cần there are.",
+     "c1": "It covers many areas, such as geography, art and music."
+    },
+    {
+     "said": "Difficult to happen the problem like that.",
+     "fix": "It's unlikely that a problem like that would happen.",
+     "type": "Cấu trúc câu",
+     "recurring": true,
+     "vi": "Câu cần chủ ngữ và to be: It's + tính từ. 'Khó xảy ra' tự nhiên nhất là unlikely. Bản sửa của Preply ('It is difficult for the problem to happen like that') còn gượng.",
+     "c1": "A problem like that is very unlikely to occur."
+    }
+   ],
+   "vocab": [
+    [
+     "one on one",
+     "B1",
+     "cụm",
+     "kèm 1-1"
+    ],
+    [
+     "lunch break",
+     "A2",
+     "danh từ",
+     "giờ nghỉ trưa"
+    ],
+    [
+     "school",
+     "A1",
+     "danh từ",
+     "trường học"
+    ],
+    [
+     "limit",
+     "B2",
+     "danh từ",
+     "giới hạn"
+    ],
+    [
+     "interactive",
+     "B2",
+     "tính từ",
+     "tương tác"
+    ],
+    [
+     "allocate",
+     "B2",
+     "động từ",
+     "phân bổ (ngân sách, nguồn lực)"
+    ],
+    [
+     "environment",
+     "B1",
+     "danh từ",
+     "môi trường"
+    ],
+    [
+     "substandard",
+     "B2",
+     "tính từ",
+     "kém chất lượng, dưới chuẩn"
+    ],
+    [
+     "integrity",
+     "C1",
+     "danh từ",
+     "sự liêm chính"
+    ],
+    [
+     "manipulate",
+     "C1",
+     "động từ",
+     "thao túng, chỉnh sửa"
+    ],
+    [
+     "realism",
+     "B2",
+     "danh từ",
+     "tính chân thực"
+    ]
+   ],
+   "synonyms": [
+    [
+     "You look tired.",
+     "You look weary."
+    ],
+    [
+     "I think the same.",
+     "I believe the same."
+    ],
+    [
+     "Just happened in this year.",
+     "It just occurred this year."
+    ]
+   ],
+   "pron": [
+    {
+     "word": "private",
+     "ctx": "... at private school.",
+     "ipa": "/ˈpraɪ.vət/",
+     "tip": "Nhấn PRAI, âm sau nhẹ /vət/, không đọc 'pờ-rai-vết'."
+    },
+    {
+     "word": "government",
+     "ctx": "... the government have ...",
+     "ipa": "/ˈɡʌv.ən.mənt/",
+     "tip": "3 âm tiết: GUV-ern-ment. /ʌ/ ngắn, bật /t/ cuối."
+    },
+    {
+     "word": "university",
+     "ctx": "... the university exam ...",
+     "ipa": "/ˌjuː.nɪˈvɜː.sə.ti/",
+     "tip": "Bắt đầu bằng /juː/ (yoo), nhấn VER."
+    },
+    {
+     "word": "school",
+     "ctx": "... that school on ...",
+     "ipa": "/skuːl/",
+     "tip": "Cụm /sk/ đầu không chèn nguyên âm, /l/ cuối rõ."
+    }
+   ],
+   "pronNote": "Đây là đánh giá tự động theo giọng Mỹ. Nghe nút 'You' và 'Example' trên Preply để tự so sánh.",
+   "homework": [
+    "Superlative adjectives with -est and \"most\" (ngữ pháp, 3 phút)"
+   ],
+   "plan": [
+    {
+     "when": "Lần ôn này",
+     "what": "Làm Bài 6. Nói to 5 câu sửa, chú ý câu hỏi có trợ động từ và many + số nhiều."
+    },
+    {
+     "when": "Sau 2 ngày",
+     "what": "Làm lại Bài 1–2 (câu hỏi) và Bài 6. Đặt 3 câu công việc với allocate, substandard, integrity."
+    },
+    {
+     "when": "Sau 1 tuần",
+     "what": "Làm lại toàn bộ bài. Đúng ≥ 85% thì đổi lỗi tương ứng trong Mistake Bank sang Mastered."
+    }
+   ]
   }
  },
  {
