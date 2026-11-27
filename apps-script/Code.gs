@@ -12,7 +12,10 @@
  *   GET  ?token=...  (giữ để tương thích bản cũ; app mới dùng POST)
  * Ngày được trả về dạng chữ yyyy-MM-dd theo giờ của Sheet, không còn bị lệch UTC.
  */
-var TABS = ['01_Preply_Log', '02_Mistake_Bank', '03_Work_Agenda', '04_Knowledge_Base', '05_Daily_Briefing'];
+var TABS = ['01_Preply_Log', '02_Mistake_Bank', '03_Work_Agenda', '04_Knowledge_Base', '05_Daily_Briefing', '06_Lesson_Library'];
+// 06_Lesson_Library: id | lesson_id | date | part | time | topic | transcript | hero_lines | corrections
+// (toàn văn từng phân đoạn buổi học; tab chưa có thì bỏ qua, app vẫn chạy)
+var OPTIONAL_TABS = ['06_Lesson_Library'];
 
 function out_(o) { return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON); }
 function auth_(t) {
@@ -33,7 +36,14 @@ function readTab_(name) {
     var o = {}; head.forEach(function (h, i) { if (h) o[h] = r[i]; }); return o;
   });
 }
-function readAll_() { var d = {}; TABS.forEach(function (t) { d[t] = readTab_(t); }); return d; }
+function readAll_() {
+  var d = {}, ss = SpreadsheetApp.getActiveSpreadsheet();
+  TABS.forEach(function (t) {
+    if (OPTIONAL_TABS.indexOf(t) >= 0 && !ss.getSheetByName(t)) return;
+    d[t] = readTab_(t);
+  });
+  return d;
+}
 
 function doGet(e) {
   try { auth_(e.parameter.token); return out_({ status: 'success', data: readAll_() }); }

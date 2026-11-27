@@ -152,6 +152,9 @@ pre{white-space:pre-wrap;background:var(--soft);padding:16px;border-radius:12px;
  #cards .face .foot{gap:6px}#cards .face .foot .btn{flex:1 1 0;min-height:34px;padding:0 6px;font-size:12px;white-space:nowrap}#cards .face .foot>.mute{display:none}
  .lesson{flex-wrap:wrap}.lesson>div[style*='text-align:right']{text-align:left!important;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}.score{grid-template-columns:repeat(2,minmax(0,1fr))}.msg{max-width:94%}
  table{font-size:14px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{display:block;border:0;padding:3px 0;text-align:start}.stack td:empty{display:none}}
+.qz{padding:12px 0;border-bottom:1px solid var(--line)}.qz:last-child{border:0}.qz .opts{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.qz .opt.ok{background:var(--greenbg);border-color:var(--green);color:var(--green);font-weight:600}.qz .opt.bad{background:var(--redbg);border-color:var(--red);color:var(--red)}.qz .fb{margin-top:6px;font-size:14px}.qz .fb.ok{color:var(--green)}.qz .fb.bad{color:var(--red)}.qz input.ok{border-color:var(--green)}.qz input.bad{border-color:var(--red)}
+.gf{font:600 14px/1.5 ui-monospace,Menlo,monospace;background:var(--soft);padding:6px 10px;border-radius:8px;margin:6px 0}.ok-t{color:var(--green)}.bad-t{color:var(--red);text-decoration:line-through;text-decoration-thickness:1px}
+.tr{white-space:pre-wrap;font-size:15px;line-height:1.6}.tr b{color:var(--teal)}details.part{border-bottom:1px solid var(--line);padding:10px 0}details.part>summary{cursor:pointer;font-weight:600;list-style:none}details.part>summary::-webkit-details-marker{display:none}
 .topbar{display:none;justify-content:space-between;align-items:center;margin-bottom:14px}
 .lvbig{font:700 34px/1.1 Inter,system-ui,sans-serif;letter-spacing:-.02em;font-variant-numeric:tabular-nums}.lvbig span{font-size:16px;font-weight:600;color:var(--mute);letter-spacing:0}
 .cefr{display:flex;gap:4px;margin-top:14px}.cg{min-width:0}.cg>span{display:block;font:600 12px Inter,sans-serif;color:var(--mute);margin-bottom:4px;padding-left:2px}.cg>div{display:flex;gap:2px}
@@ -255,8 +258,9 @@ pre{white-space:pre-wrap;background:var(--soft);padding:16px;border-radius:12px;
 <!-- PREPLY -->
 <section class="view" id="v-preply">
  <h1>Preply Bridge</h1>
- <div class="tabs" id="prTabs"><button data-t="sched" class="on">Lịch học</button><button data-t="plan">Giáo án 50 phút</button><button data-t="course">Khoá học Preply</button><button data-t="mist">Mistake Bank</button><button data-t="log">Nhật ký buổi học</button></div>
+ <div class="tabs" id="prTabs"><button data-t="sched" class="on">Lịch học</button><button data-t="lib">Thư viện bài học</button><button data-t="plan">Giáo án 50 phút</button><button data-t="course">Khoá học Preply</button><button data-t="mist">Mistake Bank</button><button data-t="log">Nhật ký buổi học</button></div>
  <div id="pr-sched"></div>
+ <div id="pr-lib" hidden></div>
  <div id="pr-course" hidden><div id="courseList"></div></div>
  <div id="pr-plan" hidden><div class="row sp" style="margin-bottom:12px"><p class="mute" style="margin:0">Tự gom tình huống sắp tới (03_Work_Agenda) + 3 lỗi chưa thuộc (02_Mistake_Bank) + bài trong khoá. Học viên nói ≥ 70% thời lượng.</p>
   <div class="row"><select id="planWa" style="width:auto"></select><select id="planCl" style="width:auto"></select><button class="btn sm" id="planAI">AI chuốt giáo án</button><button class="btn pri sm" id="planCopy">Copy gửi giáo viên</button><a class="btn sm" id="planGo" target="_blank" rel="noopener">Vào lớp Preply</a></div></div><pre id="planTxt"></pre></div>
@@ -327,7 +331,7 @@ const fmtD=d=>{if(!d)return'';const m=String(d).match(/^(\d{4})-(\d{2})-(\d{2})/
 const daysTo=d=>Math.round((new Date(d)-new Date(todayISO()))/864e5);
 
 /* ================= data ================= */
-const T={pl:'01_Preply_Log',mb:'02_Mistake_Bank',wa:'03_Work_Agenda',kb:'04_Knowledge_Base',db:'05_Daily_Briefing'};
+const T={pl:'01_Preply_Log',mb:'02_Mistake_Bank',wa:'03_Work_Agenda',kb:'04_Knowledge_Base',db:'05_Daily_Briefing',ll:'06_Lesson_Library'};
 const SEED={
 pl:[],
 mb:[{id:'MB001',date:'2026-11-17',wrong_sentence:'We will discuss about the scope tomorrow.',correct_b2:'We will discuss the scope tomorrow.',error_type:'Grammar',context:'Pre-tender meeting',status:'Learning'},{id:'MB002',date:'2026-11-20',wrong_sentence:'Our company has many experience in data center.',correct_b2:'Our company has extensive experience in data centre projects.',error_type:'Vocabulary',context:'Tender interview',status:'Learning'},{id:'MB003',date:'2026-11-20',wrong_sentence:'The price is depend on the soil condition.',correct_b2:'The price depends on the ground conditions.',error_type:'Grammar',context:'Contract negotiation',status:'Learning'},{id:'MB004',date:'2026-11-24',wrong_sentence:'I agree with you but we cannot accept.',correct_b2:"I see your point; however, we're unable to accept that clause as drafted.",error_type:'Tone',context:'LD clause negotiation',status:'Learning'},{id:'MB005',date:'2026-11-24',wrong_sentence:'Please send us the drawing soonest.',correct_b2:'Could you please share the latest drawings by Friday?',error_type:'Tone',context:'RFI email',status:'Mastered'}],
@@ -337,7 +341,7 @@ db:[{id:'DB001',date:'2026-11-26',category:'Data Center',vi_summary:'Nhu cầu d
 let D=store.get('be_data',null)||JSON.parse(JSON.stringify(SEED));
 let C=Object.assign({url:'',token:'',theme:'',lockMin:10,pinHash:'',pinSalt:'',pinSkipped:false,ai:false,learner:'Hùng',teacher:'Lorraine',preply:'https://preply.com/edu/english/classroom-v2/10523965'},store.get('be_cfg',{}));
 {const old=store.get('exec_bid_cfg_v1',null);if(old&&!store.get('be_cfg',null)){C.url=old.url||'';C.token=old.token||'';if(old.pinHash){C.pinHash=old.pinHash;C.pinSalt=''}if(old.dark)C.theme='dark';store.set('be_cfg',C)}}
-let COURSE=[];
+let COURSE=[],LIB=[],LIBO='',LIBT='sum',LIBQ='';if(!Array.isArray(D.ll))D.ll=[];
 let Q=store.get('be_queue',[]);
 let P=store.get('be_prog',{days:[],lessons:{}});
 {const od=store.get('exec_bid_days_v1',[]);if(Array.isArray(od)&&od.length){P.days=[...new Set([...P.days,...od])].sort().slice(-200);store.set('be_prog',P)}}
@@ -434,7 +438,7 @@ function renderSched(){const el=$('#pr-sched');if(!el)return;const s=sched(),nx=
  $('#fSc').onchange=e=>{const c=e.target.closest('label.chip');if(c)c.classList.toggle('on',c.querySelector('input').checked)};
  $('#fSc').onsubmit=e=>{e.preventDefault();const days=$$('#fSc input[type=checkbox]:checked').map(x=>+x.value);if(!days.length)return toast('Chọn ít nhất 1 ngày');C.sched={days,time:$('#scT').value||'22:00',duration:+$('#scM').value||50};saveC();renderHome();renderSched();toast('Đã lưu lịch học')};
  $('#fBk').onsubmit=e=>{e.preventDefault();C.booked=[...(C.booked||[]).filter(b=>b.date>=todayISO()),{date:$('#bkD').value,time:$('#bkT').value,topic:$('#bkN').value.trim()}];saveC();renderHome();renderSched();toast('Đã thêm buổi học')}}
-document.addEventListener('click',e=>{const t=e.target.closest('[data-prt]');if(t){const b=$(`#prTabs button[data-t="${t.dataset.prt}"]`);if(b){if(location.hash!=='#preply')location.hash='#preply';setTimeout(()=>b.click(),0)}if(t.tagName==='A')e.preventDefault();return}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-prt]');if(t){if(t.dataset.lib){LIBO=t.dataset.lib;LIBT='sum';renderLib()}const b=$(`#prTabs button[data-t="${t.dataset.prt}"]`);if(b){if(location.hash!=='#preply')location.hash='#preply';setTimeout(()=>b.click(),0)}if(t.tagName==='A')e.preventDefault();return}
  const u=e.target.closest('[data-unbook]');if(u){const [d,tm]=u.dataset.unbook.split('|');C.booked=(C.booked||[]).filter(b=>!(b.date===d&&b.time===tm));saveC();renderHome();renderSched()}});
 
 /* ================= sync with Apps Script ================= */
@@ -525,9 +529,10 @@ function renderHome(){{const n=C.learner||'Hùng';$('#pfName').textContent=n;$('
  {const nl=nextLessons(1)[0];if(nl&&daysTo(nl.date)<=1)todo.push([`${daysTo(nl.date)?'Mai':'Hôm nay'} ${nl.time} học Preply: soạn giáo án gửi ${C.teacher||'giáo viên'}`,'#preply'])}
  if(next)todo.push([`Tập kịch bản “${next.stage}” cho ${fmtD(next.target_date)}`,'#lab']);
  if(mbOpen)todo.push([`Ôn ${Math.min(3,mbOpen)} lỗi trong Mistake Bank`,'#preply']);
+ {const lr=libDue();if(lr)todo.push([`Ôn ${lr.title.split(' · ')[0]}: bài tập ngữ pháp (${libStat(lr).ok}/${libStat(lr).n} đúng)`,'#preply','lib'])}
  const nl=nextLesson();if(nl)todo.push([`Bài lộ trình: ${nl.t}`,'#roadmap']);
  todo.push(['Lật 5 thẻ thuật ngữ','#hub']);
- $('#todo').innerHTML=todo.map(t=>`<a href="${t[1]}" class="lesson" style="text-decoration:none;color:inherit"><span>${esc(t[0])}</span><span class="mute">→</span></a>`).join('');
+ $('#todo').innerHTML=todo.map(t=>`<a href="${t[1]}"${t[2]?` data-prt="${t[2]}"`:''} class="lesson" style="text-decoration:none;color:inherit"><span>${esc(t[0])}</span><span class="mute">→</span></a>`).join('');
  const ag=[...D.wa].filter(w=>w.status!=='Done'||daysTo(w.target_date)>=0).sort((a,b)=>String(a.target_date).localeCompare(String(b.target_date)));
  $('#agendaMini').innerHTML=ag.length?ag.slice(0,4).map(w=>`<div class="lesson"><div><b style="font-weight:600">${esc(w.scenario)}</b><div class="mute">${esc(w.key_goal)}</div></div><div style="text-align:right"><span class="tag t">${esc(w.stage)}</span><div class="mute" style="white-space:nowrap">${esc(fmtD(w.target_date))}</div><button class="btn sm wdone" data-wdone="${esc(w.id)}">${w.status==='Done'?'Đã xong ✓':'Đánh dấu xong'}</button></div></div>`).join(''):'<div class="empty">Chưa có lịch</div>';
 }
@@ -707,7 +712,7 @@ $('#fKB').onsubmit=e=>{e.preventDefault();addRow('kb',{id:uid('KB'),term_or_phra
 $('#kAI').onclick=async()=>{const t=$('#kT').value.trim();if(!t)return toast('Nhập thuật ngữ trước');try{const r=parseJSON(await ai(COACH,[{role:'user',content:`Term used by international general contractors: "${t}" (category ${$('#kC').value}). Return JSON only: {"b2_explanation":"one plain-English B2 sentence","sample_sentence":"one realistic sentence a bidding manager would say to an FDI client"}`}],300)||'');if(!r)return needAI();$('#kE').value=r.b2_explanation||'';$('#kS').value=r.sample_sentence||''}catch(e){toast(e.message)}};
 
 /* ================= PREPLY ================= */
-$('#prTabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;$$('#prTabs button').forEach(x=>x.classList.toggle('on',x===b));['sched','plan','course','mist','log'].forEach(k=>$('#pr-'+k).hidden=k!==b.dataset.t)};
+$('#prTabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;$$('#prTabs button').forEach(x=>x.classList.toggle('on',x===b));['sched','lib','plan','course','mist','log'].forEach(k=>$('#pr-'+k).hidden=k!==b.dataset.t)};
 /* Preply course (8 bài với giáo viên) */
 const courseDone=l=>P.course?.[l.id]??/completed/i.test(l.status||'');
 function renderCourse(){const el=$('#courseList');if(!COURSE.length){el.innerHTML='<div class="empty">Chưa tải được data/preply-lessons.json</div>';return}
@@ -733,6 +738,52 @@ $('#courseList').addEventListener('click',async e=>{const t=e.target.closest('[d
  if(t.dataset.cplan){$('#planCl').value=l.id;$('#planTxt').textContent=buildPlan();$('#prTabs button[data-t="plan"]').click();return}
  if(t.dataset.cai){const out=$(`[data-caiout="${l.id}"]`);if(!C.ai)return needAI();out.innerHTML='<p class="mute">AI đang soạn…</p>';try{const o=await ai(COACH,[{role:'user',content:`Prepare me for this Preply lesson with my teacher ${C.teacher}: "${l.title}" (topic: ${l.topic}). Give: 1) a 60-second opening pitch I can say (English), 2) 8 key terms with IPA and Vietnamese meaning, 3) 2 grammar patterns with examples, 4) 5 questions the teacher-as-client may ask, with short hints, 5) one roleplay scenario. Plain text, no markdown symbols.`}],2000);out.innerHTML=`<pre>${esc(o)}</pre>`}catch(x){out.textContent=x.message}}});
 fetch('data/preply-lessons.json').then(r=>r.json()).then(j=>{COURSE=Array.isArray(j)?j:[];renderCourse();renderPreply()}).catch(()=>renderCourse());
+/* Thư viện bài học: nội dung ôn tập (đã ẩn danh) ở data/lesson-reviews.json, toàn văn buổi học ở tab 06_Lesson_Library của Sheet */
+const LTABS=[['sum','Tổng quan'],['gram','Ngữ pháp cần ôn'],['ex','Bài tập'],['rw','Câu của anh B2/C1'],['voc','Từ vựng & phát âm'],['tr','Toàn văn buổi học']];
+const normA=v=>String(v??'').toLowerCase().replace(/[’‘]/g,"'").replace(/[“”]/g,'"').replace(/\s+/g,' ').replace(/[\s.!?]+$/,'').trim();
+function libRev(id){P.rev=P.rev||{};return P.rev[id]=P.rev[id]||{a:{}}}
+function libStat(l){const r=libRev(l.id);let n=0,ok=0,done=0;for(const ex of l.exercises)ex.items.forEach((_,i)=>{n++;const a=r.a[ex.id+'-'+i];if(a){done++;if(a.ok)ok++}});return{n,ok,done}}
+function libDue(){return LIB.find(l=>{const s=libStat(l);return s.done<s.n||s.ok/s.n<.85})||null}
+function libParts(id){return (D.ll||[]).filter(r=>r.lesson_id===id).sort((a,b)=>(+a.part||0)-(+b.part||0))}
+function heroLines(t){return esc(t).replace(/^(Hero:)/gm,'<b>$1</b>')}
+function renderLib(){const el=$('#pr-lib');if(!el)return;
+ if(!LIB.length){el.innerHTML='<div class="empty">Chưa tải được data/lesson-reviews.json</div>';return}
+ const l=LIB.find(x=>x.id===LIBO);
+ if(!l){el.innerHTML=`<p class="mute">Mỗi buổi Preply được lưu thành một bài ôn: tóm tắt, cấu trúc ngữ pháp cần ôn, bài tập có chấm điểm, câu của anh bản B2/C1 và toàn văn buổi học. Gửi báo cáo buổi mới cho Claude trong project để thêm bài.</p>`+
+  [...LIB].sort((a,b)=>String(b.date).localeCompare(String(a.date))).map(x=>{const s=libStat(x),pct=Math.round(s.ok/s.n*100);return `<div class="card" style="margin-bottom:10px"><div class="row sp"><div><b style="font-weight:600">${esc(x.title)}</b><div class="mute">${esc(fmtD(x.date))}/${esc(String(x.date).slice(0,4))} · ${esc(x.topic)}</div></div><span class="tag ${s.done===s.n&&pct>=85?'done':s.done?'doing':'new'}">${s.done?`${s.ok}/${s.n} đúng`:'Chưa làm bài tập'}</span></div><div class="bar" style="margin:10px 0"><i style="width:${pct}%"></i></div><div class="row"><button class="btn pri sm" data-lo="${esc(x.id)}">Mở bài ôn</button><button class="btn sm" data-lo="${esc(x.id)}" data-lt="ex">Làm bài tập</button><button class="btn sm" data-lo="${esc(x.id)}" data-lt="tr">Toàn văn</button></div></div>`}).join('');return}
+ const s=libStat(l);
+ let h=`<div class="row sp" style="margin-bottom:10px"><button class="btn sm ghost" data-lo="">← Tất cả bài</button><span class="mute">${s.ok}/${s.n} câu đúng</span></div><h2>${esc(l.title)}</h2><p class="mute">${esc(fmtD(l.date))}/${esc(String(l.date).slice(0,4))} · ${esc(l.duration)} phút với ${esc(C.teacher||'giáo viên')} · ${esc(l.topic)}</p>
+ <div class="tabs" id="libTabs">${LTABS.map(([k,t])=>`<button data-ltab="${k}" class="${k===LIBT?'on':''}">${t}</button>`).join('')}</div>`;
+ if(LIBT==='sum'){h+=`<div class="card"><p>${esc(l.summary)}</p><h3 style="margin-top:12px">Làm tốt</h3>${l.strengths.map(x=>`<div class="ver">${esc(x)}</div>`).join('')}<h3 style="margin-top:14px">Cần ôn (theo thứ tự ưu tiên)</h3><ol>${l.focus.map(x=>`<li>${esc(x)}</li>`).join('')}</ol></div>
+  <div class="card" style="margin-top:14px"><h3>Lỗi trong buổi, theo nhóm</h3><table class="stack"><thead><tr><th>Nhóm lỗi</th><th>Anh nói</th><th>Sửa đúng</th><th>Số lần</th></tr></thead><tbody>${l.errors.map(e=>`<tr><td><b style="font-weight:600">${esc(e.group)}</b> ${e.repeat?'<span class="tag doing">Lỗi cũ lặp lại</span>':'<span class="tag new">Mới</span>'}</td><td><span class="wrong">${esc(e.ex)}</span></td><td><span class="right">${esc(e.fix)}</span></td><td>≈ ${esc(e.n)}</td></tr>`).join('')}</tbody></table><p class="mute" style="margin-top:8px">Số lần là ước đếm từ báo cáo buổi học.</p></div>
+  <div class="card" style="margin-top:14px"><h3>Chuẩn bị trước buổi: nâng cấp câu</h3>${l.prep.upgrades.map(u=>`<div class="ver"><b style="font-size:12px">B1</b> ${esc(u.b1)}</div><div class="ver c1"><b style="font-size:12px">C1</b> ${esc(u.c1)} <button class="btn sm ghost" data-say="${esc(u.c1)}">Nghe</button></div>`).join('<hr style="border:0;border-top:1px solid var(--line)">')}
+  <h3 style="margin-top:14px">So sánh hai mô hình lãnh đạo</h3><table class="stack"><thead><tr><th>Tiêu chí</th><th>Kiểm soát bằng nỗi sợ</th><th>Đồng hành thấu cảm</th></tr></thead><tbody>${l.prep.compare.map(r=>`<tr>${r.map((c,i)=>`<td>${i?esc(c):`<b style="font-weight:600">${esc(c)}</b>`}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+  <div class="card" style="margin-top:14px"><h3>Bài nói 1 phút</h3><p>${esc(l.speaking.task)}</p><div class="ver c1">${esc(l.speaking.starter)} <button class="btn sm ghost" data-say="${esc(l.speaking.starter)}">Nghe</button></div></div>`}
+ if(LIBT==='gram')h+=l.grammar.map((g,i)=>`<div class="card" style="margin-bottom:12px"><h3>${i+1}. ${esc(g.title)}</h3><div class="gf">${esc(g.formula)}</div><p>${esc(g.rule)}</p>${g.right.map(x=>`<div class="row" style="flex-wrap:nowrap"><span class="ok-t" style="flex:1">✓ ${esc(x)}</span><button class="btn sm ghost" data-say="${esc(x)}">Nghe</button></div>`).join('')}${g.wrong.map(x=>`<div class="mute">✗ <span class="bad-t">${esc(x)}</span></div>`).join('')}</div>`).join('');
+ if(LIBT==='ex'){const r=libRev(l.id);h+=`<div class="row sp" style="margin-bottom:10px"><p class="mute" style="margin:0">Làm theo thứ tự. Đúng từ 85% là đạt; sai câu nào thì ôn lại nhóm đó sau 2 ngày.</p><button class="btn sm" data-lreset="${esc(l.id)}">Làm lại từ đầu</button></div>`+
+  l.exercises.map(ex=>{const ok=ex.items.filter((_,i)=>r.a[ex.id+'-'+i]?.ok).length;return `<div class="card" style="margin-bottom:12px"><div class="row sp"><h3 style="margin:0">${esc(ex.title)}</h3><span class="tag ${ok===ex.items.length?'done':'t'}">${ok}/${ex.items.length}</span></div>`+
+  ex.items.map((q,i)=>{const k=ex.id+'-'+i,a=r.a[k];const fb=a?`<div class="fb ${a.ok?'ok':'bad'}">${a.ok?'Đúng.':`Chưa đúng. Đáp án: <b>${esc(q.answer[0])}</b>`} ${esc(q.explain)}</div>`:'';
+   if(q.type==='choice')return `<div class="qz"><div>${i+1}. ${esc(q.q)}</div><div class="opts">${q.options.map(o=>`<button class="chip opt ${a&&a.v===o?(a.ok?'ok':'bad'):''} ${a&&!a.ok&&q.answer.includes(o)?'ok':''}" data-qk="${esc(k)}" data-qv="${esc(o)}">${esc(o)}</button>`).join('')}</div>${fb}</div>`;
+   return `<div class="qz"><div>${i+1}. ${esc(q.q)}</div><form class="row" data-qf="${esc(k)}" style="margin-top:8px;flex-wrap:nowrap"><input value="${esc(a?a.v:'')}" class="${a?(a.ok?'ok':'bad'):''}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Câu trả lời"><button class="btn sm" style="white-space:nowrap;flex:none">Kiểm tra</button></form>${fb}</div>`}).join('')+'</div>'}).join('')}
+ if(LIBT==='rw')h+=`<p class="mute">Câu gốc anh nói trong buổi → bản B2 (đúng, rõ) → bản C1 (gọn, kiểu Giám đốc) → cùng cấu trúc dùng trong họp thầu. Nói to cả 3 câu.</p>`+l.rewrites.map((w,i)=>`<div class="card" style="margin-bottom:12px"><div class="mute">${i+1}. Anh nói: <span class="bad-t">${esc(w.orig)}</span> · ${esc(w.err)}</div>${[['B2',w.b2,''],['C1',w.c1,'c1'],['Trong họp thầu',w.work,'c1']].map(([t,x,c])=>`<div class="ver ${c}"><b style="font-size:12px">${t}</b><div class="row" style="flex-wrap:nowrap"><span style="flex:1">${esc(x)}</span><button class="btn sm ghost" data-say="${esc(x)}">Nghe</button></div></div>`).join('')}</div>`).join('');
+ if(LIBT==='voc')h+=`<div class="card" style="margin-bottom:12px"><h3>Từ vựng của buổi</h3>${l.prep.vocab.map(v=>`<div class="lesson"><div><b style="font-weight:600">${esc(v.term)}</b> <span class="mute">${esc(v.ipa)}</span><div class="mute">${esc(v.vi)}</div><i>${esc(v.example)}</i></div><button class="btn sm ghost" data-say="${esc(v.term+'. '+v.example)}">Nghe</button></div>`).join('')}</div><div class="card"><h3>Phát âm cần luyện</h3>${l.pron.map(v=>`<div class="lesson"><div><b style="font-weight:600">${esc(v.word)}</b> <span class="mute">${esc(v.ipa)}</span><div class="mute">${esc(v.tip)}</div><i>${esc(v.example)}</i></div><div class="row" style="flex:none"><button class="btn sm" data-say="${esc(v.word)}" data-rate=".7">Từ</button><button class="btn sm ghost" data-say="${esc(v.example)}">Câu</button></div></div>`).join('')}</div>`;
+ if(LIBT==='tr'){const ps=libParts(l.id),q=LIBQ.trim().toLowerCase();
+  if(!ps.length)h+=`<div class="empty">Toàn văn buổi học nằm trong Sheet (tab ${esc(l.transcriptTab||'06_Lesson_Library')}), không để trong repo công khai.<br>${C.url?'Nếu vẫn chưa thấy: dán bản Code.gs mới vào Apps Script → Deploy → Manage deployments → New version, rồi vào Cài đặt bấm “Kéo dữ liệu từ Sheet”.':'Hãy kết nối Sheet trong Cài đặt để xem.'}</div>`;
+  else{const f=q?ps.filter(p=>[p.topic,p.transcript,p.hero_lines,p.corrections].join(' ').toLowerCase().includes(q)):ps;
+   h+=`<div class="row" style="margin-bottom:10px"><input id="libQ" placeholder="Tìm trong toàn văn…" value="${esc(LIBQ)}" style="max-width:320px"><span class="mute">${f.length}/${ps.length} phân đoạn</span></div><div class="card">${f.map(p=>`<details class="part"${q?' open':''}><summary>Part ${esc(String(p.part).padStart(2,'0'))} · <span class="mute">${esc(p.time)}</span><div class="mute" style="font-weight:400">${esc(p.topic)}</div></summary><div class="tr" style="margin-top:8px">${heroLines(p.transcript)}</div>${p.hero_lines?`<h3 style="margin-top:12px;font-size:15px">Câu cần sửa</h3><div class="tr mute">${esc(p.hero_lines)}</div>`:''}${p.corrections?`<h3 style="margin-top:12px;font-size:15px">Bản sửa của báo cáo</h3><div class="tr">${esc(p.corrections)}</div>`:''}</details>`).join('')||'<div class="empty">Không có phân đoạn khớp</div>'}</div>`}}
+ el.innerHTML=h}
+$('#pr-lib').addEventListener('click',e=>{const t=e.target.closest('[data-lo],[data-ltab],[data-qk],[data-say],[data-lreset]');if(!t)return;
+ if(t.dataset.say!=null){say(t.dataset.say,+(t.dataset.rate||.9));return}
+ if(t.dataset.lo!=null){LIBO=t.dataset.lo;LIBT=t.dataset.lt||'sum';LIBQ='';renderLib();$('#v-preply').scrollIntoView();return}
+ if(t.dataset.ltab){LIBT=t.dataset.ltab;renderLib();return}
+ if(t.dataset.lreset){if(!confirm('Xoá kết quả bài tập của bài này?'))return;libRev(t.dataset.lreset).a={};saveP();renderLib();return}
+ if(t.dataset.qk){libAns(t.dataset.qk,t.dataset.qv)}});
+$('#pr-lib').addEventListener('submit',e=>{const f=e.target.closest('[data-qf]');if(!f)return;e.preventDefault();const v=f.querySelector('input').value;if(!v.trim())return toast('Gõ câu trả lời trước');libAns(f.dataset.qf,v)});
+$('#pr-lib').addEventListener('input',e=>{if(e.target.id==='libQ'){LIBQ=e.target.value;clearTimeout(renderLib.t);renderLib.t=setTimeout(()=>{const pos=e.target.selectionStart;renderLib();const i=$('#libQ');if(i){i.focus();i.setSelectionRange(pos,pos)}},250)}});
+function libAns(k,v){const l=LIB.find(x=>x.id===LIBO);if(!l)return;const [eid,i]=k.split('-');const q=l.exercises.find(x=>x.id===eid)?.items[+i];if(!q)return;
+ const ok=q.answer.some(a=>normA(a)===normA(v));const r=libRev(l.id);r.a[k]={v,ok};r.last=todayISO();saveP();active();const y=window.scrollY;renderLib();window.scrollTo(0,y);renderHome()}
+fetch('data/lesson-reviews.json').then(r=>r.json()).then(j=>{LIB=Array.isArray(j)?j:[];renderLib();renderPreply();renderHome()}).catch(()=>renderLib());
+
 function upcoming(){return [...D.wa].filter(w=>w.status!=='Done').sort((a,b)=>String(a.target_date).localeCompare(String(b.target_date)))}
 const VI_RX=/[ăâđêôơưạảãáàặẳẵắằậẩẫấầẹẻẽéèệểễếềịỉĩíìọỏõóòộổỗốồợởỡớờụủũúùựửữứừỵỷỹýỳ]/i;
 const isVi=s=>VI_RX.test(String(s||''));
@@ -792,7 +843,7 @@ $('#mbBody').onclick=e=>{const b=e.target.closest('[data-sy]');if(b)say(D.mb.fin
 $('#fMB').onsubmit=async e=>{e.preventDefault();const w=$('#mW').value.trim();let r=$('#mR').value.trim();
  if(!r){if(!C.ai)return toast('Nhập câu đúng, hoặc kết nối AI để tự sửa');try{r=(await ai(COACH,[{role:'user',content:`Correct this sentence to natural B2 business English for a construction context. Return only the corrected sentence.\n\n${w}`}],200)).trim()}catch(x){return toast(x.message)}}
  addRow('mb',{id:uid('MB'),date:todayISO(),wrong_sentence:w,correct_b2:r,error_type:$('#mT').value,context:$('#mC').value.trim(),status:'Learning'});e.target.reset();renderMB();$('#planTxt').textContent=buildPlan();toast('Đã thêm lỗi')};
-function renderPL(){const l=[...D.pl].sort((a,b)=>String(b.date).localeCompare(String(a.date)));$('#plList').innerHTML=l.length?l.map(p=>{if(isProg(p)){const g=parseProg(p);return `<div class="lesson"><div><b style="font-weight:600">Điểm Preply: ${esc(g?g.cefr:'')}</b> <span class="tag doing">${esc(p.category)}</span><div class="mute">${esc(g?SKILLS.map(([k,vi])=>`${vi} ${g[k]??'—'}`).join(' · '):p.teacher_note)}</div></div><div style="text-align:right;white-space:nowrap"><span class="mute">${esc(fmtD(p.date))}</span></div></div>`}return `<div class="lesson"><div><b style="font-weight:600">${esc(p.topic)}</b> <span class="tag t">${esc(p.category)}</span><div class="mute">${esc(p.teacher_note||'Chưa ghi nhận xét')}</div></div><div style="text-align:right;white-space:nowrap">${+p.rating?`<div>${'★'.repeat(+p.rating)}<span class="mute">${'★'.repeat(5-(+p.rating))}</span></div>`:''}<span class="mute">${esc(fmtD(p.date))}</span></div></div>`}).join(''):'<div class="empty">Chưa có buổi học</div>'}
+function renderPL(){const l=[...D.pl].sort((a,b)=>String(b.date).localeCompare(String(a.date)));$('#plList').innerHTML=l.length?l.map(p=>{if(isProg(p)){const g=parseProg(p);return `<div class="lesson"><div><b style="font-weight:600">Điểm Preply: ${esc(g?g.cefr:'')}</b> <span class="tag doing">${esc(p.category)}</span><div class="mute">${esc(g?SKILLS.map(([k,vi])=>`${vi} ${g[k]??'—'}`).join(' · '):p.teacher_note)}</div></div><div style="text-align:right;white-space:nowrap"><span class="mute">${esc(fmtD(p.date))}</span></div></div>`}const lv=LIB.find(l=>l.date===normDate(p.date));return `<div class="lesson"><div><b style="font-weight:600">${esc(p.topic)}</b> <span class="tag t">${esc(p.category)}</span><div class="mute">${esc(p.teacher_note||'Chưa ghi nhận xét')}</div>${lv?`<button class="btn sm" style="margin-top:6px" data-prt="lib" data-lib="${esc(lv.id)}">Mở bài ôn ${esc(lv.title.split(' · ')[0])}</button>`:''}</div><div style="text-align:right;white-space:nowrap">${+p.rating?`<div>${'★'.repeat(+p.rating)}<span class="mute">${'★'.repeat(5-(+p.rating))}</span></div>`:''}<span class="mute">${esc(fmtD(p.date))}</span></div></div>`}).join(''):'<div class="empty">Chưa có buổi học</div>'}
 $('#fPL').onsubmit=e=>{e.preventDefault();addRow('pl',{id:uid('PL'),date:$('#pD').value||todayISO(),topic:$('#pT').value.trim(),category:$('#pC').value,teacher_note:$('#pN').value.trim(),rating:$('#pR').value});e.target.reset();$('#pD').value=todayISO();renderPreply();renderHome();active();toast('Đã lưu buổi học')};
 $('#pD').value=todayISO();
 
@@ -833,7 +884,7 @@ $('#cPin').onclick=()=>lockUI(C.pinHash?'verify':'set',true);$('#cLock').onclick
 let hiddenAt=0;document.addEventListener('visibilitychange',()=>{if(document.hidden)hiddenAt=Date.now();else if(C.pinHash&&hiddenAt&&Date.now()-hiddenAt>(C.lockMin||10)*6e4)lockUI('unlock',false)});
 
 /* ================= boot ================= */
-function renderAll(){renderHome();renderRoadmap();renderHub();renderPreply();renderConfig()}
+function renderAll(){renderHome();renderRoadmap();renderHub();renderPreply();renderLib();renderConfig()}
 applyTheme();renderAll();renderListen();renderRead();renderWrite();renderSpeak();route();
 let unl=false;try{unl=sessionStorage.getItem('be_unlocked')==='1'}catch(e){}
 if(C.pinHash&&!unl)lockUI('unlock',false);else if(!C.pinHash&&!C.pinSkipped)lockUI('set',false);

@@ -1,0 +1,867 @@
+[
+ {
+  "id": "L11",
+  "no": 11,
+  "date": "2026-09-18",
+  "duration": 50,
+  "title": "Buổi 11 · Goya's Saturn & Empathetic Leadership",
+  "topic": "Bức tranh 'Saturn Devouring His Son' (Goya) · Lãnh đạo bằng nỗi sợ vs. đồng hành thấu cảm",
+  "summary": "Buổi thảo luận từ bức tranh của Goya sang cách nuôi dạy con, trừng phạt thể xác ngày xưa, sức bền của thế hệ trẻ và cách lãnh đạo đội ngũ. Ba lỗi chính đều là lỗi cũ lặp lại: thiếu 'to be', every/many + danh từ, và dùng hiện tại thay cho quá khứ.",
+  "strengths": [
+   "Đúng thì: \"He doesn't understand why it's wrong.\"",
+   "Đúng giới từ: \"as an educator\", \"from your life experience\".",
+   "Câu điều kiện tự nhiên: \"I don't know if it's right or wrong.\"",
+   "Biết hỏi ngược để dẫn dắt: \"Do you think strict parenting leads to secrecy?\""
+  ],
+  "focus": [
+   "Thiếu to be trước tính từ (lỗi cũ)",
+   "Every/each + số ít; many + số nhiều (lỗi cũ)",
+   "Quá khứ đơn với mốc thời gian (lỗi cũ)",
+   "Câu hỏi cần trợ động từ do/does/did (mới)",
+   "Tính từ vs trạng từ, -ed vs -ing (mới)"
+  ],
+  "prep": {
+   "upgrades": [
+    {
+     "b1": "Leaders and parents use fear and shouting because they want people to obey them quickly.",
+     "c1": "Leaders who rely on fear get quick obedience, but only on the surface; it also builds quiet resentment."
+    },
+    {
+     "b1": "If you punish workers too hard, they will just lie and hide their mistakes from you.",
+     "c1": "Overly harsh discipline pushes teams to hide risks and mistakes, which kills transparency."
+    },
+    {
+     "b1": "Good bosses should be like a friend, explain everything and listen.",
+     "c1": "Good leaders replace pressure with support and create psychological safety, so people raise problems early."
+    }
+   ],
+   "vocab": [
+    {
+     "term": "psychological safety",
+     "ipa": "/ˌsaɪ.kəˈlɒdʒ.ɪ.kəl ˈseɪf.ti/",
+     "vi": "An toàn tâm lý: dám nói thật, báo lỗi mà không sợ bị phạt",
+     "example": "We build psychological safety so estimators can challenge weak cost assumptions openly."
+    },
+    {
+     "term": "coercive compliance",
+     "ipa": "/kəʊˈɜː.sɪv kəmˈplaɪ.əns/",
+     "vi": "Tuân thủ vì bị ép, chỉ tạm thời",
+     "example": "Threatening subcontractors only gives us coercive compliance and hidden quality defects."
+    },
+    {
+     "term": "institutional secrecy",
+     "ipa": "/ˌɪn.stɪˈtjuː.ʃən.əl ˈsiː.krə.si/",
+     "vi": "Văn hoá giấu thông tin, che lỗi trong tổ chức",
+     "example": "A punitive culture creates institutional secrecy: site engineers stop reporting near-misses."
+    },
+    {
+     "term": "transitory submission",
+     "ipa": "/ˈtræn.zɪ.tər.i səbˈmɪʃ.ən/",
+     "vi": "Sự vâng lời tạm thời",
+     "example": "Shouting on site achieves only transitory submission; bad habits return when supervisors leave."
+    },
+    {
+     "term": "set firm boundaries",
+     "ipa": "",
+     "vi": "Đặt ranh giới, quy tắc rõ ràng",
+     "example": "We set firm boundaries on scope before we sign the contract."
+    },
+    {
+     "term": "disciplinarian",
+     "ipa": "/ˌdɪs.ə.plɪˈneə.ri.ən/",
+     "vi": "Người giữ kỷ luật nghiêm",
+     "example": "The project director must be a firm disciplinarian on safety."
+    }
+   ],
+   "compare": [
+    [
+     "Động lực",
+     "Sợ bị phạt, áp đặt từ trên xuống",
+     "Mục tiêu chung, tin tưởng, tôn trọng"
+    ],
+    [
+     "Dòng thông tin",
+     "Giấu lỗi, báo cáo số liệu đẹp",
+     "Minh bạch, báo rủi ro sớm"
+    ],
+    [
+     "Độ bền hành vi",
+     "Chỉ tuân thủ khi có người giám sát",
+     "Tự giác, bền vững"
+    ],
+    [
+     "Trong đấu thầu",
+     "Dọa phạt LDs ngay từ va chạm đầu",
+     "Cùng tìm nguyên nhân gốc, lập kế hoạch khôi phục tiến độ"
+    ]
+   ]
+  },
+  "errors": [
+   {
+    "group": "Thiếu to be",
+    "n": 9,
+    "repeat": true,
+    "ex": "He very famous. / they a poor endurance / the behavior just temporary",
+    "fix": "He is very famous. / they have poor endurance / the behaviour is only temporary"
+   },
+   {
+    "group": "Số nhiều & lượng từ",
+    "n": 8,
+    "repeat": true,
+    "ex": "many object / every families have / every children / many platform",
+    "fix": "many objects / every family has / every child / many platforms"
+   },
+   {
+    "group": "Chia động từ ngôi 3",
+    "n": 6,
+    "repeat": true,
+    "ex": "the government have / their school don't have / the teacher have ever beat",
+    "fix": "the government has / the school doesn't have / has the teacher ever beaten"
+   },
+   {
+    "group": "Quá khứ đơn",
+    "n": 7,
+    "repeat": true,
+    "ex": "I take my wife… come back / Some friend give you / My childhood spend",
+    "fix": "I brought my wife back / Did a friend give it to you? / My childhood was spent"
+   },
+   {
+    "group": "Đặt câu hỏi",
+    "n": 5,
+    "repeat": false,
+    "ex": "How you see that picture? / When you saw it? / do him want?",
+    "fix": "How did you find it? / When did you first see it? / does he want?"
+   },
+   {
+    "group": "Từ loại",
+    "n": 7,
+    "repeat": true,
+    "ex": "very scare / easy affect / easy to give up / keep everything balance",
+    "fix": "very scary / easily affected / give up easily / keep everything balanced"
+   },
+   {
+    "group": "Mạo từ & giới từ",
+    "n": 5,
+    "repeat": false,
+    "ex": "In Philippines / In north of Europe / I thinking in two sides",
+    "fix": "in the Philippines / in northern Europe / I see it from two sides"
+   },
+   {
+    "group": "Cấu trúc mệnh đề",
+    "n": 4,
+    "repeat": true,
+    "ex": "for the children can swim / some place have a pool / can free",
+    "fix": "so that the children can swim / a place that has a pool / can be free"
+   },
+   {
+    "group": "Phát âm",
+    "n": 3,
+    "repeat": true,
+    "ex": "mythology → my-tro-lo-gy / think / disciplinarian",
+    "fix": "/mɪˈθɒl.ə.dʒi/ / /θɪŋk/ / dis-i-pli-NAIR-ee-an"
+   }
+  ],
+  "grammar": [
+   {
+    "title": "To be + tính từ",
+    "formula": "S + am / is / are / was / were + adjective",
+    "rule": "Tiếng Anh không có câu 'chủ ngữ + tính từ' trần như tiếng Việt. Luôn cần to be (hoặc seem, look, become).",
+    "right": [
+     "The deadline is very tight.",
+     "The client was not happy last week."
+    ],
+    "wrong": [
+     "He very famous.",
+     "They a poor endurance."
+    ]
+   },
+   {
+    "title": "Every / each và many / some of",
+    "formula": "Every / Each + N số ít + V số ít · Many / Some of + N số nhiều",
+    "rule": "Every và each luôn đi với danh từ và động từ số ít. Many, several, some of đi với danh từ số nhiều có -s.",
+    "right": [
+     "Every subcontractor has to submit a method statement.",
+     "We have completed many projects for FDI clients."
+    ],
+    "wrong": [
+     "Every families have different ways.",
+     "many object"
+    ]
+   },
+   {
+    "title": "Ngôi thứ 3 số ít",
+    "formula": "He / She / It / The client + V-s · does / doesn't · has",
+    "rule": "Chủ ngữ số ít (the client, the government, the school) thì động từ thêm -s, dùng does/doesn't, has.",
+    "right": [
+     "The client wants our final price by Friday.",
+     "The school doesn't have a pool."
+    ],
+    "wrong": [
+     "The government have many programmes.",
+     "Their school don't have a pool."
+    ]
+   },
+   {
+    "title": "Quá khứ đơn với mốc thời gian",
+    "formula": "Last Friday / yesterday / two years ago / when… + V2 (took, brought, came, sent)",
+    "rule": "Có mốc thời gian đã qua thì mọi động từ trong câu đều ở quá khứ. 'Last Friday' không có 'the'.",
+    "right": [
+     "Last week the client took us around the site and showed us the access road.",
+     "I brought my family back to the city."
+    ],
+    "wrong": [
+     "I take my wife and my son come back.",
+     "My childhood spend on difficult environment."
+    ]
+   },
+   {
+    "title": "Câu hỏi có trợ động từ",
+    "formula": "Wh- + do / does / did / has + S + V nguyên mẫu? · Who + V-s? (khi who là chủ ngữ)",
+    "rule": "Đặt trợ động từ trước chủ ngữ. Sau did/does thì động từ về nguyên mẫu. Sau 'Do you think' là câu kể đầy đủ.",
+    "right": [
+     "How did you calculate this unit rate?",
+     "Which option does the client prefer?",
+     "Do you think the client will accept a 10% advance?"
+    ],
+    "wrong": [
+     "How you see that picture?",
+     "Which pet do him want?"
+    ]
+   },
+   {
+    "title": "Tính từ vs trạng từ, -ed vs -ing",
+    "formula": "V + adverb (-ly) · keep / be + adjective · -ing = gây ra cảm xúc, -ed = người có cảm xúc",
+    "rule": "Trạng từ bổ nghĩa cho động từ (give up easily). Tính từ đứng sau be/keep. A terrifying picture, terrified people.",
+    "right": [
+     "Junior staff give up easily under pressure.",
+     "The new rule was confusing, so the workers felt confused."
+    ],
+    "wrong": [
+     "they easy to give up",
+     "very scare"
+    ]
+   },
+   {
+    "title": "so that / mệnh đề quan hệ / although",
+    "formula": "so that + S + can + V · a place that / which + V · Although + clause, clause (không có but)",
+    "rule": "Chỉ mục đích dùng so that + mệnh đề, không dùng 'for + mệnh đề'. Although/despite đã là liên từ, không thêm 'but'.",
+    "right": [
+     "We changed the lifting sequence so that the crane can work at night.",
+     "We need a laydown area that has direct road access.",
+     "Although our price is higher, our programme is shorter."
+    ],
+    "wrong": [
+     "for the children can swim",
+     "some place have a pool"
+    ]
+   },
+   {
+    "title": "Mạo từ với tên nước và phương hướng",
+    "formula": "the Philippines / the UK / the US · the north of + nơi chốn · in northern Europe",
+    "rule": "Tên nước số nhiều hoặc có Republic/Kingdom cần 'the'. Vietnam, Japan, Korea thì không.",
+    "right": [
+     "We delivered a factory in the Philippines last year.",
+     "The new plant is in the north of the province."
+    ],
+    "wrong": [
+     "In Philippines",
+     "In north of Europe"
+    ]
+   }
+  ],
+  "exercises": [
+   {
+    "id": "b1",
+    "title": "Bài 1 · Điền to be",
+    "items": [
+     {
+      "type": "choice",
+      "q": "The tender deadline ___ very tight this time.",
+      "options": [
+       "am",
+       "is",
+       "are",
+       "was",
+       "were"
+      ],
+      "answer": [
+       "is"
+      ],
+      "explain": "Chủ ngữ số ít, hiện tại → is. Không bỏ to be trước tính từ."
+     },
+     {
+      "type": "choice",
+      "q": "Our site team ___ ready to mobilise next Monday.",
+      "options": [
+       "am",
+       "is",
+       "are",
+       "was",
+       "were"
+      ],
+      "answer": [
+       "is",
+       "are"
+      ],
+      "explain": "'Team' xem là một khối → is (tiếng Anh-Anh chấp nhận cả are)."
+     },
+     {
+      "type": "choice",
+      "q": "The client's consultant ___ not happy with our piling method last week.",
+      "options": [
+       "am",
+       "is",
+       "are",
+       "was",
+       "were"
+      ],
+      "answer": [
+       "was"
+      ],
+      "explain": "Có 'last week' → quá khứ was."
+     },
+     {
+      "type": "choice",
+      "q": "I think the lump-sum option ___ too risky for us.",
+      "options": [
+       "am",
+       "is",
+       "are",
+       "was",
+       "were"
+      ],
+      "answer": [
+       "is"
+      ],
+      "explain": "Sau 'I think' vẫn cần câu đầy đủ có động từ."
+     },
+     {
+      "type": "choice",
+      "q": "This variation ___ outside the original scope of work.",
+      "options": [
+       "am",
+       "is",
+       "are",
+       "was",
+       "were"
+      ],
+      "answer": [
+       "is"
+      ],
+      "explain": "'outside the scope' là cụm giới từ, vẫn cần to be."
+     }
+    ]
+   },
+   {
+    "id": "b2",
+    "title": "Bài 2 · Số nhiều, lượng từ, ngôi 3",
+    "items": [
+     {
+      "type": "choice",
+      "q": "Every subcontractor ___ to submit a method statement.",
+      "options": [
+       "have",
+       "has"
+      ],
+      "answer": [
+       "has"
+      ],
+      "explain": "Every + danh từ số ít + động từ số ít."
+     },
+     {
+      "type": "choice",
+      "q": "We have completed many ___ for FDI clients.",
+      "options": [
+       "project",
+       "projects"
+      ],
+      "answer": [
+       "projects"
+      ],
+      "explain": "Many + danh từ đếm được số nhiều."
+     },
+     {
+      "type": "choice",
+      "q": "The client ___ our final price by Friday.",
+      "options": [
+       "want",
+       "wants"
+      ],
+      "answer": [
+       "wants"
+      ],
+      "explain": "Chủ ngữ số ít → thêm -s."
+     },
+     {
+      "type": "choice",
+      "q": "Each ___ receives the same RFI responses.",
+      "options": [
+       "bidder",
+       "bidders"
+      ],
+      "answer": [
+       "bidder"
+      ],
+      "explain": "Each + danh từ số ít."
+     },
+     {
+      "type": "choice",
+      "q": "The main contractor ___ accept this risk.",
+      "options": [
+       "don't",
+       "doesn't"
+      ],
+      "answer": [
+       "doesn't"
+      ],
+      "explain": "Ngôi 3 số ít phủ định → doesn't."
+     },
+     {
+      "type": "choice",
+      "q": "Some of their ___ are unclear.",
+      "options": [
+       "requirement",
+       "requirements"
+      ],
+      "answer": [
+       "requirements"
+      ],
+      "explain": "Some of + danh từ số nhiều."
+     },
+     {
+      "type": "choice",
+      "q": "Every drawing in this package ___ a revision number.",
+      "options": [
+       "need",
+       "needs"
+      ],
+      "answer": [
+       "needs"
+      ],
+      "explain": "Every drawing là số ít → needs."
+     },
+     {
+      "type": "choice",
+      "q": "The consultant ___ many comments on our programme.",
+      "options": [
+       "have",
+       "has"
+      ],
+      "answer": [
+       "has"
+      ],
+      "explain": "Chủ ngữ số ít → has."
+     }
+    ]
+   },
+   {
+    "id": "b3",
+    "title": "Bài 3 · Quá khứ đơn (gõ động từ)",
+    "items": [
+     {
+      "type": "text",
+      "q": "Last Friday we (submit) ___ the technical proposal.",
+      "answer": [
+       "submitted"
+      ],
+      "explain": "Last Friday → quá khứ; không nói 'the last Friday'."
+     },
+     {
+      "type": "text",
+      "q": "The QS (send) ___ us twelve RFIs yesterday.",
+      "answer": [
+       "sent"
+      ],
+      "explain": "send → sent (bất quy tắc)."
+     },
+     {
+      "type": "text",
+      "q": "At the pre-tender meeting, the client (take) ___ us around the site.",
+      "answer": [
+       "took"
+      ],
+      "explain": "take → took. Lỗi cũ: 'I take… come back'."
+     },
+     {
+      "type": "text",
+      "q": "Two years ago our team (build) ___ a data centre for a Japanese client.",
+      "answer": [
+       "built"
+      ],
+      "explain": "build → built."
+     },
+     {
+      "type": "text",
+      "q": "We (not / receive) ___ the addendum until Tuesday.",
+      "answer": [
+       "didn't receive",
+       "did not receive"
+      ],
+      "explain": "Phủ định quá khứ: didn't + V nguyên mẫu."
+     },
+     {
+      "type": "text",
+      "q": "When the consultant came to our office, he (bring) ___ the revised drawings.",
+      "answer": [
+       "brought"
+      ],
+      "explain": "bring → brought. Cả hai động từ trong câu đều quá khứ."
+     }
+    ]
+   },
+   {
+    "id": "b4",
+    "title": "Bài 4 · Sửa câu hỏi (gõ lại cả câu)",
+    "items": [
+     {
+      "type": "text",
+      "q": "When you received the tender documents?",
+      "answer": [
+       "When did you receive the tender documents?"
+      ],
+      "explain": "Wh- + did + S + V nguyên mẫu."
+     },
+     {
+      "type": "text",
+      "q": "How you calculated this unit rate?",
+      "answer": [
+       "How did you calculate this unit rate?"
+      ],
+      "explain": "Thiếu did; sau did động từ về nguyên mẫu."
+     },
+     {
+      "type": "text",
+      "q": "Which option do the client prefer?",
+      "answer": [
+       "Which option does the client prefer?"
+      ],
+      "explain": "Client số ít → does."
+     },
+     {
+      "type": "text",
+      "q": "The consultant has approved the shop drawings?",
+      "answer": [
+       "Has the consultant approved the shop drawings?"
+      ],
+      "explain": "Đảo 'has' lên trước chủ ngữ."
+     },
+     {
+      "type": "text",
+      "q": "Who does review the BOQ in your team?",
+      "answer": [
+       "Who reviews the BOQ in your team?"
+      ],
+      "explain": "Who là chủ ngữ → không dùng does, động từ thêm -s."
+     },
+     {
+      "type": "text",
+      "q": "Do you think the client accept a 10% advance payment?",
+      "answer": [
+       "Do you think the client will accept a 10% advance payment?",
+       "Do you think the client would accept a 10% advance payment?",
+       "Do you think the client accepts a 10% advance payment?"
+      ],
+      "explain": "Sau 'Do you think' là câu kể đầy đủ: the client will accept…"
+     }
+    ]
+   },
+   {
+    "id": "b5",
+    "title": "Bài 5 · Từ loại",
+    "items": [
+     {
+      "type": "choice",
+      "q": "The client changed the scope very ___.",
+      "options": [
+       "sudden",
+       "suddenly"
+      ],
+      "answer": [
+       "suddenly"
+      ],
+      "explain": "Bổ nghĩa cho động từ 'changed' → trạng từ -ly."
+     },
+     {
+      "type": "choice",
+      "q": "Our team can ___ meet this milestone.",
+      "options": [
+       "easy",
+       "easily"
+      ],
+      "answer": [
+       "easily"
+      ],
+      "explain": "Bổ nghĩa cho động từ meet → easily."
+     },
+     {
+      "type": "choice",
+      "q": "The new permit rule was ___.",
+      "options": [
+       "confusing",
+       "confused"
+      ],
+      "answer": [
+       "confusing"
+      ],
+      "explain": "Sự việc gây ra cảm xúc → -ing."
+     },
+     {
+      "type": "choice",
+      "q": "Many workers felt ___ about the new rule.",
+      "options": [
+       "confusing",
+       "confused"
+      ],
+      "answer": [
+       "confused"
+      ],
+      "explain": "Người có cảm xúc → -ed."
+     },
+     {
+      "type": "choice",
+      "q": "We need to ___ the critical-path activities.",
+      "options": [
+       "priority",
+       "prioritise"
+      ],
+      "answer": [
+       "prioritise"
+      ],
+      "explain": "Sau 'need to' là động từ."
+     },
+     {
+      "type": "choice",
+      "q": "The night-shift programme is very ___ for the team.",
+      "options": [
+       "stress",
+       "stressful"
+      ],
+      "answer": [
+       "stressful"
+      ],
+      "explain": "Sau 'is very' cần tính từ."
+     },
+     {
+      "type": "choice",
+      "q": "All subcontractors must ___ with the specification.",
+      "options": [
+       "compliance",
+       "comply"
+      ],
+      "answer": [
+       "comply"
+      ],
+      "explain": "Sau must là động từ: comply with (lỗi cũ)."
+     },
+     {
+      "type": "choice",
+      "q": "We must keep the cash flow ___.",
+      "options": [
+       "balance",
+       "balanced"
+      ],
+      "answer": [
+       "balanced"
+      ],
+      "explain": "keep + tân ngữ + tính từ."
+     }
+    ]
+   },
+   {
+    "id": "b6",
+    "title": "Bài 6 · Mạo từ và cấu trúc câu",
+    "items": [
+     {
+      "type": "choice",
+      "q": "We delivered a factory in ___ Philippines last year.",
+      "options": [
+       "the",
+       "a",
+       "(không có)"
+      ],
+      "answer": [
+       "the"
+      ],
+      "explain": "Tên nước số nhiều → the Philippines."
+     },
+     {
+      "type": "choice",
+      "q": "The new plant is in ___ north of the province.",
+      "options": [
+       "the",
+       "a",
+       "(không có)"
+      ],
+      "answer": [
+       "the"
+      ],
+      "explain": "the north of + nơi chốn."
+     },
+     {
+      "type": "choice",
+      "q": "We changed the lifting sequence ___ the tower crane can work at night.",
+      "options": [
+       "for",
+       "so that",
+       "because of"
+      ],
+      "answer": [
+       "so that"
+      ],
+      "explain": "Chỉ mục đích + mệnh đề → so that."
+     },
+     {
+      "type": "choice",
+      "q": "We need a laydown area ___ has direct road access.",
+      "options": [
+       "that",
+       "what",
+       "(không có)"
+      ],
+      "answer": [
+       "that"
+      ],
+      "explain": "Mệnh đề quan hệ: an area that has…"
+     },
+     {
+      "type": "choice",
+      "q": "The client requires all bidders ___ a bid bond.",
+      "options": [
+       "submit",
+       "to submit",
+       "submitting"
+      ],
+      "answer": [
+       "to submit"
+      ],
+      "explain": "require + sb + to V."
+     },
+     {
+      "type": "text",
+      "q": "Sửa câu: Although our price is higher, but our programme is shorter.",
+      "answer": [
+       "Although our price is higher, our programme is shorter."
+      ],
+      "explain": "Bỏ 'but': although đã là liên từ (lỗi cũ)."
+     },
+     {
+      "type": "text",
+      "q": "Sửa câu: The temporary works can free if we reuse the formwork.",
+      "answer": [
+       "The temporary works can be free if we reuse the formwork."
+      ],
+      "explain": "can + V nguyên mẫu; 'free' là tính từ nên cần 'be'."
+     }
+    ]
+   }
+  ],
+  "rewrites": [
+   {
+    "orig": "He very famous.",
+    "err": "Thiếu to be",
+    "b2": "He is very famous.",
+    "c1": "He is widely regarded as a master.",
+    "work": "Our company is widely regarded as a reliable partner for FDI clients."
+   },
+   {
+    "orig": "Every families have different ways to learn.",
+    "err": "Every + số ít",
+    "b2": "Every family has a different way of learning.",
+    "c1": "Each family has its own approach to learning.",
+    "work": "Each subcontractor has its own method, but all must follow the master programme."
+   },
+   {
+    "orig": "I take my wife and my son come back to the city.",
+    "err": "Quá khứ; take → bring back",
+    "b2": "I brought my wife and son back to the city.",
+    "c1": "I've just brought my family back to the city.",
+    "work": "Last week we brought the design team back to site to close out the open RFIs."
+   },
+   {
+    "orig": "How you see that picture? Some friend give you?",
+    "err": "Thiếu did",
+    "b2": "How did you find the picture? Did a friend send it to you?",
+    "c1": "How did you come across it? Was it a recommendation?",
+    "work": "How did you arrive at this quantity? Was it taken from the consultant's model?"
+   },
+   {
+    "orig": "Which pet do you want, do him want?",
+    "err": "does he",
+    "b2": "Which pet does he want?",
+    "c1": "What kind of pet is he hoping for?",
+    "work": "Which payment option does the client prefer: milestone or monthly valuation?"
+   },
+   {
+    "orig": "If work so stressed, they easy to give up.",
+    "err": "Thiếu to be; easy → easily",
+    "b2": "They give up easily when the work is very stressful.",
+    "c1": "They tend to give up quickly under sustained pressure.",
+    "work": "Under a fast-track programme, junior staff tend to leave quickly, so we plan backup resources for key roles."
+   },
+   {
+    "orig": "If their school don't have a pool… for the children can swim.",
+    "err": "doesn't; so that",
+    "b2": "If a school doesn't have a pool, they take students to a centre that has one so that they can swim.",
+    "c1": "Schools without a pool send students to a public facility so they can still train.",
+    "work": "If the site doesn't have enough laydown space, we will rent an area nearby so that deliveries are not delayed."
+   },
+   {
+    "orig": "The government have many program for free.",
+    "err": "has; many programmes",
+    "b2": "The government has many free programmes.",
+    "c1": "The state funds a wide range of free programmes.",
+    "work": "The client has issued many addenda, so we request a two-week extension to the tender deadline."
+   },
+   {
+    "orig": "I think the teacher to force the children can keep discipline.",
+    "err": "Câu thiếu động từ chính",
+    "b2": "I think teachers used force so that children would keep discipline.",
+    "c1": "Teachers relied on force to maintain discipline.",
+    "work": "Rather than relying on penalties, we propose a joint recovery plan to keep the project on track."
+   }
+  ],
+  "pron": [
+   {
+    "word": "mythology",
+    "ipa": "/mɪˈθɒl.ə.dʒi/",
+    "tip": "Âm đầu 'MITH' với /θ/ (lưỡi giữa răng), không đọc 'my-tro-lo-gy'. Nhấn âm 2.",
+    "example": "Greek mythology often mirrors modern corporate power struggles."
+   },
+   {
+    "word": "history",
+    "ipa": "/ˈhɪs.tər.i/",
+    "tip": "Văn nói thường chỉ 2 âm: HIS-tree.",
+    "example": "Our company has a proven history of high-rise delivery."
+   },
+   {
+    "word": "psychology",
+    "ipa": "/saɪˈkɒl.ə.dʒi/",
+    "tip": "Chữ 'p' câm: sy-KOL-uh-jee.",
+    "example": "Understanding client psychology is key in commercial negotiations."
+   },
+   {
+    "word": "endurance",
+    "ipa": "/ɪnˈdʒʊə.rəns/",
+    "tip": "Nhấn âm 2, âm cuối /s/ rõ ràng.",
+    "example": "Basement works require great endurance in the rainy season."
+   },
+   {
+    "word": "disciplinarian",
+    "ipa": "/ˌdɪs.ə.plɪˈneə.ri.ən/",
+    "tip": "6 âm tiết, nhấn vào 'NAIR': dis-i-pli-NAIR-ee-an.",
+    "example": "A project director must be a firm disciplinarian on safety."
+   },
+   {
+    "word": "think",
+    "ipa": "/θɪŋk/",
+    "tip": "/θ/: đặt đầu lưỡi giữa hai hàm răng, đẩy hơi nhẹ (lỗi cũ).",
+    "example": "We think this alternative reduces the structural steel budget."
+   }
+  ],
+  "speaking": {
+   "task": "Nói 1 phút theo PREP với Chủ đầu tư: phạt hợp đồng (LDs) hay cùng tìm nguyên nhân gốc khi dự án chậm?",
+   "starter": "Rather than relying on penalties, we propose a joint recovery plan to keep the project on track."
+  },
+  "transcriptTab": "06_Lesson_Library"
+ }
+]
