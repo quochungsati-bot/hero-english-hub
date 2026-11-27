@@ -155,6 +155,12 @@ pre{white-space:pre-wrap;background:var(--soft);padding:16px;border-radius:12px;
 .qz{padding:12px 0;border-bottom:1px solid var(--line)}.qz:last-child{border:0}.qz .opts{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.qz .opt.ok{background:var(--greenbg);border-color:var(--green);color:var(--green);font-weight:600}.qz .opt.bad{background:var(--redbg);border-color:var(--red);color:var(--red)}.qz .fb{margin-top:6px;font-size:14px}.qz .fb.ok{color:var(--green)}.qz .fb.bad{color:var(--red)}.qz input.ok{border-color:var(--green)}.qz input.bad{border-color:var(--red)}
 .gf{font:600 14px/1.5 ui-monospace,Menlo,monospace;background:var(--soft);padding:6px 10px;border-radius:8px;margin:6px 0}.ok-t{color:var(--green)}.bad-t{color:var(--red);text-decoration:line-through;text-decoration-thickness:1px}
 .tr{white-space:pre-wrap;font-size:15px;line-height:1.6}.tr b{color:var(--teal)}details.part{border-bottom:1px solid var(--line);padding:10px 0}details.part>summary{cursor:pointer;font-weight:600;list-style:none}details.part>summary::-webkit-details-marker{display:none}
+.player{position:sticky;top:0;z-index:5;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 14px;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.tl{display:flex;gap:10px;align-items:flex-start;padding:6px 8px;border-radius:8px;line-height:1.6}.tl.now{background:var(--amberbg)}.tl .spk{flex:none;border:0;background:var(--soft);border-radius:6px;font:600 12px Inter,sans-serif;padding:3px 8px;color:var(--mute);min-width:84px;text-align:left;margin-top:2px}.tl.me .spk{background:var(--tealbg);color:var(--teal)}.tl .tx{flex:1}
+#aPlayer{margin-bottom:10px}#aPlayer input[type=range]{accent-color:#9a4a26;flex:1;min-height:0;padding:0;margin:0;border:0;background:none}.au-seek{margin-top:10px;flex-wrap:nowrap;gap:10px}.au-seek .mute{white-space:nowrap;font-variant-numeric:tabular-nums}.au-opt{margin-top:4px}.au-opt label{margin:0;font-weight:400;font-size:13px}.au-opt input{width:auto;min-height:0}.au-opt .btn{font-size:13px;padding:4px 8px;min-height:0}
+mark.err{background:var(--redbg);color:inherit;border-bottom:2px solid var(--red);border-radius:3px;padding:0 2px;cursor:pointer}mark.nw{background:var(--amberbg);color:inherit;border-bottom:2px dotted var(--amber);border-radius:3px;padding:0 1px;cursor:pointer}mark.err mark.nw{background:transparent}
+.fxbox{margin:2px 0 8px 100px;padding:10px 12px;background:var(--soft);border-radius:10px;font-size:15px}.tpart{padding:8px 0 12px;border-bottom:1px solid var(--line)}.tpart:last-child{border:0}
+@media (max-width:600px){.tl{flex-direction:column;gap:2px;padding:6px 4px}.tl .spk{min-width:0}.fxbox{margin-left:0}.player{top:0;border-radius:0 0 14px 14px;margin:0 -4px}}
 .topbar{display:none;justify-content:space-between;align-items:center;margin-bottom:14px}
 .lvbig{font:700 34px/1.1 Inter,system-ui,sans-serif;letter-spacing:-.02em;font-variant-numeric:tabular-nums}.lvbig span{font-size:16px;font-weight:600;color:var(--mute);letter-spacing:0}
 .cefr{display:flex;gap:4px;margin-top:14px}.cg{min-width:0}.cg>span{display:block;font:600 12px Inter,sans-serif;color:var(--mute);margin-bottom:4px;padding-left:2px}.cg>div{display:flex;gap:2px}
@@ -498,7 +504,7 @@ const NAV=[['home','Trang chủ'],['roadmap','Lộ trình'],['lab','Mô phỏng'
 const navA=([k,l])=>`<a href="#${k}" data-v="${k}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICON[k]}</svg><span>${l}</span></a>`;
 $('#side').innerHTML=`<div class="brand">Hero English Hub<small id="brandSub">Executive · GC · FDI</small></div>${NAV.map(navA).join('')}<div class="sync" id="syncS"><i class="dot"></i><span>Dữ liệu trên máy</span></div>`;
 $('#bottom').innerHTML=NAV.map(navA).join('');
-function route(){const v=(location.hash||'#home').slice(1);const k=NAV.some(n=>n[0]===v)?v:'home';$$('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+k));$$('nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===k));window.scrollTo(0,0);if('speechSynthesis' in window)speechSynthesis.cancel()}
+function route(){const v=(location.hash||'#home').slice(1);const k=NAV.some(n=>n[0]===v)?v:'home';$$('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+k));$$('nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===k));window.scrollTo(0,0);if('speechSynthesis' in window)speechSynthesis.cancel();if(typeof TP!=='undefined'){TP.run++;TP.on=false}if(typeof AUD!=='undefined')AUD.pause()}
 window.addEventListener('hashchange',route);
 function applyTheme(){if(C.theme)document.documentElement.dataset.theme=C.theme;else delete document.documentElement.dataset.theme}
 
@@ -767,19 +773,108 @@ function renderLib(){const el=$('#pr-lib');if(!el)return;
    return `<div class="qz"><div>${i+1}. ${esc(q.q)}</div><form class="row" data-qf="${esc(k)}" style="margin-top:8px;flex-wrap:nowrap"><input value="${esc(a?a.v:'')}" class="${a?(a.ok?'ok':'bad'):''}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Câu trả lời"><button class="btn sm" style="white-space:nowrap;flex:none">Kiểm tra</button></form>${fb}</div>`}).join('')+'</div>'}).join('')}
  if(LIBT==='rw')h+=`<p class="mute">Câu gốc anh nói trong buổi → bản B2 (đúng, rõ) → bản C1 (gọn, kiểu Giám đốc) → cùng cấu trúc dùng trong họp thầu. Nói to cả 3 câu.</p>`+l.rewrites.map((w,i)=>`<div class="card" style="margin-bottom:12px"><div class="mute">${i+1}. Anh nói: <span class="bad-t">${esc(w.orig)}</span> · ${esc(w.err)}</div>${[['B2',w.b2,''],['C1',w.c1,'c1'],['Trong họp thầu',w.work,'c1']].map(([t,x,c])=>`<div class="ver ${c}"><b style="font-size:12px">${t}</b><div class="row" style="flex-wrap:nowrap"><span style="flex:1">${esc(x)}</span><button class="btn sm ghost" data-say="${esc(x)}">Nghe</button></div></div>`).join('')}</div>`).join('');
  if(LIBT==='voc')h+=`<div class="card" style="margin-bottom:12px"><h3>Từ vựng của buổi</h3>${l.prep.vocab.map(v=>`<div class="lesson"><div><b style="font-weight:600">${esc(v.term)}</b> <span class="mute">${esc(v.ipa)}</span><div class="mute">${esc(v.vi)}</div><i>${esc(v.example)}</i></div><button class="btn sm ghost" data-say="${esc(v.term+'. '+v.example)}">Nghe</button></div>`).join('')}</div><div class="card"><h3>Phát âm cần luyện</h3>${l.pron.map(v=>`<div class="lesson"><div><b style="font-weight:600">${esc(v.word)}</b> <span class="mute">${esc(v.ipa)}</span><div class="mute">${esc(v.tip)}</div><i>${esc(v.example)}</i></div><div class="row" style="flex:none"><button class="btn sm" data-say="${esc(v.word)}" data-rate=".7">Từ</button><button class="btn sm ghost" data-say="${esc(v.example)}">Câu</button></div></div>`).join('')}</div>`;
- if(LIBT==='tr'){const ps=libParts(l.id),q=LIBQ.trim().toLowerCase();
-  if(!ps.length)h+=`<div class="empty">Toàn văn buổi học nằm trong Sheet (tab ${esc(l.transcriptTab||'06_Lesson_Library')}), không để trong repo công khai.<br>${C.url?'Nếu vẫn chưa thấy: dán bản Code.gs mới vào Apps Script → Deploy → Manage deployments → New version, rồi vào Cài đặt bấm “Kéo dữ liệu từ Sheet”.':'Hãy kết nối Sheet trong Cài đặt để xem.'}</div>`;
-  else{const f=q?ps.filter(p=>[p.topic,p.transcript,p.hero_lines,p.corrections].join(' ').toLowerCase().includes(q)):ps;
-   h+=`<div class="row" style="margin-bottom:10px"><input id="libQ" placeholder="Tìm trong toàn văn…" value="${esc(LIBQ)}" style="max-width:320px"><span class="mute">${f.length}/${ps.length} phân đoạn</span></div><div class="card">${f.map(p=>`<details class="part"${q?' open':''}><summary>Part ${esc(String(p.part).padStart(2,'0'))} · <span class="mute">${esc(p.time)}</span><div class="mute" style="font-weight:400">${esc(p.topic)}</div></summary><div class="tr" style="margin-top:8px">${heroLines(p.transcript)}</div>${p.hero_lines?`<h3 style="margin-top:12px;font-size:15px">Câu cần sửa</h3><div class="tr mute">${esc(p.hero_lines)}</div>`:''}${p.corrections?`<h3 style="margin-top:12px;font-size:15px">Bản sửa của báo cáo</h3><div class="tr">${esc(p.corrections)}</div>`:''}</details>`).join('')||'<div class="empty">Không có phân đoạn khớp</div>'}</div>`}}
+ if(LIBT==='tr')h+=trView(l);
  el.innerHTML=h}
 $('#pr-lib').addEventListener('click',e=>{const t=e.target.closest('[data-lo],[data-ltab],[data-qk],[data-say],[data-lreset]');if(!t)return;
  if(t.dataset.say!=null){say(t.dataset.say,+(t.dataset.rate||.9));return}
- if(t.dataset.lo!=null){LIBO=t.dataset.lo;LIBT=t.dataset.lt||'sum';LIBQ='';renderLib();$('#v-preply').scrollIntoView();return}
- if(t.dataset.ltab){LIBT=t.dataset.ltab;renderLib();return}
+ if(t.dataset.lo!=null){tpStop();LIBO=t.dataset.lo;LIBT=t.dataset.lt||'sum';LIBQ='';renderLib();$('#v-preply').scrollIntoView();return}
+ if(t.dataset.ltab){tpStop();LIBT=t.dataset.ltab;renderLib();return}
  if(t.dataset.lreset){if(!confirm('Xoá kết quả bài tập của bài này?'))return;libRev(t.dataset.lreset).a={};saveP();renderLib();return}
  if(t.dataset.qk){libAns(t.dataset.qk,t.dataset.qv)}});
 $('#pr-lib').addEventListener('submit',e=>{const f=e.target.closest('[data-qf]');if(!f)return;e.preventDefault();const v=f.querySelector('input').value;if(!v.trim())return toast('Gõ câu trả lời trước');libAns(f.dataset.qf,v)});
-$('#pr-lib').addEventListener('input',e=>{if(e.target.id==='libQ'){LIBQ=e.target.value;clearTimeout(renderLib.t);renderLib.t=setTimeout(()=>{const pos=e.target.selectionStart;renderLib();const i=$('#libQ');if(i){i.focus();i.setSelectionRange(pos,pos)}},250)}});
+$('#pr-lib').addEventListener('input',e=>{if(e.target.id==='libQ'){LIBQ=e.target.value;clearTimeout(renderLib.t);renderLib.t=setTimeout(()=>{const pos=e.target.selectionStart;tpStop();renderLib();const i=$('#libQ');if(i){i.focus();i.setSelectionRange(pos,pos)}},250)}});
+/* Toàn văn: tô câu sai (chạm xem bản sửa B2), tô từ mới (chạm xem nghĩa), nghe lại cả buổi bằng 2 giọng */
+let TRF=false;const TP={on:false,i:0,run:0,rate:1,heroOnly:false,lines:[]};
+const reEsc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+function trFixes(p){const fr=String(p.hero_lines||'').split('\n').map(x=>{const m=x.match(/^(\d+)\.\s*(.*)$/);if(!m)return null;let t=m[2].trim();const a=t.indexOf('"'),b=t.lastIndexOf('"');if(a>=0&&b>a)t=t.slice(a+1,b);return{n:+m[1],said:t}}).filter(Boolean);
+ const fx={};String(p.b2_fixes||'').split('\n').forEach(x=>{const [n,fix,why]=x.split('|');if(n)fx[+n]={fix:(fix||'').trim(),why:(why||'').trim()}});
+ const rp={};String(p.corrections||'').split('\n').forEach(x=>{const m=x.match(/^(\d+)\.\s*✔?\s*(.*)$/);if(m)rp[+m[1]]=m[2]});
+ return fr.map(f=>({...f,...(fx[f.n]||{}),report:rp[f.n]||''}))}
+function trLines(p){return String(p.transcript||'').split('\n').map(x=>{const m=x.match(/^([A-Za-zÀ-ỹ]+):\s*(.*)$/);return m?{spk:m[1],text:m[2]}:{spk:'',text:x}}).filter(x=>x.text.trim())}
+function trMarkWords(h,words){if(!words.length)return h;const rx=new RegExp('\\b('+words.map(w=>reEsc(esc(w.term))).join('|')+')\\b','gi');return h.replace(rx,m=>`<mark class="nw" data-nw="${esc(m.toLowerCase())}" tabindex="0">${m}</mark>`)}
+function trLineHtml(text,spk,fixes,words,pk){let ranges=[];
+ if(spk==='Hero')fixes.forEach((f,k)=>{if(!f.fix||f.fix==='✓')return;const pcs=f.said.split(/\.\.\.|…/).map(s=>s.trim().replace(/^[,.;:!?\s]+|[,;:\s]+$/g,'')).filter(s=>s.length>=4).sort((a,b)=>b.length-a.length);const pc=pcs[0];if(!pc)return;const i=text.toLowerCase().indexOf(pc.toLowerCase());if(i<0)return;if(ranges.some(r=>i<r[1]&&i+pc.length>r[0]))return;ranges.push([i,i+pc.length,k])});
+ ranges.sort((a,b)=>a[0]-b[0]);let h='',pos=0;for(const [a,b,k] of ranges){h+=trMarkWords(esc(text.slice(pos,a)),words)+`<mark class="err" data-fx="${pk}-${k}" tabindex="0">${trMarkWords(esc(text.slice(a,b)),words)}</mark>`;pos=b}
+ return h+trMarkWords(esc(text.slice(pos)),words)}
+function trView(l){const ps=libParts(l.id),q=LIBQ.trim().toLowerCase(),tab=esc(l.transcriptTab||'06_Lesson_Library');
+ if(!ps.length)return `<div class="card"><h3>Chưa đồng bộ toàn văn về app</h3><p>Toàn văn buổi học đã nằm sẵn trong Sheet (tab ${tab}) nhưng app chỉ đọc được sau khi Apps Script được cập nhật. Toàn văn không để trong repo vì repo công khai.</p>
+  ${C.url?`<ol><li>Mở <b>Google Sheet → Extensions → Apps Script</b>.</li><li>Xoá nội dung cũ, dán toàn bộ <a href="https://github.com/quochungsati-bot/hero-english-hub/blob/main/apps-script/Code.gs" target="_blank" rel="noopener">Code.gs mới</a>, bấm Lưu.</li><li><b>Deploy → Manage deployments → ✎ Edit → Version: New version → Deploy</b> (giữ nguyên URL /exec cũ).</li><li>Quay lại đây bấm nút dưới.</li></ol><button class="btn pri sm" data-trpull="1">Kéo dữ liệu từ Sheet</button>`:'<p>Hãy kết nối Sheet trong <a href="#config">Cài đặt</a> trước.</p>'}</div>`;
+ const words=(l.newWords||[]).slice().sort((a,b)=>b.term.length-a.term.length);
+ let nErr=0;const view=ps.map(p=>{const fx=trFixes(p);const ls=trLines(p);const errs=fx.filter(f=>f.fix&&f.fix!=='✓').length;nErr+=errs;return{p,fx,ls,errs}});
+ const f=view.filter(v=>(!TRF||v.errs)&&(!q||[v.p.topic,v.p.transcript].join(' ').toLowerCase().includes(q)));
+ TP.lines=[];let li=0;if(l.audio)setTimeout(()=>auCached(l));const aRdy=auReady(l);
+ const body=f.map(v=>{const pk=v.p.id;return `<section class="tpart" id="tp-${esc(pk)}"><div class="row sp" style="margin:6px 0"><b>Part ${esc(String(v.p.part).padStart(2,'0'))} <span class="mute" style="font-weight:400">· ${esc(v.p.time)}</span></b>${v.errs?`<span class="tag new">${v.errs} câu cần sửa</span>`:''}</div><div class="mute" style="margin-bottom:6px">${esc(v.p.topic)}</div>`+
+  v.ls.map((x,j)=>{const i=li++;TP.lines.push({spk:x.spk,t:trT(v.p,j),text:x.text.replace(/\((laughs|cười)\)/gi,'').trim()});return `<div class="tl ${x.spk==='Hero'?'me':''}" data-li="${i}"><button class="spk" data-tplay="${i}" title="Nghe từ dòng này">▶ ${esc(x.spk||'…')}</button><span class="tx">${trLineHtml(x.text,x.spk,v.fx,words,esc(pk))}</span></div><div class="fxbox" data-fxbox="${i}" hidden></div>`}).join('')+
+  `${v.p.corrections?`<details style="margin:6px 0 4px"><summary class="mute" style="cursor:pointer">Bản nâng cấp của báo cáo (C-level)</summary><div class="tr mute">${esc(v.p.corrections)}</div></details>`:''}</section>`}).join('');
+ const aud=l.audio?`<div class="player au" id="aPlayer">${auBar(l)}</div>`:'';
+ return (aRdy?aud:`${aud}<div class="player" id="tPlayer"><div class="row" style="gap:8px"><button class="btn pri sm" id="tpPlay">${TP.on?'❚❚ Tạm dừng':'▶ Nghe cả buổi'}</button><button class="btn sm" id="tpPrev" aria-label="Dòng trước">⏮</button><button class="btn sm" id="tpNext" aria-label="Dòng sau">⏭</button>
+  <select id="tpRate" style="width:auto;min-height:36px;padding:4px 8px" aria-label="Tốc độ">${[.75,.9,1,1.15,1.3].map(r=>`<option value="${r}"${r===TP.rate?' selected':''}>${r}×</option>`).join('')}</select>
+  <label class="chip" style="margin:0"><input type="checkbox" id="tpHero" style="width:auto;min-height:0"${TP.heroOnly?' checked':''}> Chỉ câu của anh</label></div>
+  <div class="mute" id="tpStat" style="margin-top:6px">Giọng máy đọc lại lời thoại (không phải bản ghi âm gốc). Chạm ▶ ở đầu dòng để nghe từ đó.</div></div>`)+`
+ <div class="row" style="margin:12px 0"><input id="libQ" placeholder="Tìm trong toàn văn…" value="${esc(LIBQ)}" style="max-width:280px"><button class="chip ${TRF?'on':''}" data-trf="1">Chỉ đoạn có câu sai (${nErr})</button>${aRdy?'<div class="mute" style="flex-basis:100%">Đang nghe audio gốc. Chạm ▶ ở đầu dòng để nghe từ câu đó. Mốc thời gian từng câu là ước lượng, có thể lệch; dùng −10s / +10s để chỉnh.</div>':''}<span class="mute"><mark class="err">câu sai</mark> chạm để xem bản sửa · <mark class="nw">từ mới</mark> chạm để xem nghĩa</span></div>
+ <div class="card">${body||'<div class="empty">Không có phân đoạn khớp</div>'}</div>`}
+function trT(p,j){const v=String(p.line_times||'').split(',')[j];return v!=null&&v.trim()!==''&&isFinite(+v)?+v:null}
+function auReady(l){return typeof AUD!=='undefined'&&AU.id===l.id&&!!AUD.src}
+function trVoices(){const v=(window.speechSynthesis?.getVoices?.()||[]).filter(x=>/^en/i.test(x.lang));
+ const m=v.find(x=>/en-GB/i.test(x.lang)&&/Daniel|George|Ryan|Arthur|Oliver|Male|Thomas/i.test(x.name))||v.find(x=>/Daniel|George|Ryan|Male|Guy|Alex|Fred|David|Mark/i.test(x.name))||VOICE||v[0]||null;
+ const f=v.find(x=>/Samantha|Zira|Jenny|Aria|Female|Karen|Moira|Serena|Libby|Sonia|Susan|Victoria|Tessa|Google US English/i.test(x.name)&&x!==m)||v.find(x=>x!==m)||m;return{m,f,same:!m||!f||m===f}}
+function tpMark(){$$('#pr-lib .tl.now').forEach(x=>x.classList.remove('now'));const el=$(`#pr-lib .tl[data-li="${TP.i}"]`);if(el&&TP.on){el.classList.add('now');el.scrollIntoView({block:'center',behavior:'smooth'})}
+ const b=$('#tpPlay');if(b)b.textContent=TP.on?'❚❚ Tạm dừng':'▶ Nghe cả buổi';const s=$('#tpStat');if(s&&TP.on)s.textContent=`Đang đọc dòng ${TP.i+1}/${TP.lines.length} · ${TP.lines[TP.i]?.spk||''}`}
+function tpNextIdx(i){while(i<TP.lines.length&&TP.heroOnly&&TP.lines[i].spk!=='Hero')i++;return i}
+function tpGo(i){if(!('speechSynthesis' in window))return toast('Trình duyệt không hỗ trợ đọc');speechSynthesis.cancel();const run=++TP.run;i=tpNextIdx(Math.max(0,i));if(i>=TP.lines.length){TP.on=false;TP.i=0;tpMark();toast('Đã nghe hết buổi học');return}
+ TP.on=true;TP.i=i;if(typeof AUD!=='undefined')AUD.pause();tpMark();const L=TP.lines[i],V=trVoices(),hero=L.spk==='Hero';const parts=L.text.match(/[^.!?]+[.!?…]*/g)||[L.text];let k=0;
+ const next=()=>{if(run!==TP.run)return;if(k>=parts.length){tpGo(i+1);return}const u=new SpeechSynthesisUtterance(parts[k++].trim());u.lang='en-GB';const vo=hero?V.m:V.f;if(vo){u.voice=vo;u.lang=vo.lang}u.rate=TP.rate*(hero?.95:1);u.pitch=V.same?(hero?.8:1.25):1;u.onend=()=>{if(run===TP.run)setTimeout(next,hero?220:150)};u.onerror=()=>{if(run===TP.run)setTimeout(next,100)};speechSynthesis.speak(u)};next()}
+function tpStop(){TP.run++;TP.on=false;window.speechSynthesis?.cancel();tpMark()}
+function trBox(i,html){const b=$(`#pr-lib [data-fxbox="${i}"]`);if(!b)return;if(!b.hidden&&b.dataset.k===html.k){b.hidden=true;return}b.dataset.k=html.k;b.innerHTML=html.h;b.hidden=false}
+$('#pr-lib').addEventListener('click',e=>{if(LIBT!=='tr')return;const t=e.target;
+ if(t.closest('#tpPlay')){TP.on?tpStop():tpGo(TP.i);return}
+ if(t.closest('#tpPrev')){tpGo(Math.max(0,TP.i-1));return}
+ if(t.closest('#tpNext')){tpGo(TP.i+1);return}
+ const pl=t.closest('[data-tplay]');if(pl){const i=+pl.dataset.tplay,l=LIB.find(x=>x.id===LIBO),T=TP.lines[i]?.t;if(l&&auReady(l)&&T!=null){tpStop();AUD.currentTime=T;AUD.play().catch(x=>toast('Không phát được: '+x.message))}else tpGo(i);return}
+ if(t.closest('[data-trf]')){TRF=!TRF;tpStop();renderLib();return}
+ if(t.closest('[data-trpull]')){pull().then(()=>{renderLib();if(!libParts(LIBO).length)toast('Chưa thấy toàn văn: kiểm tra lại bước Deploy → New version')});return}
+ const er=t.closest('mark.err[data-fx]'),nw=t.closest('mark.nw[data-nw]'),line=t.closest('.tl');
+ if(nw&&line&&!er){const l=LIB.find(x=>x.id===LIBO),w=(l.newWords||[]).find(x=>x.term.toLowerCase()===nw.dataset.nw);if(w)trBox(line.dataset.li,{k:'w'+w.term,h:`<b>${esc(w.term)}</b> <span class="mute">${esc(w.ipa||'')}</span> · ${esc(w.vi)} <button class="btn sm ghost" data-say="${esc(w.term)}">Nghe</button>`});return}
+ if(er&&line){const [pk,k]=[er.dataset.fx.replace(/-\d+$/,''),+er.dataset.fx.match(/-(\d+)$/)[1]];const p=libParts(LIBO).find(x=>x.id===pk);if(!p)return;const f=trFixes(p)[k];
+  trBox(line.dataset.li,{k:'e'+er.dataset.fx,h:`<div class="mute">Anh nói: <span class="bad-t">${esc(f.said)}</span></div><div class="ver"><b style="font-size:12px">Sửa B2</b><div class="row" style="flex-wrap:nowrap"><span style="flex:1">${esc(f.fix)}</span><button class="btn sm ghost" data-say="${esc(f.fix)}">Nghe</button></div></div>${f.why?`<div class="mute">Lý do: ${esc(f.why)}</div>`:''}${f.report?`<div class="ver c1"><b style="font-size:12px">Bản nâng cấp của báo cáo</b><div>${esc(f.report)}</div></div>`:''}`});return}});
+$('#pr-lib').addEventListener('change',e=>{if(e.target.id==='tpRate'){TP.rate=+e.target.value;if(TP.on)tpGo(TP.i)}if(e.target.id==='tpHero'){TP.heroOnly=e.target.checked;if(TP.on)tpGo(TP.i)}});
+$('#pr-lib').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('mark[tabindex]')){e.preventDefault();e.target.click()}});
+/* Audio thật của buổi học: file riêng tư trong Google Drive của anh (đọc qua Apps Script + token) hoặc file chọn từ máy; lưu lại trong IndexedDB của trình duyệt */
+const IDB={p:null,open(){return this.p||(this.p=new Promise((res,rej)=>{try{const r=indexedDB.open('hero-audio',1);r.onupgradeneeded=()=>r.result.createObjectStore('a');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}catch(e){rej(e)}}))},
+ async get(k){const db=await this.open();return new Promise((res,rej)=>{const q=db.transaction('a').objectStore('a').get(k);q.onsuccess=()=>res(q.result||null);q.onerror=()=>rej(q.error)})},
+ async put(k,v){const db=await this.open();return new Promise((res,rej)=>{const t=db.transaction('a','readwrite');t.objectStore('a').put(v,k);t.oncomplete=()=>res();t.onerror=()=>rej(t.error)})},
+ async drop(k){const db=await this.open();return new Promise(res=>{const t=db.transaction('a','readwrite');t.objectStore('a').delete(k);t.oncomplete=()=>res();t.onerror=()=>res()})}};
+const AUD=new Audio();AUD.preload='auto';const AU={id:'',state:'',pct:0,err:'',cur:-1,follow:true,tried:''};
+const fmtT=s=>{s=Math.max(0,Math.floor(s||0));return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`};
+function auSet(l,blob){if(AUD.src)URL.revokeObjectURL(AUD.src);AUD.src=URL.createObjectURL(blob);AUD.playbackRate=TP.rate;AU.id=l.id;AU.err='';AU.cur=-1}
+async function auCached(l){if(AU.tried===l.id)return;AU.tried=l.id;try{const b=await IDB.get('audio:'+l.id);if(b&&LIBO===l.id){auSet(l,b);if(LIBT==='tr')renderLib()}}catch(e){}}
+async function auDrive(l){if(!C.url)return toast('Hãy kết nối Sheet trong Cài đặt trước');AU.state='loading';AU.pct=0;AU.err='';renderLib();
+ try{let off=0,size=1,mime='audio/mp4';const parts=[];while(off<size){const j=await api({action:'audio',name:l.audio.name,offset:off,length:4194304});size=+j.size||0;mime=j.mime||mime;if(!j.data)break;const bin=atob(j.data),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);parts.push(u);off+=u.length;AU.pct=size?Math.round(off/size*100):0;const pe=$('#auPct');if(pe)pe.textContent=AU.pct+'%'}
+  const blob=new Blob(parts,{type:mime});await IDB.put('audio:'+l.id,blob).catch(()=>{});auSet(l,blob);AU.state='';renderLib();toast('Đã tải audio. Lần sau mở là nghe ngay.')}
+ catch(e){AU.state='';AU.err=/Unknown action/i.test(e.message)?'Apps Script đang chạy bản cũ: cần dán Code.gs mới và Deploy → New version.':e.message;renderLib()}}
+async function auFile(l,file){if(!file)return;if(!/^audio\/|\.(m4a|mp3|webm|ogg|wav)$/i.test(file.type+' '+file.name))return toast('Hãy chọn file audio');await IDB.put('audio:'+l.id,file).catch(()=>{});auSet(l,file);renderLib();toast('Đã lưu audio trên máy này')}
+function auLineAt(t){let i=-1;for(let k=0;k<TP.lines.length;k++){const x=TP.lines[k].t;if(x==null)continue;if(x<=t+.25)i=k;else break}return i}
+function auUI(){const b=$('#auPlay');if(b)b.textContent=AUD.paused?'▶ Phát':'❚❚ Dừng';const r=$('#auSeek');if(r&&!r.matches(':active')){r.max=Math.floor(AUD.duration||0);r.value=Math.floor(AUD.currentTime)}const tm=$('#auTime');if(tm)tm.textContent=`${fmtT(AUD.currentTime)} / ${fmtT(AUD.duration)}`;
+ const i=auLineAt(AUD.currentTime);if(i!==AU.cur){AU.cur=i;$$('#pr-lib .tl.now').forEach(x=>x.classList.remove('now'));const el=$(`#pr-lib .tl[data-li="${i}"]`);if(el){el.classList.add('now');if(AU.follow&&!AUD.paused)el.scrollIntoView({block:'center',behavior:'smooth'})}}}
+['timeupdate','play','pause','loadedmetadata','seeked'].forEach(ev=>AUD.addEventListener(ev,auUI));
+function auBar(l){if(!l.audio)return '';
+ if(AU.id===l.id&&AUD.src)return `<div class="row" style="gap:8px"><button class="btn pri sm" id="auPlay">${AUD.paused?'▶ Phát':'❚❚ Dừng'}</button><button class="btn sm" id="auBack" aria-label="Lùi 10 giây">−10s</button><button class="btn sm" id="auFwd" aria-label="Tiến 10 giây">+10s</button>
+  <select id="tpRate" style="width:auto;min-height:36px;padding:4px 8px" aria-label="Tốc độ">${[.75,.9,1,1.15,1.3].map(r=>`<option value="${r}"${r===TP.rate?' selected':''}>${r}×</option>`).join('')}</select></div>
+  <div class="row au-seek"><input type="range" id="auSeek" min="0" max="${Math.floor(AUD.duration||l.audio.duration||0)}" value="${Math.floor(AUD.currentTime)}" step="1" aria-label="Tua audio"><span class="mute" id="auTime">${fmtT(AUD.currentTime)} / ${fmtT(AUD.duration||l.audio.duration)}</span></div>
+  <div class="row sp au-opt"><label class="mute"><input type="checkbox" id="auFollow"${AU.follow?' checked':''}> Tự cuộn theo câu</label><button class="btn sm ghost" id="auForget">Gỡ audio khỏi máy</button></div>`;
+ return `<div><b>Nghe audio gốc của buổi học</b> <span class="mute">(${esc(fmtT(l.audio.duration))}, riêng tư, không nằm trong repo)</span></div>
+  ${AU.state==='loading'?`<p class="mute">Đang tải từ Google Drive… <b id="auPct">${AU.pct}%</b></p>`:`<div class="row" style="margin-top:8px"><button class="btn pri sm" id="auDrive">Tải từ Google Drive của anh</button><label class="btn sm" style="cursor:pointer;margin:0">Chọn file trên máy<input type="file" id="auPick" accept="audio/*,.m4a" hidden></label></div>`}
+  ${AU.err?`<p style="color:var(--red);margin:6px 0 0">${esc(AU.err)}</p>`:''}
+  <p class="mute" style="margin:6px 0 0">Tải 1 lần (~${esc(l.audio.mb||'')} MB), app lưu lại trên máy này để lần sau nghe ngay, kể cả khi mất mạng. File trong Drive phải tên đúng <b>${esc(l.audio.name)}</b>.</p>`}
+$('#pr-lib').addEventListener('click',e=>{if(LIBT!=='tr')return;const t=e.target,l=LIB.find(x=>x.id===LIBO);if(!l)return;
+ if(t.closest('#auPlay')){AUD.paused?AUD.play().catch(x=>toast('Không phát được: '+x.message)):AUD.pause();return}
+ if(t.closest('#auBack')){AUD.currentTime=Math.max(0,AUD.currentTime-10);return}
+ if(t.closest('#auFwd')){AUD.currentTime=Math.min(AUD.duration||1e9,AUD.currentTime+10);return}
+ if(t.closest('#auDrive')){auDrive(l);return}
+ if(t.closest('#auForget')){AUD.pause();IDB.drop('audio:'+l.id).then(()=>{AUD.removeAttribute('src');AUD.load();AU.id='';AU.tried='';renderLib();toast('Đã gỡ audio khỏi máy này')});return}});
+$('#pr-lib').addEventListener('change',e=>{const l=LIB.find(x=>x.id===LIBO);if(!l)return;if(e.target.id==='auPick')auFile(l,e.target.files[0]);if(e.target.id==='auFollow')AU.follow=e.target.checked;if(e.target.id==='tpRate')AUD.playbackRate=+e.target.value});
+$('#pr-lib').addEventListener('input',e=>{if(e.target.id==='auSeek'){AUD.currentTime=+e.target.value;auUI()}});
+
 function libAns(k,v){const l=LIB.find(x=>x.id===LIBO);if(!l)return;const [eid,i]=k.split('-');const q=l.exercises.find(x=>x.id===eid)?.items[+i];if(!q)return;
  const ok=q.answer.some(a=>normA(a)===normA(v));const r=libRev(l.id);r.a[k]={v,ok};r.last=todayISO();saveP();active();const y=window.scrollY;renderLib();window.scrollTo(0,y);renderHome()}
 fetch('data/lesson-reviews.json').then(r=>r.json()).then(j=>{LIB=Array.isArray(j)?j:[];renderLib();renderPreply();renderHome()}).catch(()=>renderLib());
