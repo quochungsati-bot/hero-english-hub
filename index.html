@@ -196,6 +196,15 @@ mark.err{background:var(--redbg);color:inherit;border-bottom:2px solid var(--red
 .mo ul{margin:6px 0 0;padding-left:20px}.mo .en{font-style:italic}.cp{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
 @media (max-width:900px){.plan .wk{grid-template-columns:minmax(0,1fr)}.plan .wd{display:grid;grid-template-columns:44px minmax(0,1fr);gap:8px}.plan .wd>b{margin:2px 0 0}}
 @media (max-width:600px){.cp{grid-template-columns:minmax(0,1fr);gap:4px}}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:12px}.cal .hd{font-size:12px;color:var(--mute);text-align:center;font-weight:600}
+.cal button{min-height:58px;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:6px;text-align:left;display:flex;flex-direction:column;gap:3px;font:inherit;color:inherit;cursor:pointer;min-width:0}
+.cal button:disabled{opacity:.35;cursor:default}.cal button.td{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}.cal button.sel{background:var(--tealbg)}.cal button.ok{border-bottom:4px solid var(--teal)}
+.cal b{font-size:14px}.cal .tg{display:flex;gap:3px;flex-wrap:wrap}.cpp,.cpm{display:inline-block;font-size:10px;line-height:15px;min-width:15px;text-align:center;border-radius:4px;font-weight:700}.cpp{background:var(--amberbg);color:var(--amber)}.cpm{background:var(--redbg);color:var(--red)}
+.cdl{display:inline-block;width:14px;height:4px;background:var(--teal);vertical-align:middle;border-radius:2px}
+.sess{border-top:1px solid var(--line);padding:12px 0}.sess:first-of-type{border-top:0}.sess h3{margin:0 0 6px;font-size:16px}.sess .pb{font-size:14px;padding:6px 0}.sess .pb small{display:block;color:var(--mute);font-size:13px;margin-top:2px}
+.sess .pb{display:flex;gap:8px;align-items:flex-start;cursor:pointer;font-weight:400;margin:0}.sess .pb input{width:auto;min-height:0;margin:4px 0 0;flex:none}.sess .pb.ok b{text-decoration:line-through;color:var(--mute)}
+.plan .ss{font-size:11px;color:var(--mute);font-weight:600;margin-top:4px}
+@media (max-width:600px){.cal{gap:3px}.cal button{min-height:46px;padding:4px}.cal b{font-size:13px}}
 </style>
 </head>
 <body>
@@ -227,6 +236,16 @@ mark.err{background:var(--redbg);color:inherit;border-bottom:2px solid var(--red
    <label for="bVi">Tóm tắt tiếng Việt</label><input id="bVi" required><label for="bEn">Câu mở đầu tiếng Anh (30 giây)</label><textarea id="bEn" style="min-height:80px" required></textarea>
    <div class="row" style="margin-top:10px"><button class="btn pri sm" type="submit">Lưu bản tin</button><button class="btn sm" type="button" id="bAI">AI viết câu từ tóm tắt</button></div></form></div>
  </div>
+</section>
+
+<!-- TODAY -->
+<section class="view" id="v-today">
+ <h1>Hôm nay học gì</h1><p class="mute" id="tdIntro">Lịch học chi tiết theo kế hoạch 12 tháng: tiếng Anh và PMI, có giờ cụ thể từng buổi.</p>
+ <div id="tdDay"></div>
+ <div class="card" style="margin:16px 0"><div class="row sp"><h2 style="margin:0" id="calT">Lịch tháng</h2><div class="row"><button class="btn sm" id="calP" aria-label="Tháng trước">‹</button><button class="btn sm" id="calN0">Hôm nay</button><button class="btn sm" id="calN" aria-label="Tháng sau">›</button></div></div>
+  <div class="cal" id="cal"></div>
+  <div class="row mute" style="gap:14px;font-size:13px;margin-top:8px"><span><b class="cpp">P</b> Preply</span><span><b class="cpm">M</b> Mốc kiểm tra</span><span><i class="cdl"></i> Đã tick ≥ 80%</span></div></div>
+ <div class="card" style="margin:16px 0" id="icsBox"></div>
 </section>
 
 <!-- ROADMAP -->
@@ -509,12 +528,12 @@ function active(){const d=todayISO();if(!P.days.includes(d)){P.days.push(d);P.da
 function streak(){let n=0,d=new Date(todayISO());if(!P.days.includes(todayISO()))d.setDate(d.getDate()-1);while(P.days.includes(d.toISOString().slice(0,10))){n++;d.setDate(d.getDate()-1)}return n}
 
 /* ================= nav ================= */
-const ICON={home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',roadmap:'<path d="M4 20V5l5 2 6-3 5 2v15l-5-2-6 3z"/><path d="M9 7v13M15 4v13"/>',lab:'<path d="M4 5h16v10H8l-4 4z"/>',studio:'<path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>',hub:'<rect x="3" y="5" width="12" height="15" rx="2"/><path d="M8 3h11a2 2 0 0 1 2 2v13"/>',preply:'<path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/>',config:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>'};
-const NAV=[['home','Trang chủ'],['roadmap','Lộ trình'],['lab','Mô phỏng'],['studio','4 Kỹ năng'],['hub','Tri thức'],['preply','Preply'],['config','Cài đặt']];
+const ICON={today:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M8 14h3v3H8z"/>',home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',roadmap:'<path d="M4 20V5l5 2 6-3 5 2v15l-5-2-6 3z"/><path d="M9 7v13M15 4v13"/>',lab:'<path d="M4 5h16v10H8l-4 4z"/>',studio:'<path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>',hub:'<rect x="3" y="5" width="12" height="15" rx="2"/><path d="M8 3h11a2 2 0 0 1 2 2v13"/>',preply:'<path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/>',config:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>'};
+const NAV=[['home','Trang chủ'],['today','Lịch học'],['roadmap','Lộ trình'],['lab','Mô phỏng'],['studio','4 Kỹ năng'],['hub','Tri thức'],['preply','Preply'],['config','Cài đặt']];
 const navA=([k,l])=>`<a href="#${k}" data-v="${k}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICON[k]}</svg><span>${l}</span></a>`;
 $('#side').innerHTML=`<div class="brand">Hero English Hub<small id="brandSub">Executive · GC · FDI</small></div>${NAV.map(navA).join('')}<div class="sync" id="syncS"><i class="dot"></i><span>Dữ liệu trên máy</span></div>`;
 $('#bottom').innerHTML=NAV.map(navA).join('');
-function route(){const v=(location.hash||'#home').slice(1);const k=NAV.some(n=>n[0]===v)?v:'home';$$('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+k));$$('nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===k));window.scrollTo(0,0);if('speechSynthesis' in window)speechSynthesis.cancel();if(typeof TP!=='undefined'){TP.run++;TP.on=false}if(typeof AUD!=='undefined')AUD.pause()}
+function route(){const v=(location.hash||'#home').slice(1);const k=NAV.some(n=>n[0]===v)?v:'home';$$('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+k));$$('nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===k));window.scrollTo(0,0);if(k==='today'&&typeof renderToday==='function'){SELD='';CALM='';renderToday()}if('speechSynthesis' in window)speechSynthesis.cancel();if(typeof TP!=='undefined'){TP.run++;TP.on=false}if(typeof AUD!=='undefined')AUD.pause()}
 window.addEventListener('hashchange',route);
 function applyTheme(){if(C.theme)document.documentElement.dataset.theme=C.theme;else delete document.documentElement.dataset.theme}
 
@@ -547,7 +566,7 @@ function renderHome(){{const n=C.learner||'Hùng';$('#pfName').textContent=n;$('
  if(mbOpen)todo.push([`Ôn ${Math.min(3,mbOpen)} lỗi trong Mistake Bank`,'#preply']);
  {const lr=libDue();if(lr)todo.push([`Ôn ${lr.title.split(' · ')[0]}: bài tập ngữ pháp (${libStat(lr).ok}/${libStat(lr).n} đúng)`,'#preply','lib'])}
  const nl=nextLesson();if(nl)todo.push([`Bài lộ trình: ${nl.t}`,'#roadmap']);
- {const pt=planToday();if(pt&&pt.all.length)todo.unshift([pt.left.length?`Kế hoạch 12 tháng hôm nay: còn ${pt.left.length}/${pt.all.length} khối (${pt.left.reduce((a,b)=>a+b.min,0)} phút)`:'Kế hoạch 12 tháng: đã xong các khối hôm nay ✓','#roadmap'])}
+ {const pt=planToday();if(pt&&pt.all.length)todo.unshift([pt.left.length?`Hôm nay học gì: còn ${pt.left.length}/${pt.all.length} khối (${pt.left.reduce((a,b)=>a+b.min,0)} phút)`:'Kế hoạch 12 tháng: đã xong các khối hôm nay ✓','#today'])}
  todo.push(['Lật 5 thẻ thuật ngữ','#hub']);
  $('#todo').innerHTML=todo.map(t=>`<a href="${t[1]}"${t[2]?` data-prt="${t[2]}"`:''} class="lesson" style="text-decoration:none;color:inherit"><span>${esc(t[0])}</span><span class="mute">→</span></a>`).join('');
  const ag=[...D.wa].filter(w=>w.status!=='Done'||daysTo(w.target_date)>=0).sort((a,b)=>String(a.target_date).localeCompare(String(b.target_date)));
@@ -582,7 +601,7 @@ $('#stages').addEventListener('click',e=>{const g=e.target.closest('[data-go]'),
 /* ================= KẾ HOẠCH 12 THÁNG ================= */
 var PLAN=null;var PS=store.get('be_plan',{tier:'',log:{}});if(!PS.log)PS.log={};const savePS=()=>store.set('be_plan',PS);
 const DN=['','T2','T3','T4','T5','T6','T7','CN'];
-fetch('data/c1-plan.json').then(r=>r.json()).then(j=>{PLAN=j;renderPlan();renderHome()}).catch(()=>{});
+fetch('data/c1-plan.json').then(r=>r.json()).then(j=>{PLAN=j;renderPlan();renderToday();renderIcsBox();renderHome()}).catch(()=>{});
 function planTier(){return PLAN.tiers[PS.tier]||PLAN.tiers[PLAN.defaultTier]}
 function monOf(iso){const d=new Date(iso+'T00:00');d.setDate(d.getDate()-((d.getDay()+6)%7));return isoOf(d)}
 const dow=()=>((new Date(todayISO()+'T00:00').getDay()+6)%7)+1;
@@ -594,7 +613,7 @@ const hTxt=m=>(Math.round(m/6)/10).toLocaleString('vi-VN')+' giờ';
 function renderPlan(){const el=$('#c1plan');if(!el||!PLAN)return;const t=planTier(),tk=PS.tier&&PLAN.tiers[PS.tier]?PS.tier:PLAN.defaultTier,K=PLAN.kinds;
  const w=planWeek(),mi=planMonth(),cur=PLAN.months[Math.min(Math.max(mi,1),12)-1],wk=monOf(todayISO()),lg=PS.log[wk]||{},done=weekDone(wk),pc=Math.min(100,Math.round(done/t.minutes*100)),td=dow();
  const wl=w<1?`Bắt đầu thứ Hai ${fmtD(PLAN.start)} · tuần này là tuần khởi động`:w>PLAN.weeks?'Đã hết 52 tuần: làm bài thi chính thức và đặt mục tiêu mới':`Tuần ${w}/${PLAN.weeks} · Tháng ${mi}: ${cur.t}`;
- const days=[1,2,3,4,5,6,7].map(d=>`<div class="wd ${d===td?'today':''}"><b>${DN[d]}${d===td?' · hôm nay':''}</b><div>${t.blocks.filter(b=>b.day===d).map(b=>`<label class="pb ${lg[b.id]?'ok':''}" title="${esc(K[b.k].d)}"><input type="checkbox" data-pb="${esc(b.id)}" data-min="${b.min}" ${lg[b.id]?'checked':''}><span>${esc(K[b.k].t)} · ${b.min}′</span></label>`).join('')}</div></div>`).join('');
+ const days=[1,2,3,4,5,6,7].map(d=>`<div class="wd ${d===td?'today':''}"><b>${DN[d]}${d===td?' · hôm nay':''}</b><div>${t.blocks.filter(b=>b.day===d).map((b,i,a)=>`${b.at&&(i===0||a[i-1].at!==b.at)?`<div class="ss">${esc(b.at)} · ${esc(b.s)}</div>`:''}<label class="pb ${lg[b.id]?'ok':''}" title="${esc(K[b.k].d)}"><input type="checkbox" data-pb="${esc(b.id)}" data-min="${b.min}" ${lg[b.id]?'checked':''}><span>${esc(K[b.k].t)} · ${b.min}′</span></label>`).join('')}</div></div>`).join('');
  const hist=[];for(let i=7;i>=0;i--){const d=new Date(wk+'T00:00');d.setDate(d.getDate()-7*i);const k=isoOf(d),v=weekDone(k),p=Math.min(100,Math.round(v/t.minutes*100));hist.push(`<i class="${p>=80?'on':''}" style="height:${Math.max(3,p)}%" title="Tuần từ ${fmtD(k)}: ${hTxt(v)}"></i>`)}
  const guide=Object.entries(K).filter(([k])=>t.blocks.some(b=>b.k===k)).map(([k,v])=>`<li><b style="font-weight:600">${esc(v.t)}:</b> ${esc(v.d)} <a href="${esc(v.link)}">Mở</a></li>`).join('');
  const months=PLAN.phases.map(ph=>`<h3 style="margin:18px 0 4px">${esc(ph.t)} <span class="tag t">${esc(ph.cefr)}</span> <span class="tag">${esc(ph.stage)}</span></h3><p class="mute" style="margin:0 0 6px">${esc(ph.why)}</p>`+PLAN.months.filter(m=>m.n>=ph.m[0]&&m.n<=ph.m[1]).map(m=>{const isC=m.n===mi,cp=PLAN.checkpoints.find(c=>c.month===m.n);return `<details class="mo ${isC?'cur':''}" ${isC||(mi===0&&m.n===1)?'open':''}><summary>Tháng ${m.n} · ${esc(m.ym.slice(5)+'/'+m.ym.slice(0,4))} · ${esc(m.t)} ${isC?'<span class="tag doing">Đang học</span>':m.n<mi?'<span class="tag done">Đã qua</span>':''}${cp?' <span class="tag new">Mốc '+cp.n+'</span>':''}</summary>
@@ -603,7 +622,7 @@ function renderPlan(){const el=$('#c1plan');if(!el||!PLAN)return;const t=planTie
   <p style="margin:8px 0 0"><b style="font-weight:600">Tình huống thầu:</b> ${esc(m.scenario)}</p><p style="margin:4px 0 0"><b style="font-weight:600">Sản phẩm cuối tháng:</b> ${esc(m.output)}</p><p style="margin:4px 0 0"><b style="font-weight:600">Chỉ tiêu:</b> ${esc(m.target)}</p>
   <button class="btn sm" style="margin-top:8px" data-lor="${m.n}">Copy lời nhắn gửi Ms. Lorraine</button></details>`}).join('')).join('');
  const cps=PLAN.checkpoints.map(c=>{const k=daysTo(c.date);return `<div class="cp"><div><b>${esc(fmtD(c.date))}</b><div class="mute">${k<0?'Đã qua':k===0?'Hôm nay':`còn ${k} ngày`}</div></div><div><b style="font-weight:600">${esc(c.t)}</b><ul style="margin:4px 0 0;padding-left:20px">${c.targets.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div></div>`}).join('');
- el.innerHTML=`<div class="card plan" style="margin:16px 0"><div class="row sp"><div><span class="lbl">Kế hoạch tăng tốc 12 tháng</span><h2 style="margin:4px 0">B1.1 → C1 trước tháng 11/2027</h2><div class="mute">${esc(wl)}</div></div>
+ el.innerHTML=`<div class="card plan" style="margin:16px 0"><div class="row sp"><div><span class="lbl">Kế hoạch tăng tốc 12 tháng</span><h2 style="margin:4px 0">B1.1 → C1 trước tháng 11/2027</h2><div class="mute">${esc(wl)} · <a href="#today">Xem lịch chi tiết hôm nay →</a></div></div>
   <div class="row" role="group" aria-label="Số giờ mỗi tuần">${Object.entries(PLAN.tiers).map(([k,v])=>`<button class="chip ${k===tk?'on':''}" data-tier="${esc(k)}">${esc(v.label)}</button>`).join('')}</div></div>
   <p style="margin:10px 0 0"><b style="font-weight:600">${esc(t.forecast)}</b> ${esc(t.note)}</p>
   <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Cần gì để kịp 1 năm</summary><ul style="margin:6px 0 0;padding-left:20px">${PLAN.needs.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p style="margin:6px 0 0">${esc(PLAN.minimal)}</p><p class="mute" style="margin:6px 0 0">${esc(PLAN._note)}</p></details>
@@ -616,10 +635,71 @@ function renderPlan(){const el=$('#c1plan');if(!el||!PLAN)return;const t=planTie
 function lorMsg(n){const m=PLAN.months[n-1],ph=PLAN.phases.find(p=>n>=p.m[0]&&n<=p.m[1]),cp=PLAN.checkpoints.find(c=>c.month===n);
  return `Hi Lorraine,\n\nI have started a 12-month plan to reach C1 by November 2027, so I would like our lessons to be very focused. This is Month ${n} (${ph.t.split('·')[0].trim().replace('Giai đoạn','Phase')}).\n\nGrammar focus: ${m.focus_en}.\nWork scenario: ${m.scenario_en}.\n${m.pmi?`Project management topic (PMI/PMBOK): ${m.pmi.terms.join(', ')}. I would like to use these terms when we talk about my work.\n`:''}Target phrases:\n${m.lang.map(x=>'- '+x).join('\n')}\n\n${m.lorraine}\n\nPlease let me speak at least 70% of the time, and correct my errors on the spot.${cp?`\n\nAt the end of this month I would like a short level check (IELTS-style speaking, Parts 1–3) to measure my progress.`:''}\n\nThank you!\nHùng`}
 $('#c1plan').addEventListener('click',e=>{const tb=e.target.closest('[data-tier]'),lb=e.target.closest('[data-lor]');
- if(tb){PS.tier=tb.dataset.tier;savePS();renderPlan();renderHome();toast('Đã đổi sang '+planTier().label)}
+ if(tb){PS.tier=tb.dataset.tier;savePS();renderPlan();renderToday();renderHome();toast('Đã đổi sang '+planTier().label)}
  if(lb)copy(lorMsg(+lb.dataset.lor))});
 $('#c1plan').addEventListener('change',e=>{const c=e.target.closest('[data-pb]');if(!c)return;const wk=monOf(todayISO());PS.log[wk]=PS.log[wk]||{};if(c.checked){PS.log[wk][c.dataset.pb]=+c.dataset.min;active()}else delete PS.log[wk][c.dataset.pb];
- const ks=Object.keys(PS.log).sort();while(ks.length>60)delete PS.log[ks.shift()];savePS();renderPlan();renderHome()});
+ const ks=Object.keys(PS.log).sort();while(ks.length>60)delete PS.log[ks.shift()];savePS();renderPlan();renderToday();renderHome()});
+
+
+/* ================= LỊCH HỌC TỪNG NGÀY ================= */
+const addMin=(at,m)=>{const [h,mi]=at.split(':').map(Number),t=h*60+mi+m;return String(Math.floor(t/60)%24).padStart(2,'0')+':'+String(t%60).padStart(2,'0')};
+const dowOf=iso=>((new Date(iso+'T00:00').getDay()+6)%7)+1;
+function dayInfo(iso){if(!PLAN)return null;const t=planTier(),ms=PLAN.months,ym=iso.slice(0,7);let mi=ms.findIndex(m=>m.ym===ym)+1;if(!mi)mi=ym<ms[0].ym?1:12;const m=ms[mi-1],dd=+iso.slice(8,10),wim=ym<ms[0].ym?1:Math.min(4,Math.floor((dd-1)/7)+1);
+ const di=Math.max(0,Math.round((new Date(iso+'T00:00')-new Date(PLAN.start+'T00:00'))/864e5)),terms=m.pmi?m.pmi.terms:[''],term=terms[di%terms.length],sent=m.lang[di%m.lang.length],g=wim<4?m.grammar[(wim-1)%m.grammar.length]:'';
+ const nd=new Date(iso+'T00:00');nd.setDate(nd.getDate()+7);const lastWk=isoOf(nd).slice(0,7)!==ym;
+ const W={core:wim<4?`${g}. Viết 10 câu về công việc của anh dùng điểm này, nói to lại 2 lần, rồi sửa 3 lỗi trong Mistake Bank.`:`Tuần ôn: làm lại cả 3 điểm (${m.grammar.join('; ')}), tự kiểm tra 15 câu.`,
+  pmi:`Thuật ngữ hôm nay: “${term}” (${m.pmi?m.pmi.area:''}). Đọc định nghĩa trong PMBOK hoặc tài liệu PMP, viết 2 câu tiếng Anh áp dụng vào dự án [PROJECT], rồi giải thích lại trong 1 phút.`,
+  pmipro:`${m.pmi?m.pmi.task:''} Dùng đủ các thuật ngữ: ${terms.join(', ')}.`,
+  shadow:`Nói đuổi câu mẫu: “${sent}”, rồi 1 đoạn trong 4 Kỹ năng hoặc audio buổi Preply gần nhất.`,
+  vocab:`Lật 10 thẻ trong Kho tri thức; thêm “${term}” nếu chưa có.`,
+  speak:`Mô phỏng: ${m.scenario}. Trả lời 3 câu hỏi, mỗi câu 60–90 giây, dùng câu mẫu của tháng.`,
+  speak2:`Hội thoại tự do 30 phút về: ${m.scenario}.`,
+  work:`Viết 1 email hoặc RFI thật (đã ẩn danh) liên quan: ${m.scenario}. Nâng cấp lên bản B2 và C1.`,
+  prep:`Nói lại 5 lỗi gần nhất trong Mistake Bank. Chuẩn bị 3 câu hỏi về: ${m.scenario}.${dd<=7?' Đầu tháng: gửi Ms. Lorraine lời nhắn của tháng (tab Lộ trình).':''}`,
+  preply:`22:00 với Ms. Lorraine. Trọng tâm: ${g||'ôn tập cuối tháng'}. Anh nói ≥ 70% thời lượng.`,
+  deep:wim<4?`Đọc 1 tài liệu thầu tiếng Anh (đã ẩn danh) 40 phút, rồi viết 250–300 từ cho: ${m.output}.`:`Tuần cuối tháng: hoàn thiện sản phẩm tháng: ${m.output}.`,
+  mock:`Ghi âm phần nói của: ${m.output}. Nghe lại, đánh dấu 3 lỗi, ghi vào Mistake Bank.`,
+  review:`Tổng kết tuần: cập nhật Mistake Bank, tick lịch, chọn tình huống cho tuần sau.${lastWk?' Cuối tháng: nhập điểm Preply mới (tab Lộ trình).':''}`};
+ const bl=t.blocks.filter(b=>b.day===dowOf(iso)),ss=[];for(const b of bl){let s=ss.find(x=>x.at===b.at&&x.s===b.s);if(!s){s={s:b.s||'Buổi học',at:b.at||'21:00',blocks:[],min:0};ss.push(s)}s.blocks.push({...b,t:PLAN.kinds[b.k].t,what:W[b.k]||PLAN.kinds[b.k].d,link:PLAN.kinds[b.k].link});s.min+=b.min}
+ ss.forEach(s=>s.end=addMin(s.at,s.min));return{iso,m,mi,wim,term,cp:PLAN.checkpoints.find(c=>c.date===iso),sessions:ss,min:bl.reduce((a,b)=>a+b.min,0)}}
+var CALM='',SELD='';
+function dayPct(iso){const t=planTier(),bl=t.blocks.filter(b=>b.day===dowOf(iso)),lg=PS.log[monOf(iso)]||{};const tot=bl.reduce((a,b)=>a+b.min,0);return tot?bl.reduce((a,b)=>a+(lg[b.id]?b.min:0),0)/tot:0}
+function renderToday(){const el=$('#tdDay');if(!el||!PLAN)return;const today=todayISO(),iso=SELD||today,I=dayInfo(iso),lg=PS.log[monOf(iso)]||{},isT=iso===today,canTick=iso<=today;
+ const head=`${isT?'':WD[new Date(iso+'T00:00').getDay()]+' '+fmtD(iso)+' · '}${hTxt(I.min)} · Tháng ${I.mi}: ${I.m.t}`;
+ el.innerHTML=`<div class="card" style="margin:16px 0"><span class="lbl">${isT?'Hôm nay':'Ngày đã chọn'} · ${esc(fmtD(iso))}${iso<PLAN.start?' · tuần khởi động':''}</span><h2 style="margin:4px 0 2px">${esc(head)}</h2>
+  ${I.cp?`<p style="margin:6px 0"><span class="tag new">${esc(I.cp.t)}</span> ${esc(I.cp.targets.join(' · '))}</p>`:''}
+  <p class="mute" style="margin:0 0 8px">PMI tháng này: ${esc(I.m.pmi?I.m.pmi.area:'')}. Thuật ngữ hôm nay: <b class="en">${esc(I.term)}</b></p>
+  ${I.sessions.map(s=>`<div class="sess"><h3>${esc(s.at)}–${esc(s.end)} · ${esc(s.s)} <span class="mute" style="font-weight:400">(${s.min} phút)</span></h3>${s.blocks.map(b=>`<label class="pb ${lg[b.id]?'ok':''}"><input type="checkbox" data-pb="${esc(b.id)}" data-min="${b.min}" data-wk="${esc(monOf(iso))}" ${lg[b.id]?'checked':''} ${canTick?'':'disabled'}><span><b style="font-weight:600">${esc(b.t)} · ${b.min}′</b> <a href="${esc(b.link)}">Mở</a><small>${esc(b.what)}</small></span></label>`).join('')}</div>`).join('')}
+  ${isT?'':`<button class="btn sm" data-seld="">← Về hôm nay</button>`}</div>`;
+ renderCal()}
+function renderCal(){const el=$('#cal');if(!el||!PLAN)return;const today=todayISO();if(!CALM)CALM=today.slice(0,7);const [y,mo]=CALM.split('-').map(Number),first=new Date(y,mo-1,1),off=(first.getDay()+6)%7,n=new Date(y,mo,0).getDate(),end=PLAN.months[PLAN.months.length-1].ym+'-31',sel=SELD||today;
+ $('#calT').textContent=`Tháng ${mo}/${y}`;const cells=['T2','T3','T4','T5','T6','T7','CN'].map(d=>`<div class="hd">${d}</div>`);for(let i=0;i<off;i++)cells.push('<div></div>');
+ for(let d=1;d<=n;d++){const iso=`${CALM}-${String(d).padStart(2,'0')}`,inP=iso>=PLAN.start&&iso<=end||iso>=today&&iso<PLAN.start,bl=planTier().blocks.filter(b=>b.day===dowOf(iso)),pre=bl.some(b=>b.k==='preply'),cp=PLAN.checkpoints.some(c=>c.date===iso),ok=iso<=today&&dayPct(iso)>=.8;
+  cells.push(`<button data-seld="${iso}" class="${iso===today?'td':''} ${iso===sel?'sel':''} ${ok?'ok':''}" ${inP?'':'disabled'} aria-label="${esc(fmtD(iso))}"><b>${d}</b><span class="tg">${pre?'<i class="cpp">P</i>':''}${cp?'<i class="cpm">M</i>':''}</span></button>`)}
+ el.innerHTML=cells.join('');$('#calP').disabled=CALM<=PLAN.start.slice(0,7)&&CALM<=today.slice(0,7);$('#calN').disabled=CALM>=PLAN.months[PLAN.months.length-1].ym}
+function renderIcsBox(){const el=$('#icsBox');if(!el||!PLAN)return;el.innerHTML=`<h2 style="margin:0">Nhắc hẹn hằng ngày</h2><p class="mute" style="margin:4px 0 10px">Đưa lịch học vào Lịch của iPhone và laptop. Mỗi buổi có báo thức trước 5 phút, phần ghi chú ghi rõ hôm đó học gì.</p>
+ <div class="row"><a class="btn pri sm" href="calendar/hero-plan-12m.ics">Thêm cả 12 tháng (lịch chính)</a><button class="btn sm" data-ics="28">Tải 4 tuần tới theo mức đang chọn</button></div>
+ <ol style="margin:12px 0 0;padding-left:20px"><li><b style="font-weight:600">iPhone:</b> mở trang này bằng Safari, bấm “Thêm cả 12 tháng”, chọn <i>Thêm tất cả</i>. Nên tạo riêng một lịch tên “Hero English” để dễ xoá hoặc thay sau này.</li>
+ <li><b style="font-weight:600">Laptop:</b> tải cùng file rồi mở bằng Lịch (Calendar) hoặc Outlook. Nếu anh dùng Google Calendar: Cài đặt → Nhập và xuất → chọn file, lịch sẽ tự đồng bộ sang điện thoại. Chỉ nhập ở một nơi để không bị nhắc hai lần.</li>
+ <li>Khi đổi giờ học, xoá lịch “Hero English” cũ rồi nhập lại file mới.</li></ol>`}
+function icsEsc(v){return String(v).replace(/\\/g,'\\\\').replace(/;/g,'\;').replace(/,/g,'\\,').replace(/\r?\n/g,'\\n')}
+function icsFold(l){const out=[];while(l.length>70){out.push(l.slice(0,70));l=' '+l.slice(70)}out.push(l);return out.join('\r\n')}
+function buildICS(from,days){const L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Hero English Hub//Study plan//VI','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:Hero English','X-WR-TIMEZONE:Asia/Ho_Chi_Minh'];
+ const stamp=new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z',d=new Date(from+'T00:00'),url='https://quochungsati-bot.github.io/hero-english-hub/#today';
+ for(let i=0;i<days;i++){const iso=isoOf(d),I=dayInfo(iso);d.setDate(d.getDate()+1);if(!I)continue;
+  for(const s of I.sessions){const dt=iso.replace(/-/g,''),st=s.at.replace(':','')+'00',en=s.end.replace(':','')+'00';
+   const desc=`Tháng ${I.mi}: ${I.m.t}\n${I.cp?I.cp.t+'\n':''}\n`+s.blocks.map(b=>`• ${b.t} (${b.min}′): ${b.what}`).join('\n')+`\n\nMở app: ${url}`;
+   L.push('BEGIN:VEVENT',`UID:${dt}-${s.at.replace(':','')}-${s.s.normalize('NFD').replace(/[^A-Za-z]/g,'')}@hero-english-hub`,`DTSTAMP:${stamp}`,`DTSTART:${dt}T${st}`,`DTEND:${dt}T${en}`,
+    icsFold('SUMMARY:'+icsEsc(`${s.s}: ${s.blocks.map(b=>b.t).join(' + ')}`)),icsFold('DESCRIPTION:'+icsEsc(desc)),'BEGIN:VALARM','ACTION:DISPLAY','TRIGGER:-PT5M',icsFold('DESCRIPTION:'+icsEsc('Hero English: '+s.s+' '+s.at)),'END:VALARM','END:VEVENT')}}
+ L.push('END:VCALENDAR');return L.join('\r\n')+'\r\n'}
+function dlICS(days){const from=todayISO()<PLAN.start&&days>200?PLAN.start:todayISO(),b=new Blob([buildICS(from,days)],{type:'text/calendar;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`hero-english-${from}.ics`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)}
+$('#v-today').addEventListener('click',e=>{const sd=e.target.closest('[data-seld]'),ic=e.target.closest('[data-ics]');
+ if(sd){SELD=sd.dataset.seld;if(SELD)CALM=SELD.slice(0,7);renderToday();if(SELD&&innerWidth<900)$('#tdDay').scrollIntoView({behavior:'smooth'})}
+ if(ic)dlICS(+ic.dataset.ics)});
+$('#calP').onclick=()=>{const [y,m]=CALM.split('-').map(Number),d=new Date(y,m-2,1);CALM=isoOf(d).slice(0,7);renderCal()};
+$('#calN').onclick=()=>{const [y,m]=CALM.split('-').map(Number),d=new Date(y,m,1);CALM=isoOf(d).slice(0,7);renderCal()};
+$('#calN0').onclick=()=>{SELD='';CALM='';renderToday()};
+$('#v-today').addEventListener('change',e=>{const c=e.target.closest('[data-pb]');if(!c)return;const wk=c.dataset.wk;PS.log[wk]=PS.log[wk]||{};if(c.checked){PS.log[wk][c.dataset.pb]=+c.dataset.min;active()}else delete PS.log[wk][c.dataset.pb];savePS();renderToday();renderPlan();renderHome()});
 
 /* ================= LAB ================= */
 const SCN={

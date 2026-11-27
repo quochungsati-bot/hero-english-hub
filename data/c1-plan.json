@@ -49,6 +49,21 @@
    "d": "Ôn chủ đề PMI của tháng bằng tiếng Anh: đọc 1 trang PMBOK Guide hoặc tài liệu PMP, chép 5 thuật ngữ vào Kho tri thức, giải thích lại 1 khái niệm trong 1 phút như đang nói với CĐT.",
    "link": "#hub"
   },
+  "prep": {
+   "t": "Chuẩn bị buổi Preply",
+   "d": "Đọc lại 5 lỗi gần nhất trong Mistake Bank và nói to câu đúng; chuẩn bị 3 câu hỏi theo tình huống tháng.",
+   "link": "#preply"
+  },
+  "pmipro": {
+   "t": "PMI chuyên sâu",
+   "d": "Làm bài PMI của tháng bằng tiếng Anh, rồi trình bày lại 2 phút như đang nói với CĐT.",
+   "link": "#hub"
+  },
+  "mock": {
+   "t": "Ghi âm sản phẩm tháng",
+   "d": "Ghi âm hoặc ghi hình phần nói của sản phẩm cuối tháng, nghe lại và đánh dấu 3 lỗi.",
+   "link": "#studio"
+  },
   "review": {
    "t": "Tổng kết tuần",
    "d": "Cập nhật Mistake Bank, chọn tình huống cho tuần sau, soạn giáo án và gửi Ms. Lorraine.",
@@ -57,544 +72,588 @@
  },
  "tiers": {
   "hung": {
-   "label": "Lịch của anh · ~9 giờ",
-   "preply": 2,
-   "forecast": "Với khoảng 9 giờ/tuần: B2 vững sau khoảng 10–12 tháng; C1 cần khoảng 14–16 tháng.",
-   "note": "2 buổi Preply (T4, T6), 1,5 giờ các ngày T2, T3, T5 và 3 giờ cuối tuần, có lồng PMI. Muốn chạm C1 đúng 12 tháng: thêm 1 buổi Preply hoặc học 3 giờ cho mỗi ngày cuối tuần.",
-   "blocks": [
+   "label": "Lịch chính · 16 giờ/tuần",
+   "forecast": "Với 16 giờ/tuần (khoảng 830 giờ/năm, tính cả PMI): đủ giờ để chạm C1 trong khoảng 12 tháng nếu giữ đều.",
+   "note": "T2–T6 mỗi ngày ít nhất 2 giờ (sáng 30 phút, trưa 30 phút, tối 60–80 phút), T7 và CN mỗi ngày 3 giờ. Preply T4 và T6 lúc 22:00. Khoảng 1/4 thời gian là tiếng Anh chuyên môn PMI.",
+   "sessions": [
     {
-     "id": "d1core0",
      "day": 1,
-     "k": "core",
+     "s": "Sáng",
+     "at": "06:00",
      "min": 30
     },
     {
-     "id": "d1pmi1",
      "day": 1,
-     "k": "pmi",
-     "min": 20
-    },
-    {
-     "id": "d1shadow2",
-     "day": 1,
-     "k": "shadow",
-     "min": 20
-    },
-    {
-     "id": "d1work3",
-     "day": 1,
-     "k": "work",
-     "min": 10
-    },
-    {
-     "id": "d1vocab4",
-     "day": 1,
-     "k": "vocab",
-     "min": 10
-    },
-    {
-     "id": "d2speak0",
-     "day": 2,
-     "k": "speak",
+     "s": "Trưa",
+     "at": "12:15",
      "min": 30
     },
     {
-     "id": "d2pmi1",
-     "day": 2,
-     "k": "pmi",
-     "min": 20
+     "day": 1,
+     "s": "Tối",
+     "at": "21:00",
+     "min": 60
     },
     {
-     "id": "d2shadow2",
      "day": 2,
-     "k": "shadow",
-     "min": 20
+     "s": "Sáng",
+     "at": "06:00",
+     "min": 30
     },
     {
-     "id": "d2work3",
      "day": 2,
-     "k": "work",
-     "min": 10
+     "s": "Trưa",
+     "at": "12:15",
+     "min": 30
     },
     {
-     "id": "d2vocab4",
      "day": 2,
-     "k": "vocab",
-     "min": 10
+     "s": "Tối",
+     "at": "21:00",
+     "min": 60
     },
     {
-     "id": "d3preply0",
      "day": 3,
-     "k": "preply",
-     "min": 50
+     "s": "Sáng",
+     "at": "06:00",
+     "min": 20
     },
     {
-     "id": "d4core0",
-     "day": 4,
-     "k": "core",
+     "day": 3,
+     "s": "Trưa",
+     "at": "12:15",
      "min": 30
     },
     {
-     "id": "d4pmi1",
-     "day": 4,
-     "k": "pmi",
-     "min": 20
+     "day": 3,
+     "s": "Tối",
+     "at": "21:30",
+     "min": 80
     },
     {
-     "id": "d4shadow2",
      "day": 4,
-     "k": "shadow",
-     "min": 20
+     "s": "Sáng",
+     "at": "06:00",
+     "min": 30
     },
     {
-     "id": "d4work3",
      "day": 4,
-     "k": "work",
-     "min": 10
+     "s": "Trưa",
+     "at": "12:15",
+     "min": 30
     },
     {
-     "id": "d4vocab4",
      "day": 4,
-     "k": "vocab",
-     "min": 10
+     "s": "Tối",
+     "at": "21:00",
+     "min": 60
     },
     {
-     "id": "d5preply0",
      "day": 5,
-     "k": "preply",
-     "min": 50
+     "s": "Sáng",
+     "at": "06:00",
+     "min": 20
     },
     {
-     "id": "d6deep0",
+     "day": 5,
+     "s": "Trưa",
+     "at": "12:15",
+     "min": 30
+    },
+    {
+     "day": 5,
+     "s": "Tối",
+     "at": "21:30",
+     "min": 80
+    },
+    {
      "day": 6,
-     "k": "deep",
+     "s": "Sáng",
+     "at": "08:00",
      "min": 90
     },
     {
-     "id": "d7review0",
-     "day": 7,
-     "k": "review",
-     "min": 30
-    },
-    {
-     "id": "d7speak1",
-     "day": 7,
-     "k": "speak",
-     "min": 30
-    },
-    {
-     "id": "d7pmi2",
-     "day": 7,
-     "k": "pmi",
-     "min": 30
-    }
-   ],
-   "minutes": 550
-  },
-  "t8": {
-   "label": "8 giờ/tuần",
-   "preply": 2,
-   "forecast": "B2 vững sau khoảng 12 tháng, C1 sau 18–20 tháng.",
-   "note": "Giữ 2 buổi Preply. Đủ để chắc B2 trong năm nhưng chưa đủ giờ cho C1.",
-   "blocks": [
-    {
-     "id": "d1preply0",
-     "day": 1,
-     "k": "preply",
-     "min": 70
-    },
-    {
-     "id": "d1shadow1",
-     "day": 1,
-     "k": "shadow",
-     "min": 15
-    },
-    {
-     "id": "d1vocab2",
-     "day": 1,
-     "k": "vocab",
-     "min": 10
-    },
-    {
-     "id": "d2core0",
-     "day": 2,
-     "k": "core",
-     "min": 30
-    },
-    {
-     "id": "d2shadow1",
-     "day": 2,
-     "k": "shadow",
-     "min": 15
-    },
-    {
-     "id": "d2vocab2",
-     "day": 2,
-     "k": "vocab",
-     "min": 10
-    },
-    {
-     "id": "d3speak0",
-     "day": 3,
-     "k": "speak",
-     "min": 20
-    },
-    {
-     "id": "d3shadow1",
-     "day": 3,
-     "k": "shadow",
-     "min": 15
-    },
-    {
-     "id": "d3work2",
-     "day": 3,
-     "k": "work",
-     "min": 15
-    },
-    {
-     "id": "d3vocab3",
-     "day": 3,
-     "k": "vocab",
-     "min": 10
-    },
-    {
-     "id": "d4core0",
-     "day": 4,
-     "k": "core",
-     "min": 30
-    },
-    {
-     "id": "d4shadow1",
-     "day": 4,
-     "k": "shadow",
-     "min": 15
-    },
-    {
-     "id": "d4vocab2",
-     "day": 4,
-     "k": "vocab",
-     "min": 10
-    },
-    {
-     "id": "d5preply0",
-     "day": 5,
-     "k": "preply",
-     "min": 70
-    },
-    {
-     "id": "d5vocab1",
-     "day": 5,
-     "k": "vocab",
-     "min": 10
-    },
-    {
-     "id": "d6deep0",
      "day": 6,
-     "k": "deep",
+     "s": "Chiều",
+     "at": "15:00",
      "min": 90
     },
     {
-     "id": "d7review0",
      "day": 7,
-     "k": "review",
-     "min": 30
+     "s": "Sáng",
+     "at": "08:00",
+     "min": 90
     },
     {
-     "id": "d7vocab1",
      "day": 7,
-     "k": "vocab",
-     "min": 10
+     "s": "Chiều",
+     "at": "15:00",
+     "min": 90
     }
    ],
-   "minutes": 475
-  },
-  "t12": {
-   "label": "12 giờ/tuần",
-   "preply": 3,
-   "forecast": "C1 trong khoảng 12–14 tháng nếu giữ đều 52 tuần.",
-   "note": "Mức khuyên dùng: 3 buổi Preply, tự học khoảng 1 giờ mỗi ngày và 1 khối sâu cuối tuần.",
    "blocks": [
     {
-     "id": "d1preply0",
+     "id": "d1Score0",
      "day": 1,
-     "k": "preply",
-     "min": 70
+     "k": "core",
+     "min": 30,
+     "s": "Sáng",
+     "at": "06:00"
     },
     {
-     "id": "d1shadow1",
+     "id": "d1Tshadow0",
      "day": 1,
      "k": "shadow",
-     "min": 20
+     "min": 20,
+     "s": "Trưa",
+     "at": "12:15"
     },
     {
-     "id": "d1vocab2",
+     "id": "d1Tvocab1",
      "day": 1,
      "k": "vocab",
-     "min": 10
+     "min": 10,
+     "s": "Trưa",
+     "at": "12:15"
     },
     {
-     "id": "d2core0",
+     "id": "d1Tpmi0",
+     "day": 1,
+     "k": "pmi",
+     "min": 30,
+     "s": "Tối",
+     "at": "21:00"
+    },
+    {
+     "id": "d1Tspeak1",
+     "day": 1,
+     "k": "speak",
+     "min": 30,
+     "s": "Tối",
+     "at": "21:00"
+    },
+    {
+     "id": "d2Score0",
      "day": 2,
      "k": "core",
-     "min": 40
+     "min": 30,
+     "s": "Sáng",
+     "at": "06:00"
     },
     {
-     "id": "d2shadow1",
+     "id": "d2Tshadow0",
      "day": 2,
      "k": "shadow",
-     "min": 20
+     "min": 20,
+     "s": "Trưa",
+     "at": "12:15"
     },
     {
-     "id": "d2work2",
+     "id": "d2Tvocab1",
+     "day": 2,
+     "k": "vocab",
+     "min": 10,
+     "s": "Trưa",
+     "at": "12:15"
+    },
+    {
+     "id": "d2Tpmi0",
+     "day": 2,
+     "k": "pmi",
+     "min": 30,
+     "s": "Tối",
+     "at": "21:00"
+    },
+    {
+     "id": "d2Twork1",
      "day": 2,
      "k": "work",
-     "min": 20
+     "min": 30,
+     "s": "Tối",
+     "at": "21:00"
     },
     {
-     "id": "d2vocab3",
-     "day": 2,
-     "k": "vocab",
-     "min": 10
-    },
-    {
-     "id": "d3preply0",
+     "id": "d3Spmi0",
      "day": 3,
-     "k": "preply",
-     "min": 70
+     "k": "pmi",
+     "min": 20,
+     "s": "Sáng",
+     "at": "06:00"
     },
     {
-     "id": "d3shadow1",
+     "id": "d3Tshadow0",
      "day": 3,
      "k": "shadow",
-     "min": 20
+     "min": 20,
+     "s": "Trưa",
+     "at": "12:15"
     },
     {
-     "id": "d3vocab2",
+     "id": "d3Tvocab1",
      "day": 3,
      "k": "vocab",
-     "min": 10
+     "min": 10,
+     "s": "Trưa",
+     "at": "12:15"
     },
     {
-     "id": "d4speak0",
+     "id": "d3Tprep0",
+     "day": 3,
+     "k": "prep",
+     "min": 30,
+     "s": "Tối",
+     "at": "21:30"
+    },
+    {
+     "id": "d3Tpreply1",
+     "day": 3,
+     "k": "preply",
+     "min": 50,
+     "s": "Tối",
+     "at": "21:30"
+    },
+    {
+     "id": "d4Score0",
+     "day": 4,
+     "k": "core",
+     "min": 30,
+     "s": "Sáng",
+     "at": "06:00"
+    },
+    {
+     "id": "d4Tshadow0",
+     "day": 4,
+     "k": "shadow",
+     "min": 20,
+     "s": "Trưa",
+     "at": "12:15"
+    },
+    {
+     "id": "d4Tvocab1",
+     "day": 4,
+     "k": "vocab",
+     "min": 10,
+     "s": "Trưa",
+     "at": "12:15"
+    },
+    {
+     "id": "d4Tpmi0",
+     "day": 4,
+     "k": "pmi",
+     "min": 30,
+     "s": "Tối",
+     "at": "21:00"
+    },
+    {
+     "id": "d4Tspeak1",
      "day": 4,
      "k": "speak",
-     "min": 30
+     "min": 30,
+     "s": "Tối",
+     "at": "21:00"
     },
     {
-     "id": "d4shadow1",
-     "day": 4,
+     "id": "d5Spmi0",
+     "day": 5,
+     "k": "pmi",
+     "min": 20,
+     "s": "Sáng",
+     "at": "06:00"
+    },
+    {
+     "id": "d5Tshadow0",
+     "day": 5,
      "k": "shadow",
-     "min": 20
+     "min": 20,
+     "s": "Trưa",
+     "at": "12:15"
     },
     {
-     "id": "d4work2",
-     "day": 4,
-     "k": "work",
-     "min": 20
-    },
-    {
-     "id": "d4vocab3",
-     "day": 4,
+     "id": "d5Tvocab1",
+     "day": 5,
      "k": "vocab",
-     "min": 10
+     "min": 10,
+     "s": "Trưa",
+     "at": "12:15"
     },
     {
-     "id": "d5preply0",
+     "id": "d5Tprep0",
+     "day": 5,
+     "k": "prep",
+     "min": 30,
+     "s": "Tối",
+     "at": "21:30"
+    },
+    {
+     "id": "d5Tpreply1",
      "day": 5,
      "k": "preply",
-     "min": 70
+     "min": 50,
+     "s": "Tối",
+     "at": "21:30"
     },
     {
-     "id": "d5shadow1",
-     "day": 5,
-     "k": "shadow",
-     "min": 20
-    },
-    {
-     "id": "d5vocab2",
-     "day": 5,
-     "k": "vocab",
-     "min": 10
-    },
-    {
-     "id": "d6deep0",
+     "id": "d6Sdeep0",
      "day": 6,
      "k": "deep",
-     "min": 150
+     "min": 90,
+     "s": "Sáng",
+     "at": "08:00"
     },
     {
-     "id": "d7review0",
+     "id": "d6Cpmipro0",
+     "day": 6,
+     "k": "pmipro",
+     "min": 45,
+     "s": "Chiều",
+     "at": "15:00"
+    },
+    {
+     "id": "d6Cspeak1",
+     "day": 6,
+     "k": "speak",
+     "min": 30,
+     "s": "Chiều",
+     "at": "15:00"
+    },
+    {
+     "id": "d6Cvocab2",
+     "day": 6,
+     "k": "vocab",
+     "min": 15,
+     "s": "Chiều",
+     "at": "15:00"
+    },
+    {
+     "id": "d7Sreview0",
      "day": 7,
      "k": "review",
-     "min": 40
+     "min": 30,
+     "s": "Sáng",
+     "at": "08:00"
     },
     {
-     "id": "d7core1",
+     "id": "d7Smock1",
+     "day": 7,
+     "k": "mock",
+     "min": 30,
+     "s": "Sáng",
+     "at": "08:00"
+    },
+    {
+     "id": "d7Score2",
      "day": 7,
      "k": "core",
-     "min": 30
+     "min": 30,
+     "s": "Sáng",
+     "at": "08:00"
     },
     {
-     "id": "d7vocab2",
+     "id": "d7Cpmipro0",
+     "day": 7,
+     "k": "pmipro",
+     "min": 45,
+     "s": "Chiều",
+     "at": "15:00"
+    },
+    {
+     "id": "d7Cshadow1",
+     "day": 7,
+     "k": "shadow",
+     "min": 30,
+     "s": "Chiều",
+     "at": "15:00"
+    },
+    {
+     "id": "d7Cvocab2",
      "day": 7,
      "k": "vocab",
-     "min": 10
+     "min": 15,
+     "s": "Chiều",
+     "at": "15:00"
     }
    ],
-   "minutes": 700
+   "minutes": 980
   },
-  "t15": {
-   "label": "15 giờ/tuần",
-   "preply": 3,
-   "forecast": "Đường ngắn nhất: C1 trong khoảng 12 tháng, có dư giờ cho tuần bận.",
-   "note": "3 buổi Preply, thêm 2 buổi nói 30 phút và khối cuối tuần dài. Chỉ chọn nếu lịch công việc cho phép thật.",
-   "blocks": [
+  "busy": {
+   "label": "Tuần thầu căng · ~6 giờ",
+   "forecast": "Chỉ để giữ nhịp, không tiến thêm được nhiều.",
+   "note": "Dùng tối đa 1 tuần mỗi tháng khi đang chạy hồ sơ thầu gấp. Giữ 2 buổi Preply và 45 phút mỗi tối.",
+   "sessions": [
     {
-     "id": "d1preply0",
      "day": 1,
-     "k": "preply",
-     "min": 70
-    },
-    {
-     "id": "d1shadow1",
-     "day": 1,
-     "k": "shadow",
-     "min": 25
-    },
-    {
-     "id": "d1vocab2",
-     "day": 1,
-     "k": "vocab",
-     "min": 10
-    },
-    {
-     "id": "d2core0",
-     "day": 2,
-     "k": "core",
-     "min": 40
-    },
-    {
-     "id": "d2speak21",
-     "day": 2,
-     "k": "speak2",
-     "min": 30
-    },
-    {
-     "id": "d2shadow2",
-     "day": 2,
-     "k": "shadow",
-     "min": 25
-    },
-    {
-     "id": "d2work3",
-     "day": 2,
-     "k": "work",
-     "min": 20
-    },
-    {
-     "id": "d2vocab4",
-     "day": 2,
-     "k": "vocab",
-     "min": 10
-    },
-    {
-     "id": "d3preply0",
-     "day": 3,
-     "k": "preply",
-     "min": 70
-    },
-    {
-     "id": "d3shadow1",
-     "day": 3,
-     "k": "shadow",
-     "min": 25
-    },
-    {
-     "id": "d3vocab2",
-     "day": 3,
-     "k": "vocab",
-     "min": 10
-    },
-    {
-     "id": "d4speak20",
-     "day": 4,
-     "k": "speak2",
-     "min": 30
-    },
-    {
-     "id": "d4core1",
-     "day": 4,
-     "k": "core",
-     "min": 30
-    },
-    {
-     "id": "d4shadow2",
-     "day": 4,
-     "k": "shadow",
-     "min": 25
-    },
-    {
-     "id": "d4work3",
-     "day": 4,
-     "k": "work",
-     "min": 20
-    },
-    {
-     "id": "d4vocab4",
-     "day": 4,
-     "k": "vocab",
-     "min": 10
-    },
-    {
-     "id": "d5preply0",
-     "day": 5,
-     "k": "preply",
-     "min": 70
-    },
-    {
-     "id": "d5shadow1",
-     "day": 5,
-     "k": "shadow",
-     "min": 25
-    },
-    {
-     "id": "d5vocab2",
-     "day": 5,
-     "k": "vocab",
-     "min": 10
-    },
-    {
-     "id": "d6deep0",
-     "day": 6,
-     "k": "deep",
-     "min": 210
-    },
-    {
-     "id": "d7review0",
-     "day": 7,
-     "k": "review",
+     "s": "Tối",
+     "at": "21:00",
      "min": 45
     },
     {
-     "id": "d7speak1",
-     "day": 7,
-     "k": "speak",
-     "min": 30
+     "day": 2,
+     "s": "Tối",
+     "at": "21:00",
+     "min": 45
     },
     {
-     "id": "d7core2",
-     "day": 7,
-     "k": "core",
-     "min": 40
+     "day": 3,
+     "s": "Tối",
+     "at": "22:00",
+     "min": 50
     },
     {
-     "id": "d7vocab3",
+     "day": 4,
+     "s": "Tối",
+     "at": "21:00",
+     "min": 45
+    },
+    {
+     "day": 5,
+     "s": "Tối",
+     "at": "22:00",
+     "min": 50
+    },
+    {
+     "day": 6,
+     "s": "Sáng",
+     "at": "08:00",
+     "min": 90
+    },
+    {
      "day": 7,
-     "k": "vocab",
-     "min": 10
+     "s": "Sáng",
+     "at": "08:00",
+     "min": 75
     }
    ],
-   "minutes": 890
+   "blocks": [
+    {
+     "id": "d1Tcore0",
+     "day": 1,
+     "k": "core",
+     "min": 20,
+     "s": "Tối",
+     "at": "21:00"
+    },
+    {
+     "id": "d1Tpmi1",
+     "day": 1,
+     "k": "pmi",
+     "min": 15,
+     "s": "Tối",
+     "at": "21:00"
+    },
+    {
+     "id": "d1Tvocab2",
+     "day": 1,
+     "k": "vocab",
+     "min": 10,
+     "s": "Tối",
+     "at": "21:00"
+    },
+    {
+     "id": "d2Tshadow0",
+     "day": 2,
+     "k": "shadow",
+     "min": 20,
+     "s": "Tối",
+     "at": "21:00"
+    },
+    {
+     "id": "d2Tpmi1",
+     "day": 2,
+     "k": "pmi",
+     "min": 15,
+     "s": "Tối",
+     "at": "21:00"
+    },
+    {
+     "id": "d2Tvocab2",
+     "day": 2,
+     "k": "vocab",
+     "min": 10,
+     "s": "Tối",
+     "at": "21:00"
+    },
+    {
+     "id": "d3Tpreply0",
+     "day": 3,
+     "k": "preply",
+     "min": 50,
+     "s": "Tối",
+     "at": "22:00"
+    },
+    {
+     "id": "d4Tcore0",
+     "day": 4,
+     "k": "core",
+     "min": 20,
+     "s": "Tối",
+     "at": "21:00"
+    },
+    {
+     "id": "d4Tpmi1",
+     "day": 4,
+     "k": "pmi",
+     "min": 15,
+     "s": "Tối",
+     "at": "21:00"
+    },
+    {
+     "id": "d4Tvocab2",
+     "day": 4,
+     "k": "vocab",
+     "min": 10,
+     "s": "Tối",
+     "at": "21:00"
+    },
+    {
+     "id": "d5Tpreply0",
+     "day": 5,
+     "k": "preply",
+     "min": 50,
+     "s": "Tối",
+     "at": "22:00"
+    },
+    {
+     "id": "d6Sdeep0",
+     "day": 6,
+     "k": "deep",
+     "min": 60,
+     "s": "Sáng",
+     "at": "08:00"
+    },
+    {
+     "id": "d6Spmipro1",
+     "day": 6,
+     "k": "pmipro",
+     "min": 30,
+     "s": "Sáng",
+     "at": "08:00"
+    },
+    {
+     "id": "d7Sreview0",
+     "day": 7,
+     "k": "review",
+     "min": 30,
+     "s": "Sáng",
+     "at": "08:00"
+    },
+    {
+     "id": "d7Sspeak1",
+     "day": 7,
+     "k": "speak",
+     "min": 30,
+     "s": "Sáng",
+     "at": "08:00"
+    },
+    {
+     "id": "d7Svocab2",
+     "day": 7,
+     "k": "vocab",
+     "min": 15,
+     "s": "Sáng",
+     "at": "08:00"
+    }
+   ],
+   "minutes": 400
   }
  },
  "phases": [
@@ -1078,10 +1137,10 @@
   }
  ],
  "needs": [
-  "Giữ đủ giờ mỗi tuần như đã chọn ở trên. Với 2 buổi Preply, anh phải nói ≥ 70% thời lượng mới bù được số buổi ít.",
+  "Giữ đủ 2 giờ mỗi ngày trong tuần và 3 giờ mỗi ngày cuối tuần. Với 2 buổi Preply, anh phải nói ≥ 70% thời lượng.",
   "Không bỏ trắng tuần nào. Tuần thầu căng thì chạy “tuần tối thiểu” khoảng 4,5 giờ.",
   "Mọi email, RFI, biên bản thật đều viết nháp tiếng Anh trước, rồi mới nhờ dịch hay sửa.",
   "Đi đủ 4 mốc kiểm tra. Trượt mốc quá 1 bậc nhỏ thì kéo dài giai đoạn thêm 4 tuần, không cố chạy tiếp."
  ],
- "minimal": "Tuần tối thiểu (mùa thầu căng): giữ 2 buổi Preply, shadowing 10 phút và 10 thẻ từ mỗi ngày, khoảng 4,5 giờ. Tối đa 1 tuần như vậy mỗi tháng."
+ "minimal": "Tuần thầu căng: chuyển sang mức “Tuần thầu căng · ~6 giờ” ở trên, tối đa 1 tuần mỗi tháng, rồi quay lại lịch chính."
 }
