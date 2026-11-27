@@ -189,6 +189,13 @@ mark.err{background:var(--redbg);color:inherit;border-bottom:2px solid var(--red
 .pin i{border-color:var(--gold)}.pin i.f{background:var(--gold)}
 .pad button:hover{background:rgba(255,255,255,.16)}.pad button:active{background:rgba(241,198,106,.28)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.plan .wk{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:10px}.plan .wd{border:1px solid var(--line);border-radius:10px;padding:8px;min-width:0}.plan .wd.today{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.plan .wd>b{display:block;font-size:13px;margin-bottom:6px}.plan .pb{display:flex;gap:6px;align-items:flex-start;font-size:13px;line-height:1.35;padding:4px 0;cursor:pointer;font-weight:400}.plan .pb input{width:auto;min-height:0;margin:2px 0 0;flex:none}.plan .pb.ok span{text-decoration:line-through;color:var(--mute)}
+.plan .hist{display:flex;gap:4px;align-items:flex-end;height:40px;margin-top:6px}.plan .hist i{flex:1;background:var(--soft);border-radius:3px 3px 0 0;min-height:3px}.plan .hist i.on{background:var(--teal)}
+.mo{border-bottom:1px solid var(--line);padding:10px 0}.mo>summary{cursor:pointer;font-weight:600;list-style:none;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.mo>summary::-webkit-details-marker{display:none}.mo.cur{background:var(--tealbg);border-radius:10px;padding:10px 12px;border-bottom:0}
+.mo ul{margin:6px 0 0;padding-left:20px}.mo .en{font-style:italic}.cp{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+@media (max-width:900px){.plan .wk{grid-template-columns:minmax(0,1fr)}.plan .wd{display:grid;grid-template-columns:44px minmax(0,1fr);gap:8px}.plan .wd>b{margin:2px 0 0}}
+@media (max-width:600px){.cp{grid-template-columns:minmax(0,1fr);gap:4px}}
 </style>
 </head>
 <body>
@@ -226,6 +233,7 @@ mark.err{background:var(--redbg);color:inherit;border-bottom:2px solid var(--red
 <section class="view" id="v-roadmap">
  <h1>Lộ trình thăng hạng</h1><p class="mute" id="rmIntro">B1 hiện tại → B2 vững chắc → C1/C2 chuẩn Giám đốc Đấu thầu quốc tế. Hoàn thành 80% chặng trước để mở chặng sau.</p>
  <div id="rmNow"></div>
+ <div id="c1plan"></div>
  <div class="card" style="margin:16px 0 26px"><div class="row sp"><b>Tiến độ tổng</b><b id="rmPct">0%</b></div><div class="bar" style="margin-top:8px"><i id="rmBar" style="width:0"></i></div></div>
  <div id="stages"></div>
 </section>
@@ -539,6 +547,7 @@ function renderHome(){{const n=C.learner||'Hùng';$('#pfName').textContent=n;$('
  if(mbOpen)todo.push([`Ôn ${Math.min(3,mbOpen)} lỗi trong Mistake Bank`,'#preply']);
  {const lr=libDue();if(lr)todo.push([`Ôn ${lr.title.split(' · ')[0]}: bài tập ngữ pháp (${libStat(lr).ok}/${libStat(lr).n} đúng)`,'#preply','lib'])}
  const nl=nextLesson();if(nl)todo.push([`Bài lộ trình: ${nl.t}`,'#roadmap']);
+ {const pt=planToday();if(pt&&pt.all.length)todo.unshift([pt.left.length?`Kế hoạch 12 tháng hôm nay: còn ${pt.left.length}/${pt.all.length} khối (${pt.left.reduce((a,b)=>a+b.min,0)} phút)`:'Kế hoạch 12 tháng: đã xong các khối hôm nay ✓','#roadmap'])}
  todo.push(['Lật 5 thẻ thuật ngữ','#hub']);
  $('#todo').innerHTML=todo.map(t=>`<a href="${t[1]}"${t[2]?` data-prt="${t[2]}"`:''} class="lesson" style="text-decoration:none;color:inherit"><span>${esc(t[0])}</span><span class="mute">→</span></a>`).join('');
  const ag=[...D.wa].filter(w=>w.status!=='Done'||daysTo(w.target_date)>=0).sort((a,b)=>String(a.target_date).localeCompare(String(b.target_date)));
@@ -562,12 +571,55 @@ function stagePct(s){return Math.round(s.l.filter((_,i)=>P.lessons[lid(s,i)]==='
 function unlocked(si){return si===0||stagePct(STAGES[si-1])>=80}
 function rmPct(){const all=STAGES.flatMap(s=>s.l.map((_,i)=>lid(s,i)));return Math.round(all.filter(k=>P.lessons[k]==='done').length/all.length*100)}
 function nextLesson(){for(const [si,s] of STAGES.entries()){if(!unlocked(si))return null;for(const [i,l] of s.l.entries())if(P.lessons[lid(s,i)]!=='done')return{t:l[0]}}return null}
-function renderRoadmap(){{const lv=curLevel();$('#rmIntro').textContent=lv?`Preply ước tính anh đang ở ${lv.cefr} (${fmtD(lv.date)}). Mục tiêu chặng 1: B2 vững, sau đó C1/C2 chuẩn Giám đốc Đấu thầu quốc tế. Hoàn thành 80% chặng trước để mở chặng sau.`:'B1 hiện tại → B2 vững chắc → C1/C2 chuẩn Giám đốc Đấu thầu quốc tế. Hoàn thành 80% chặng trước để mở chặng sau.'}renderNow();const p=rmPct();$('#rmPct').textContent=p+'%';$('#rmBar').style.width=p+'%';
+function renderRoadmap(){{const lv=curLevel();$('#rmIntro').textContent=lv?`Preply ước tính anh đang ở ${lv.cefr} (${fmtD(lv.date)}). Mục tiêu chặng 1: B2 vững, sau đó C1/C2 chuẩn Giám đốc Đấu thầu quốc tế. Hoàn thành 80% chặng trước để mở chặng sau.`:'B1 hiện tại → B2 vững chắc → C1/C2 chuẩn Giám đốc Đấu thầu quốc tế. Hoàn thành 80% chặng trước để mở chặng sau.'}renderNow();renderPlan();const p=rmPct();$('#rmPct').textContent=p+'%';$('#rmBar').style.width=p+'%';
  $('#stages').innerHTML=STAGES.map((s,si)=>{const open=unlocked(si),pc=stagePct(s);return `<div class="stage ${open&&pc<100?'cur':''}"><div class="row sp"><div><h2 style="margin:0">${s.t}</h2><span class="mute">${s.s}</span></div><span class="tag ${pc===100?'done':open?'doing':''}">${open?pc+'%':'Chưa mở'}</span></div>
  <div class="bar" style="margin:10px 0 4px"><i style="width:${pc}%"></i></div>
  ${s.l.map((l,i)=>{const st=P.lessons[lid(s,i)];const lab=st==='done'?'<span class="tag done">Hoàn thành</span>':st==='doing'?'<span class="tag doing">Đang học</span>':open?'<span class="tag">Chưa học</span>':'<span class="tag">Chưa mở</span>';
  return `<div class="lesson ${open?'':'locked'}"><div><div>${esc(l[0])}</div>${lab}</div><div class="row" style="flex-wrap:nowrap">${open?`<a class="btn sm" href="${LINK[l[1]]}" data-go="${lid(s,i)}">Học</a><button class="btn sm" data-done="${lid(s,i)}">${st==='done'?'Bỏ ✓':'Xong'}</button>`:''}</div></div>`}).join('')}</div>`}).join('')}
 $('#stages').addEventListener('click',e=>{const g=e.target.closest('[data-go]'),d=e.target.closest('[data-done]');if(g&&P.lessons[g.dataset.go]!=='done'){P.lessons[g.dataset.go]='doing';saveP()}if(d){const k=d.dataset.done;P.lessons[k]=P.lessons[k]==='done'?'doing':'done';saveP();active();renderRoadmap()}});
+
+
+/* ================= KẾ HOẠCH 12 THÁNG ================= */
+var PLAN=null;var PS=store.get('be_plan',{tier:'',log:{}});if(!PS.log)PS.log={};const savePS=()=>store.set('be_plan',PS);
+const DN=['','T2','T3','T4','T5','T6','T7','CN'];
+fetch('data/c1-plan.json').then(r=>r.json()).then(j=>{PLAN=j;renderPlan();renderHome()}).catch(()=>{});
+function planTier(){return PLAN.tiers[PS.tier]||PLAN.tiers[PLAN.defaultTier]}
+function monOf(iso){const d=new Date(iso+'T00:00');d.setDate(d.getDate()-((d.getDay()+6)%7));return isoOf(d)}
+const dow=()=>((new Date(todayISO()+'T00:00').getDay()+6)%7)+1;
+function planWeek(){return Math.floor((new Date(monOf(todayISO())+'T00:00')-new Date(PLAN.start+'T00:00'))/6048e5)+1}
+function planMonth(){const ym=todayISO().slice(0,7),ms=PLAN.months;if(ym<ms[0].ym)return 0;const i=ms.findIndex(m=>m.ym===ym);return i<0?ms.length:i+1}
+function weekDone(wk){return Object.values(PS.log[wk]||{}).reduce((a,b)=>a+(+b||0),0)}
+function planToday(){if(!PLAN)return null;const t=planTier(),wk=monOf(todayISO()),lg=PS.log[wk]||{},bl=t.blocks.filter(b=>b.day===dow());return{left:bl.filter(b=>!lg[b.id]),all:bl}}
+const hTxt=m=>(Math.round(m/6)/10).toLocaleString('vi-VN')+' giờ';
+function renderPlan(){const el=$('#c1plan');if(!el||!PLAN)return;const t=planTier(),tk=PS.tier&&PLAN.tiers[PS.tier]?PS.tier:PLAN.defaultTier,K=PLAN.kinds;
+ const w=planWeek(),mi=planMonth(),cur=PLAN.months[Math.min(Math.max(mi,1),12)-1],wk=monOf(todayISO()),lg=PS.log[wk]||{},done=weekDone(wk),pc=Math.min(100,Math.round(done/t.minutes*100)),td=dow();
+ const wl=w<1?`Bắt đầu thứ Hai ${fmtD(PLAN.start)} · tuần này là tuần khởi động`:w>PLAN.weeks?'Đã hết 52 tuần: làm bài thi chính thức và đặt mục tiêu mới':`Tuần ${w}/${PLAN.weeks} · Tháng ${mi}: ${cur.t}`;
+ const days=[1,2,3,4,5,6,7].map(d=>`<div class="wd ${d===td?'today':''}"><b>${DN[d]}${d===td?' · hôm nay':''}</b><div>${t.blocks.filter(b=>b.day===d).map(b=>`<label class="pb ${lg[b.id]?'ok':''}" title="${esc(K[b.k].d)}"><input type="checkbox" data-pb="${esc(b.id)}" data-min="${b.min}" ${lg[b.id]?'checked':''}><span>${esc(K[b.k].t)} · ${b.min}′</span></label>`).join('')}</div></div>`).join('');
+ const hist=[];for(let i=7;i>=0;i--){const d=new Date(wk+'T00:00');d.setDate(d.getDate()-7*i);const k=isoOf(d),v=weekDone(k),p=Math.min(100,Math.round(v/t.minutes*100));hist.push(`<i class="${p>=80?'on':''}" style="height:${Math.max(3,p)}%" title="Tuần từ ${fmtD(k)}: ${hTxt(v)}"></i>`)}
+ const guide=Object.entries(K).filter(([k])=>t.blocks.some(b=>b.k===k)).map(([k,v])=>`<li><b style="font-weight:600">${esc(v.t)}:</b> ${esc(v.d)} <a href="${esc(v.link)}">Mở</a></li>`).join('');
+ const months=PLAN.phases.map(ph=>`<h3 style="margin:18px 0 4px">${esc(ph.t)} <span class="tag t">${esc(ph.cefr)}</span> <span class="tag">${esc(ph.stage)}</span></h3><p class="mute" style="margin:0 0 6px">${esc(ph.why)}</p>`+PLAN.months.filter(m=>m.n>=ph.m[0]&&m.n<=ph.m[1]).map(m=>{const isC=m.n===mi,cp=PLAN.checkpoints.find(c=>c.month===m.n);return `<details class="mo ${isC?'cur':''}" ${isC||(mi===0&&m.n===1)?'open':''}><summary>Tháng ${m.n} · ${esc(m.ym.slice(5)+'/'+m.ym.slice(0,4))} · ${esc(m.t)} ${isC?'<span class="tag doing">Đang học</span>':m.n<mi?'<span class="tag done">Đã qua</span>':''}${cp?' <span class="tag new">Mốc '+cp.n+'</span>':''}</summary>
+  <div class="grid g2" style="margin-top:8px"><div><b style="font-weight:600">Ngữ pháp trọng tâm</b><ul>${m.grammar.map(g=>`<li>${esc(g)}</li>`).join('')}</ul></div><div><b style="font-weight:600">Câu mẫu</b><ul>${m.lang.map(g=>`<li class="en">${esc(g)}</li>`).join('')}</ul></div></div>
+  ${m.pmi?`<p style="margin:8px 0 0"><b style="font-weight:600">PMI:</b> ${esc(m.pmi.area)} · <span class="en">${esc(m.pmi.terms.join(', '))}</span>. ${esc(m.pmi.task)}</p>`:''}
+  <p style="margin:8px 0 0"><b style="font-weight:600">Tình huống thầu:</b> ${esc(m.scenario)}</p><p style="margin:4px 0 0"><b style="font-weight:600">Sản phẩm cuối tháng:</b> ${esc(m.output)}</p><p style="margin:4px 0 0"><b style="font-weight:600">Chỉ tiêu:</b> ${esc(m.target)}</p>
+  <button class="btn sm" style="margin-top:8px" data-lor="${m.n}">Copy lời nhắn gửi Ms. Lorraine</button></details>`}).join('')).join('');
+ const cps=PLAN.checkpoints.map(c=>{const k=daysTo(c.date);return `<div class="cp"><div><b>${esc(fmtD(c.date))}</b><div class="mute">${k<0?'Đã qua':k===0?'Hôm nay':`còn ${k} ngày`}</div></div><div><b style="font-weight:600">${esc(c.t)}</b><ul style="margin:4px 0 0;padding-left:20px">${c.targets.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div></div>`}).join('');
+ el.innerHTML=`<div class="card plan" style="margin:16px 0"><div class="row sp"><div><span class="lbl">Kế hoạch tăng tốc 12 tháng</span><h2 style="margin:4px 0">B1.1 → C1 trước tháng 11/2027</h2><div class="mute">${esc(wl)}</div></div>
+  <div class="row" role="group" aria-label="Số giờ mỗi tuần">${Object.entries(PLAN.tiers).map(([k,v])=>`<button class="chip ${k===tk?'on':''}" data-tier="${esc(k)}">${esc(v.label)}</button>`).join('')}</div></div>
+  <p style="margin:10px 0 0"><b style="font-weight:600">${esc(t.forecast)}</b> ${esc(t.note)}</p>
+  <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:600">Cần gì để kịp 1 năm</summary><ul style="margin:6px 0 0;padding-left:20px">${PLAN.needs.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p style="margin:6px 0 0">${esc(PLAN.minimal)}</p><p class="mute" style="margin:6px 0 0">${esc(PLAN._note)}</p></details>
+  <div class="row sp" style="margin-top:16px"><b>Tuần này: ${hTxt(done)} / ${hTxt(t.minutes)}</b><b>${pc}%</b></div><div class="bar" style="margin-top:6px"><i style="width:${pc}%"></i></div>
+  <div class="wk">${days}</div>
+  <div class="row sp" style="margin-top:12px;align-items:flex-end"><div style="flex:1;min-width:180px"><span class="lbl">8 tuần gần nhất (đậm = đạt ≥ 80%)</span><div class="hist">${hist.join('')}</div></div></div>
+  <details style="margin-top:10px"><summary style="cursor:pointer;font-weight:600">Mỗi khối học làm gì</summary><ul style="margin:6px 0 0;padding-left:20px">${guide}</ul><p class="mute" style="margin:6px 0 0">Tick lưu trên máy này. Ngày học Preply theo lịch thật của anh, có thể đổi chỗ các khối cho khớp.</p></details></div>
+ <div class="card" style="margin:16px 0"><h2 style="margin:0">Chương trình 12 tháng</h2><p class="mute" style="margin:4px 0 0">Mỗi tháng: 1 trọng tâm ngữ pháp, 1 chủ đề PMI, 1 tình huống thầu thật, 1 sản phẩm cuối tháng. Đầu tháng bấm “Copy lời nhắn” gửi Ms. Lorraine.</p>${months}</div>
+ <div class="card" style="margin:16px 0"><h2 style="margin:0">Mốc kiểm tra</h2><p class="mute" style="margin:4px 0 0">Cuối mỗi tháng nhập điểm Preply mới (ô “Cập nhật điểm” ở trên). Trượt mốc quá 1 bậc nhỏ thì kéo dài giai đoạn thêm 4 tuần.</p>${cps}</div>`}
+function lorMsg(n){const m=PLAN.months[n-1],ph=PLAN.phases.find(p=>n>=p.m[0]&&n<=p.m[1]),cp=PLAN.checkpoints.find(c=>c.month===n);
+ return `Hi Lorraine,\n\nI have started a 12-month plan to reach C1 by November 2027, so I would like our lessons to be very focused. This is Month ${n} (${ph.t.split('·')[0].trim().replace('Giai đoạn','Phase')}).\n\nGrammar focus: ${m.focus_en}.\nWork scenario: ${m.scenario_en}.\n${m.pmi?`Project management topic (PMI/PMBOK): ${m.pmi.terms.join(', ')}. I would like to use these terms when we talk about my work.\n`:''}Target phrases:\n${m.lang.map(x=>'- '+x).join('\n')}\n\n${m.lorraine}\n\nPlease let me speak at least 70% of the time, and correct my errors on the spot.${cp?`\n\nAt the end of this month I would like a short level check (IELTS-style speaking, Parts 1–3) to measure my progress.`:''}\n\nThank you!\nHùng`}
+$('#c1plan').addEventListener('click',e=>{const tb=e.target.closest('[data-tier]'),lb=e.target.closest('[data-lor]');
+ if(tb){PS.tier=tb.dataset.tier;savePS();renderPlan();renderHome();toast('Đã đổi sang '+planTier().label)}
+ if(lb)copy(lorMsg(+lb.dataset.lor))});
+$('#c1plan').addEventListener('change',e=>{const c=e.target.closest('[data-pb]');if(!c)return;const wk=monOf(todayISO());PS.log[wk]=PS.log[wk]||{};if(c.checked){PS.log[wk][c.dataset.pb]=+c.dataset.min;active()}else delete PS.log[wk][c.dataset.pb];
+ const ks=Object.keys(PS.log).sort();while(ks.length>60)delete PS.log[ks.shift()];savePS();renderPlan();renderHome()});
 
 /* ================= LAB ================= */
 const SCN={
