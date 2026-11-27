@@ -122,3 +122,13 @@ function audioChunk_(b) {
   if (r.getResponseCode() >= 300) throw new Error('Drive trả lỗi ' + r.getResponseCode());
   return { status: 'success', size: size, mime: mime, data: Utilities.base64Encode(r.getContent()) };
 }
+
+/** Chạy hàm này 1 lần trong trình soạn Apps Script (chọn authorizeDrive → Run)
+ *  để Google hỏi quyền đọc Google Drive và gọi Drive API. Không đổi dữ liệu gì. */
+function authorizeDrive() {
+  var it = DriveApp.getFilesByName('HeroHub_L11.m4a.001');
+  var found = it.hasNext() || DriveApp.getFilesByName('HeroHub_L11.m4a').hasNext();
+  UrlFetchApp.fetch('https://www.googleapis.com/drive/v3/about?fields=user', {
+    headers: { Authorization: 'Bearer ' + ScriptApp.getOAuthToken() }, muteHttpExceptions: true });
+  Logger.log(found ? 'OK: đã cấp quyền và thấy audio buổi 11 trong Drive.' : 'Đã cấp quyền. Chưa thấy file audio HeroHub_L11 trong Drive.');
+}
