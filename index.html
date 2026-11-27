@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0b5d63">
+<meta name="theme-color" content="#8b4a22">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Bidding EN">
 <link rel="manifest" href="manifest.json">
@@ -155,6 +155,24 @@ pre{white-space:pre-wrap;background:var(--soft);padding:16px;border-radius:12px;
 .cg i.rg,.lg.rg{background:var(--tealbg);color:var(--teal)}.cg i.me,.lg.me{background:var(--teal);color:#fff}.cg i.tg,.lg.tg{box-shadow:inset 0 0 0 2px var(--amber);color:var(--amber)}
 .lg{display:inline-block;width:12px;height:12px;flex:none;vertical-align:-1px;margin-right:6px;border-radius:3px}
 .sk .bar{margin-top:6px}label.chip{cursor:pointer;font-weight:500}label.chip:focus-within{outline:2px solid var(--teal);outline-offset:2px}
+/* WARM EARTH THEME: cream paper, earth-brown lead, gold and terracotta accents, no green.
+   Kept as one override block so the base rules above stay untouched; --teal keeps its old name
+   (it now holds the earth brown) so the rest of the code stays compatible.
+   Every text/background pair passes WCAG AA (4.5:1) in light and dark mode. */
+:root{
+--bg:light-dark(#faf6ef,#17110c);--panel:light-dark(#fffdf9,#201811);--soft:light-dark(#f3ebdf,#2a2018);
+--ink:light-dark(#2b1f16,#f2e9de);--mute:light-dark(#6b5a4b,#b5a492);--line:light-dark(#e6dccd,#3a2d22);
+--teal:light-dark(#8b4a22,#e3a56f);--tealbg:light-dark(#f5e7da,#3b2717);--onpri:light-dark(#fff,#1a120c);
+--amber:light-dark(#8f5f00,#ebc15f);--amberbg:light-dark(#fbefd3,#3a2c12);
+--red:light-dark(#a33a22,#ff9c86);--redbg:light-dark(#fbe6df,#3d1a14);--green:light-dark(#5f5a12,#d2c86e);--greenbg:light-dark(#f0edd2,#2e2b12);
+--hero:linear-gradient(135deg,#6e3a1b 0%,#9a4a26 100%);--lockbg:linear-gradient(160deg,#5b2f17 0%,#8c3b1f 100%);--gold:#f1c66a}
+:root:root .btn.pri,.days i.on,.lv span.cur,.cg i.me,.lg.me,.av{color:var(--onpri)}
+:root:root .card.hero{background:var(--hero);color:#fff}
+.hero .btn.pri{color:#6e3a1b}
+.modal{background:rgba(30,20,12,.55)}
+.lock{background:var(--lockbg)}
+.pin i{border-color:var(--gold)}.pin i.f{background:var(--gold)}
+.pad button:hover{background:rgba(255,255,255,.16)}.pad button:active{background:rgba(241,198,106,.28)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
