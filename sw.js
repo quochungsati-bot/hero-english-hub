@@ -1,6 +1,6 @@
 // Offline cache cho Bidding English Studio. Dữ liệu Sheet/AI luôn đi thẳng ra mạng.
-const CACHE = 'be-v9';
-const ASSETS = ['./', './index.html', './manifest.json', './icon.svg', './data/preply-lessons.json', './data/lesson-reviews.json'];
+const CACHE = 'be-v10';
+const ASSETS = ['./', './index.html', './manifest.json', './icon.svg', './data/preply-lessons.json', './data/lesson-reviews.json', './data/c1-plan.json'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS))); self.skipWaiting(); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(k => Promise.all(k.filter(x => x !== CACHE).map(x => caches.delete(x))))); self.clients.claim(); });
 self.addEventListener('fetch', e => {

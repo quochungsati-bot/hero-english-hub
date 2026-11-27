@@ -1,0 +1,1087 @@
+{
+ "_note": "Kế hoạch tăng tốc 12 tháng (30/11/2026 → 28/11/2027). Ước lượng giờ học dựa trên mức tham khảo khoảng 200 giờ có hướng dẫn cho mỗi bậc CEFR; đây là ước lượng, không phải cam kết.",
+ "start": "2026-11-30",
+ "weeks": 52,
+ "defaultTier": "hung",
+ "kinds": {
+  "preply": {
+   "t": "Preply với Ms. Lorraine",
+   "d": "Buổi 50 phút với Ms. Lorraine. Đọc giáo án trước, ghi 3 lỗi mới vào Mistake Bank ngay sau buổi. Anh nói ≥ 70% thời lượng.",
+   "link": "#preply"
+  },
+  "shadow": {
+   "t": "Shadowing",
+   "d": "Nghe và nói đuổi 1 đoạn 1–2 phút (bài Nghe trong 4 Kỹ năng hoặc audio buổi Preply), làm lúc đi xe hay đi bộ.",
+   "link": "#studio"
+  },
+  "vocab": {
+   "t": "Thẻ thuật ngữ",
+   "d": "Lật 10 thẻ trong Kho tri thức, đặt 2 câu của riêng anh với cụm mới.",
+   "link": "#hub"
+  },
+  "core": {
+   "t": "Ngữ pháp trọng tâm tháng",
+   "d": "10 câu drill theo trọng tâm tháng này, rồi nói lại đúng 5 lỗi trong Mistake Bank, mỗi câu 2 lần.",
+   "link": "#preply"
+  },
+  "work": {
+   "t": "Việc thật bằng tiếng Anh",
+   "d": "Viết 1 email, RFI hoặc biên bản họp thật (đã ẩn danh [PROJECT], [CLIENT], [AMOUNT]), rồi nâng cấp lên bản B2 và C1.",
+   "link": "#studio"
+  },
+  "speak": {
+   "t": "Luyện nói với AI",
+   "d": "Mô phỏng: AI đóng vai CĐT/PMC theo kịch bản của tháng, hoặc ghi âm 3 phút PREP rồi nghe lại.",
+   "link": "#lab"
+  },
+  "speak2": {
+   "t": "Buổi nói thêm 30 phút",
+   "d": "Gia sư thứ hai hoặc đồng nghiệp nước ngoài, chỉ hội thoại tự do theo chủ đề tháng. Mục tiêu: nói nhiều, không cần sửa lỗi.",
+   "link": "#lab"
+  },
+  "deep": {
+   "t": "Khối sâu cuối tuần",
+   "d": "Đọc 1 tài liệu thầu tiếng Anh (đã ẩn danh) · viết 250–300 từ theo sản phẩm tháng · ghi âm bài nói 3–5 phút và tự nghe lại. Tuần cuối tháng: làm bài kiểm tra mini.",
+   "link": "#studio"
+  },
+  "pmi": {
+   "t": "Tiếng Anh chuyên môn PMI",
+   "d": "Ôn chủ đề PMI của tháng bằng tiếng Anh: đọc 1 trang PMBOK Guide hoặc tài liệu PMP, chép 5 thuật ngữ vào Kho tri thức, giải thích lại 1 khái niệm trong 1 phút như đang nói với CĐT.",
+   "link": "#hub"
+  },
+  "review": {
+   "t": "Tổng kết tuần",
+   "d": "Cập nhật Mistake Bank, chọn tình huống cho tuần sau, soạn giáo án và gửi Ms. Lorraine.",
+   "link": "#preply"
+  }
+ },
+ "tiers": {
+  "hung": {
+   "label": "Lịch của anh · ~9 giờ",
+   "preply": 2,
+   "forecast": "Với khoảng 9 giờ/tuần: B2 vững sau khoảng 10–12 tháng; C1 cần khoảng 14–16 tháng.",
+   "note": "2 buổi Preply (T4, T6), 1,5 giờ các ngày T2, T3, T5 và 3 giờ cuối tuần, có lồng PMI. Muốn chạm C1 đúng 12 tháng: thêm 1 buổi Preply hoặc học 3 giờ cho mỗi ngày cuối tuần.",
+   "blocks": [
+    {
+     "id": "d1core0",
+     "day": 1,
+     "k": "core",
+     "min": 30
+    },
+    {
+     "id": "d1pmi1",
+     "day": 1,
+     "k": "pmi",
+     "min": 20
+    },
+    {
+     "id": "d1shadow2",
+     "day": 1,
+     "k": "shadow",
+     "min": 20
+    },
+    {
+     "id": "d1work3",
+     "day": 1,
+     "k": "work",
+     "min": 10
+    },
+    {
+     "id": "d1vocab4",
+     "day": 1,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d2speak0",
+     "day": 2,
+     "k": "speak",
+     "min": 30
+    },
+    {
+     "id": "d2pmi1",
+     "day": 2,
+     "k": "pmi",
+     "min": 20
+    },
+    {
+     "id": "d2shadow2",
+     "day": 2,
+     "k": "shadow",
+     "min": 20
+    },
+    {
+     "id": "d2work3",
+     "day": 2,
+     "k": "work",
+     "min": 10
+    },
+    {
+     "id": "d2vocab4",
+     "day": 2,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d3preply0",
+     "day": 3,
+     "k": "preply",
+     "min": 50
+    },
+    {
+     "id": "d4core0",
+     "day": 4,
+     "k": "core",
+     "min": 30
+    },
+    {
+     "id": "d4pmi1",
+     "day": 4,
+     "k": "pmi",
+     "min": 20
+    },
+    {
+     "id": "d4shadow2",
+     "day": 4,
+     "k": "shadow",
+     "min": 20
+    },
+    {
+     "id": "d4work3",
+     "day": 4,
+     "k": "work",
+     "min": 10
+    },
+    {
+     "id": "d4vocab4",
+     "day": 4,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d5preply0",
+     "day": 5,
+     "k": "preply",
+     "min": 50
+    },
+    {
+     "id": "d6deep0",
+     "day": 6,
+     "k": "deep",
+     "min": 90
+    },
+    {
+     "id": "d7review0",
+     "day": 7,
+     "k": "review",
+     "min": 30
+    },
+    {
+     "id": "d7speak1",
+     "day": 7,
+     "k": "speak",
+     "min": 30
+    },
+    {
+     "id": "d7pmi2",
+     "day": 7,
+     "k": "pmi",
+     "min": 30
+    }
+   ],
+   "minutes": 550
+  },
+  "t8": {
+   "label": "8 giờ/tuần",
+   "preply": 2,
+   "forecast": "B2 vững sau khoảng 12 tháng, C1 sau 18–20 tháng.",
+   "note": "Giữ 2 buổi Preply. Đủ để chắc B2 trong năm nhưng chưa đủ giờ cho C1.",
+   "blocks": [
+    {
+     "id": "d1preply0",
+     "day": 1,
+     "k": "preply",
+     "min": 70
+    },
+    {
+     "id": "d1shadow1",
+     "day": 1,
+     "k": "shadow",
+     "min": 15
+    },
+    {
+     "id": "d1vocab2",
+     "day": 1,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d2core0",
+     "day": 2,
+     "k": "core",
+     "min": 30
+    },
+    {
+     "id": "d2shadow1",
+     "day": 2,
+     "k": "shadow",
+     "min": 15
+    },
+    {
+     "id": "d2vocab2",
+     "day": 2,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d3speak0",
+     "day": 3,
+     "k": "speak",
+     "min": 20
+    },
+    {
+     "id": "d3shadow1",
+     "day": 3,
+     "k": "shadow",
+     "min": 15
+    },
+    {
+     "id": "d3work2",
+     "day": 3,
+     "k": "work",
+     "min": 15
+    },
+    {
+     "id": "d3vocab3",
+     "day": 3,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d4core0",
+     "day": 4,
+     "k": "core",
+     "min": 30
+    },
+    {
+     "id": "d4shadow1",
+     "day": 4,
+     "k": "shadow",
+     "min": 15
+    },
+    {
+     "id": "d4vocab2",
+     "day": 4,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d5preply0",
+     "day": 5,
+     "k": "preply",
+     "min": 70
+    },
+    {
+     "id": "d5vocab1",
+     "day": 5,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d6deep0",
+     "day": 6,
+     "k": "deep",
+     "min": 90
+    },
+    {
+     "id": "d7review0",
+     "day": 7,
+     "k": "review",
+     "min": 30
+    },
+    {
+     "id": "d7vocab1",
+     "day": 7,
+     "k": "vocab",
+     "min": 10
+    }
+   ],
+   "minutes": 475
+  },
+  "t12": {
+   "label": "12 giờ/tuần",
+   "preply": 3,
+   "forecast": "C1 trong khoảng 12–14 tháng nếu giữ đều 52 tuần.",
+   "note": "Mức khuyên dùng: 3 buổi Preply, tự học khoảng 1 giờ mỗi ngày và 1 khối sâu cuối tuần.",
+   "blocks": [
+    {
+     "id": "d1preply0",
+     "day": 1,
+     "k": "preply",
+     "min": 70
+    },
+    {
+     "id": "d1shadow1",
+     "day": 1,
+     "k": "shadow",
+     "min": 20
+    },
+    {
+     "id": "d1vocab2",
+     "day": 1,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d2core0",
+     "day": 2,
+     "k": "core",
+     "min": 40
+    },
+    {
+     "id": "d2shadow1",
+     "day": 2,
+     "k": "shadow",
+     "min": 20
+    },
+    {
+     "id": "d2work2",
+     "day": 2,
+     "k": "work",
+     "min": 20
+    },
+    {
+     "id": "d2vocab3",
+     "day": 2,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d3preply0",
+     "day": 3,
+     "k": "preply",
+     "min": 70
+    },
+    {
+     "id": "d3shadow1",
+     "day": 3,
+     "k": "shadow",
+     "min": 20
+    },
+    {
+     "id": "d3vocab2",
+     "day": 3,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d4speak0",
+     "day": 4,
+     "k": "speak",
+     "min": 30
+    },
+    {
+     "id": "d4shadow1",
+     "day": 4,
+     "k": "shadow",
+     "min": 20
+    },
+    {
+     "id": "d4work2",
+     "day": 4,
+     "k": "work",
+     "min": 20
+    },
+    {
+     "id": "d4vocab3",
+     "day": 4,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d5preply0",
+     "day": 5,
+     "k": "preply",
+     "min": 70
+    },
+    {
+     "id": "d5shadow1",
+     "day": 5,
+     "k": "shadow",
+     "min": 20
+    },
+    {
+     "id": "d5vocab2",
+     "day": 5,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d6deep0",
+     "day": 6,
+     "k": "deep",
+     "min": 150
+    },
+    {
+     "id": "d7review0",
+     "day": 7,
+     "k": "review",
+     "min": 40
+    },
+    {
+     "id": "d7core1",
+     "day": 7,
+     "k": "core",
+     "min": 30
+    },
+    {
+     "id": "d7vocab2",
+     "day": 7,
+     "k": "vocab",
+     "min": 10
+    }
+   ],
+   "minutes": 700
+  },
+  "t15": {
+   "label": "15 giờ/tuần",
+   "preply": 3,
+   "forecast": "Đường ngắn nhất: C1 trong khoảng 12 tháng, có dư giờ cho tuần bận.",
+   "note": "3 buổi Preply, thêm 2 buổi nói 30 phút và khối cuối tuần dài. Chỉ chọn nếu lịch công việc cho phép thật.",
+   "blocks": [
+    {
+     "id": "d1preply0",
+     "day": 1,
+     "k": "preply",
+     "min": 70
+    },
+    {
+     "id": "d1shadow1",
+     "day": 1,
+     "k": "shadow",
+     "min": 25
+    },
+    {
+     "id": "d1vocab2",
+     "day": 1,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d2core0",
+     "day": 2,
+     "k": "core",
+     "min": 40
+    },
+    {
+     "id": "d2speak21",
+     "day": 2,
+     "k": "speak2",
+     "min": 30
+    },
+    {
+     "id": "d2shadow2",
+     "day": 2,
+     "k": "shadow",
+     "min": 25
+    },
+    {
+     "id": "d2work3",
+     "day": 2,
+     "k": "work",
+     "min": 20
+    },
+    {
+     "id": "d2vocab4",
+     "day": 2,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d3preply0",
+     "day": 3,
+     "k": "preply",
+     "min": 70
+    },
+    {
+     "id": "d3shadow1",
+     "day": 3,
+     "k": "shadow",
+     "min": 25
+    },
+    {
+     "id": "d3vocab2",
+     "day": 3,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d4speak20",
+     "day": 4,
+     "k": "speak2",
+     "min": 30
+    },
+    {
+     "id": "d4core1",
+     "day": 4,
+     "k": "core",
+     "min": 30
+    },
+    {
+     "id": "d4shadow2",
+     "day": 4,
+     "k": "shadow",
+     "min": 25
+    },
+    {
+     "id": "d4work3",
+     "day": 4,
+     "k": "work",
+     "min": 20
+    },
+    {
+     "id": "d4vocab4",
+     "day": 4,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d5preply0",
+     "day": 5,
+     "k": "preply",
+     "min": 70
+    },
+    {
+     "id": "d5shadow1",
+     "day": 5,
+     "k": "shadow",
+     "min": 25
+    },
+    {
+     "id": "d5vocab2",
+     "day": 5,
+     "k": "vocab",
+     "min": 10
+    },
+    {
+     "id": "d6deep0",
+     "day": 6,
+     "k": "deep",
+     "min": 210
+    },
+    {
+     "id": "d7review0",
+     "day": 7,
+     "k": "review",
+     "min": 45
+    },
+    {
+     "id": "d7speak1",
+     "day": 7,
+     "k": "speak",
+     "min": 30
+    },
+    {
+     "id": "d7core2",
+     "day": 7,
+     "k": "core",
+     "min": 40
+    },
+    {
+     "id": "d7vocab3",
+     "day": 7,
+     "k": "vocab",
+     "min": 10
+    }
+   ],
+   "minutes": 890
+  }
+ },
+ "phases": [
+  {
+   "n": 1,
+   "t": "Giai đoạn 1 · Sửa nền câu",
+   "m": [
+    1,
+    3
+   ],
+   "cefr": "B1.1 → B1.2",
+   "stage": "Chặng 1",
+   "why": "52% lỗi tháng 11 là lõi câu (to be, -s/has). Chưa sửa xong phần này thì học cấu trúc khó hơn cũng không vào."
+  },
+  {
+   "n": 2,
+   "t": "Giai đoạn 2 · Nói dài, viết chuẩn",
+   "m": [
+    4,
+    6
+   ],
+   "cefr": "B1.2 → B2.1",
+   "stage": "Chặng 1 → 2",
+   "why": "Chuyển từ câu đúng sang đoạn nói 3–5 phút và email/biên bản dùng được ngay trong công việc."
+  },
+  {
+   "n": 3,
+   "t": "Giai đoạn 3 · Bảo vệ giải pháp",
+   "m": [
+    7,
+    9
+   ],
+   "cefr": "B2.1 → B2.2",
+   "stage": "Chặng 2",
+   "why": "Trả lời câu hỏi xoáy, giữ lập trường lịch sự mà chắc, viết thư chính thức."
+  },
+  {
+   "n": 4,
+   "t": "Giai đoạn 4 · Thuyết phục và thương thảo",
+   "m": [
+    10,
+    12
+   ],
+   "cefr": "B2.2 → C1.1",
+   "stage": "Chặng 2 → 3",
+   "why": "Thuyết trình có sức nặng và đàm phán điều khoản. Đây là cửa vào C1, chưa phải C2."
+  }
+ ],
+ "months": [
+  {
+   "n": 1,
+   "ym": "2026-12",
+   "t": "Lõi câu: to be · -s/has · do/does",
+   "grammar": [
+    "am/is/are trước tính từ và danh từ",
+    "Ngôi thứ ba số ít: has, requires, includes",
+    "Câu hỏi và phủ định với do/does"
+   ],
+   "lang": [
+    "Our company is one of the leading contractors in Vietnam.",
+    "The project has two phases.",
+    "Does the client require a performance bond?"
+   ],
+   "scenario": "Small talk và giới thiệu công ty khi mở đầu họp kick-off",
+   "output": "Giới thiệu công ty 1 phút, không còn lỗi lõi câu",
+   "lorraine": "Please stop me every time I miss \"be\" or the third-person -s, and ask me to repeat the full sentence.",
+   "target": "Lỗi lõi câu dưới 30% số lỗi Preply sửa",
+   "focus_en": "the sentence core: \"be\", third-person -s/has and do/does questions",
+   "scenario_en": "small talk and introducing my company at a kick-off meeting",
+   "pmi": {
+    "area": "Khởi động dự án và các bên liên quan",
+    "terms": [
+     "project charter",
+     "sponsor",
+     "stakeholder",
+     "deliverable",
+     "kick-off meeting"
+    ],
+    "task": "Giới thiệu 1 dự án mẫu bằng project charter: mục tiêu, sponsor, deliverables."
+   }
+  },
+  {
+   "n": 2,
+   "ym": "2027-01",
+   "t": "Danh từ và mạo từ: số nhiều · a/an/the · There is/are",
+   "grammar": [
+    "Số nhiều và danh từ không đếm được: equipment, information, feedback",
+    "a/an/the; không dùng \"the\" với Last Friday",
+    "There is/are, Is there any…?"
+   ],
+   "lang": [
+    "There are two access roads to the site.",
+    "Is there any information on the existing utilities?",
+    "We need more equipment on site."
+   ],
+   "scenario": "Site visit trước khi nộp thầu: mô tả hiện trạng, hỏi về hạ tầng sẵn có",
+   "output": "Nói 2 phút mô tả một công trường",
+   "lorraine": "Please give me site photos or plans and ask me to describe them using \"there is / there are\".",
+   "target": "There is/are đạt ≥ 50% mastery trên Preply",
+   "focus_en": "plurals, articles and there is / there are",
+   "scenario_en": "a pre-tender site visit: describing the site and asking about existing conditions",
+   "pmi": {
+    "area": "Quản lý phạm vi",
+    "terms": [
+     "scope statement",
+     "work breakdown structure (WBS)",
+     "requirements",
+     "assumptions",
+     "constraints"
+    ],
+    "task": "Lập WBS cấp 2 cho 1 nhà xưởng mẫu và hỏi 3 câu RFI về phạm vi."
+   }
+  },
+  {
+   "n": 3,
+   "ym": "2027-02",
+   "t": "Kinh nghiệm: quá khứ đơn · hiện tại hoàn thành",
+   "grammar": [
+    "took/ate/came và động từ bất quy tắc hay dùng",
+    "We have completed / have delivered … since / for",
+    "Last month, On Sunday morning, in 2024"
+   ],
+   "lang": [
+    "We have completed twelve data centres since 2018.",
+    "Last year we delivered the project two weeks early.",
+    "On Monday morning we submitted the RFI."
+   ],
+   "scenario": "Trình bày năng lực và dự án tiêu biểu (credentials)",
+   "output": "Bài nói 3 phút theo PREP + 1 email RFI đúng lõi câu",
+   "lorraine": "Please ask me follow-up questions about my past projects, like a client checking our track record.",
+   "target": "Kiểm tra mốc 1",
+   "focus_en": "past simple and present perfect for project experience",
+   "scenario_en": "presenting our track record and key projects",
+   "pmi": {
+    "area": "Kết thúc dự án và bài học kinh nghiệm",
+    "terms": [
+     "lessons learned",
+     "project closure",
+     "handover",
+     "benefits realisation",
+     "acceptance criteria"
+    ],
+    "task": "Kể 1 bài học kinh nghiệm từ dự án cũ theo PREP."
+   }
+  },
+  {
+   "n": 4,
+   "ym": "2027-03",
+   "t": "Tiến độ: thì tương lai · trình tự · giới từ thời gian",
+   "grammar": [
+    "will / be going to / hiện tại tiếp diễn cho lịch đã chốt",
+    "first, once, after that, by the time",
+    "by / until / within / no later than"
+   ],
+   "lang": [
+    "Piling will start once the permit is issued.",
+    "We are mobilising the site team next Monday.",
+    "The structure must be completed no later than week 32."
+   ],
+   "scenario": "Giải trình tiến độ, các mốc và critical path; viết biên bản họp (MoM)",
+   "output": "Giải thích tiến độ 3 phút + 1 email MoM",
+   "lorraine": "Please play a client who keeps asking \"Why does this take so long?\" about my programme.",
+   "target": "Nói liền 3 phút, ít ngắt quãng",
+   "focus_en": "future forms, sequencing and time prepositions",
+   "scenario_en": "explaining a construction programme, milestones and the critical path",
+   "pmi": {
+    "area": "Quản lý tiến độ",
+    "terms": [
+     "critical path",
+     "float",
+     "milestone",
+     "schedule baseline",
+     "fast-tracking",
+     "crashing"
+    ],
+    "task": "Giải thích fast-tracking và crashing trên 1 tiến độ mẫu."
+   }
+  },
+  {
+   "n": 5,
+   "ym": "2027-04",
+   "t": "Biện pháp: câu bị động · từ loại",
+   "grammar": [
+    "Bị động: is installed, will be tested, has been approved",
+    "Từ loại: prioritise/priority, comply/compliance, present/presentation",
+    "Từ nối quy trình"
+   ],
+   "lang": [
+    "The diaphragm wall is constructed in panels.",
+    "All works will comply with the approved method statement.",
+    "Safety is our top priority."
+   ],
+   "scenario": "Trình bày biện pháp thi công tầng hầm sâu hoặc cọc",
+   "output": "Thuyết trình biện pháp 4 phút có 1 sơ đồ",
+   "lorraine": "Please ask me technical \"how\" and \"what if\" questions about the method.",
+   "target": "Dùng đúng bị động trong bài nói",
+   "focus_en": "the passive voice and word forms",
+   "scenario_en": "presenting a method statement for a deep basement or piling works",
+   "pmi": {
+    "area": "Chất lượng và nguồn lực",
+    "terms": [
+     "quality management plan",
+     "QA/QC",
+     "inspection and test plan (ITP)",
+     "resource levelling",
+     "RACI matrix"
+    ],
+    "task": "Trình bày ITP cho 1 hạng mục kết cấu."
+   }
+  },
+  {
+   "n": 6,
+   "ym": "2027-05",
+   "t": "Lập luận: so sánh · nguyên nhân · điều kiện loại 1, 2",
+   "grammar": [
+    "So sánh hơn, nhất, much / slightly + comparative",
+    "because / so / despite / even though (không đi với \"but\")",
+    "If we use…, we will… · If we changed…, we would…"
+   ],
+   "lang": [
+    "Precast is significantly faster than cast-in-place on this project.",
+    "Despite the higher unit cost, the total cost is lower.",
+    "If we changed the roof system, we would save six weeks."
+   ],
+   "scenario": "Đề xuất Value Engineering (VE)",
+   "output": "Thuyết trình VE 5 phút + bản ghi nhớ VE 300 từ",
+   "lorraine": "Please act as a sceptical client who wants proof that the VE saves money without lowering quality.",
+   "target": "Kiểm tra mốc 2",
+   "focus_en": "comparatives, reasons and first/second conditionals",
+   "scenario_en": "defending a value engineering proposal",
+   "pmi": {
+    "area": "Chi phí và giá trị",
+    "terms": [
+     "cost baseline",
+     "contingency reserve",
+     "management reserve",
+     "cost-benefit analysis",
+     "life-cycle cost"
+    ],
+    "task": "So sánh 2 phương án VE theo life-cycle cost."
+   }
+  },
+  {
+   "n": 7,
+   "ym": "2027-06",
+   "t": "Hỏi đáp: mệnh đề quan hệ · câu hỏi · rào đón",
+   "grammar": [
+    "who / which / that / where",
+    "Câu hỏi làm rõ và câu mua thời gian",
+    "Rào đón: It seems, We would expect, As far as we know"
+   ],
+   "lang": [
+    "That is a fair question. Let me give you a concrete example.",
+    "The engineer who leads this package has 15 years of experience.",
+    "As far as we know, the soil report does not cover zone B."
+   ],
+   "scenario": "Phỏng vấn thầu: Tough Q&A về năng lực, an toàn, nhân sự, giá",
+   "output": "Trả lời 20 câu hỏi phỏng vấn, mỗi câu 60–90 giây",
+   "lorraine": "Please run a tender interview panel and ask one tough question at a time, with a follow-up if my answer is weak.",
+   "target": "Trả lời câu hỏi xoáy không bị đứng",
+   "focus_en": "relative clauses, clarifying questions and hedging",
+   "scenario_en": "a tender interview with tough questions",
+   "pmi": {
+    "area": "Các bên liên quan và truyền thông",
+    "terms": [
+     "stakeholder register",
+     "power/interest grid",
+     "communications management plan",
+     "escalation",
+     "engagement"
+    ],
+    "task": "Trả lời câu hỏi phỏng vấn: “How do you manage a difficult client?”"
+   }
+  },
+  {
+   "n": 8,
+   "ym": "2027-07",
+   "t": "Mềm mà chắc: động từ khuyết thiếu · điều kiện loại 2, 3",
+   "grammar": [
+    "shall / must / may trong hợp đồng",
+    "could / would / might để đề xuất mềm",
+    "If you had informed us earlier, we would have…"
+   ],
+   "lang": [
+    "We would be prepared to accept this, provided that the advance payment is 15%.",
+    "Could we consider a longer defects period instead?",
+    "If the drawings had been issued on time, we would have met the milestone."
+   ],
+   "scenario": "Làm rõ thương mại: điều khoản thanh toán, tạm ứng, giữ lại (retention)",
+   "output": "Role-play đàm phán 20 phút + email nêu lập trường",
+   "lorraine": "Please negotiate payment terms with me and push back on every offer I make.",
+   "target": "Giữ lập trường mà vẫn lịch sự",
+   "focus_en": "modal verbs and second/third conditionals for firm but polite positions",
+   "scenario_en": "commercial clarifications: payment terms, advance payment and retention",
+   "pmi": {
+    "area": "Mua sắm và loại hợp đồng",
+    "terms": [
+     "lump sum",
+     "unit price",
+     "cost-reimbursable",
+     "procurement documents",
+     "make-or-buy"
+    ],
+    "task": "Giải thích ưu nhược điểm hợp đồng lump sum với CĐT."
+   }
+  },
+  {
+   "n": 9,
+   "ym": "2027-08",
+   "t": "Văn phong chính thức: câu tường thuật · liên kết · danh từ hoá",
+   "grammar": [
+    "He said that…, The client asked whether…",
+    "however, therefore, whereas, in view of",
+    "delay → the delay in…, approve → approval of…"
+   ],
+   "lang": [
+    "The Engineer stated that the revised drawings would be issued by Friday.",
+    "In view of the late approval, we hereby request an extension of time.",
+    "We refer to your letter dated [DATE]."
+   ],
+   "scenario": "Thư thông báo phát sinh, chậm tiến độ, yêu cầu gia hạn",
+   "output": "Thư chính thức 400 từ + tường thuật lại 1 cuộc họp",
+   "lorraine": "Please give me a short meeting recording or text and ask me to report it back in formal English.",
+   "target": "Kiểm tra mốc 3",
+   "focus_en": "reported speech, formal linking and nominalisation",
+   "scenario_en": "formal letters on variations, delays and extensions of time",
+   "pmi": {
+    "area": "Kiểm soát thay đổi",
+    "terms": [
+     "change request",
+     "change control board",
+     "integrated change control",
+     "issue log",
+     "variation order"
+    ],
+    "task": "Mô tả quy trình xử lý 1 change request từ đầu đến cuối."
+   }
+  },
+  {
+   "n": 10,
+   "ym": "2027-09",
+   "t": "Thuyết trình có sức nặng: dẫn dắt · nhấn mạnh · số liệu",
+   "grammar": [
+    "Signposting: Let me start with…, This brings me to…",
+    "Câu nhấn: What we propose is…, It is our team that…",
+    "Đọc và bình luận số liệu, biểu đồ"
+   ],
+   "lang": [
+    "What we propose is a phased handover that protects your production date.",
+    "This brings me to the most important point: risk.",
+    "Cost increased by 4%, mainly because of steel prices."
+   ],
+   "scenario": "Thuyết trình hồ sơ thầu 15 phút trước ban lãnh đạo CĐT",
+   "output": "Bài thuyết trình 15 phút ghi hình + 10 phút Q&A",
+   "lorraine": "Please be the client board and interrupt me with questions during my presentation.",
+   "target": "Thuyết trình 15 phút có cấu trúc rõ",
+   "focus_en": "signposting, emphasis and talking about data",
+   "scenario_en": "a 15-minute bid presentation to a client board",
+   "pmi": {
+    "area": "Đo lường hiệu quả",
+    "terms": [
+     "earned value (EV)",
+     "schedule performance index (SPI)",
+     "cost performance index (CPI)",
+     "variance",
+     "forecast"
+    ],
+    "task": "Đọc báo cáo EVM mẫu: SPI 0.92, CPI 1.05 nghĩa là gì."
+   }
+  },
+  {
+   "n": 11,
+   "ym": "2027-10",
+   "t": "Đàm phán nâng cao: đảo ngữ · điều kiện hỗn hợp · nhượng bộ",
+   "grammar": [
+    "Should you require…, Were the scope to change…",
+    "Mixed conditionals",
+    "Nhượng bộ có điều kiện: We could move on X if you can move on Y"
+   ],
+   "lang": [
+    "Should you require further clarification, we would be happy to meet.",
+    "We could accept the cap on LDs if the cap is set at 10% of the contract price.",
+    "Had the risk been allocated differently, our price would be lower."
+   ],
+   "scenario": "Thương thảo LDs, mức trần trách nhiệm, phân bổ rủi ro (FIDIC)",
+   "output": "Role-play đàm phán 30 phút với Ms. Lorraine",
+   "lorraine": "Please negotiate liquidated damages and risk allocation with me as a demanding FDI client.",
+   "target": "Đạt thoả thuận mà không nhượng không công",
+   "focus_en": "inversion, mixed conditionals and conditional concessions",
+   "scenario_en": "negotiating liquidated damages, liability caps and risk allocation",
+   "pmi": {
+    "area": "Quản lý rủi ro",
+    "terms": [
+     "risk register",
+     "probability and impact",
+     "avoid / transfer / mitigate / accept",
+     "risk owner",
+     "residual risk"
+    ],
+    "task": "Lập risk register 5 dòng và nói về phân bổ rủi ro."
+   }
+  },
+  {
+   "n": 12,
+   "ym": "2027-11",
+   "t": "Tổng hợp và thi thật",
+   "grammar": [
+    "Ôn lại toàn bộ Mistake Bank",
+    "Đề thi mẫu IELTS hoặc Linguaskill Business",
+    "Câu dẫn dắt cuộc họp: Let's move on to…, Can we agree that…"
+   ],
+   "lang": [
+    "Let's move on to the next item on the agenda.",
+    "Can we agree that the revised programme will be issued by Friday?",
+    "To sum up, we have three action points."
+   ],
+   "scenario": "Chủ trì cuộc họp làm rõ trước khi trao thầu",
+   "output": "Thuyết trình 20–30 phút + chủ trì 1 cuộc họp mô phỏng",
+   "lorraine": "Please let me chair a full clarification meeting and evaluate me with a C1 speaking rubric.",
+   "target": "Kiểm tra cuối: thi chính thức",
+   "focus_en": "consolidation and exam practice",
+   "scenario_en": "chairing a pre-award clarification meeting",
+   "pmi": {
+    "area": "Lãnh đạo và câu hỏi tình huống PMP",
+    "terms": [
+     "servant leadership",
+     "tailoring",
+     "hybrid approach",
+     "conflict resolution",
+     "situational question"
+    ],
+    "task": "Trả lời 10 câu hỏi tình huống kiểu PMP bằng tiếng Anh, giải thích lý do."
+   }
+  }
+ ],
+ "checkpoints": [
+  {
+   "n": 1,
+   "month": 3,
+   "date": "2027-02-27",
+   "t": "Mốc 1 · Sửa nền xong",
+   "targets": [
+    "Preply ước tính B1.2, Ngữ pháp ≥ 30",
+    "There is/are ≥ 50% mastery, nói ≥ 65% thời lượng",
+    "Thi nói mẫu IELTS Part 1–3 với Ms. Lorraine: 5.0–5.5",
+    "1 email RFI không còn lỗi lõi câu"
+   ]
+  },
+  {
+   "n": 2,
+   "month": 6,
+   "date": "2027-05-29",
+   "t": "Mốc 2 · Vào B2",
+   "targets": [
+    "Preply ước tính B2.1, cả 3 điểm ≥ 45",
+    "Thi thử IELTS đủ 4 kỹ năng: 5.5–6.0 (nói ≥ 6.0)",
+    "Thuyết trình VE 5 phút ghi hình, tự chấm theo thang PREP"
+   ]
+  },
+  {
+   "n": 3,
+   "month": 9,
+   "date": "2027-08-28",
+   "t": "Mốc 3 · B2 vững",
+   "targets": [
+    "Preply ước tính B2.2",
+    "Thi thử IELTS: 6.0–6.5",
+    "Phỏng vấn thầu thử 30 phút, Ms. Lorraine chấm theo thang C1"
+   ]
+  },
+  {
+   "n": 4,
+   "month": 12,
+   "date": "2027-11-27",
+   "t": "Mốc 4 · Cửa vào C1",
+   "targets": [
+    "Thi chính thức: IELTS 7.0 (C1) hoặc Linguaskill Business ≥ 180 (C1)",
+    "Preply ước tính C1.1",
+    "Thuyết trình 20–30 phút + chủ trì họp bằng tiếng Anh"
+   ]
+  }
+ ],
+ "needs": [
+  "Giữ đủ giờ mỗi tuần như đã chọn ở trên. Với 2 buổi Preply, anh phải nói ≥ 70% thời lượng mới bù được số buổi ít.",
+  "Không bỏ trắng tuần nào. Tuần thầu căng thì chạy “tuần tối thiểu” khoảng 4,5 giờ.",
+  "Mọi email, RFI, biên bản thật đều viết nháp tiếng Anh trước, rồi mới nhờ dịch hay sửa.",
+  "Đi đủ 4 mốc kiểm tra. Trượt mốc quá 1 bậc nhỏ thì kéo dài giai đoạn thêm 4 tuần, không cố chạy tiếp."
+ ],
+ "minimal": "Tuần tối thiểu (mùa thầu căng): giữ 2 buổi Preply, shadowing 10 phút và 10 thẻ từ mỗi ngày, khoảng 4,5 giờ. Tối đa 1 tuần như vậy mỗi tháng."
+}
