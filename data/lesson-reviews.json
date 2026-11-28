@@ -1,5 +1,1237 @@
 [
  {
+  "id": "L30",
+  "no": 30,
+  "date": "2026-11-27",
+  "duration": 49,
+  "title": "Buổi 30 · Everyday Conversation: Vietnam vs the Philippines",
+  "topic": "Thời tiết, thuế quan Mỹ, mẫu giáo Montessori/Steiner, Jollibee và đặt đồ ăn online, Black Friday và Shopee, xe điện và kế hoạch 2030",
+  "summary": "Buổi học thứ Sáu 27/11 (Preply: \"Everyday conversation practice\"). Buổi nói chuyện tự do so sánh cuộc sống ở Việt Nam và Philippines: thời tiết trái mùa, Mỹ tăng thuế quan với hàng Việt Nam, kỳ nghỉ lễ văn hoá anh đưa vợ con đi nông trại, phương pháp mẫu giáo gần thiên nhiên, học phí và giờ học mẫu giáo hai nước, Jollibee và các chuỗi gà rán, đặt đồ ăn online, Black Friday, Shopee/Lazada, xe điện và kế hoạch hạn chế xe xăng năm 2030. Cuối buổi Lorraine luyện phát âm popular, method (/θ/) và sửa \"he very much liked it\".",
+  "strengths": [
+   "Chủ động hỏi lại và dẫn dắt nhiều chủ đề mới (Jollibee, Black Friday, Grab, xe điện), giữ được cuộc nói chuyện 50 phút.",
+   "Giải thích được ý phức tạp về thuế quan và chuyển nhà máy sang Việt Nam dù vốn từ còn thiếu.",
+   "Phát âm train, fuel, value được Lorraine khen.",
+   "Câu đúng: \"I don't remember what I said.\", \"Not much, but sometimes two or three times.\""
+  ],
+  "focus": [
+   "Câu thiếu động từ hoặc chủ ngữ: it's still raining, Shopee is more popular, I've been very busy",
+   "very không đứng trước động từ: he enjoyed it very much (lỗi hoá thạch, lặp lại)",
+   "Số nhiều sau some / many / three: some animals, three hours, many brands",
+   "the Philippines, the standard; nature và Black Friday không có the",
+   "Bị động: be influenced by, be allowed into, may be restricted",
+   "Từ dễ nhầm: electric/electrical, corporation/cooperation, plant/plan, export/import",
+   "Phát âm: /θ/ trong method, popular"
+  ],
+  "errors": [
+   {
+    "group": "Câu thiếu động từ / chủ ngữ",
+    "n": 10,
+    "repeat": true,
+    "ex": "now now still raining / Shopee very popular then Lazada / I very busy for my job",
+    "fix": "It's still raining now / Shopee is more popular than Lazada / I've been very busy with work"
+   },
+   {
+    "group": "Lỗi hoá thạch: very + động từ",
+    "n": 2,
+    "repeat": true,
+    "ex": "he's very enjoyed it / he very much liked it",
+    "fix": "He enjoyed it very much / He liked it very much"
+   },
+   {
+    "group": "Số nhiều sau some / many / số đếm",
+    "n": 6,
+    "repeat": true,
+    "ex": "some animal / three hour by day / many method learning",
+    "fix": "some animals / three hours a day / many learning methods"
+   },
+   {
+    "group": "Mạo từ the",
+    "n": 6,
+    "repeat": true,
+    "ex": "in Philippine / do you know standard / connect to the nature / the black Friday",
+    "fix": "in the Philippines / the standard / connect with nature / Black Friday"
+   },
+   {
+    "group": "Câu hỏi",
+    "n": 5,
+    "repeat": true,
+    "ex": "how the weather like / Lazada is still famous in Philippine? / what time for the kindergarten they study",
+    "fix": "What's the weather like? / Is Lazada still popular in the Philippines? / Do kindergarten children study all day?"
+   },
+   {
+    "group": "Bị động",
+    "n": 3,
+    "repeat": false,
+    "ex": "your country influence from us / You don't allow to come to the center",
+    "fix": "your country is influenced by the US / They won't be allowed into the city centre"
+   },
+   {
+    "group": "Từ dễ nhầm",
+    "n": 8,
+    "repeat": false,
+    "ex": "electrical car / cooperation / plan some tree / enhance the tax / book online / charities",
+    "fix": "electric car / corporation / plant trees / raise tariffs / order online / incentives"
+   },
+   {
+    "group": "invest / investment",
+    "n": 3,
+    "repeat": false,
+    "ex": "they investment to factory / there is the invest many",
+    "fix": "they invest in factories / there's been a lot of investment in"
+   }
+  ],
+  "grammar": [
+   {
+    "title": "Hỏi về thời tiết",
+    "formula": "What's the weather like? · How is the weather? · It's + V-ing / tính từ",
+    "rule": "Preply đánh dấu lỗi lặp lại. Dùng what … like hoặc how is, không trộn hai mẫu. Trả lời bằng chủ ngữ giả it: It's raining, It's hot.",
+    "right": [
+     "What's the weather like in Cebu?",
+     "How is the weather today?",
+     "It's still raining in Ho Chi Minh City."
+    ],
+    "wrong": [
+     "how the weather like",
+     "in my city have some rain",
+     "now now still raining"
+    ]
+   },
+   {
+    "title": "Lỗi hoá thạch: very + động từ",
+    "formula": "S + V + O + very much · S + really + V",
+    "rule": "very chỉ đi với tính từ/trạng từ. Lorraine sửa lại ở cuối buổi: subject + verb, rồi very much ở cuối.",
+    "right": [
+     "He enjoyed it very much.",
+     "He liked it very much.",
+     "He really enjoyed the farm."
+    ],
+    "wrong": [
+     "he's very enjoyed it",
+     "he very much liked it"
+    ]
+   },
+   {
+    "title": "So sánh hơn và so sánh bằng",
+    "formula": "more + tính từ dài + than · tính từ ngắn-er + than · not as … as · X times as much as",
+    "rule": "Không dùng very trong câu so sánh hơn. Nói gấp mấy lần: four times as much as.",
+    "right": [
+     "Shopee is more popular than Lazada.",
+     "It's hotter than in Vietnam.",
+     "It's not as cold as in previous years.",
+     "Montessori schools cost four or five times as much as public ones."
+    ],
+    "wrong": [
+     "Shopee very popular then Lazada",
+     "that's hot then Vietnam",
+     "not cold like many years to go"
+    ]
+   },
+   {
+    "title": "Bị động trong tin tức và chính sách",
+    "formula": "S + be + V3 (+ by …) · S + will/may be + V3",
+    "rule": "Khi nói về chính sách hay ảnh hưởng, đối tượng chịu tác động làm chủ ngữ.",
+    "right": [
+     "Vietnam is heavily influenced by the US.",
+     "Petrol cars won't be allowed into the city centre.",
+     "Petrol vehicles may be restricted by 2030."
+    ],
+    "wrong": [
+     "your country influence from us",
+     "You don't allow to come to the center of the city"
+    ]
+   },
+   {
+    "title": "invest in / investment in",
+    "formula": "S + invest + in + N · There's (a lot of) investment in + N",
+    "rule": "invest là động từ, investment là danh từ, cả hai đi với in.",
+    "right": [
+     "Chinese companies invest in factories in Vietnam.",
+     "There's been a lot of investment in charging stations."
+    ],
+    "wrong": [
+     "they investment to factory",
+     "there is the invest many the charging station"
+    ]
+   },
+   {
+    "title": "Từ dễ nhầm trong chủ đề kinh tế",
+    "formula": "export ≠ import · electric car ≠ electrical · corporation ≠ cooperation · tariff ≠ tax",
+    "rule": "Các cặp này nghe gần giống nhưng nghĩa khác, rất hay dùng khi nói về thương mại và xe điện.",
+    "right": [
+     "Vietnam exports a lot to the US.",
+     "VinFast makes electric cars.",
+     "It belongs to a big corporation.",
+     "The US raised tariffs on Vietnamese goods."
+    ],
+    "wrong": [
+     "Vietnamese is bought the product to US",
+     "the electrical car",
+     "the cooperation",
+     "They enhance the tax"
+    ]
+   }
+  ],
+  "exercises": [
+   {
+    "id": "s1",
+    "title": "Bài 1 · Hỏi và tả thời tiết",
+    "items": [
+     {
+      "type": "choice",
+      "q": "___ the weather like in Cebu?",
+      "options": [
+       "How's",
+       "What's",
+       "How"
+      ],
+      "answer": [
+       "What's"
+      ],
+      "explain": "What's the weather like?"
+     },
+     {
+      "type": "choice",
+      "q": "___ the weather today?",
+      "options": [
+       "How",
+       "How is",
+       "How does"
+      ],
+      "answer": [
+       "How is"
+      ],
+      "explain": "How is the weather?"
+     },
+     {
+      "type": "choice",
+      "q": "In Ho Chi Minh City ___ still raining.",
+      "options": [
+       "have",
+       "it's",
+       "is"
+      ],
+      "answer": [
+       "it's"
+      ],
+      "explain": "Thời tiết dùng chủ ngữ giả it."
+     },
+     {
+      "type": "choice",
+      "q": "Winter ___ in the north of Vietnam now.",
+      "options": [
+       "star",
+       "is starting",
+       "starting"
+      ],
+      "answer": [
+       "is starting"
+      ],
+      "explain": "Hiện tại tiếp diễn."
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'How the weather like?'",
+      "answer": [
+       "what's the weather like?",
+       "what's the weather like",
+       "what is the weather like?",
+       "what is the weather like",
+       "how is the weather?",
+       "how is the weather",
+       "how's the weather?",
+       "how's the weather"
+      ],
+      "explain": "What's the weather like? / How is the weather?"
+     }
+    ]
+   },
+   {
+    "id": "s2",
+    "title": "Bài 2 · very much và số nhiều",
+    "items": [
+     {
+      "type": "choice",
+      "q": "He enjoyed it ___.",
+      "options": [
+       "very",
+       "very much",
+       "much very"
+      ],
+      "answer": [
+       "very much"
+      ],
+      "explain": "very much đứng cuối câu."
+     },
+     {
+      "type": "choice",
+      "q": "There's a farm with some ___.",
+      "options": [
+       "animal",
+       "animals"
+      ],
+      "answer": [
+       "animals"
+      ],
+      "explain": "some + số nhiều."
+     },
+     {
+      "type": "choice",
+      "q": "They study three ___ a day.",
+      "options": [
+       "hour",
+       "hours"
+      ],
+      "answer": [
+       "hours"
+      ],
+      "explain": "three + số nhiều."
+     },
+     {
+      "type": "choice",
+      "q": "It's one of many learning ___.",
+      "options": [
+       "method",
+       "methods"
+      ],
+      "answer": [
+       "methods"
+      ],
+      "explain": "one of + số nhiều."
+     },
+     {
+      "type": "choice",
+      "q": "There are many fried-chicken ___ in Vietnam.",
+      "options": [
+       "brand",
+       "brands"
+      ],
+      "answer": [
+       "brands"
+      ],
+      "explain": "many + số nhiều."
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'He's very enjoyed it.'",
+      "answer": [
+       "he enjoyed it very much.",
+       "he enjoyed it very much",
+       "he really enjoyed it.",
+       "he really enjoyed it",
+       "he liked it very much.",
+       "he liked it very much"
+      ],
+      "explain": "very không đứng trước động từ."
+     }
+    ]
+   },
+   {
+    "id": "s3",
+    "title": "Bài 3 · So sánh hơn, so sánh bằng",
+    "items": [
+     {
+      "type": "choice",
+      "q": "In Vietnam, Shopee is ___ Lazada.",
+      "options": [
+       "very popular than",
+       "more popular than",
+       "popular than"
+      ],
+      "answer": [
+       "more popular than"
+      ],
+      "explain": "more + tính từ dài + than."
+     },
+     {
+      "type": "choice",
+      "q": "I think it's ___ than in Vietnam.",
+      "options": [
+       "hot",
+       "hotter",
+       "more hot"
+      ],
+      "answer": [
+       "hotter"
+      ],
+      "explain": "Tính từ ngắn + -er."
+     },
+     {
+      "type": "choice",
+      "q": "This winter is not ___ cold as in previous years.",
+      "options": [
+       "so",
+       "as",
+       "like"
+      ],
+      "answer": [
+       "as"
+      ],
+      "explain": "not as … as."
+     },
+     {
+      "type": "choice",
+      "q": "Montessori schools cost four times as ___ as public ones.",
+      "options": [
+       "many",
+       "much",
+       "more"
+      ],
+      "answer": [
+       "much"
+      ],
+      "explain": "X times as much as (tiền)."
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'Now Vietnam Shopee very popular then Lazada.'",
+      "answer": [
+       "in vietnam, shopee is more popular than lazada.",
+       "in vietnam, shopee is more popular than lazada",
+       "in vietnam shopee is more popular than lazada.",
+       "in vietnam shopee is more popular than lazada",
+       "now in vietnam, shopee is more popular than lazada.",
+       "now in vietnam, shopee is more popular than lazada",
+       "shopee is more popular than lazada in vietnam.",
+       "shopee is more popular than lazada in vietnam"
+      ],
+      "explain": "Thiếu is; more popular than."
+     }
+    ]
+   },
+   {
+    "id": "s4",
+    "title": "Bài 4 · Thương mại và xe điện",
+    "items": [
+     {
+      "type": "choice",
+      "q": "The US has raised ___ on Vietnamese goods.",
+      "options": [
+       "taxes for",
+       "tariffs on",
+       "tariff to"
+      ],
+      "answer": [
+       "tariffs on"
+      ],
+      "explain": "raise tariffs on."
+     },
+     {
+      "type": "choice",
+      "q": "Vietnam ___ a lot of products to the US.",
+      "options": [
+       "imports",
+       "exports",
+       "buys"
+      ],
+      "answer": [
+       "exports"
+      ],
+      "explain": "export = xuất khẩu."
+     },
+     {
+      "type": "choice",
+      "q": "Chinese companies ___ factories in Vietnam.",
+      "options": [
+       "investment to",
+       "invest in",
+       "invest to"
+      ],
+      "answer": [
+       "invest in"
+      ],
+      "explain": "invest in + N."
+     },
+     {
+      "type": "choice",
+      "q": "VinFast makes ___ cars.",
+      "options": [
+       "electrical",
+       "electric"
+      ],
+      "answer": [
+       "electric"
+      ],
+      "explain": "electric car."
+     },
+     {
+      "type": "choice",
+      "q": "It belongs to a big ___.",
+      "options": [
+       "cooperation",
+       "corporation"
+      ],
+      "answer": [
+       "corporation"
+      ],
+      "explain": "corporation = tập đoàn."
+     },
+     {
+      "type": "choice",
+      "q": "The government offers ___ to encourage people to buy EVs.",
+      "options": [
+       "charities",
+       "incentives"
+      ],
+      "answer": [
+       "incentives"
+      ],
+      "explain": "incentives = ưu đãi."
+     },
+     {
+      "type": "choice",
+      "q": "Kids learn how to ___ trees.",
+      "options": [
+       "plan",
+       "plant"
+      ],
+      "answer": [
+       "plant"
+      ],
+      "explain": "plant = trồng."
+     }
+    ]
+   },
+   {
+    "id": "s5",
+    "title": "Bài 5 · Bị động và câu hỏi",
+    "items": [
+     {
+      "type": "choice",
+      "q": "Vietnam is heavily ___ by the US.",
+      "options": [
+       "influence",
+       "influenced",
+       "influencing"
+      ],
+      "answer": [
+       "influenced"
+      ],
+      "explain": "be influenced by."
+     },
+     {
+      "type": "choice",
+      "q": "Petrol cars won't be ___ into the city centre.",
+      "options": [
+       "allow",
+       "allowed",
+       "allowing"
+      ],
+      "answer": [
+       "allowed"
+      ],
+      "explain": "be allowed into."
+     },
+     {
+      "type": "choice",
+      "q": "___ Lazada still popular in the Philippines?",
+      "options": [
+       "—",
+       "Is",
+       "Does"
+      ],
+      "answer": [
+       "Is"
+      ],
+      "explain": "Câu hỏi: đảo Is lên đầu."
+     },
+     {
+      "type": "choice",
+      "q": "___ kindergarten children study all day?",
+      "options": [
+       "Do",
+       "Are",
+       "What time"
+      ],
+      "answer": [
+       "Do"
+      ],
+      "explain": "Yes/No question: Do + S + V."
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'Because the recently I very busy for my job.'",
+      "answer": [
+       "because i've been very busy with work recently.",
+       "because i've been very busy with work recently",
+       "because i have been very busy with work recently.",
+       "because i have been very busy with work recently",
+       "because i've been very busy at work recently.",
+       "because i've been very busy at work recently",
+       "because i've been very busy with my job recently.",
+       "because i've been very busy with my job recently"
+      ],
+      "explain": "Thiếu động từ: I've been very busy."
+     }
+    ]
+   },
+   {
+    "id": "s6",
+    "title": "Bài 6 · Từ nhận xét Preply (3 lỗi + từ mới)",
+    "items": [
+     {
+      "type": "choice",
+      "q": "They have a farm with some ___.",
+      "options": [
+       "animal",
+       "animals"
+      ],
+      "answer": [
+       "animals"
+      ],
+      "explain": "some + danh từ đếm được số nhiều."
+     },
+     {
+      "type": "choice",
+      "q": "How ___ the weather?",
+      "options": [
+       "—",
+       "is",
+       "does"
+      ],
+      "answer": [
+       "is"
+      ],
+      "explain": "Câu hỏi hiện tại đơn cần is."
+     },
+     {
+      "type": "choice",
+      "q": "Do you know ___ standard?",
+      "options": [
+       "—",
+       "the",
+       "a"
+      ],
+      "answer": [
+       "the"
+      ],
+      "explain": "Mạo từ xác định the."
+     },
+     {
+      "type": "choice",
+      "q": "I'm feeling a bit ___ the weather today.",
+      "options": [
+       "down under",
+       "under",
+       "below"
+      ],
+      "answer": [
+       "under"
+      ],
+      "explain": "under the weather = hơi mệt (không có down)."
+     },
+     {
+      "type": "choice",
+      "q": "My wife can ___ the schedule for him.",
+      "options": [
+       "tailor",
+       "tail",
+       "taylor"
+      ],
+      "answer": [
+       "tailor"
+      ],
+      "explain": "tailor = customize, điều chỉnh cho phù hợp."
+     },
+     {
+      "type": "choice",
+      "q": "Classes start at 6 a.m. due to ___ heat.",
+      "options": [
+       "extreme",
+       "extremely"
+      ],
+      "answer": [
+       "extreme"
+      ],
+      "explain": "extreme heat = nắng nóng cực độ."
+     },
+     {
+      "type": "text",
+      "q": "Viết đúng: 'How the weather lie?'",
+      "answer": [
+       "how is the weather?",
+       "how is the weather",
+       "how's the weather?",
+       "how's the weather",
+       "what's the weather like?",
+       "what's the weather like",
+       "what is the weather like?",
+       "what is the weather like"
+      ],
+      "explain": "How is the weather? / What's the weather like?"
+     }
+    ]
+   }
+  ],
+  "rewrites": [
+   {
+    "orig": "They enhance the tax for China and Vietnam.",
+    "err": "raise tariffs on",
+    "b2": "They've raised tariffs on China and Vietnam.",
+    "c1": "Washington has slapped higher tariffs on goods from China and Vietnam.",
+    "work": "The new US tariffs could push up material prices on [PROJECT] by [AMOUNT]."
+   },
+   {
+    "orig": "they labeling leveling leveling Vietnamese and it's both thing to the U.S.",
+    "err": "relabel … as",
+    "b2": "They relabel Chinese goods as Vietnamese products and export them to the US.",
+    "c1": "Some Chinese goods are allegedly relabelled as 'Made in Vietnam' to get around US tariffs.",
+    "work": "We must confirm the country of origin of all imported steel before we submit the bid."
+   },
+   {
+    "orig": "he's very enjoyed it",
+    "err": "Lỗi hoá thạch: very + động từ",
+    "b2": "He enjoyed it very much.",
+    "c1": "He absolutely loved it.",
+    "work": "The client really appreciated our presentation."
+   },
+   {
+    "orig": "Compared to the public schools, kindergarten public schools maybe four or five times the fee.",
+    "err": "X times as much as",
+    "b2": "They cost four or five times as much as public kindergartens.",
+    "c1": "Fees are four to five times higher than at a public kindergarten.",
+    "work": "Our bid is about 5% higher than the second-lowest offer, but it includes a full method statement."
+   },
+   {
+    "orig": "now Vietnam Shopee very popular then Lazada",
+    "err": "Thiếu is; more popular than",
+    "b2": "In Vietnam, Shopee is more popular than Lazada.",
+    "c1": "In Vietnam, Shopee has overtaken Lazada as the go-to platform.",
+    "work": "Design-and-build has become more popular than traditional contracts among FDI clients."
+   },
+   {
+    "orig": "there is the invest many the uh the charging station charging stations everywhere",
+    "err": "investment in",
+    "b2": "There's been a lot of investment in charging stations everywhere.",
+    "c1": "Charging infrastructure is being rolled out nationwide.",
+    "work": "There's been a lot of investment in industrial parks in the south this year."
+   },
+   {
+    "orig": "You don't allow to come to the center of the city.",
+    "err": "Bị động: be allowed into",
+    "b2": "Petrol cars won't be allowed into the city centre.",
+    "c1": "Petrol vehicles will be banned from the city centre.",
+    "work": "Heavy trucks are not allowed on site before 10 p.m., so deliveries must be scheduled at night."
+   },
+   {
+    "orig": "because the recently I very busy for my job",
+    "err": "Thiếu động từ: I've been",
+    "b2": "because I've been very busy with work recently",
+    "c1": "because work has been hectic lately",
+    "work": "We've been extremely busy with three tenders closing this month."
+   }
+  ],
+  "pron": [
+   {
+    "word": "method",
+    "ipa": "/ˈmeθ.əd/",
+    "tip": "Lorraine luyện: lưỡi giữa hai răng, thổi hơi ra cho âm /θ/.",
+    "example": "It's a method of learning."
+   },
+   {
+    "word": "popular",
+    "ipa": "/ˈpɒp.jə.lər/",
+    "tip": "Nhấn POP; Lorraine cho đọc lại nhiều lần.",
+    "example": "Shopee is more popular than Lazada."
+   },
+   {
+    "word": "under the weather",
+    "ipa": "/ˈʌn.də ðə ˈweð.ər/",
+    "tip": "Âm /ð/ trong the và weather: lưỡi giữa hai răng, rung.",
+    "example": "I'm feeling a bit under the weather."
+   },
+   {
+    "word": "tariff",
+    "ipa": "/ˈtær.ɪf/",
+    "tip": "Nhấn TAR, âm cuối /f/ rõ.",
+    "example": "The US raised tariffs on Vietnamese goods."
+   },
+   {
+    "word": "corporation",
+    "ipa": "/ˌkɔː.pərˈeɪ.ʃən/",
+    "tip": "Khác cooperation /kəʊˌɒp.ərˈeɪ.ʃən/; nhấn RAY.",
+    "example": "VinFast belongs to a big corporation."
+   },
+   {
+    "word": "Montessori",
+    "ipa": "/ˌmɒn.tɪˈsɔː.ri/",
+    "tip": "Nhấn SOR; máy nghe thành 'monstess story'.",
+    "example": "Montessori schools are expensive."
+   }
+  ],
+  "prep": {
+   "upgrades": [
+    {
+     "b1": "They hand tax of Vietnam when some products of Vietnam import to the U.S.",
+     "c1": "The US has imposed tariffs of around 35% on certain Vietnamese exports."
+    },
+    {
+     "b1": "In the future maybe the 2030 is a limit the vehicle use gas.",
+     "c1": "By 2030, petrol vehicles may be banned from city centres."
+    },
+    {
+     "b1": "So I choose, I tend to some model of, model for for getting together like a standard.",
+     "c1": "I'm leaning towards a Steiner-style kindergarten where children spend most of their time outdoors."
+    }
+   ],
+   "vocab": [
+    {
+     "term": "under the weather",
+     "ipa": "/ˈʌn.də ðə ˈweð.ər/",
+     "vi": "hơi mệt, không khoẻ",
+     "example": "I'm feeling a bit under the weather today."
+    },
+    {
+     "term": "raise tariffs on",
+     "ipa": "/reɪz ˈtær.ɪfs ɒn/",
+     "vi": "tăng thuế quan với",
+     "example": "The US raised tariffs on Vietnamese goods."
+    },
+    {
+     "term": "country of origin",
+     "ipa": "/ˈkʌn.tri əv ˈɒr.ɪ.dʒɪn/",
+     "vi": "xuất xứ",
+     "example": "Customs checks the country of origin."
+    },
+    {
+     "term": "kindergarten",
+     "ipa": "/ˈkɪn.dəˌɡɑː.tən/",
+     "vi": "mẫu giáo",
+     "example": "Kids start kindergarten at three."
+    },
+    {
+     "term": "tailor",
+     "ipa": "/ˈteɪ.lər/",
+     "vi": "điều chỉnh cho phù hợp",
+     "example": "We tailor the proposal to each client."
+    },
+    {
+     "term": "go-to",
+     "ipa": "/ˈɡəʊ.tuː/",
+     "vi": "lựa chọn quen thuộc",
+     "example": "Jollibee is the go-to fast-food chain in the Philippines."
+    },
+    {
+     "term": "incentive",
+     "ipa": "/ɪnˈsen.tɪv/",
+     "vi": "ưu đãi, khuyến khích",
+     "example": "The government offers incentives for EVs."
+    },
+    {
+     "term": "charging station",
+     "ipa": "/ˈtʃɑː.dʒɪŋ ˌsteɪ.ʃən/",
+     "vi": "trạm sạc",
+     "example": "There are charging stations at every mall."
+    }
+   ],
+   "compareTitle": "Mẫu giáo ở Việt Nam và Philippines (theo buổi học)",
+   "compareHead": [
+    "Tiêu chí",
+    "Việt Nam",
+    "Philippines"
+   ],
+   "compare": [
+    [
+     "Thời gian học",
+     "Cả ngày, sáng đến chiều",
+     "Khoảng 3 tiếng/ngày"
+    ],
+    [
+     "Mục đích",
+     "Vừa học vừa trông trẻ cho bố mẹ đi làm",
+     "Giống trường học: viết, vẽ, số, có kiểm tra"
+    ],
+    [
+     "Trường Montessori/tư",
+     "Đắt, gấp 4–5 lần trường công",
+     "Đắt; trường công gần như miễn phí"
+    ],
+    [
+     "Tuổi vào học",
+     "Từ 3 tuổi",
+     "Từ 3 tuổi"
+    ]
+   ]
+  },
+  "speaking": {
+   "task": "Nói 1 phút: so sánh việc dùng xe điện ở Việt Nam và Philippines, có dùng more … than, be allowed và investment in.",
+   "starter": "Electric cars are becoming more and more popular in Vietnam, mainly because there's been a lot of investment in charging stations."
+  },
+  "transcriptTab": "06_Lesson_Library",
+  "preplyLogId": "PLMWY9WZ53B30",
+  "newWords": [
+   {
+    "term": "under the weather",
+    "vi": "hơi mệt, không khoẻ",
+    "ipa": "/ˈʌn.də ðə ˈweð.ər/"
+   },
+   {
+    "term": "strange",
+    "vi": "lạ, khác thường",
+    "ipa": "/streɪndʒ/"
+   },
+   {
+    "term": "extreme heat",
+    "vi": "nắng nóng cực độ",
+    "ipa": "/ɪkˈstriːm hiːt/"
+   },
+   {
+    "term": "temperature",
+    "vi": "nhiệt độ",
+    "ipa": "/ˈtem.prə.tʃər/"
+   },
+   {
+    "term": "chaos",
+    "vi": "sự hỗn loạn",
+    "ipa": "/ˈkeɪ.ɒs/"
+   },
+   {
+    "term": "tariff",
+    "vi": "thuế quan",
+    "ipa": "/ˈtær.ɪf/"
+   },
+   {
+    "term": "exporting",
+    "vi": "xuất khẩu",
+    "ipa": "/ɪkˈspɔː.tɪŋ/"
+   },
+   {
+    "term": "investment",
+    "vi": "khoản đầu tư",
+    "ipa": "/ɪnˈvest.mənt/"
+   },
+   {
+    "term": "property",
+    "vi": "bất động sản",
+    "ipa": "/ˈprɒp.ə.ti/"
+   },
+   {
+    "term": "kindergarten",
+    "vi": "trường mẫu giáo",
+    "ipa": "/ˈkɪn.dəˌɡɑː.tən/"
+   },
+   {
+    "term": "Montessori",
+    "vi": "phương pháp Montessori",
+    "ipa": "/ˌmɒn.tɪˈsɔː.ri/"
+   },
+   {
+    "term": "enroll",
+    "vi": "cho (con) nhập học",
+    "ipa": "/ɪnˈrəʊl/"
+   },
+   {
+    "term": "method",
+    "vi": "phương pháp",
+    "ipa": "/ˈmeθ.əd/"
+   },
+   {
+    "term": "explore",
+    "vi": "khám phá",
+    "ipa": "/ɪkˈsplɔːr/"
+   },
+   {
+    "term": "costly",
+    "vi": "tốn kém",
+    "ipa": "/ˈkɒst.li/"
+   },
+   {
+    "term": "go-to",
+    "vi": "lựa chọn quen thuộc",
+    "ipa": "/ˈɡəʊ.tuː/"
+   },
+   {
+    "term": "formula",
+    "vi": "công thức",
+    "ipa": "/ˈfɔː.mjə.lə/"
+   },
+   {
+    "term": "order online",
+    "vi": "đặt hàng trực tuyến",
+    "ipa": "/ˈɔː.dər ˌɒnˈlaɪn/"
+   },
+   {
+    "term": "platform",
+    "vi": "nền tảng",
+    "ipa": "/ˈplæt.fɔːm/"
+   },
+   {
+    "term": "electric vehicles",
+    "vi": "xe điện",
+    "ipa": "/iˈlek.trɪk ˈvɪə.kəlz/"
+   },
+   {
+    "term": "charging stations",
+    "vi": "trạm sạc",
+    "ipa": "/ˈtʃɑː.dʒɪŋ ˈsteɪ.ʃənz/"
+   },
+   {
+    "term": "exhaust",
+    "vi": "khí thải",
+    "ipa": "/ɪɡˈzɔːst/"
+   },
+   {
+    "term": "carbon dioxide",
+    "vi": "khí CO₂",
+    "ipa": "/ˌkɑː.bən daɪˈɒk.saɪd/"
+   },
+   {
+    "term": "high-speed train",
+    "vi": "tàu cao tốc",
+    "ipa": "/ˌhaɪ.spiːd ˈtreɪn/"
+   },
+   {
+    "term": "destination",
+    "vi": "điểm đến",
+    "ipa": "/ˌdes.tɪˈneɪ.ʃən/"
+   },
+   {
+    "term": "fuel",
+    "vi": "nhiên liệu",
+    "ipa": "/ˈfjuː.əl/"
+   },
+   {
+    "term": "popular",
+    "vi": "phổ biến",
+    "ipa": "/ˈpɒp.jə.lər/"
+   },
+   {
+    "term": "value",
+    "vi": "giá trị",
+    "ipa": "/ˈvæl.juː/"
+   }
+  ],
+  "audio": {
+   "name": "HeroHub_L30.m4a",
+   "duration": 2969.4,
+   "mb": 20,
+   "start": 0
+  },
+  "insights": {
+   "source": "Preply Lesson Insights (AI tự tạo, có thể sai)",
+   "scores": [
+    [
+     "Ngữ pháp",
+     22,
+     "Ổn định"
+    ],
+    [
+     "Từ vựng",
+     38,
+     "Ổn định"
+    ],
+    [
+     "Nói",
+     39,
+     "+1 điểm"
+    ]
+   ],
+   "talk": {
+    "you": 21,
+    "teacher": 21,
+    "youPct": 50,
+    "target": 70
+   },
+   "topics": [
+    {
+     "t": "Thời tiết và sức khoẻ",
+     "b": [
+      "Thời tiết ở Philippines và TP.HCM",
+      "Nói mình thấy mệt và mô tả khoảng nhiệt độ",
+      "Sửa \"down under the weather\" thành \"under the weather\""
+     ]
+    },
+    {
+     "t": "Mẫu giáo và phương pháp học",
+     "b": [
+      "Giải thích phương pháp Montessori/Steiner, trẻ gắn với thiên nhiên",
+      "So sánh lịch học mẫu giáo ở Việt Nam và Philippines",
+      "Từ vựng: Montessori, kindergarten, method, enroll, three years old"
+     ]
+    },
+    {
+     "t": "Mua sắm, chuỗi đồ ăn và tin thương mại",
+     "b": [
+      "Jollibee, KFC, McDonald's và thói quen đặt đồ ăn online",
+      "Thuế quan, xuất khẩu, chuyện nhà máy Trung Quốc chuyển sang Việt Nam",
+      "Từ vựng: export, tariff, import, labeling, online platforms"
+     ]
+    }
+   ],
+   "well": [
+    {
+     "said": "I don't remember what I said.",
+     "type": "Câu hỏi gián tiếp",
+     "vi": "Đúng trật tự: what + S + V (không đảo). Buổi này Preply không có mục \"What you did well\"; mục này lấy từ audio."
+    },
+    {
+     "said": "train · fuel · value",
+     "type": "Phát âm",
+     "vi": "Lorraine khen \"Wonderful\" khi anh đọc train, fuel và value."
+    }
+   ],
+   "fixes": [
+    {
+     "said": "They have to farm with some animal.",
+     "fix": "They have a farm with some animals.",
+     "type": "Lượng từ",
+     "recurring": false,
+     "vi": "some + danh từ đếm được → số nhiều: some animals. Lorraine nói thêm: anh có thể nói \"many farm animals\". (Preply nghe \"have to farm\", thực ra anh nói \"have the farm\".)",
+     "c1": "There's a small farm with lots of animals the kids can feed."
+    },
+    {
+     "said": "How the weather lie?",
+     "fix": "How is the weather? / What's the weather like?",
+     "type": "Hiện tại đơn",
+     "recurring": true,
+     "vi": "Câu hỏi cần trợ động từ is. Hai mẫu đúng: How is the weather? và What is the weather like? Không trộn how với like.",
+     "c1": "What's the weather been like over there lately?"
+    },
+    {
+     "said": "Do you know standard?",
+     "fix": "Do you know the standard?",
+     "type": "Mạo từ",
+     "recurring": true,
+     "vi": "Cần mạo từ xác định the. Nếu anh muốn nói phương pháp Steiner/Waldorf: Do you know the Steiner method?",
+     "c1": "Have you come across the Steiner approach to early education?"
+    }
+   ],
+   "vocab": [
+    [
+     "under the weather",
+     "B1",
+     "cụm",
+     "hơi mệt, không khoẻ"
+    ],
+    [
+     "strange",
+     "A2",
+     "tính từ",
+     "lạ"
+    ],
+    [
+     "cultural",
+     "B1",
+     "tính từ",
+     "thuộc văn hoá"
+    ],
+    [
+     "popular",
+     "A2",
+     "tính từ",
+     "phổ biến"
+    ],
+    [
+     "order online",
+     "A2",
+     "cụm",
+     "đặt hàng online"
+    ],
+    [
+     "car",
+     "A1",
+     "danh từ",
+     "xe hơi"
+    ],
+    [
+     "down",
+     "A2",
+     "trạng từ",
+     "xuống; (cảm thấy) buồn, mệt"
+    ],
+    [
+     "extreme",
+     "B1",
+     "tính từ",
+     "cực độ"
+    ],
+    [
+     "experience",
+     "A2",
+     "động từ",
+     "trải qua"
+    ],
+    [
+     "chaos",
+     "B2",
+     "danh từ",
+     "sự hỗn loạn"
+    ],
+    [
+     "investment",
+     "B1",
+     "danh từ",
+     "khoản đầu tư"
+    ],
+    [
+     "label",
+     "A2",
+     "động từ",
+     "dán nhãn"
+    ],
+    [
+     "method",
+     "A2",
+     "danh từ",
+     "phương pháp"
+    ]
+   ],
+   "synonyms": [
+    [
+     "So she can customize the schedule for you.",
+     "So she can tailor the schedule for you."
+    ]
+   ],
+   "pron": [
+    {
+     "word": "popular",
+     "ctx": "... very popular than ...",
+     "ipa": "/ˈpɒp.jə.lər/",
+     "tip": "Nhấn POP, âm giữa /jə/ nhẹ. Lorraine luyện riêng từ này. Lưu ý thêm: more popular than (không very popular than)."
+    },
+    {
+     "word": "method",
+     "ctx": "... the method the ...",
+     "ipa": "/ˈmeθ.əd/",
+     "tip": "Âm /θ/: đặt lưỡi giữa hai răng và thổi hơi ra (Lorraine: \"there should be air coming out\")."
+    },
+    {
+     "word": "country",
+     "ctx": "... your country influence ...",
+     "ipa": "/ˈkʌn.tri/",
+     "tip": "Âm đầu /kʌn/ như 'cân' ngắn, không đọc 'côn'."
+    },
+    {
+     "word": "value",
+     "ctx": "... the value the ...",
+     "ipa": "/ˈvæl.juː/",
+     "tip": "Âm /v/ rung môi, /juː/ cuối dài. Lorraine khen từ này trong buổi."
+    }
+   ],
+   "pronNote": "Lorraine luyện popular và method với anh ở cuối buổi, và khen train, fuel, value. Ưu tiên /θ/ trong method; country và value là mức ưu tiên thấp.",
+   "homework": [
+    "From your saved words (từ vựng, 3 phút)"
+   ],
+   "plan": [
+    {
+     "when": "Trước buổi kế tiếp (30/11, 22:00)",
+     "what": "Làm Bài 6 (từ nhận xét Preply) và bài từ vựng trong app Preply. Nói to: What's the weather like? · He enjoyed it very much. · Shopee is more popular than Lazada."
+    },
+    {
+     "when": "Trong buổi học",
+     "what": "Buổi này anh nói 50%. Mục tiêu ≥ 70%: chuẩn bị trước 2 chủ đề (xe điện 2030, mẫu giáo Steiner) để kể dài hơn."
+    },
+    {
+     "when": "Sau buổi 2 ngày",
+     "what": "Làm lại câu sai của Bài 2, Bài 5 và Bài 6. Ôn 13 từ khoá bằng flashcard."
+    },
+    {
+     "when": "Sau 1 tuần",
+     "what": "Làm lại toàn bộ bài. Đúng ≥ 85% thì chuyển lỗi tương ứng trong Mistake Bank sang Mastered."
+    }
+   ]
+  }
+ },
+ {
   "id": "L29",
   "no": 29,
   "date": "2026-11-23",
