@@ -230,6 +230,13 @@ mark.err{background:var(--redbg);color:inherit;border-bottom:2px solid var(--red
 @keyframes dxp{50%{opacity:.45}}
 .dx .aih{display:flex;align-items:center;gap:6px;font-weight:700;color:var(--teal)}.dx .cefr{margin-left:auto;font-size:11px;font-weight:700;border:1px solid var(--teal);color:var(--teal);border-radius:5px;padding:0 6px}
 .dx .grip{display:none}
+.dx .sai .ver,.vil .ver{margin:6px 0;padding:6px 8px}.dx .sai ul,.vil ul{margin:6px 0 0;padding-left:18px}
+.tl .vib{flex:none;align-self:flex-start;margin-top:3px;border:1px solid var(--line);background:transparent;border-radius:6px;font:600 11px/1.4 Inter,sans-serif;padding:1px 6px;color:var(--mute);min-height:0}.tl .vib:hover,.tl .vib.on{border-color:var(--amber);color:var(--amber);background:var(--amberbg)}
+.vil{margin:0 0 6px 102px;padding:2px 10px;border-left:3px solid var(--amber);color:var(--mute);font-size:14.5px;line-height:1.5}
+.vil .vimean{border:0;background:none;padding:0 2px;color:var(--teal);font-weight:600;font-size:13px;min-height:0;cursor:pointer}.vil .vimout{color:var(--ink)}.vil .sp{border:0;background:none;padding:0;min-height:0}
+.vil .sk{height:10px;border-radius:5px;background:var(--line);margin:6px 0;animation:dxp 1.2s ease-in-out infinite}.vil .sk.s{width:60%}
+@media (max-width:600px){.vil{margin-left:4px}.tl{position:relative}.tl .vib{position:absolute;right:4px;top:6px;margin:0}}
+.dx .sai .sp{border:0;background:none;padding:0 2px;min-height:0;color:var(--teal)}
 @media (max-width:700px),(pointer:coarse){
  .dx,.dx.noai{left:0!important;right:0;top:auto!important;bottom:0;width:100%;max-height:80vh;border-radius:16px 16px 0 0;grid-template-columns:minmax(0,1fr);overflow:auto;box-shadow:0 -10px 30px rgba(40,22,10,.25);padding-bottom:env(safe-area-inset-bottom)}
  .dx .dxc{overflow:visible;max-height:none}.dx .dxai{border-left:0;border-top:1px solid var(--line)}
@@ -945,7 +952,7 @@ function renderLib(){const el=$('#pr-lib');if(!el)return;
  if(LIBT==='voc')h+=`<div class="card" style="margin-bottom:12px"><h3>Từ vựng của buổi</h3>${l.prep.vocab.map(v=>`<div class="lesson"><div><b style="font-weight:600">${esc(v.term)}</b> <span class="mute">${esc(v.ipa)}</span><div class="mute">${esc(v.vi)}</div><i>${esc(v.example)}</i></div><button class="btn sm ghost" data-say="${esc(v.term+'. '+v.example)}">Nghe</button></div>`).join('')}</div><div class="card"><h3>Phát âm cần luyện</h3>${l.pron.map(v=>`<div class="lesson"><div><b style="font-weight:600">${esc(v.word)}</b> <span class="mute">${esc(v.ipa)}</span><div class="mute">${esc(v.tip)}</div><i>${esc(v.example)}</i></div><div class="row" style="flex:none"><button class="btn sm" data-say="${esc(v.word)}" data-rate=".7">Từ</button><button class="btn sm ghost" data-say="${esc(v.example)}">Câu</button></div></div>`).join('')}</div>`;
  if(LIBT==='tr')h+=trView(l);
  if(LIBT==='pi'&&l.insights)h+=piView(l);
- el.innerHTML=h}
+ el.innerHTML=h;if(LIBT==='tr')trViObserve()}
 /* Nhận xét Preply: bản chép từ trang Lesson Insights (AI của Preply) + kế hoạch ôn */
 function piView(l){const p=l.insights,t=p.talk||{};
  return `<div class="card"><p class="mute" style="margin-top:0">Nguồn: ${esc(p.source)}. Claude đã chép lại, dịch và bổ sung bản C1.</p><div class="grid g3">${p.scores.map(([k,v,n])=>`<div class="ver"><div class="mute">${esc(k)}</div><b style="font-size:22px;font-weight:600">${esc(v)}</b><span class="mute">/100 · ${esc(n)}</span></div>`).join('')}</div>
@@ -967,7 +974,34 @@ $('#pr-lib').addEventListener('click',e=>{const t=e.target.closest('[data-lo],[d
 $('#pr-lib').addEventListener('submit',e=>{const f=e.target.closest('[data-qf]');if(!f)return;e.preventDefault();const v=f.querySelector('input').value;if(!v.trim())return toast('Gõ câu trả lời trước');libAns(f.dataset.qf,v)});
 $('#pr-lib').addEventListener('input',e=>{if(e.target.id==='libQ'){LIBQ=e.target.value;clearTimeout(renderLib.t);renderLib.t=setTimeout(()=>{const pos=e.target.selectionStart;tpStop();renderLib();const i=$('#libQ');if(i){i.focus();i.setSelectionRange(pos,pos)}},250)}});
 /* Toàn văn: tô câu sai (chạm xem bản sửa B2), tô từ mới (chạm xem nghĩa), nghe lại cả buổi bằng 2 giọng */
-let TRF=false;const TP={on:false,i:0,run:0,rate:1,heroOnly:false,lines:[]};
+let TRF=false,TRV=false;const TRO=new Set();
+/* Dịch câu sang tiếng Việt (Google Translate, cache trên máy). Số tiền, email, tên công ty bị che trước khi gửi. */
+const VIC=store.get('be_vi',{});let vicT=0;const vicSave=()=>{clearTimeout(vicT);vicT=setTimeout(()=>{const k=Object.keys(VIC);if(k.length>5000)k.slice(0,k.length-5000).forEach(x=>{VIC[x]=undefined});store.set('be_vi',VIC)},400)};
+const viKey=t=>String(t||'').replace(/\s+/g,' ').trim();
+function ndaMask(t){let o=String(t||'');for(const rx of NDA_RX){rx.lastIndex=0;o=o.replace(rx,'[…]');rx.lastIndex=0}return o}
+async function viGtx(lines){const r=await fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=vi&dt=t',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:new URLSearchParams({q:lines.map(ndaMask).join('\n')})});
+ if(!r.ok)throw new Error('HTTP '+r.status);const j=await r.json();return (j[0]||[]).map(x=>x&&x[0]||'').join('').split('\n').map(x=>x.trim())}
+async function viOne(t){try{const o=await viGtx([t]);VIC[t]=o.join(' ')}catch(e){try{const r=await fetch('https://api.mymemory.translated.net/get?langpair=en|vi&q='+encodeURIComponent(ndaMask(t).slice(0,480)));const j=await r.json();const v=j&&j.responseData&&j.responseData.translatedText;if(v&&!/MYMEMORY|INVALID/i.test(v))VIC[t]=v}catch(x){}}}
+async function viBatch(texts){const need=[...new Set(texts.map(viKey).filter(t=>t&&VIC[t]==null))];let i=0;
+ while(i<need.length){const grp=[];let len=0;while(i<need.length&&(len+need[i].length<1500||!grp.length)){grp.push(need[i]);len+=need[i].length+1;i++}
+  if(grp.length===1){await viOne(grp[0]);continue}
+  let out=null;try{out=await viGtx(grp)}catch(e){}
+  if(out&&out.length===grp.length)grp.forEach((t,k)=>{VIC[t]=out[k]});else for(const t of grp)await viOne(t)}
+ vicSave();return texts.map(t=>VIC[viKey(t)])}
+const viOf=t=>VIC[viKey(t)];
+function vilHtml(i){const L=TP.lines[i];if(!L)return '';const v=viOf(L.text);return `${v==null?'<span class="mute">Đang dịch…</span>':esc(v)}${C.ai?` <button type="button" class="vimean" data-vimean="${i}">✦ Ý người nói</button>`:''}<div class="vimout" data-vimout="${i}"></div>`}
+async function trViFill(idx){const miss=idx.filter(i=>TP.lines[i]&&viOf(TP.lines[i].text)==null);if(miss.length)await viBatch(miss.map(i=>TP.lines[i].text));
+ for(const i of idx){const el=$(`[data-vil="${i}"]`);if(el&&!el.hidden&&!el.querySelector('.vimout *'))el.innerHTML=vilHtml(i)}}
+let trObs=null;function trViObserve(){if(trObs)trObs.disconnect();if(!TRV)return;if(!('IntersectionObserver' in window)){trViFill($$('[data-vil]').map(x=>+x.dataset.vil));return}
+ trObs=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){trObs.unobserve(e.target);trViFill([...e.target.querySelectorAll('[data-vil]')].map(x=>+x.dataset.vil))}},{rootMargin:'400px 0px'});$$('#pr-lib .tpart').forEach(x=>trObs.observe(x))}
+/* AI: người nói muốn nói gì + câu chuẩn B2/C1 (dùng cho dòng transcript và khi bôi đen cả câu) */
+async function sentAI(text,spk,ctx){const k='s:'+viKey(text).toLowerCase(),c=dxGet(k);if(c.a)return c.a;
+ const q=`${ctx?`Previous lines (context):\n${ndaMask(ctx)}\n\n`:''}Line${spk?` spoken by ${spk}`:''} (auto-transcribed speech from an English lesson, may be ungrammatical or cut off):\n"${ndaMask(text)}"
+Return ONLY one JSON object: {"vi":"bản dịch tiếng Việt tự nhiên của ý người nói","meaning":"1–2 câu tiếng Việt: người nói thật sự muốn nói gì, nếu câu bị cắt/lủng củng thì đoán ý và nói rõ là đoán","b2":"câu tiếng Anh đúng, rõ ràng (B2)","c1":"câu tiếng Anh sắc bén, tự nhiên (C1)","notes":["tối đa 3 ghi chú tiếng Việt: lỗi sai → cách sửa → lý do, hoặc cụm từ đáng học"]}`;
+ const t=await ai(COACH,[{role:'user',content:q}],1500);if(!t)throw new Error('Cần bật AI trong Cài đặt');const o=parseJSON(t);if(!o||!o.vi)throw new Error('AI trả về không đúng định dạng');
+ c.a=o;c.t=Date.now();dxSave();return o}
+function sentAIHtml(a){return `<div class="sai"><div><b>Ý người nói:</b> ${esc(a.meaning||a.vi)}</div>${a.b2?`<div class="ver"><b style="font-size:12px">B2</b> ${esc(a.b2)} <button type="button" class="sp" data-say="${esc(a.b2)}" aria-label="Nghe">🔊</button></div>`:''}${a.c1?`<div class="ver c1"><b style="font-size:12px">C1</b> ${esc(a.c1)} <button type="button" class="sp" data-say="${esc(a.c1)}" aria-label="Nghe">🔊</button></div>`:''}${Array.isArray(a.notes)&&a.notes.length?`<ul>${a.notes.slice(0,3).map(n=>`<li>${esc(n)}</li>`).join('')}</ul>`:''}</div>`}
+const TP={on:false,i:0,run:0,rate:1,heroOnly:false,lines:[]};
 const reEsc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 function trFixes(p){const fr=String(p.hero_lines||'').split('\n').map(x=>{const m=x.match(/^(\d+)\.\s*(.*)$/);if(!m)return null;let t=m[2].trim();const a=t.indexOf('"'),b=t.lastIndexOf('"');if(a>=0&&b>a)t=t.slice(a+1,b);return{n:+m[1],said:t}}).filter(Boolean);
  const fx={};String(p.b2_fixes||'').split('\n').forEach(x=>{const [n,fix,why]=x.split('|');if(n)fx[+n]={fix:(fix||'').trim(),why:(why||'').trim()}});
@@ -987,14 +1021,14 @@ function trView(l){const ps=libParts(l.id),q=LIBQ.trim().toLowerCase(),tab=esc(l
  const f=view.filter(v=>(!TRF||v.errs)&&(!q||[v.p.topic,v.p.transcript].join(' ').toLowerCase().includes(q)));
  TP.lines=[];let li=0;if(l.audio)setTimeout(()=>auCached(l));const aRdy=auReady(l);
  const body=f.map(v=>{const pk=v.p.id;return `<section class="tpart" id="tp-${esc(pk)}"><div class="row sp" style="margin:6px 0"><b>Part ${esc(String(v.p.part).padStart(2,'0'))} <span class="mute" style="font-weight:400">· ${esc(v.p.time)}</span></b>${v.errs?`<span class="tag new">${v.errs} câu cần sửa</span>`:''}</div><div class="mute" style="margin-bottom:6px">${esc(v.p.topic)}</div>`+
-  v.ls.map((x,j)=>{const i=li++;TP.lines.push({spk:x.spk,t:trT(v.p,j),text:x.text.replace(/\((laughs|cười)\)/gi,'').trim()});return `<div class="tl ${x.spk==='Hero'?'me':''}" data-li="${i}"><button class="spk" data-tplay="${i}" title="Nghe từ dòng này">▶ ${esc(x.spk||'…')}</button><span class="tx">${trLineHtml(x.text,x.spk,v.fx,words,esc(pk))}</span></div><div class="fxbox" data-fxbox="${i}" hidden></div>`}).join('')+
+  v.ls.map((x,j)=>{const i=li++;TP.lines.push({spk:x.spk,t:trT(v.p,j),text:x.text.replace(/\((laughs|cười)\)/gi,'').trim()});return `<div class="tl ${x.spk==='Hero'?'me':''}" data-li="${i}"><button class="spk" data-tplay="${i}" title="Nghe từ dòng này">▶ ${esc(x.spk||'…')}</button><span class="tx">${trLineHtml(x.text,x.spk,v.fx,words,esc(pk))}</span><button type="button" class="vib${TRV||TRO.has(i)?' on':''}" data-vi="${i}" title="Xem tiếng Việt" aria-label="Xem tiếng Việt">VI</button></div><div class="vil" data-vil="${i}"${TRV||TRO.has(i)?'':' hidden'}>${TRV||TRO.has(i)?vilHtml(i):''}</div><div class="fxbox" data-fxbox="${i}" hidden></div>`}).join('')+
   `${v.p.corrections?`<details style="margin:6px 0 4px"><summary class="mute" style="cursor:pointer">Bản nâng cấp của báo cáo (C-level)</summary><div class="tr mute">${esc(v.p.corrections)}</div></details>`:''}</section>`}).join('');
  const aud=l.audio?`<div class="player au" id="aPlayer">${auBar(l)}</div>`:'';
  return (aRdy?aud:`${aud}${l.audio?`<details class="ttsalt"${TP.alt?' open':''}><summary class="mute">Hoặc nghe máy đọc tạm (giọng máy, không phải giọng thật)</summary>`:''}<div class="player${l.audio?' alt':''}" id="tPlayer"><div class="row" style="gap:8px"><button class="btn pri sm" id="tpPlay">${TP.on?'❚❚ Tạm dừng':'▶ Máy đọc cả buổi'}</button><button class="btn sm" id="tpPrev" aria-label="Dòng trước">⏮</button><button class="btn sm" id="tpNext" aria-label="Dòng sau">⏭</button>
   <select id="tpRate" style="width:auto;min-height:36px;padding:4px 8px" aria-label="Tốc độ">${[.75,.9,1,1.15,1.3].map(r=>`<option value="${r}"${r===TP.rate?' selected':''}>${r}×</option>`).join('')}</select>
   <label class="chip" style="margin:0"><input type="checkbox" id="tpHero" style="width:auto;min-height:0"${TP.heroOnly?' checked':''}> Chỉ câu của anh</label></div>
   <div class="mute" id="tpStat" style="margin-top:6px">🤖 Giọng máy đọc lại lời thoại, không phải bản ghi âm gốc. Chạm ▶ ở đầu dòng để nghe từ đó.</div></div>${l.audio?'</details>':''}`)+`
- <div class="row" style="margin:12px 0"><input id="libQ" placeholder="Tìm trong toàn văn…" value="${esc(LIBQ)}" style="max-width:280px"><button class="chip ${TRF?'on':''}" data-trf="1">Chỉ đoạn có câu sai (${nErr})</button>${aRdy?'<div class="mute" style="flex-basis:100%">Đang nghe audio gốc. Chạm ▶ ở đầu dòng để nghe từ câu đó. Mốc thời gian từng câu là ước lượng, có thể lệch; dùng −10s / +10s để chỉnh.</div>':''}<span class="mute"><mark class="err">câu sai</mark> chạm để xem bản sửa · <mark class="nw">từ mới</mark> chạm để xem nghĩa</span></div>
+ <div class="row" style="margin:12px 0"><input id="libQ" placeholder="Tìm trong toàn văn…" value="${esc(LIBQ)}" style="max-width:280px"><button class="chip ${TRV?'on':''}" data-trv="1">${TRV?'Ẩn':'Hiện'} tiếng Việt cả buổi</button><button class="chip ${TRF?'on':''}" data-trf="1">Chỉ đoạn có câu sai (${nErr})</button>${aRdy?'<div class="mute" style="flex-basis:100%">Đang nghe audio gốc. Chạm ▶ ở đầu dòng để nghe từ câu đó. Mốc thời gian từng câu là ước lượng, có thể lệch; dùng −10s / +10s để chỉnh.</div>':''}<span class="mute"><mark class="err">câu sai</mark> chạm để xem bản sửa · <mark class="nw">từ mới</mark> chạm để xem nghĩa</span></div>
  <div class="card">${body||'<div class="empty">Không có phân đoạn khớp</div>'}</div>`}
 function trT(p,j){const v=String(p.line_times||'').split(',')[j];return v!=null&&v.trim()!==''&&isFinite(+v)?+v:null}
 function auReady(l){return typeof AUD!=='undefined'&&AU.id===l.id&&!!AUD.src}
@@ -1015,6 +1049,11 @@ $('#pr-lib').addEventListener('click',e=>{if(LIBT!=='tr')return;const t=e.target
  if(t.closest('#tpNext')){tpGo(TP.i+1);return}
  const pl=t.closest('[data-tplay]');if(pl){const i=+pl.dataset.tplay,l=LIB.find(x=>x.id===LIBO),T=TP.lines[i]?.t;if(l&&auReady(l)&&T!=null){tpStop();AUD.currentTime=T;AUD.play().catch(x=>toast('Không phát được: '+x.message))}else if(l&&l.audio&&!auReady(l)&&!$('#pr-lib details.ttsalt[open]')&&!TP.on){toast(AU.state==='loading'?'Audio gốc đang tải, chờ một chút rồi chạm lại':'Chưa có audio gốc trên máy này: bấm "Tải từ Google Drive của anh" ở trên');$('#aPlayer')?.scrollIntoView({block:'center',behavior:'smooth'})}else tpGo(i);return}
  if(t.closest('[data-trf]')){TRF=!TRF;tpStop();renderLib();return}
+ if(t.closest('[data-trv]')){TRV=!TRV;if(!TRV)TRO.clear();const y=scrollY;renderLib();scrollTo(0,y);return}
+ const vb=t.closest('[data-vi]');if(vb){const i=+vb.dataset.vi,el=$(`[data-vil="${i}"]`);if(!el)return;const show=el.hidden;el.hidden=!show;vb.classList.toggle('on',show);if(show){TRO.add(i);el.innerHTML=vilHtml(i);trViFill([i])}else TRO.delete(i);return}
+ const vm=t.closest('[data-vimean]');if(vm){const i=+vm.dataset.vimean,o=$(`[data-vimout="${i}"]`),L=TP.lines[i];if(!o||!L)return;vm.remove();o.innerHTML='<div class="sk"></div><div class="sk s"></div>';
+  const ctx=TP.lines.slice(Math.max(0,i-2),i).map(x=>`${x.spk||'?'}: ${x.text}`).join('\n');
+  sentAI(L.text,L.spk,ctx).then(a=>{o.innerHTML=sentAIHtml(a)}).catch(x=>{o.innerHTML=`<span style="color:var(--red)">${esc(x.message)}</span>`});return}
  if(t.closest('[data-trpull]')){pull().then(()=>{renderLib();if(!libParts(LIBO).length)toast('Chưa thấy toàn văn: kiểm tra lại bước Deploy → New version')});return}
  const er=t.closest('mark.err[data-fx]'),nw=t.closest('mark.nw[data-nw]'),line=t.closest('.tl');
  if(nw&&line&&!er){const l=LIB.find(x=>x.id===LIBO),w=(l.newWords||[]).find(x=>x.term.toLowerCase()===nw.dataset.nw);if(w)trBox(line.dataset.li,{k:'w'+w.term,h:`<b>${esc(w.term)}</b> <span class="mute">${esc(w.ipa||'')}</span> · ${esc(w.vi)} <button class="btn sm ghost" data-say="${esc(w.term)}">Nghe</button>`});return}
@@ -1264,7 +1303,23 @@ function dxOpen(w,ctx,rect,via){
  d.classList.toggle('noai',!C.ai);d.classList.add('on');dxRender();dxPlace(rect);
  dxDict(w).then(()=>{if(run===DX.run){dxRender();dxPlace(rect)}});
  const loc=dxLocal(w);if(!(loc&&loc.vi))dxVi(w).then(()=>{if(run===DX.run)dxRender()});
+ if(DX.ctx&&via!=='syn'&&viOf(DX.ctx)==null)viBatch([DX.ctx]).then(()=>{if(run===DX.run)dxRender()});
  if(C.ai&&(via!=='hover'||dxGet(key).a))dxAsk(run)}
+function dxOpenSent(text,rect){const d=dxEnsure();clearTimeout(DX.hideT);const key='s:'+viKey(text).toLowerCase();if(DX.key===key&&d.classList.contains('on'))return;
+ DX.key=key;DX.word=text;DX.ctx='';DX.via='sent';DX.pinned=true;DX.rect=rect;const run=++DX.run;d.classList.toggle('noai',!C.ai);d.classList.add('on');dxRenderSent();dxPlace(rect);
+ if(viOf(text)==null)viBatch([text]).then(()=>{if(run===DX.run)dxRenderSent()});
+ if(C.ai&&!dxGet(key).a)dxSentAsk(run)}
+async function dxSentAsk(run=DX.run){const c=dxGet(DX.key);if(c.a||c.busy)return;c.busy=true;c.err='';dxRenderSent();
+ try{await sentAI(DX.word,'','')}catch(e){c.err=e.message||'Lỗi AI'}c.busy=false;if(run===DX.run){dxRenderSent();dxPlace(DX.rect)}}
+function dxRenderSent(){const d=DX.el,c=dxGet(DX.key),v=viOf(DX.word),a=c.a;
+ const left=`<div class="dxc"><div class="dxh"><div style="flex:1"><h3 style="font-size:19px">Dịch câu</h3></div><button type="button" class="dxx" data-dxclose aria-label="Đóng">×</button></div>
+  <div class="sec"><h4>Tiếng Anh</h4><div class="ex"><div style="flex:1"><i>${esc(DX.word)}</i></div><button type="button" class="sp" data-dxsay="${esc(DX.word)}" aria-label="Nghe câu">🔊</button></div></div>
+  <div class="sec"><h4>Tiếng Việt (máy dịch)</h4>${v==null?dxSkel(2):`<div class="vi" style="font-weight:500">${esc(v)}</div>`}</div>
+  <p class="mute" style="font-size:12px;margin-top:10px">Máy dịch theo từng chữ nên câu nói lủng củng sẽ dịch lủng củng.${C.ai?' AI bên cạnh đoán ý người nói và viết lại cho đúng.':' Bật AI trong Cài đặt để AI đoán ý người nói và viết lại cho đúng.'}</p>
+  <div class="act"><button type="button" class="btn sm" data-dxcopy>Copy câu</button></div></div>`;
+ let right='';if(C.ai){const b=a?sentAIHtml(a).replace(/data-say=/g,'data-dxsay='):c.busy?`<p class="mute" style="margin:8px 0 0">AI đang đọc câu…</p>${dxSkel(4)}`:`${c.err?`<p style="color:var(--red)">${esc(c.err)}</p>`:''}<button type="button" class="btn sm pri" data-dxsent>✦ Hỏi AI ý người nói</button>`;
+  right=`<div class="dxc dxai"><div class="aih">✦ AI: ý người nói và câu chuẩn</div>${b}</div>`}
+ d.innerHTML=`<div class="grip"></div>${left}${right}`}
 async function dxAsk(run=DX.run){const c=dxGet(DX.key);if(c.a||c.busy)return dxRender();c.busy=true;c.err='';dxRender();
  try{await dxAI(DX.word,DX.ctx)}catch(e){c.err=e.message||'Lỗi AI'}c.busy=false;if(run===DX.run){dxRender();dxPlace(DX.rect)}}
 function dxHide(){if(!DX.el)return;DX.el.classList.remove('on');DX.key='';DX.pinned=false;DX.run++;dxMark(null)}
@@ -1287,7 +1342,7 @@ function dxRender(){
  const exH=exs.length?`<div class="sec"><h4>Câu ví dụ</h4>${exs.map(x=>`<div class="ex"><span class="tg ${x.tag==='Đấu thầu'?'bid':''}">${esc(x.tag)}</span><div style="flex:1"><i>${esc(x.en)}</i>${x.vi?`<small>${esc(x.vi)}</small>`:''}</div><button type="button" class="sp" data-dxsay="${esc(x.en)}" aria-label="Nghe câu">🔊</button></div>`).join('')}${!a&&C.ai?'':''}</div>`:'';
  const syn=(dd&&dd.syn.length?dd.syn:(a&&a.synonyms||[]).map(s=>s.w)).filter(Boolean).slice(0,8);
  const synH=syn.length?`<div class="sec"><h4>Từ đồng nghĩa</h4><div class="chips">${syn.map(s=>`<button type="button" data-dxw="${esc(s)}">${esc(s)}</button>`).join('')}</div></div>`:'';
- const ctxH=DX.ctx&&DX.via!=='syn'?`<div class="sec"><h4>Câu anh đang đọc</h4><small class="mute"><i>${esc(DX.ctx)}</i></small></div>`:'';
+ const ctxVi=DX.ctx?viOf(DX.ctx):null;const ctxH=DX.ctx&&DX.via!=='syn'?`<div class="sec"><h4>Câu anh đang đọc</h4><small class="mute"><i>${esc(DX.ctx)}</i>${ctxVi?`<br>→ ${esc(ctxVi)}`:''}</small></div>`:'';
  const inKB=(D.kb||[]).some(k=>String(k.term_or_phrase||'').toLowerCase()===String(head).toLowerCase());
  const act=`<div class="act"><button type="button" class="btn sm pri" data-dxkb ${inKB?'disabled':''}>${inKB?'✓ Đã có trong Tri thức':'+ Lưu vào Tri thức'}</button><a class="btn sm" href="https://www.oxfordlearnersdictionaries.com/search/english/?q=${encodeURIComponent(head)}" target="_blank" rel="noopener">Oxford ↗</a></div>`;
  const lem=head.toLowerCase()!==DX.word.toLowerCase()?`<div class="dxlem">dạng gốc của “${esc(DX.word)}”</div>`:'';
@@ -1309,6 +1364,8 @@ function dxClick(e){const t=e.target;
  const sy=t.closest('[data-dxsay]');if(sy)return dxTTS(sy.dataset.dxsay,false);
  const w=t.closest('[data-dxw]');if(w){const r=DX.rect;DX.key='';dxOpen(w.dataset.dxw,'',r,'syn');return}
  if(t.closest('[data-dxai]'))return dxAsk();
+ if(t.closest('[data-dxsent]'))return dxSentAsk();
+ if(t.closest('[data-dxcopy]'))return copy(DX.word);
  if(t.closest('[data-dxkb]')){const c=dxGet(DX.key),a=c.a,dd=c.d,loc=dxLocal(DX.word),v=c.v;const term=(a&&a.headword)||(dd&&dd.word)||DX.word;
   const exs=a&&Array.isArray(a.examples)?a.examples:[];const ex=(exs.find(x=>/bid|tender|constr/i.test(x.tag))||exs[0]||{}).en||(dd&&dd.ex[0])||DX.ctx||'';
   const vi=(a&&a.vi)||(loc&&loc.vi)||(v&&v.main)||'';const en=dd&&dd.pos[0]?dd.pos[0].d[0]:'';
@@ -1322,7 +1379,9 @@ document.addEventListener('pointermove',e=>{
  if(DX.el&&DX.el.classList.contains('on')&&!DX.pinned){const r=DX.rect;if(!(r&&e.clientX>=r.left-2&&e.clientX<=r.right+2&&e.clientY>=r.top-2&&e.clientY<=r.bottom+2))dxHideSoon();else clearTimeout(DX.hideT)}
  DX.hoverT=setTimeout(()=>{if(DX.pinned||(window.getSelection&&String(getSelection()).trim()))return;const h=dxWordAt(e.clientX,e.clientY);if(!h)return;dxMark(h.range);dxOpen(h.w,h.ctx,h.rect,'hover')},550)},{passive:true});
 document.addEventListener('selectionchange',()=>{if(dxMode()==='off')return;clearTimeout(DX.selT);DX.selT=setTimeout(()=>{
- const s=getSelection();if(!s||s.isCollapsed||!s.rangeCount)return;const txt=dxClean(String(s).trim().replace(/\s+/g,' '));if(!dxOk(txt))return;
+ const s=getSelection();if(!s||s.isCollapsed||!s.rangeCount)return;const raw=String(s).trim().replace(/\s+/g,' '),txt=dxClean(raw);const nW=raw.split(' ').length;
+ if(nW>4){if(nW>90||!/[A-Za-z]{2}/.test(raw)||isViText(raw))return;const n0=s.anchorNode,e0=n0&&(n0.nodeType===1?n0:n0.parentElement);if(!e0||e0.closest(DX_SKIP))return;const rc=s.getRangeAt(0).getBoundingClientRect();dxMark(null);dxOpenSent(raw,rc);return}
+ if(!dxOk(txt))return;
  const n=s.anchorNode,el=n&&(n.nodeType===1?n:n.parentElement);if(!el||el.closest(DX_SKIP))return;if(isViText(dxBlockText(el,'').slice(0,400)))return;
  const r=s.getRangeAt(0),rect=r.getBoundingClientRect();if(!rect.width&&!rect.height)return;dxMark(null);
  const full=dxBlockText(el,n.nodeType===3?n.data:'');DX.pinned=false;dxOpen(txt,dxSentence(full,String(s).trim()),rect,'select')},380)});
