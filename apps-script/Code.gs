@@ -12,6 +12,11 @@
  *   POST {action:"audio", name, offset, length, token}   → {status, size, mime, data(base64)}
  *        Đọc từng đoạn file audio buổi học trong Google Drive của anh (tìm theo tên file,
  *        ví dụ HeroHub_L11.m4a). File vẫn để chế độ riêng tư; chỉ ai có token mới nghe được.
+ *   POST {action:"ai", system, messages, max_tokens, token} → {status, text}
+ *        Gọi Claude cho các tính năng AI (từ điển, Mô phỏng, chấm bài…). Cần Script Property
+ *        ANTHROPIC_API_KEY. Key chỉ nằm ở đây, không bao giờ trong repo hay trên máy người học.
+ *        (Tuỳ chọn) ANTHROPIC_MODEL để đổi model; mặc định claude-opus-5-5.
+ *   Mọi lệnh "read" trả thêm ai:true khi đã có ANTHROPIC_API_KEY để app bật các nút AI.
  *   GET  ?token=...  (giữ để tương thích bản cũ; app mới dùng POST)
  * Ngày được trả về dạng chữ yyyy-MM-dd theo giờ của Sheet, không còn bị lệch UTC.
  */
@@ -58,8 +63,9 @@ function doPost(e) {
   try {
     var b = JSON.parse((e.postData && e.postData.contents) || '{}');
     auth_(b.token);
-    if (b.action === 'read') return out_({ status: 'success', data: readAll_() });
+    if (b.action === 'read') return out_({ status: 'success', data: readAll_(), ai: hasAI_() });
     if (b.action === 'audio') return out_(audioChunk_(b));
+    if (b.action === 'ai') return out_({ status: 'success', text: claude_(b) });
 
     lock.waitLock(10000);
     var sh = sheet_(b.sheet);
@@ -85,6 +91,44 @@ function doPost(e) {
   } finally {
     try { lock.releaseLock(); } catch (x) {}
   }
+}
+
+/** AI: chuyển tiếp tới Claude Messages API. Key đọc từ Script Properties. */
+function hasAI_() { return !!PropertiesService.getScriptProperties().getProperty('ANTHROPIC_API_KEY'); }
+function claude_(b) {
+  var props = PropertiesService.getScriptProperties();
+  var key = props.getProperty('ANTHROPIC_API_KEY');
+  if (!key) throw new Error('Chưa đặt ANTHROPIC_API_KEY trong Script Properties');
+  var msgs = (Array.isArray(b.messages) ? b.messages : []).filter(function (m) {
+    return m && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string' && m.content;
+  }).slice(-30).map(function (m) { return { role: m.role, content: m.content.slice(0, 20000) }; });
+  if (!msgs.length || msgs[0].role !== 'user') throw new Error('Thiếu nội dung gửi AI');
+  var body = {
+    model: props.getProperty('ANTHROPIC_MODEL') || 'claude-opus-5-5',
+    max_tokens: Math.min(Math.max(Number(b.max_tokens) || 1200, 1024), 4000),
+    output_config: { effort: 'low' },   // trả lời nhanh, đủ cho tra từ và sửa câu
+    messages: msgs,
+    fallbacks: 'default'                 // nếu model chính từ chối, máy chủ tự chạy lại bằng model dự phòng
+  };
+  if (b.system) body.system = String(b.system).slice(0, 8000);
+  var res = callClaude_(key, body, true);
+  if (res.code === 400 && /fallback/i.test(res.text)) res = callClaude_(key, (delete body.fallbacks, body), false);
+  if (res.code >= 300) {
+    var m = res.text; try { m = JSON.parse(res.text).error.message; } catch (x) {}
+    throw new Error('AI lỗi ' + res.code + ': ' + String(m).slice(0, 200));
+  }
+  var j = JSON.parse(res.text);
+  if (j.stop_reason === 'refusal') throw new Error('AI từ chối câu hỏi này');
+  return (j.content || []).filter(function (c) { return c.type === 'text'; }).map(function (c) { return c.text; }).join('');
+}
+function callClaude_(key, body, beta) {
+  var h = { 'x-api-key': key, 'anthropic-version': '2023-06-01' };
+  if (beta) h['anthropic-beta'] = 'server-side-fallback-2026-07-01';
+  var r = UrlFetchApp.fetch('https://api.anthropic.com/v1/messages', {
+    method: 'post', contentType: 'application/json', headers: h,
+    payload: JSON.stringify(body), muteHttpExceptions: true
+  });
+  return { code: r.getResponseCode(), text: r.getContentText() };
 }
 
 /** Audio buổi học: đọc một đoạn (mặc định 4 MB) của file trong Drive, trả về base64.

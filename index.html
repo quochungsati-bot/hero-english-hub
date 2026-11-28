@@ -205,6 +205,36 @@ mark.err{background:var(--redbg);color:inherit;border-bottom:2px solid var(--red
 .sess .pb{display:flex;gap:8px;align-items:flex-start;cursor:pointer;font-weight:400;margin:0}.sess .pb input{width:auto;min-height:0;margin:4px 0 0;flex:none}.sess .pb.ok b{text-decoration:line-through;color:var(--mute)}
 .plan .ss{font-size:11px;color:var(--mute);font-weight:600;margin-top:4px}
 @media (max-width:600px){.cal{gap:3px}.cal button{min-height:46px;padding:4px}.cal b{font-size:13px}}
+/* ===== Hover dictionary (DX): earth tokens only ===== */
+::highlight(dx){background-color:var(--amberbg);color:inherit}
+.dx{position:fixed;z-index:58;width:min(720px,calc(100vw - 24px));max-height:min(72vh,640px);display:none;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 40px rgba(40,22,10,.22);overflow:hidden;font-size:14px;line-height:1.5}
+.dx.on{display:grid}.dx.noai{grid-template-columns:minmax(0,1fr);width:min(420px,calc(100vw - 24px))}
+.dx .dxc{overflow:auto;padding:14px 16px;max-height:inherit}.dx .dxai{border-left:1px solid var(--line);background:var(--soft)}
+.dx .dxh{display:flex;align-items:flex-start;gap:8px}.dx .dxh h3{font:700 24px/1.15 Lora,Georgia,serif;margin:0;flex:1;word-break:break-word}
+.dx .dxx{border:0;background:transparent;font-size:22px;line-height:1;padding:2px 6px;color:var(--mute);min-height:0}
+.dx .dxlem{font-size:12px;color:var(--mute);margin-top:2px}
+.dx .ipa{display:flex;flex-wrap:wrap;gap:6px 12px;margin:8px 0 4px}.dx .ipa button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:3px 10px 3px 8px;font-size:14px;min-height:30px}
+.dx .ipa button:hover{border-color:var(--teal)}.dx .ipa b{font-size:11px;color:var(--teal);font-weight:700}.dx .ipa span{font-family:"Lucida Sans Unicode","Segoe UI",Inter,sans-serif}
+.dx .pos{display:inline-block;font-size:12px;font-weight:600;color:var(--teal);background:var(--tealbg);border-radius:6px;padding:1px 7px;margin-right:4px}
+.dx .sec{margin-top:12px}.dx .sec>h4{margin:0 0 4px;font:600 11px/1.3 Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.dx .vi{font-size:15px;font-weight:600}.dx .vi small{display:block;font-weight:400;color:var(--mute);font-size:13px}
+.dx ol{margin:2px 0 0;padding-left:20px}.dx li{margin:2px 0}
+.dx .ex{display:flex;gap:6px;align-items:flex-start;padding:6px 0;border-top:1px dashed var(--line)}.dx .ex:first-of-type{border-top:0}
+.dx .ex .tg{flex:none;font-size:10px;font-weight:700;border-radius:4px;padding:1px 5px;margin-top:3px;background:var(--amberbg);color:var(--amber)}.dx .ex .tg.bid{background:var(--tealbg);color:var(--teal)}
+.dx .ex i{font-style:italic}.dx .ex small{display:block;color:var(--mute)}.dx .ex .sp{border:0;background:transparent;padding:0 2px;min-height:0;color:var(--teal);font-size:13px;flex:none}
+.dx .chips{display:flex;flex-wrap:wrap;gap:6px}.dx .chips button{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:2px 10px;font-size:13px;min-height:28px}.dx .chips button:hover{border-color:var(--teal);color:var(--teal)}
+.dx .syn{padding:3px 0}.dx .syn button{border:0;background:none;padding:0;color:var(--teal);font-weight:600;min-height:0;text-decoration:underline dotted}
+.dx .mk{border-left:3px solid var(--red);background:var(--redbg);border-radius:6px;padding:6px 8px}.dx .mk s{color:var(--red)}
+.dx .act{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.dx .act .btn{min-height:34px;font-size:13px;padding:0 10px}
+.dx .sk{height:12px;border-radius:6px;background:var(--line);margin:8px 0;animation:dxp 1.2s ease-in-out infinite}.dx .sk.s{width:60%}
+@keyframes dxp{50%{opacity:.45}}
+.dx .aih{display:flex;align-items:center;gap:6px;font-weight:700;color:var(--teal)}.dx .cefr{margin-left:auto;font-size:11px;font-weight:700;border:1px solid var(--teal);color:var(--teal);border-radius:5px;padding:0 6px}
+.dx .grip{display:none}
+@media (max-width:700px),(pointer:coarse){
+ .dx,.dx.noai{left:0!important;right:0;top:auto!important;bottom:0;width:100%;max-height:80vh;border-radius:16px 16px 0 0;grid-template-columns:minmax(0,1fr);overflow:auto;box-shadow:0 -10px 30px rgba(40,22,10,.25);padding-bottom:env(safe-area-inset-bottom)}
+ .dx .dxc{overflow:visible;max-height:none}.dx .dxai{border-left:0;border-top:1px solid var(--line)}
+ .dx .grip{display:block;width:40px;height:4px;border-radius:2px;background:var(--line);margin:8px auto -4px;grid-column:1/-1}
+}
 </style>
 </head>
 <body>
@@ -327,6 +357,7 @@ mark.err{background:var(--redbg);color:inherit;border-bottom:2px solid var(--red
   <div class="card"><h3>Giao diện & bảo mật</h3>
    <label for="cTheme">Chế độ màu</label><select id="cTheme"><option value="">Theo hệ thống</option><option value="light">Sáng</option><option value="dark">Tối</option></select>
    <label for="cLockMin">Tự khoá khi rời app quá</label><select id="cLockMin"><option value="5">5 phút</option><option value="10" selected>10 phút</option><option value="30">30 phút</option></select>
+   <label for="cDict">Tra từ điển tiếng Anh</label><select id="cDict"><option value="hover">Rê chuột lên từ (giữ ½ giây), bôi đen hoặc chạm giữ</option><option value="select">Chỉ khi bôi đen, nhấp đúp hoặc chạm giữ</option><option value="off">Tắt</option></select>
    <div class="row" style="margin-top:12px"><button class="btn sm" id="cPin">Đổi mã PIN</button><button class="btn sm" id="cLock">Khoá ngay</button></div>
    <p class="mute" style="margin-top:10px">PIN chặn người khác mở app trên máy anh. Dữ liệu trên Sheet được bảo vệ bằng SECRET_TOKEN; API key AI chỉ nằm trong Script Properties.</p></div>
   <div class="card"><h3>Dữ liệu cục bộ</h3><p class="mute">App lưu bản sao trên trình duyệt và hàng chờ khi mất mạng.</p>
@@ -1145,6 +1176,163 @@ if(C.pinHash&&!unl)lockUI('unlock',false);else if(!C.pinHash&&!C.pinSkipped)lock
 pull();
 prgReady.then(()=>{if(!C.url)importPreply();renderAll()});
 if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+
+/* ================= DICTIONARY: rê chuột / bôi đen / chạm giữ một từ tiếng Anh ================= */
+/* Nguồn: dictionaryapi.dev (IPA UK/US + audio, định nghĩa, đồng nghĩa) + nghĩa tiếng Việt (bảng từ của các buổi học, rồi Google Translate/MyMemory)
+   + AI qua Apps Script (action "ai", key nằm trong Script Properties, không bao giờ trong repo). Mọi dữ liệu lấy về đều esc() trước khi hiển thị. */
+const DX={el:null,key:'',word:'',ctx:'',via:'',pinned:false,hoverT:0,hideT:0,selT:0,lastX:-1,lastY:-1,run:0,cache:store.get('be_dict',{})};
+const DX_POS={noun:'danh từ',verb:'động từ',adjective:'tính từ',adverb:'trạng từ',pronoun:'đại từ',preposition:'giới từ',conjunction:'liên từ',interjection:'thán từ',determiner:'hạn định từ',phrase:'cụm từ',idiom:'thành ngữ',abbreviation:'viết tắt'};
+const dxMode=()=>C.dictMode||'hover';
+const dxSave=()=>{const k=Object.keys(DX.cache);if(k.length>400)k.sort((a,b)=>(DX.cache[a].t||0)-(DX.cache[b].t||0)).slice(0,k.length-400).forEach(x=>delete DX.cache[x]);store.set('be_dict',DX.cache)};
+const dxGet=k=>DX.cache[k]||(DX.cache[k]={t:Date.now()});
+const DX_VI=/[ăâđêôơưàảãáạằẳẵắặầẩẫấậèẻẽéẹềểễếệìỉĩíịòỏõóọồổỗốộờởỡớợùủũúụừửữứựỳỷỹýỵ]/gi;
+const isViText=t=>{const v=(t.match(DX_VI)||[]).length;return v>=2&&v/Math.max(1,(t.match(/[a-zà-ỹ]/gi)||[]).length)>.025};
+const dxClean=w=>String(w||'').replace(/[’]/g,"'").replace(/^[^A-Za-z]+|[^A-Za-z]+$/g,'').replace(/'s$/i,'');
+const dxOk=w=>/^[A-Za-z][A-Za-z' -]{0,40}$/.test(w)&&/[A-Za-z]{2}/.test(w)&&w.split(/\s+/).length<=4&&!/^(?:[A-Z]{1}|I'm|I'll|I've|I'd)$/.test(w);
+const DX_SKIP='.spk,input,textarea,select,[contenteditable],nav,#side,#bottom,.lock,.dx,.toast,svg,audio,video,code,pre.nodx,[data-nodx]';
+
+/* ---------- tìm từ dưới con trỏ ---------- */
+function dxCaret(x,y){if(document.caretPositionFromPoint){const p=document.caretPositionFromPoint(x,y);return p&&{n:p.offsetNode,o:p.offset}}if(document.caretRangeFromPoint){const r=document.caretRangeFromPoint(x,y);return r&&{n:r.startContainer,o:r.startOffset}}return null}
+function dxWordAt(x,y){
+ const c=dxCaret(x,y);if(!c||!c.n||c.n.nodeType!==3)return null;const el=c.n.parentElement;if(!el||el.closest(DX_SKIP))return null;
+ const t=c.n.data;let s=c.o,e=c.o;const W=/[A-Za-z'’-]/;
+ if(s>=t.length||!W.test(t[s]))s--;if(s<0||!W.test(t[s]))return null;e=s;
+ while(s>0&&W.test(t[s-1]))s--;while(e<t.length&&W.test(t[e]))e++;
+ const r=document.createRange();r.setStart(c.n,s);r.setEnd(c.n,e);const b=r.getBoundingClientRect();
+ if(x<b.left-2||x>b.right+2||y<b.top-2||y>b.bottom+2)return null;
+ const raw=t.slice(s,e),w=dxClean(raw);if(!dxOk(w)||w.length<2)return null;
+ const probe=t.trim().length>=40?t:((el.parentElement||el).textContent||'').slice(0,400);if(isViText(probe))return null;
+ return {w,range:r,rect:b,ctx:dxSentence(dxBlockText(el,t),raw)}}
+function dxBlockText(el,t){const b=el.closest('span.tx,p,li,td')||el.parentElement||el;let s=(b.textContent||t||'').replace(/\s+/g,' ');if(s.length>1200)s=(t||'').replace(/\s+/g,' ');return s}
+function dxSentence(full,w){const i=full.indexOf(w);if(i<0)return full.slice(0,220);let a=full.lastIndexOf('.',i)+1,b=full.slice(i).search(/[.!?](\s|$)/);b=b<0?full.length:i+b+1;let s=full.slice(a,b).trim();if(s.length>240){const k=s.indexOf(w);s=(k>110?'…':'')+s.slice(Math.max(0,k-110),k+120)+'…'}return s}
+function dxMark(r){try{if(window.CSS&&CSS.highlights&&window.Highlight){if(r)CSS.highlights.set('dx',new Highlight(r));else CSS.highlights.delete('dx')}}catch(e){}}
+
+/* ---------- nguồn dữ liệu ---------- */
+function dxLemmas(w){const l=w.toLowerCase(),o=[l];if(l.includes(' '))return o;
+ if(/ies$/.test(l))o.push(l.slice(0,-3)+'y');if(/(ss|sh|ch|x|z|o)es$/.test(l))o.push(l.slice(0,-2));if(/[^s]s$/.test(l))o.push(l.slice(0,-1));
+ if(/ied$/.test(l))o.push(l.slice(0,-3)+'y');if(/ed$/.test(l)){o.push(l.slice(0,-2));o.push(l.slice(0,-1));if(/(.)\1ed$/.test(l))o.push(l.slice(0,-3))}
+ if(/ing$/.test(l)){o.push(l.slice(0,-3));o.push(l.slice(0,-3)+'e');if(/(.)\1ing$/.test(l))o.push(l.slice(0,-4))}
+ if(/ly$/.test(l))o.push(l.slice(0,-2));return [...new Set(o)].filter(x=>x.length>1).slice(0,4)}
+async function dxDict(w){
+ const k=w.toLowerCase(),c=dxGet(k);if(c.d!==undefined)return c.d;let out=null;
+ for(const q of dxLemmas(w)){try{const r=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(q));if(r.status===404)continue;if(!r.ok)throw new Error('HTTP '+r.status);const j=await r.json();if(Array.isArray(j)&&j.length){out=dxParse(j,q);break}}catch(e){return null}}
+ c.d=out;c.t=Date.now();dxSave();return out}
+function dxParse(j,q){
+ const ph=j.flatMap(e=>e.phonetics||[]),pick=rx=>ph.find(p=>rx.test(p.audio||'')&&p.text)||ph.find(p=>rx.test(p.audio||''));
+ const okA=u=>/^https:\/\/[\w.-]+\/[\w./%-]+\.(mp3|ogg|wav)$/i.test(u||'')?u:'';
+ const uk=pick(/-uk\.mp3$/i),us=pick(/-us\.mp3$/i),any=ph.find(p=>p.text)||{};
+ const ipa={uk:(uk&&uk.text)||'',us:(us&&us.text)||'',ukA:okA(uk&&uk.audio),usA:okA(us&&us.audio)};
+ if(!ipa.uk&&!ipa.us)ipa.uk=any.text||j[0].phonetic||'';
+ const by={};const syn=new Set(),ant=new Set(),ex=[];
+ for(const e of j)for(const m of e.meanings||[]){const p=m.partOfSpeech||'';const b=by[p]||(by[p]=[]);
+  (m.synonyms||[]).forEach(s=>syn.add(s));(m.antonyms||[]).forEach(s=>ant.add(s));
+  for(const d of m.definitions||[]){if(b.length<3)b.push(d.definition);(d.synonyms||[]).forEach(s=>syn.add(s));if(d.example&&ex.length<4)ex.push(d.example)}}
+ return {word:j[0].word||q,ipa,pos:Object.entries(by).slice(0,4).map(([p,d])=>({p,d})),syn:[...syn].slice(0,10),ant:[...ant].slice(0,5),ex}}
+function dxLocal(w){const l=w.toLowerCase();
+ for(const x of LIB){for(const n of x.newWords||[])if(String(n.term).toLowerCase()===l)return {vi:n.vi,ipa:n.ipa,src:x.title};for(const p of x.pron||[])if(String(p.word).toLowerCase()===l)return {ipa:p.ipa,tip:p.tip,ex:p.example,src:x.title}}return null}
+async function dxVi(w){const k=w.toLowerCase(),c=dxGet(k);if(c.v!==undefined)return c.v;let v=null;
+ try{const r=await fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=vi&dt=t&dt=bd&q='+encodeURIComponent(w));if(r.ok){const j=await r.json();
+  const main=(j[0]||[]).map(x=>x&&x[0]).filter(Boolean).join('');const by=(Array.isArray(j[1])?j[1]:[]).slice(0,3).map(b=>({p:String(b[0]||''),t:(b[1]||[]).slice(0,5).map(String)}));v={main,by}}}catch(e){}
+ if(!v)try{const r=await fetch('https://api.mymemory.translated.net/get?langpair=en|vi&q='+encodeURIComponent(w));const j=await r.json();const t=j&&j.responseData&&j.responseData.translatedText;if(t&&!/MYMEMORY|INVALID/i.test(t))v={main:t,by:[]}}catch(e){}
+ if(v){c.v=v;c.t=Date.now();dxSave()}return v}
+function dxMine(w){const rx=new RegExp('\\b'+w.replace(/[^A-Za-z' -]/g,'')+'\\b','i'),o=[];
+ for(const k of D.kb||[])if(rx.test(k.sample_sentence||''))o.push({tag:'Tri thức',en:k.sample_sentence});
+ for(const r of D.ll||[]){if(o.length>=3)break;for(const s of String(r.transcript||'').split(/\n|(?<=[.!?])\s+/)){const t=s.replace(/^\s*\[?[\d:]+\]?\s*/,'').replace(/^(Hero|Lorraine|Goya)\s*:\s*/i,'').trim();if(t.length>20&&t.length<200&&rx.test(t)){o.push({tag:'Buổi học',en:t});break}}}
+ return o.slice(0,3)}
+const DX_SYS=COACH+` You are also an Oxford-style learner's dictionary for this learner. Typical errors of this learner: plural nouns and quantifiers, past simple, word forms (prioritize/priority, comply/compliance), can + bare verb, keeping "to be" before adjectives, /θ/ /ð/ and final /s/. Answer ONLY with one JSON object, no markdown. Never use real project names, client names, prices or places: use neutral examples such as "the factory project" or [PROJECT].`;
+async function dxAI(w,ctx){const k=w.toLowerCase(),c=dxGet(k);if(c.a)return c.a;
+ let cx=ctx||'';if(cx&&NDA_RX.some(rx=>{rx.lastIndex=0;const m=rx.test(cx);rx.lastIndex=0;return m}))cx='';
+ const q=`Word or phrase: "${w}"${cx?`\nSeen in this sentence (pick the matching sense): "${cx}"`:''}
+Return JSON with these keys:
+{"headword":"base form","pos":"noun/verb/…","cefr":"A1–C2","ipa_uk":"/…/","ipa_us":"/…/","vi":"nghĩa tiếng Việt ngắn gọn, đúng nghĩa trong câu nếu có","vi_note":"1–2 câu tiếng Việt giải thích cách dùng","examples":[{"tag":"daily","en":"…","vi":"…"},{"tag":"bidding","en":"…","vi":"…"},{"tag":"daily or bidding","en":"…","vi":"…"}],"synonyms":[{"w":"…","note":"khác nhau thế nào (tiếng Việt, ngắn)"}],"collocations":["…"],"bidding_use":"tiếng Việt: dùng thế nào trong hồ sơ thầu / RFI / họp với CĐT FDI, kèm 1 cụm tiếng Anh","mistake":{"wrong":"câu sai người Việt hay mắc","right":"câu đúng","why":"lý do 1 dòng tiếng Việt"},"family":"word family, e.g. comply (v) · compliance (n) · compliant (adj)"}
+Exactly 3 examples at B2 level: at least one daily life and one bidding/construction; max 5 synonyms, max 5 collocations.`;
+ const t=await ai(DX_SYS,[{role:'user',content:q}],2000);if(!t)return null;const o=parseJSON(t);if(!o||!o.vi)throw new Error('AI trả về không đúng định dạng');
+ c.a=o;c.t=Date.now();dxSave();return o}
+
+/* ---------- giao diện ---------- */
+function dxEnsure(){if(DX.el)return DX.el;const d=document.createElement('div');d.className='dx';d.setAttribute('role','dialog');d.setAttribute('aria-label','Từ điển');document.body.appendChild(d);DX.el=d;
+ d.addEventListener('pointerenter',()=>clearTimeout(DX.hideT));d.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'&&!DX.pinned)dxHideSoon()});
+ d.addEventListener('pointerdown',()=>{DX.pinned=true});
+ d.addEventListener('click',dxClick);return d}
+function dxPlace(rect){const d=DX.el;if(matchMedia('(max-width:700px),(pointer:coarse)').matches){d.style.left='';d.style.top='';return}
+ const W=d.offsetWidth,H=d.offsetHeight,vw=innerWidth,vh=innerHeight;let x=Math.min(Math.max(12,rect.left-24),vw-W-12),y=rect.bottom+8;
+ if(y+H>vh-12)y=rect.top-H-8>12?rect.top-H-8:Math.max(12,vh-H-12);d.style.left=x+'px';d.style.top=y+'px'}
+function dxSkel(n=3){return Array.from({length:n},(_,i)=>`<div class="sk ${i%2?'s':''}"></div>`).join('')}
+function dxOpen(w,ctx,rect,via){
+ const d=dxEnsure();clearTimeout(DX.hideT);const key=w.toLowerCase();if(DX.key===key&&d.classList.contains('on')){if(via!=='hover')DX.pinned=true;return}
+ DX.key=key;DX.word=w;DX.ctx=ctx||'';DX.via=via;DX.pinned=via!=='hover';DX.rect=rect;const run=++DX.run;
+ d.classList.toggle('noai',!C.ai);d.classList.add('on');dxRender();dxPlace(rect);
+ dxDict(w).then(()=>{if(run===DX.run){dxRender();dxPlace(rect)}});
+ const loc=dxLocal(w);if(!(loc&&loc.vi))dxVi(w).then(()=>{if(run===DX.run)dxRender()});
+ if(C.ai&&(via!=='hover'||dxGet(key).a))dxAsk(run)}
+async function dxAsk(run=DX.run){const c=dxGet(DX.key);if(c.a||c.busy)return dxRender();c.busy=true;c.err='';dxRender();
+ try{await dxAI(DX.word,DX.ctx)}catch(e){c.err=e.message||'Lỗi AI'}c.busy=false;if(run===DX.run){dxRender();dxPlace(DX.rect)}}
+function dxHide(){if(!DX.el)return;DX.el.classList.remove('on');DX.key='';DX.pinned=false;DX.run++;dxMark(null)}
+function dxHideSoon(){clearTimeout(DX.hideT);DX.hideT=setTimeout(dxHide,450)}
+function dxSay(t,us,url){if(url){const a=new Audio(url);a.play().catch(()=>dxTTS(t,us));return}dxTTS(t,us)}
+function dxTTS(t,us){if(!('speechSynthesis' in window))return toast('Trình duyệt không hỗ trợ đọc');speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=us?'en-US':'en-GB';const v=speechSynthesis.getVoices().find(x=>x.lang===(us?'en-US':'en-GB'));if(v)u.voice=v;else if(!us&&VOICE)u.voice=VOICE;u.rate=.9;speechSynthesis.speak(u)}
+function dxRender(){
+ const d=DX.el,c=dxGet(DX.key),dd=c.d,a=c.a,loc=dxLocal(DX.word),v=c.v;const head=(dd&&dd.word)||(a&&a.headword)||DX.word;
+ const ipaUK=(dd&&dd.ipa.uk)||(a&&a.ipa_uk)||(loc&&loc.ipa)||'',ipaUS=(dd&&dd.ipa.us)||(a&&a.ipa_us)||'';
+ const ipa=`<div class="ipa"><button type="button" data-dxs="uk" title="Nghe giọng Anh"><b>UK</b><span>${esc(ipaUK||'🔊')}</span> 🔊</button><button type="button" data-dxs="us" title="Nghe giọng Mỹ"><b>US</b><span>${esc(ipaUS||ipaUK||'🔊')}</span> 🔊</button></div>`;
+ const viMain=(a&&a.vi)||(loc&&loc.vi)||(v&&v.main)||'';
+ const viBy=v&&v.by&&v.by.length?v.by.map(b=>`<small><span class="pos">${esc(DX_POS[b.p]||b.p)}</span>${esc(b.t.join(', '))}</small>`).join(''):'';
+ const vi=viMain||viBy?`<div class="sec"><h4>Nghĩa tiếng Việt</h4><div class="vi">${esc(viMain)}${viBy}</div></div>`:(dd===undefined||v===undefined?`<div class="sec"><h4>Nghĩa tiếng Việt</h4>${dxSkel(1)}</div>`:'');
+ let defs='';if(dd)defs=`<div class="sec"><h4>Định nghĩa (Anh–Anh)</h4>${dd.pos.map(p=>`<div style="margin-top:6px"><span class="pos">${esc(p.p)}</span> <small class="mute">${esc(DX_POS[p.p]||'')}</small><ol>${p.d.slice(0,2).map(x=>`<li>${esc(x)}</li>`).join('')}</ol></div>`).join('')}</div>`;
+ else if(dd===undefined)defs=`<div class="sec">${dxSkel(3)}</div>`;else defs=`<p class="mute" style="margin-top:10px">Từ điển miễn phí chưa có mục cho “${esc(DX.word)}”${C.ai?'. Xem phần AI bên cạnh.':'.'}</p>`;
+ let exs=[];if(a&&Array.isArray(a.examples))exs=a.examples.slice(0,3).map(x=>({tag:/bid|tender|constr/i.test(x.tag)?'Đấu thầu':'Đời thường',en:x.en,vi:x.vi}));
+ if(exs.length<3&&dd)dd.ex.forEach(x=>exs.length<3&&exs.push({tag:'Từ điển',en:x}));
+ if(exs.length<3&&loc&&loc.ex)exs.push({tag:'Buổi học',en:loc.ex});
+ if(exs.length<3)dxMine(DX.word).forEach(x=>exs.length<3&&!exs.some(y=>y.en===x.en)&&exs.push(x));
+ const exH=exs.length?`<div class="sec"><h4>Câu ví dụ</h4>${exs.map(x=>`<div class="ex"><span class="tg ${x.tag==='Đấu thầu'?'bid':''}">${esc(x.tag)}</span><div style="flex:1"><i>${esc(x.en)}</i>${x.vi?`<small>${esc(x.vi)}</small>`:''}</div><button type="button" class="sp" data-dxsay="${esc(x.en)}" aria-label="Nghe câu">🔊</button></div>`).join('')}${!a&&C.ai?'':''}</div>`:'';
+ const syn=(dd&&dd.syn.length?dd.syn:(a&&a.synonyms||[]).map(s=>s.w)).filter(Boolean).slice(0,8);
+ const synH=syn.length?`<div class="sec"><h4>Từ đồng nghĩa</h4><div class="chips">${syn.map(s=>`<button type="button" data-dxw="${esc(s)}">${esc(s)}</button>`).join('')}</div></div>`:'';
+ const ctxH=DX.ctx&&DX.via!=='syn'?`<div class="sec"><h4>Câu anh đang đọc</h4><small class="mute"><i>${esc(DX.ctx)}</i></small></div>`:'';
+ const inKB=(D.kb||[]).some(k=>String(k.term_or_phrase||'').toLowerCase()===String(head).toLowerCase());
+ const act=`<div class="act"><button type="button" class="btn sm pri" data-dxkb ${inKB?'disabled':''}>${inKB?'✓ Đã có trong Tri thức':'+ Lưu vào Tri thức'}</button><a class="btn sm" href="https://www.oxfordlearnersdictionaries.com/search/english/?q=${encodeURIComponent(head)}" target="_blank" rel="noopener">Oxford ↗</a></div>`;
+ const lem=head.toLowerCase()!==DX.word.toLowerCase()?`<div class="dxlem">dạng gốc của “${esc(DX.word)}”</div>`:'';
+ const left=`<div class="dxc"><div class="dxh"><div style="flex:1"><h3>${esc(head)}</h3>${lem}</div><button type="button" class="dxx" data-dxclose aria-label="Đóng">×</button></div>${ipa}${vi}${defs}${exH}${synH}${ctxH}${act}</div>`;
+ let right='';if(C.ai){let b;
+  if(a)b=`${a.vi_note?`<p style="margin:6px 0 0">${esc(a.vi_note)}</p>`:''}
+   ${a.bidding_use?`<div class="sec"><h4>Dùng trong đấu thầu</h4><p style="margin:0">${esc(a.bidding_use)}</p></div>`:''}
+   ${Array.isArray(a.collocations)&&a.collocations.length?`<div class="sec"><h4>Cụm từ hay đi kèm</h4><div class="chips">${a.collocations.slice(0,5).map(x=>`<button type="button" data-dxsay="${esc(x)}">${esc(x)}</button>`).join('')}</div></div>`:''}
+   ${Array.isArray(a.synonyms)&&a.synonyms.length?`<div class="sec"><h4>Đồng nghĩa: khác nhau thế nào</h4>${a.synonyms.slice(0,5).map(s=>`<div class="syn"><button type="button" data-dxw="${esc(s.w)}">${esc(s.w)}</button> <small>${esc(s.note||'')}</small></div>`).join('')}</div>`:''}
+   ${a.mistake&&a.mistake.wrong?`<div class="sec"><h4>Lỗi người Việt hay mắc</h4><div class="mk"><s>${esc(a.mistake.wrong)}</s><br><b>${esc(a.mistake.right||'')}</b><br><small>${esc(a.mistake.why||'')}</small></div></div>`:''}
+   ${a.family?`<div class="sec"><h4>Họ từ</h4><small>${esc(a.family)}</small></div>`:''}`;
+  else if(c.busy)b=`<p class="mute" style="margin:8px 0 0">AI đang soạn nghĩa, 3 câu ví dụ, collocations và lỗi hay gặp…</p>${dxSkel(5)}`;
+  else b=`${c.err?`<p class="mute" style="color:var(--red)">${esc(c.err)}</p>`:''}<p class="mute" style="margin:8px 0">Nghĩa đúng ngữ cảnh, 3 câu ví dụ đời thường và đấu thầu, collocations, cách dùng trong hồ sơ thầu, lỗi người Việt hay mắc.</p><button type="button" class="btn sm pri" data-dxai>✦ Hỏi AI về “${esc(head)}”</button>`;
+  right=`<div class="dxc dxai"><div class="aih">✦ AI coach${a&&a.cefr?`<span class="cefr">${esc(a.cefr)}</span>`:''}</div>${b}</div>`}
+ d.innerHTML=`<div class="grip"></div>${left}${right}`}
+function dxClick(e){const t=e.target;
+ if(t.closest('[data-dxclose]'))return dxHide();
+ const s=t.closest('[data-dxs]');if(s){const c=dxGet(DX.key),dd=c.d,us=s.dataset.dxs==='us';dxSay((dd&&dd.word)||DX.word,us,dd&&(us?dd.ipa.usA:dd.ipa.ukA));return}
+ const sy=t.closest('[data-dxsay]');if(sy)return dxTTS(sy.dataset.dxsay,false);
+ const w=t.closest('[data-dxw]');if(w){const r=DX.rect;DX.key='';dxOpen(w.dataset.dxw,'',r,'syn');return}
+ if(t.closest('[data-dxai]'))return dxAsk();
+ if(t.closest('[data-dxkb]')){const c=dxGet(DX.key),a=c.a,dd=c.d,loc=dxLocal(DX.word),v=c.v;const term=(a&&a.headword)||(dd&&dd.word)||DX.word;
+  const exs=a&&Array.isArray(a.examples)?a.examples:[];const ex=(exs.find(x=>/bid|tender|constr/i.test(x.tag))||exs[0]||{}).en||(dd&&dd.ex[0])||DX.ctx||'';
+  const vi=(a&&a.vi)||(loc&&loc.vi)||(v&&v.main)||'';const en=dd&&dd.pos[0]?dd.pos[0].d[0]:'';
+  addRow('kb',{id:uid('KB'),term_or_phrase:term,category:'Dictionary',b2_explanation:[vi,en].filter(Boolean).join(' · '),sample_sentence:ex,status:'Learning'});
+  if(typeof renderHub==='function')renderHub();toast('Đã lưu “'+term+'” vào 04_Knowledge_Base');dxRender()}}
+
+/* ---------- sự kiện ---------- */
+document.addEventListener('pointermove',e=>{
+ if(e.pointerType!=='mouse'||dxMode()!=='hover'||e.buttons)return;if(Math.abs(e.clientX-DX.lastX)+Math.abs(e.clientY-DX.lastY)<3)return;DX.lastX=e.clientX;DX.lastY=e.clientY;
+ clearTimeout(DX.hoverT);if(DX.el&&DX.el.contains(e.target))return;
+ if(DX.el&&DX.el.classList.contains('on')&&!DX.pinned){const r=DX.rect;if(!(r&&e.clientX>=r.left-2&&e.clientX<=r.right+2&&e.clientY>=r.top-2&&e.clientY<=r.bottom+2))dxHideSoon();else clearTimeout(DX.hideT)}
+ DX.hoverT=setTimeout(()=>{if(DX.pinned||(window.getSelection&&String(getSelection()).trim()))return;const h=dxWordAt(e.clientX,e.clientY);if(!h)return;dxMark(h.range);dxOpen(h.w,h.ctx,h.rect,'hover')},550)},{passive:true});
+document.addEventListener('selectionchange',()=>{if(dxMode()==='off')return;clearTimeout(DX.selT);DX.selT=setTimeout(()=>{
+ const s=getSelection();if(!s||s.isCollapsed||!s.rangeCount)return;const txt=dxClean(String(s).trim().replace(/\s+/g,' '));if(!dxOk(txt))return;
+ const n=s.anchorNode,el=n&&(n.nodeType===1?n:n.parentElement);if(!el||el.closest(DX_SKIP))return;if(isViText(dxBlockText(el,'').slice(0,400)))return;
+ const r=s.getRangeAt(0),rect=r.getBoundingClientRect();if(!rect.width&&!rect.height)return;dxMark(null);
+ const full=dxBlockText(el,n.nodeType===3?n.data:'');DX.pinned=false;dxOpen(txt,dxSentence(full,String(s).trim()),rect,'select')},380)});
+document.addEventListener('pointerdown',e=>{if(DX.el&&DX.el.classList.contains('on')&&!DX.el.contains(e.target))dxHide()},true);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&DX.el&&DX.el.classList.contains('on'))dxHide()});
+addEventListener('scroll',()=>{if(DX.el&&DX.el.classList.contains('on')&&!DX.pinned)dxHide()},{passive:true});
+window.addEventListener('hashchange',dxHide);
+
+/* cài đặt tra từ */
+{const s=$('#cDict');if(s){s.value=dxMode();s.onchange=e=>{C.dictMode=e.target.value;saveC();dxHide();toast(e.target.value==='off'?'Đã tắt tra từ':'Đã lưu cách tra từ')}}}
 }
 </script>
 </body>
