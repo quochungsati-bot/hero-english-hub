@@ -11,7 +11,7 @@
   },
   "shadow": {
    "t": "Shadowing",
-   "d": "Nghe và nói đuổi 1 đoạn 1–2 phút (bài Nghe trong 4 Kỹ năng hoặc audio buổi Preply), làm lúc đi xe hay đi bộ.",
+   "d": "Nghe và nói đuổi 1 đoạn 1–2 phút (bài Nghe trong 4 Kỹ năng hoặc audio buổi Preply), có thể nghe thêm lúc đi xe.",
    "link": "#studio"
   },
   "vocab": {
@@ -74,37 +74,19 @@
   "hung": {
    "label": "Lịch chính · 16 giờ/tuần",
    "forecast": "Với 16 giờ/tuần (khoảng 830 giờ/năm, tính cả PMI): đủ giờ để chạm C1 trong khoảng 12 tháng nếu giữ đều.",
-   "note": "T2–T6 mỗi ngày ít nhất 2 giờ (sáng 30 phút, trưa 30 phút, tối 60–80 phút), T7 và CN mỗi ngày 3 giờ. Preply T2 và T6 lúc 22:00 (theo preply.com, tự đổi theo Preply → Lịch học). Khoảng 1/4 thời gian là tiếng Anh chuyên môn PMI.",
+   "note": "Chỉ học buổi tối, ngoài giờ làm việc: T2–T6 21:00–23:00, T7 và CN 20:00–23:00. Preply T2 và T6 lúc 22:00 (theo preply.com, tự đổi theo Preply → Lịch học). Khoảng 1/4 thời gian là tiếng Anh chuyên môn PMI.",
    "sessions": [
     {
      "day": 1,
-     "s": "Sáng",
-     "at": "06:00",
-     "min": 20
+     "s": "Tối",
+     "at": "21:00",
+     "min": 60
     },
     {
      "day": 1,
-     "s": "Trưa",
-     "at": "12:15",
-     "min": 30
-    },
-    {
-     "day": 1,
-     "s": "Tối",
-     "at": "21:30",
-     "min": 80
-    },
-    {
-     "day": 2,
-     "s": "Sáng",
-     "at": "06:00",
-     "min": 30
-    },
-    {
-     "day": 2,
-     "s": "Trưa",
-     "at": "12:15",
-     "min": 30
+     "s": "Preply",
+     "at": "22:00",
+     "min": 60
     },
     {
      "day": 2,
@@ -113,16 +95,10 @@
      "min": 60
     },
     {
-     "day": 3,
-     "s": "Sáng",
-     "at": "06:00",
-     "min": 30
-    },
-    {
-     "day": 3,
-     "s": "Trưa",
-     "at": "12:15",
-     "min": 30
+     "day": 2,
+     "s": "Tối muộn",
+     "at": "22:00",
+     "min": 60
     },
     {
      "day": 3,
@@ -131,16 +107,10 @@
      "min": 60
     },
     {
-     "day": 4,
-     "s": "Sáng",
-     "at": "06:00",
-     "min": 30
-    },
-    {
-     "day": 4,
-     "s": "Trưa",
-     "at": "12:15",
-     "min": 30
+     "day": 3,
+     "s": "Tối muộn",
+     "at": "22:00",
+     "min": 60
     },
     {
      "day": 4,
@@ -149,115 +119,99 @@
      "min": 60
     },
     {
-     "day": 5,
-     "s": "Sáng",
-     "at": "06:00",
-     "min": 20
-    },
-    {
-     "day": 5,
-     "s": "Trưa",
-     "at": "12:15",
-     "min": 30
+     "day": 4,
+     "s": "Tối muộn",
+     "at": "22:00",
+     "min": 60
     },
     {
      "day": 5,
      "s": "Tối",
-     "at": "21:30",
-     "min": 80
+     "at": "21:00",
+     "min": 60
+    },
+    {
+     "day": 5,
+     "s": "Preply",
+     "at": "22:00",
+     "min": 60
     },
     {
      "day": 6,
-     "s": "Sáng",
-     "at": "08:00",
+     "s": "Tối",
+     "at": "20:00",
      "min": 90
     },
     {
      "day": 6,
-     "s": "Chiều",
-     "at": "15:00",
+     "s": "Tối muộn",
+     "at": "21:30",
      "min": 90
     },
     {
      "day": 7,
-     "s": "Sáng",
-     "at": "08:00",
+     "s": "Tối",
+     "at": "20:00",
      "min": 90
     },
     {
      "day": 7,
-     "s": "Chiều",
-     "at": "15:00",
+     "s": "Tối muộn",
+     "at": "21:30",
      "min": 90
     }
    ],
    "blocks": [
     {
-     "id": "d1Spmi0",
+     "id": "d1s0pmi0",
      "day": 1,
      "k": "pmi",
      "min": 20,
-     "s": "Sáng",
-     "at": "06:00"
+     "s": "Tối",
+     "at": "21:00"
     },
     {
-     "id": "d1Tshadow0",
+     "id": "d1s0core1",
      "day": 1,
-     "k": "shadow",
+     "k": "core",
      "min": 20,
-     "s": "Trưa",
-     "at": "12:15"
+     "s": "Tối",
+     "at": "21:00"
     },
     {
-     "id": "d1Tvocab1",
-     "day": 1,
-     "k": "vocab",
-     "min": 10,
-     "s": "Trưa",
-     "at": "12:15"
-    },
-    {
-     "id": "d1Tprep0",
+     "id": "d1s0prep2",
      "day": 1,
      "k": "prep",
-     "min": 30,
+     "min": 20,
      "s": "Tối",
-     "at": "21:30"
+     "at": "21:00"
     },
     {
-     "id": "d1Tpreply1",
+     "id": "d1s1preply0",
      "day": 1,
      "k": "preply",
      "min": 50,
-     "s": "Tối",
-     "at": "21:30"
+     "s": "Preply",
+     "at": "22:00"
     },
     {
-     "id": "d2Score0",
+     "id": "d1s1vocab1",
+     "day": 1,
+     "k": "vocab",
+     "min": 10,
+     "s": "Preply",
+     "at": "22:00"
+    },
+    {
+     "id": "d2s0core0",
      "day": 2,
      "k": "core",
      "min": 30,
-     "s": "Sáng",
-     "at": "06:00"
+     "s": "Tối",
+     "at": "21:00"
     },
     {
-     "id": "d2Tshadow0",
-     "day": 2,
-     "k": "shadow",
-     "min": 20,
-     "s": "Trưa",
-     "at": "12:15"
-    },
-    {
-     "id": "d2Tvocab1",
-     "day": 2,
-     "k": "vocab",
-     "min": 10,
-     "s": "Trưa",
-     "at": "12:15"
-    },
-    {
-     "id": "d2Tpmi0",
+     "id": "d2s0pmi1",
      "day": 2,
      "k": "pmi",
      "min": 30,
@@ -265,39 +219,39 @@
      "at": "21:00"
     },
     {
-     "id": "d2Tspeak1",
+     "id": "d2s1speak0",
      "day": 2,
      "k": "speak",
      "min": 30,
+     "s": "Tối muộn",
+     "at": "22:00"
+    },
+    {
+     "id": "d2s1shadow1",
+     "day": 2,
+     "k": "shadow",
+     "min": 20,
+     "s": "Tối muộn",
+     "at": "22:00"
+    },
+    {
+     "id": "d2s1vocab2",
+     "day": 2,
+     "k": "vocab",
+     "min": 10,
+     "s": "Tối muộn",
+     "at": "22:00"
+    },
+    {
+     "id": "d3s0core0",
+     "day": 3,
+     "k": "core",
+     "min": 30,
      "s": "Tối",
      "at": "21:00"
     },
     {
-     "id": "d3Score0",
-     "day": 3,
-     "k": "core",
-     "min": 30,
-     "s": "Sáng",
-     "at": "06:00"
-    },
-    {
-     "id": "d3Tshadow0",
-     "day": 3,
-     "k": "shadow",
-     "min": 20,
-     "s": "Trưa",
-     "at": "12:15"
-    },
-    {
-     "id": "d3Tvocab1",
-     "day": 3,
-     "k": "vocab",
-     "min": 10,
-     "s": "Trưa",
-     "at": "12:15"
-    },
-    {
-     "id": "d3Tpmi0",
+     "id": "d3s0pmi1",
      "day": 3,
      "k": "pmi",
      "min": 30,
@@ -305,39 +259,39 @@
      "at": "21:00"
     },
     {
-     "id": "d3Twork1",
+     "id": "d3s1work0",
      "day": 3,
      "k": "work",
      "min": 30,
-     "s": "Tối",
-     "at": "21:00"
+     "s": "Tối muộn",
+     "at": "22:00"
     },
     {
-     "id": "d4Score0",
+     "id": "d3s1shadow1",
+     "day": 3,
+     "k": "shadow",
+     "min": 20,
+     "s": "Tối muộn",
+     "at": "22:00"
+    },
+    {
+     "id": "d3s1vocab2",
+     "day": 3,
+     "k": "vocab",
+     "min": 10,
+     "s": "Tối muộn",
+     "at": "22:00"
+    },
+    {
+     "id": "d4s0core0",
      "day": 4,
      "k": "core",
      "min": 30,
-     "s": "Sáng",
-     "at": "06:00"
+     "s": "Tối",
+     "at": "21:00"
     },
     {
-     "id": "d4Tshadow0",
-     "day": 4,
-     "k": "shadow",
-     "min": 20,
-     "s": "Trưa",
-     "at": "12:15"
-    },
-    {
-     "id": "d4Tvocab1",
-     "day": 4,
-     "k": "vocab",
-     "min": 10,
-     "s": "Trưa",
-     "at": "12:15"
-    },
-    {
-     "id": "d4Tpmi0",
+     "id": "d4s0pmi1",
      "day": 4,
      "k": "pmi",
      "min": 30,
@@ -345,135 +299,151 @@
      "at": "21:00"
     },
     {
-     "id": "d4Tspeak1",
+     "id": "d4s1speak0",
      "day": 4,
      "k": "speak",
      "min": 30,
+     "s": "Tối muộn",
+     "at": "22:00"
+    },
+    {
+     "id": "d4s1shadow1",
+     "day": 4,
+     "k": "shadow",
+     "min": 20,
+     "s": "Tối muộn",
+     "at": "22:00"
+    },
+    {
+     "id": "d4s1vocab2",
+     "day": 4,
+     "k": "vocab",
+     "min": 10,
+     "s": "Tối muộn",
+     "at": "22:00"
+    },
+    {
+     "id": "d5s0pmi0",
+     "day": 5,
+     "k": "pmi",
+     "min": 20,
      "s": "Tối",
      "at": "21:00"
     },
     {
-     "id": "d5Spmi0",
+     "id": "d5s0core1",
      "day": 5,
-     "k": "pmi",
+     "k": "core",
      "min": 20,
-     "s": "Sáng",
-     "at": "06:00"
+     "s": "Tối",
+     "at": "21:00"
     },
     {
-     "id": "d5Tshadow0",
-     "day": 5,
-     "k": "shadow",
-     "min": 20,
-     "s": "Trưa",
-     "at": "12:15"
-    },
-    {
-     "id": "d5Tvocab1",
-     "day": 5,
-     "k": "vocab",
-     "min": 10,
-     "s": "Trưa",
-     "at": "12:15"
-    },
-    {
-     "id": "d5Tprep0",
+     "id": "d5s0prep2",
      "day": 5,
      "k": "prep",
-     "min": 30,
+     "min": 20,
      "s": "Tối",
-     "at": "21:30"
+     "at": "21:00"
     },
     {
-     "id": "d5Tpreply1",
+     "id": "d5s1preply0",
      "day": 5,
      "k": "preply",
      "min": 50,
-     "s": "Tối",
-     "at": "21:30"
+     "s": "Preply",
+     "at": "22:00"
     },
     {
-     "id": "d6Sdeep0",
+     "id": "d5s1vocab1",
+     "day": 5,
+     "k": "vocab",
+     "min": 10,
+     "s": "Preply",
+     "at": "22:00"
+    },
+    {
+     "id": "d6s0deep0",
      "day": 6,
      "k": "deep",
      "min": 90,
-     "s": "Sáng",
-     "at": "08:00"
+     "s": "Tối",
+     "at": "20:00"
     },
     {
-     "id": "d6Cpmipro0",
+     "id": "d6s1pmipro0",
      "day": 6,
      "k": "pmipro",
      "min": 45,
-     "s": "Chiều",
-     "at": "15:00"
+     "s": "Tối muộn",
+     "at": "21:30"
     },
     {
-     "id": "d6Cspeak1",
+     "id": "d6s1speak1",
      "day": 6,
      "k": "speak",
      "min": 30,
-     "s": "Chiều",
-     "at": "15:00"
+     "s": "Tối muộn",
+     "at": "21:30"
     },
     {
-     "id": "d6Cvocab2",
+     "id": "d6s1vocab2",
      "day": 6,
      "k": "vocab",
      "min": 15,
-     "s": "Chiều",
-     "at": "15:00"
+     "s": "Tối muộn",
+     "at": "21:30"
     },
     {
-     "id": "d7Sreview0",
+     "id": "d7s0review0",
      "day": 7,
      "k": "review",
      "min": 30,
-     "s": "Sáng",
-     "at": "08:00"
+     "s": "Tối",
+     "at": "20:00"
     },
     {
-     "id": "d7Smock1",
+     "id": "d7s0mock1",
      "day": 7,
      "k": "mock",
      "min": 30,
-     "s": "Sáng",
-     "at": "08:00"
+     "s": "Tối",
+     "at": "20:00"
     },
     {
-     "id": "d7Score2",
+     "id": "d7s0core2",
      "day": 7,
      "k": "core",
      "min": 30,
-     "s": "Sáng",
-     "at": "08:00"
+     "s": "Tối",
+     "at": "20:00"
     },
     {
-     "id": "d7Cpmipro0",
+     "id": "d7s1pmipro0",
      "day": 7,
      "k": "pmipro",
      "min": 45,
-     "s": "Chiều",
-     "at": "15:00"
+     "s": "Tối muộn",
+     "at": "21:30"
     },
     {
-     "id": "d7Cshadow1",
+     "id": "d7s1shadow1",
      "day": 7,
      "k": "shadow",
      "min": 30,
-     "s": "Chiều",
-     "at": "15:00"
+     "s": "Tối muộn",
+     "at": "21:30"
     },
     {
-     "id": "d7Cvocab2",
+     "id": "d7s1vocab2",
      "day": 7,
      "k": "vocab",
      "min": 15,
-     "s": "Chiều",
-     "at": "15:00"
+     "s": "Tối muộn",
+     "at": "21:30"
     }
    ],
-   "minutes": 980
+   "minutes": 960
   },
   "busy": {
    "label": "Tuần thầu căng · ~6 giờ",
@@ -482,7 +452,7 @@
    "sessions": [
     {
      "day": 1,
-     "s": "Tối",
+     "s": "Preply",
      "at": "22:00",
      "min": 50
     },
@@ -506,34 +476,34 @@
     },
     {
      "day": 5,
-     "s": "Tối",
+     "s": "Preply",
      "at": "22:00",
      "min": 50
     },
     {
      "day": 6,
-     "s": "Sáng",
-     "at": "08:00",
+     "s": "Tối",
+     "at": "20:00",
      "min": 90
     },
     {
      "day": 7,
-     "s": "Sáng",
-     "at": "08:00",
+     "s": "Tối",
+     "at": "20:00",
      "min": 75
     }
    ],
    "blocks": [
     {
-     "id": "d1Tpreply0",
+     "id": "d1s0preply0",
      "day": 1,
      "k": "preply",
      "min": 50,
-     "s": "Tối",
+     "s": "Preply",
      "at": "22:00"
     },
     {
-     "id": "d2Tshadow0",
+     "id": "d2s0shadow0",
      "day": 2,
      "k": "shadow",
      "min": 20,
@@ -541,7 +511,7 @@
      "at": "21:00"
     },
     {
-     "id": "d2Tpmi1",
+     "id": "d2s0pmi1",
      "day": 2,
      "k": "pmi",
      "min": 15,
@@ -549,7 +519,7 @@
      "at": "21:00"
     },
     {
-     "id": "d2Tvocab2",
+     "id": "d2s0vocab2",
      "day": 2,
      "k": "vocab",
      "min": 10,
@@ -557,7 +527,7 @@
      "at": "21:00"
     },
     {
-     "id": "d3Tcore0",
+     "id": "d3s0core0",
      "day": 3,
      "k": "core",
      "min": 20,
@@ -565,7 +535,7 @@
      "at": "21:00"
     },
     {
-     "id": "d3Tpmi1",
+     "id": "d3s0pmi1",
      "day": 3,
      "k": "pmi",
      "min": 15,
@@ -573,7 +543,7 @@
      "at": "21:00"
     },
     {
-     "id": "d3Tvocab2",
+     "id": "d3s0vocab2",
      "day": 3,
      "k": "vocab",
      "min": 10,
@@ -581,7 +551,7 @@
      "at": "21:00"
     },
     {
-     "id": "d4Tcore0",
+     "id": "d4s0core0",
      "day": 4,
      "k": "core",
      "min": 20,
@@ -589,7 +559,7 @@
      "at": "21:00"
     },
     {
-     "id": "d4Tpmi1",
+     "id": "d4s0pmi1",
      "day": 4,
      "k": "pmi",
      "min": 15,
@@ -597,7 +567,7 @@
      "at": "21:00"
     },
     {
-     "id": "d4Tvocab2",
+     "id": "d4s0vocab2",
      "day": 4,
      "k": "vocab",
      "min": 10,
@@ -605,52 +575,52 @@
      "at": "21:00"
     },
     {
-     "id": "d5Tpreply0",
+     "id": "d5s0preply0",
      "day": 5,
      "k": "preply",
      "min": 50,
-     "s": "Tối",
+     "s": "Preply",
      "at": "22:00"
     },
     {
-     "id": "d6Sdeep0",
+     "id": "d6s0deep0",
      "day": 6,
      "k": "deep",
      "min": 60,
-     "s": "Sáng",
-     "at": "08:00"
+     "s": "Tối",
+     "at": "20:00"
     },
     {
-     "id": "d6Spmipro1",
+     "id": "d6s0pmipro1",
      "day": 6,
      "k": "pmipro",
      "min": 30,
-     "s": "Sáng",
-     "at": "08:00"
+     "s": "Tối",
+     "at": "20:00"
     },
     {
-     "id": "d7Sreview0",
+     "id": "d7s0review0",
      "day": 7,
      "k": "review",
      "min": 30,
-     "s": "Sáng",
-     "at": "08:00"
+     "s": "Tối",
+     "at": "20:00"
     },
     {
-     "id": "d7Sspeak1",
+     "id": "d7s0speak1",
      "day": 7,
      "k": "speak",
      "min": 30,
-     "s": "Sáng",
-     "at": "08:00"
+     "s": "Tối",
+     "at": "20:00"
     },
     {
-     "id": "d7Svocab2",
+     "id": "d7s0vocab2",
      "day": 7,
      "k": "vocab",
      "min": 15,
-     "s": "Sáng",
-     "at": "08:00"
+     "s": "Tối",
+     "at": "20:00"
     }
    ],
    "minutes": 400
