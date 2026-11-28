@@ -1,0 +1,970 @@
+{
+ "_note": "Chuỗi bài 4 kỹ năng gắn với lộ trình C1 12 tháng (data/c1-plan.json): mỗi tháng 4 bài, Bài n = (tháng-1)*4 + tuần trong tháng. Ngôn ngữ mục tiêu B2. Toàn bộ dữ liệu là giả lập, đã ẩn danh. Thêm bài mới: thêm 1 object vào 'lessons' theo đúng cấu trúc (id Bxx, n, month, week).",
+ "version": 1,
+ "perMonth": 4,
+ "total": 48,
+ "lessons": [
+  {
+   "id": "B01",
+   "n": 1,
+   "month": 1,
+   "week": 1,
+   "t": "Kick-off meeting: who is who",
+   "vi": "Họp kick-off: giới thiệu bản thân và đội dự án",
+   "grammar": "am / is / are trước tính từ và danh từ",
+   "pmi": [
+    "kick-off meeting",
+    "sponsor"
+   ],
+   "phrases": [
+    "I am responsible for the tender and the contract.",
+    "Our project director is based on site full-time.",
+    "We are ready to start mobilisation next week.",
+    "Ms Sato is the main point of contact for design issues.",
+    "Is everyone clear on the next steps?"
+   ],
+   "trap": {
+    "wrong": "He responsible for the design.",
+    "right": "He is responsible for the design.",
+    "why": "Trước tính từ (responsible, ready, available) luôn cần to be."
+   },
+   "listen": {
+    "t": "Client PM opens the kick-off meeting",
+    "kw": [
+     "sponsor",
+     "responsible",
+     "available",
+     "contact",
+     "mobilisation",
+     "agenda"
+    ],
+    "txt": "Good morning, everyone, and welcome to the kick-off meeting. My name is Kenji Sato and I am the project manager on the client side. The project sponsor is our regional director. She is not here today, but she is available by video call this afternoon. Next to me is Ms Lim. She is responsible for design coordination, so she is your main contact for any drawing issues. Our cost consultant is also here today. On the contractor side, I understand that your project director is new to this region. That is not a problem. We are happy to help. The agenda is short. First, introductions. Second, the programme. Third, site mobilisation. We expect mobilisation to start in two weeks. Is everyone ready? Good, let us begin.",
+    "mcq": [
+     [
+      "Who is the project sponsor?",
+      [
+       "Mr Sato",
+       "The regional director",
+       "Ms Lim"
+      ],
+      1
+     ],
+     [
+      "Who is the main contact for drawing issues?",
+      [
+       "Ms Lim",
+       "The cost consultant",
+       "The project director"
+      ],
+      0
+     ],
+     [
+      "When is mobilisation expected?",
+      [
+       "Next week",
+       "In two weeks",
+       "In two months"
+      ],
+      1
+     ]
+    ]
+   },
+   "read": {
+    "t": "Project charter summary (dữ liệu giả lập)",
+    "txt": "PROJECT CHARTER: SUMMARY\nProject: [PROJECT], a two-storey electronics factory with an office block.\nSponsor: Regional Director, [CLIENT] Asia.\n\n1. Purpose\nThe purpose of the project is to increase production capacity in the region. The new factory is a key part of the client's five-year plan.\n\n2. Key deliverables\nThe main deliverables are the factory building, the office block, the utility building and all external works. Testing and commissioning are part of the contractor's scope.\n\n3. Roles\nThe client's project manager is responsible for day-to-day decisions. The design manager is responsible for design approvals. The contractor's project director is the single point of contact for construction issues. The sponsor is the final authority on budget changes.\n\n4. Milestones\nThe site is available from the first week of January. Structural completion is planned for month eight. Handover is in month fourteen.\n\n5. High-level risks\nThe ground conditions are uncertain, and the rainy season is a risk for the basement and foundations.",
+    "q": [
+     [
+      "What is the purpose of the project?",
+      [
+       "To reduce costs",
+       "To increase production capacity",
+       "To build a new office"
+      ],
+      1
+     ],
+     [
+      "Who approves budget changes?",
+      [
+       "The sponsor",
+       "The design manager",
+       "The contractor's project director"
+      ],
+      0
+     ],
+     [
+      "Which item is in the contractor's scope?",
+      [
+       "The five-year plan",
+       "Testing and commissioning",
+       "Design approvals"
+      ],
+      1
+     ],
+     [
+      "What does 'single point of contact' mean?",
+      [
+       "The only person you contact about an issue",
+       "A meeting room",
+       "A contract clause"
+      ],
+      0
+     ]
+    ]
+   },
+   "write": {
+    "t": "Email giới thiệu đội dự án trước kick-off",
+    "p": "Write an email (100–150 words) to the client's project manager before the kick-off meeting. Introduce yourself and three key members of your team (name, role, what each person is responsible for). Use am / is / are correctly in every sentence and end with a clear next step.",
+    "min": 100,
+    "max": 150
+   },
+   "speak": {
+    "t": "Tự giới thiệu 60 giây ở họp kick-off",
+    "p": "Introduce yourself at a kick-off meeting in 60 seconds: your name, your role, what you are responsible for, and one thing your team is ready to do this month. Check that every sentence has a verb, especially am / is / are.",
+    "prep": 30,
+    "len": 60
+   }
+  },
+  {
+   "id": "B02",
+   "n": 2,
+   "month": 1,
+   "week": 2,
+   "t": "Company profile: what our company does",
+   "vi": "Giới thiệu năng lực công ty (ngôi thứ ba số ít)",
+   "grammar": "Ngôi thứ ba số ít: has, provides, includes, requires",
+   "pmi": [
+    "project charter",
+    "deliverable"
+   ],
+   "phrases": [
+    "Our company has more than twenty years of experience in industrial projects.",
+    "The group provides design and build services across Vietnam.",
+    "Each project has a dedicated quality team.",
+    "Our scope typically includes MEP and external works.",
+    "The client requires a performance bond of ten percent."
+   ],
+   "trap": {
+    "wrong": "Our company have three divisions.",
+    "right": "Our company has three divisions.",
+    "why": "Chủ ngữ số ít (company, team, client, the project) đi với has / động từ thêm -s."
+   },
+   "listen": {
+    "t": "Client introduces its group and the new plant",
+    "kw": [
+     "produces",
+     "operates",
+     "requires",
+     "includes",
+     "capacity",
+     "deadline"
+    ],
+    "txt": "Let me say a few words about our group. Our company produces electronic components for the car industry. The group operates six factories in Asia, and each factory has its own engineering team. The new plant requires a clean area for assembly and a large warehouse. The scope includes the main building, the utility building and the access road. Production capacity is our main concern, because demand grows every year. Our board wants a contractor who understands this. The programme has one fixed deadline. The first production line starts in month fifteen, and that date does not move. Our design consultant prepares the tender drawings, and the cost consultant manages the bill of quantities.",
+    "mcq": [
+     [
+      "How many factories does the group operate?",
+      [
+       "Four",
+       "Six",
+       "Fifteen"
+      ],
+      1
+     ],
+     [
+      "What does the new plant require?",
+      [
+       "A clean area and a large warehouse",
+       "A new office tower",
+       "A car park only"
+      ],
+      0
+     ],
+     [
+      "Which date is fixed?",
+      [
+       "Structural completion",
+       "The start of the first production line",
+       "The tender submission"
+      ],
+      1
+     ]
+    ]
+   },
+   "read": {
+    "t": "Company profile: a design and build contractor (giả lập)",
+    "txt": "COMPANY PROFILE\n[CONTRACTOR] is a general contractor based in Hanoi. The company has more than 2,000 employees and operates in the north, centre and south of Vietnam.\n\nWhat we do\nThe company provides design and build, EPC and construction-only services. Our core market includes industrial factories, warehouses, data centres and high-rise buildings. Each year, the company completes around thirty projects for FDI clients.\n\nHow we work\nEvery project has a dedicated project director and a quality team. The project director reports directly to the board. Our planning department uses 4D models, and the safety team checks every site each week. The company holds ISO 9001, ISO 14001 and ISO 45001 certificates.\n\nWhy clients choose us\nOur track record shows strong delivery on time. The company invests in its own formwork and cranes, so it does not depend on subcontractors for key equipment. A large part of our work comes from repeat clients.",
+    "q": [
+     [
+      "How many projects does the company complete each year?",
+      [
+       "About twenty",
+       "About thirty",
+       "About two thousand"
+      ],
+      1
+     ],
+     [
+      "Who does the project director report to?",
+      [
+       "The safety team",
+       "The board",
+       "The client's design consultant"
+      ],
+      1
+     ],
+     [
+      "Why does the company not depend on subcontractors for key equipment?",
+      [
+       "It owns its formwork and cranes",
+       "It uses 4D models",
+       "It has ISO certificates"
+      ],
+      0
+     ],
+     [
+      "What is a 'repeat client'?",
+      [
+       "A client who gives work again",
+       "A client who complains",
+       "A new client"
+      ],
+      0
+     ]
+    ]
+   },
+   "write": {
+    "t": "Đoạn giới thiệu năng lực công ty",
+    "p": "Write a company profile paragraph (120–160 words) for the first page of a tender. Describe what your company does, its size, its core markets and one strength. Use he/she/it forms correctly: has, provides, includes, operates. Anonymise the company as [CONTRACTOR].",
+    "min": 120,
+    "max": 160
+   },
+   "speak": {
+    "t": "Giới thiệu công ty 90 giây",
+    "p": "Present your company to a new FDI client in 90 seconds: what the company does, its experience, its core markets and why it is a reliable partner. Pay attention to third-person -s: the company has, provides, delivers.",
+    "prep": 40,
+    "len": 90
+   }
+  },
+  {
+   "id": "B03",
+   "n": 3,
+   "month": 1,
+   "week": 3,
+   "t": "Clarifying client requirements",
+   "vi": "Hỏi làm rõ yêu cầu với do / does",
+   "grammar": "Câu hỏi và phủ định với do / does",
+   "pmi": [
+    "stakeholder",
+    "requirements"
+   ],
+   "phrases": [
+    "Does the client require a performance bond?",
+    "Do we need approval from the fire authority before piling?",
+    "The specification does not mention the floor finish.",
+    "Which stakeholder signs off the design?",
+    "Could you confirm who approves the method statements?"
+   ],
+   "trap": {
+    "wrong": "Does the client requires a bond?",
+    "right": "Does the client require a bond?",
+    "why": "Sau does / doesn't, động từ quay về nguyên mẫu (require, not requires)."
+   },
+   "listen": {
+    "t": "PMC answers contractor questions at kick-off",
+    "kw": [
+     "stakeholder",
+     "approves",
+     "authority",
+     "insurance",
+     "schedule",
+     "register"
+    ],
+    "txt": "Thank you for your questions. Let me go through them one by one. First, you asked: does the client require a separate insurance policy for the works? Yes, it does. The contractor provides contractor's all risks insurance. Second: do we need to meet the local authority before mobilisation? No, you don't. We handle that meeting. Third, who approves the method statements? The engineer approves them, not the client. Fourth, does the industrial park have any special rules for working hours? Yes. Heavy deliveries happen only at night. One more point. The stakeholder register lists every party in the project, so please read it carefully. The industrial park management is a key stakeholder because it controls access. And the schedule? The engineer wants your detailed schedule within twenty-eight days.",
+    "mcq": [
+     [
+      "Who provides contractor's all risks insurance?",
+      [
+       "The client",
+       "The contractor",
+       "The industrial park"
+      ],
+      1
+     ],
+     [
+      "Who approves the method statements?",
+      [
+       "The engineer",
+       "The client",
+       "The local authority"
+      ],
+      0
+     ],
+     [
+      "When does the engineer want the detailed schedule?",
+      [
+       "Within seven days",
+       "Within fourteen days",
+       "Within twenty-eight days"
+      ],
+      2
+     ]
+    ]
+   },
+   "read": {
+    "t": "Stakeholder register extract (giả lập)",
+    "txt": "STAKEHOLDER REGISTER: EXTRACT\n\n1. Client project manager\nInterest: cost, programme and quality. Influence: high. He meets the contractor every week and does not accept late reports.\n\n2. Industrial park management\nInterest: access, traffic and noise. Influence: high. The park controls the main gate. It does not allow heavy trucks between 07:00 and 19:00.\n\n3. Fire authority\nInterest: fire safety design and testing. Influence: high at handover. The authority does not issue the acceptance certificate until all fire systems pass testing.\n\n4. Neighbouring factory\nInterest: dust and vibration. Influence: medium. The factory has sensitive equipment, so it requires vibration monitoring during piling.\n\n5. Local community\nInterest: local jobs and road safety. Influence: low to medium.\n\nEngagement plan: the contractor's project director updates this register every month and shares it with the client.",
+    "q": [
+     [
+      "When are heavy trucks not allowed?",
+      [
+       "Between 07:00 and 19:00",
+       "At night",
+       "At weekends only"
+      ],
+      0
+     ],
+     [
+      "What does the neighbouring factory require during piling?",
+      [
+       "Noise barriers",
+       "Vibration monitoring",
+       "Night work"
+      ],
+      1
+     ],
+     [
+      "When does the fire authority issue the certificate?",
+      [
+       "Before piling",
+       "After all fire systems pass testing",
+       "Every month"
+      ],
+      1
+     ],
+     [
+      "Who updates the register?",
+      [
+       "The fire authority",
+       "The client project manager",
+       "The contractor's project director"
+      ],
+      2
+     ]
+    ]
+   },
+   "write": {
+    "t": "Email 5 câu hỏi làm rõ (RFI)",
+    "p": "Write an email (120–170 words) to the client's PMC with five clarification questions before the tender. Use at least three questions with Does … ? or Do … ? (for example insurance, working hours, approvals, utilities, site access). Number the questions and ask for a reply date.",
+    "min": 120,
+    "max": 170
+   },
+   "speak": {
+    "t": "Hỏi 5 câu với do / does",
+    "p": "You are at a kick-off meeting. Ask the client five clear questions about requirements using Do / Does …? Then answer one follow-up question from the client. Keep the verb after does in the base form.",
+    "prep": 40,
+    "len": 90
+   }
+  },
+  {
+   "id": "B04",
+   "n": 4,
+   "month": 1,
+   "week": 4,
+   "t": "Small talk and opening the meeting",
+   "vi": "Small talk mở đầu họp và ôn tập tháng 1",
+   "grammar": "Ôn tập: to be · -s/has · do/does",
+   "pmi": [
+    "kick-off meeting",
+    "deliverable",
+    "stakeholder"
+   ],
+   "phrases": [
+    "How was your flight? Is this your first time in Hanoi?",
+    "The weather is quite cold this week, isn't it?",
+    "Shall we make a start?",
+    "Our main deliverable this month is the site mobilisation plan.",
+    "Does that work for everyone?"
+   ],
+   "trap": {
+    "wrong": "Last week, the client come to the site.",
+    "right": "Last week, the client came to the site.",
+    "why": "Small talk hay kể chuyện đã qua: dùng quá khứ (came, took) và không thêm 'the' trước Last week."
+   },
+   "listen": {
+    "t": "Small talk before the meeting starts",
+    "kw": [
+     "flight",
+     "weather",
+     "holiday",
+     "traffic",
+     "start",
+     "minutes"
+    ],
+    "txt": "Good morning, Mr Kim. How was your flight? Not too bad, thank you. It was a little late, but the hotel is very comfortable. Is this your first time in Hanoi? No, it is my third visit. I really like the food here. The weather is quite cold this week, isn't it? Yes, it is. And the traffic is heavy before the holiday. Do you have any plans for the New Year holiday? I go back to Seoul to see my family. That sounds great. Well, everyone is here now. Shall we make a start? Yes, please. We have ninety minutes. The first item is the site mobilisation plan. Our team has a short presentation, and then we take questions. The minutes go to everyone by Friday.",
+    "mcq": [
+     [
+      "How many times has Mr Kim visited Hanoi?",
+      [
+       "This is his first time",
+       "Two times before",
+       "Three times, including this one"
+      ],
+      2
+     ],
+     [
+      "What is the first agenda item?",
+      [
+       "The New Year holiday",
+       "The site mobilisation plan",
+       "The hotel"
+      ],
+      1
+     ],
+     [
+      "When do the minutes go to everyone?",
+      [
+       "Today",
+       "By Friday",
+       "Next month"
+      ],
+      1
+     ]
+    ]
+   },
+   "read": {
+    "t": "Kick-off meeting minutes (giả lập)",
+    "txt": "MINUTES OF THE KICK-OFF MEETING\nProject: [PROJECT]   Location: site office\n\nAttendees: client project manager, design manager, PMC representative, contractor's project director, contractor's tender manager.\n\n1. Introductions\nEach party introduced its team. The contractor's project director is the single point of contact for construction.\n\n2. Mobilisation\nThe contractor presented the mobilisation plan. The site office is ready by 10 January. The client does not provide temporary water, so the contractor drills a well. Action: contractor.\n\n3. Deliverables in the first month\nThe contractor submits the detailed schedule, the health and safety plan and the quality plan within 28 days. Action: contractor.\n\n4. Communication\nThe weekly meeting is on Tuesday at 09:00. All letters go through the document control system. The PMC does not accept instructions by phone.\n\n5. Any other business\nThe client asked whether the contractor has enough tower cranes. The contractor confirmed two cranes on site from February.\n\nNext meeting: Tuesday, 09:00.",
+    "q": [
+     [
+      "Who provides temporary water?",
+      [
+       "The client",
+       "The contractor, by drilling a well",
+       "The PMC"
+      ],
+      1
+     ],
+     [
+      "Which item is due within 28 days?",
+      [
+       "The site office",
+       "The detailed schedule",
+       "The tower cranes"
+      ],
+      1
+     ],
+     [
+      "How must instructions be given?",
+      [
+       "By phone",
+       "Through the document control system",
+       "At lunch"
+      ],
+      1
+     ],
+     [
+      "When is the weekly meeting?",
+      [
+       "Monday at 09:00",
+       "Tuesday at 09:00",
+       "Friday at 14:00"
+      ],
+      1
+     ]
+    ]
+   },
+   "write": {
+    "t": "Email tóm tắt sau họp kick-off",
+    "p": "Write a follow-up email (150–200 words) after a kick-off meeting. Thank the attendees, summarise three agreed actions (who does what, by when) and confirm the next meeting. Check every sentence for be, third-person -s and do/does.",
+    "min": 150,
+    "max": 200
+   },
+   "speak": {
+    "t": "Sản phẩm tháng 1: small talk + giới thiệu công ty",
+    "p": "Month 1 output. Make 30 seconds of small talk with a visiting client (flight, weather, holiday), then move to the meeting and introduce your company in 1 minute. Aim for zero errors in be, third-person -s and do/does.",
+    "prep": 45,
+    "len": 120
+   }
+  },
+  {
+   "id": "B05",
+   "n": 5,
+   "month": 2,
+   "week": 1,
+   "t": "Site visit: describing what you see",
+   "vi": "Site visit: danh từ số nhiều và không đếm được",
+   "grammar": "Số nhiều và danh từ không đếm được: equipment, information, feedback",
+   "pmi": [
+    "scope statement",
+    "assumptions"
+   ],
+   "phrases": [
+    "There is a lot of equipment near the north gate.",
+    "Could you send us more information on the soil?",
+    "Several trees need to be removed before piling.",
+    "We have some feedback on the access road.",
+    "Every site visitor needs a helmet and safety shoes."
+   ],
+   "trap": {
+    "wrong": "Could you send us more informations?",
+    "right": "Could you send us more information?",
+    "why": "information, equipment, feedback, advice không có số nhiều; dùng some / more / a piece of."
+   },
+   "listen": {
+    "t": "Facility manager leads the site visit",
+    "kw": [
+     "equipment",
+     "information",
+     "gates",
+     "trees",
+     "drainage",
+     "feedback"
+    ],
+    "txt": "Welcome to the site, everyone. Please keep your helmets on at all times. The site has two gates. The north gate is for trucks and the south gate is for cars and visitors. On your left, you can see some old equipment from the previous tenant. The client removes all of this equipment before handover of the site. There are also about forty trees along the boundary. Some of the trees are protected, so please check the information in the tender documents. The drainage on this side is poor, and water stays on the ground for days after heavy rain. We have soil investigation information for the east area only. If you need more information, please submit an RFI. Finally, we welcome your feedback on site access by Friday.",
+    "mcq": [
+     [
+      "Which gate is for trucks?",
+      [
+       "The north gate",
+       "The south gate",
+       "Both gates"
+      ],
+      0
+     ],
+     [
+      "Who removes the old equipment?",
+      [
+       "The contractor",
+       "The client",
+       "The previous tenant"
+      ],
+      1
+     ],
+     [
+      "Where is soil investigation information available?",
+      [
+       "For the whole site",
+       "For the east area only",
+       "Nowhere"
+      ],
+      1
+     ]
+    ]
+   },
+   "read": {
+    "t": "Site visit report (giả lập)",
+    "txt": "SITE VISIT REPORT\nProject: [PROJECT]   Prepared by: tender team\n\n1. Access\nThe site has two gates on the main road. The road outside is narrow, so long vehicles need traffic marshals. There is no parking for workers inside the site.\n\n2. Existing conditions\nThere are several old foundations in the west area. Some equipment from the previous factory remains on site. The client confirmed that it removes all equipment before the start date. About forty trees grow along the boundary, and five of them are protected.\n\n3. Utilities\nThere is a medium-voltage line along the south boundary. The client provided no information on underground cables. Water is available from the industrial park, but the pressure is low.\n\n4. Ground and drainage\nThe ground in the east area is soft. Rainwater collects in the west area after heavy rain.\n\n5. Recommendations\nWe recommend an RFI on underground services, a survey of the old foundations, and an allowance for temporary drainage in the programme.",
+    "q": [
+     [
+      "Why do long vehicles need traffic marshals?",
+      [
+       "The road outside is narrow",
+       "The gates are closed",
+       "The trees are protected"
+      ],
+      0
+     ],
+     [
+      "How many trees are protected?",
+      [
+       "Forty",
+       "Five",
+       "None"
+      ],
+      1
+     ],
+     [
+      "What information is missing?",
+      [
+       "Water pressure",
+       "Underground cables",
+       "The medium-voltage line"
+      ],
+      1
+     ],
+     [
+      "Which allowance does the team recommend?",
+      [
+       "Temporary drainage",
+       "Worker parking",
+       "A new gate"
+      ],
+      0
+     ]
+    ]
+   },
+   "write": {
+    "t": "RFI xin thêm thông tin hiện trạng",
+    "p": "Write an RFI (120–160 words) after a site visit. Ask for missing information about underground services, existing foundations and drainage. Use uncountable nouns correctly (information, equipment, feedback) and correct plurals (foundations, cables, trees).",
+    "min": 120,
+    "max": 160
+   },
+   "speak": {
+    "t": "Mô tả công trường 90 giây",
+    "p": "Look at a site photo or plan from your work (anonymised). Describe it in 90 seconds: access, existing structures, equipment, trees, utilities and one risk. Check plurals and uncountable nouns.",
+    "prep": 40,
+    "len": 90
+   }
+  },
+  {
+   "id": "B06",
+   "n": 6,
+   "month": 2,
+   "week": 2,
+   "t": "Scope of works: a, an, the",
+   "vi": "Phạm vi công việc: mạo từ a / an / the",
+   "grammar": "a / an / the; không dùng 'the' với Last Friday, next month",
+   "pmi": [
+    "scope statement",
+    "constraints"
+   ],
+   "phrases": [
+    "The scope includes a utility building and an access road.",
+    "The access road is part of the external works.",
+    "Last Friday we received an addendum from the client.",
+    "The main constraint is the fixed handover date.",
+    "An allowance for temporary works is included in the price."
+   ],
+   "trap": {
+    "wrong": "We received the addendum in the last Friday.",
+    "right": "We received an addendum last Friday.",
+    "why": "Lần đầu nhắc đến dùng a / an; last / next + thời gian không có 'the' và không có 'in'."
+   },
+   "listen": {
+    "t": "PMC presents the scope statement",
+    "kw": [
+     "scope",
+     "exclusions",
+     "utility",
+     "constraint",
+     "addendum",
+     "interface"
+    ],
+    "txt": "Let me summarise the scope statement. The project includes a main factory, an office block and a utility building. The utility building houses the chillers and the generators. The scope also includes an access road and a guard house. The exclusions are clear. The client buys the process equipment directly, and a specialist installs it. However, the interface between the process equipment and the building services is in your scope. Last Monday we issued an addendum. The addendum adds a small canteen next to the office block. There is one major constraint. The site is inside an operating industrial park, so the work must not disturb the neighbours. Please read the addendum and include the canteen in your price.",
+    "mcq": [
+     [
+      "What does the utility building house?",
+      [
+       "The canteen",
+       "The chillers and the generators",
+       "The process equipment"
+      ],
+      1
+     ],
+     [
+      "What did the addendum add?",
+      [
+       "A guard house",
+       "A small canteen",
+       "A second access road"
+      ],
+      1
+     ],
+     [
+      "What is the major constraint?",
+      [
+       "The work must not disturb the neighbours",
+       "The budget is small",
+       "The design is not ready"
+      ],
+      0
+     ]
+    ]
+   },
+   "read": {
+    "t": "Scope statement extract (giả lập)",
+    "txt": "SCOPE STATEMENT: EXTRACT\n\nProject objective\nTo build a single-storey factory with an office block within fourteen months.\n\nIn scope\n- The factory building, including the steel structure, the roof and the cladding.\n- An office block of three floors.\n- A utility building for the chillers, the generators and the fire pumps.\n- External works: an access road, a car park and the drainage system.\n- Testing and commissioning of all building services.\n\nOut of scope\n- The process equipment and its installation.\n- Loose furniture in the office block.\n\nAssumptions\n- The client provides a clear site with no buried obstructions.\n- The industrial park provides a power connection at the boundary.\n\nConstraints\n- The handover date is fixed.\n- Noise must stay below the industrial park limit at night.\n- The budget does not allow major design changes after tender.",
+    "q": [
+     [
+      "How many floors does the office block have?",
+      [
+       "One",
+       "Three",
+       "Fourteen"
+      ],
+      1
+     ],
+     [
+      "Which item is out of scope?",
+      [
+       "Testing and commissioning",
+       "Loose furniture",
+       "The car park"
+      ],
+      1
+     ],
+     [
+      "What does the client assume about the site?",
+      [
+       "It is clear, with no buried obstructions",
+       "It has a power connection inside",
+       "It needs no drainage"
+      ],
+      0
+     ],
+     [
+      "Which statement is a constraint?",
+      [
+       "The handover date is fixed",
+       "The factory has a steel structure",
+       "The client provides a clear site"
+      ],
+      0
+     ]
+    ]
+   },
+   "write": {
+    "t": "Email nêu giả định và loại trừ",
+    "p": "Write an email (130–180 words) to the client's PMC that confirms your tender assumptions and exclusions. List at least two assumptions and two exclusions. Check every noun: a / an for first mention, the for something already known, and no 'the' before last / next + time.",
+    "min": 130,
+    "max": 180
+   },
+   "speak": {
+    "t": "Giải thích phạm vi công việc",
+    "p": "Explain the scope of works of a project (anonymised) to a new colleague from overseas in 2 minutes: what is in scope, what is out of scope, one assumption and one constraint. Watch a / an / the.",
+    "prep": 45,
+    "len": 120
+   }
+  },
+  {
+   "id": "B07",
+   "n": 7,
+   "month": 2,
+   "week": 3,
+   "t": "Existing utilities: there is / there are",
+   "vi": "Hỏi về hạ tầng hiện hữu: There is / are, Is there any…?",
+   "grammar": "There is / are, Is there any…?, Are there any…?",
+   "pmi": [
+    "requirements",
+    "assumptions"
+   ],
+   "phrases": [
+    "Is there any information on the existing utilities?",
+    "There are two access roads to the site.",
+    "Are there any restrictions on night work?",
+    "There is no sewer connection at the boundary.",
+    "There isn't enough water pressure for fire fighting."
+   ],
+   "trap": {
+    "wrong": "Have any restrictions on working hours?",
+    "right": "Are there any restrictions on working hours?",
+    "why": "Tiếng Việt nói 'có…không', tiếng Anh dùng There is / Are there…, không dùng 'Have' ở đầu câu."
+   },
+   "listen": {
+    "t": "Q&A on existing utilities",
+    "kw": [
+     "sewer",
+     "pressure",
+     "cables",
+     "restrictions",
+     "connection",
+     "survey"
+    ],
+    "txt": "Thank you for the questions on utilities. First, is there a sewer connection at the boundary? No, there isn't. There is a treatment plant inside the industrial park, and you connect to it through a pipe of about three hundred metres. Second, is there enough water pressure? At the moment, there isn't enough pressure for fire fighting, so you need a fire water tank and pumps. Third, are there any underground cables on the site? Yes, there are two old cables in the west area. They are not live, but please confirm this with a survey before excavation. Finally, are there any restrictions on night work? Yes, there are. There is a noise limit after ten p.m., and there are no deliveries on Sundays. The connection fees are in your scope.",
+    "mcq": [
+     [
+      "How do you connect to the treatment plant?",
+      [
+       "Through a pipe of about 300 metres",
+       "Through the city sewer",
+       "There is no connection"
+      ],
+      0
+     ],
+     [
+      "Why do you need a fire water tank?",
+      [
+       "The cables are live",
+       "There isn't enough water pressure",
+       "The client wants one"
+      ],
+      1
+     ],
+     [
+      "When are deliveries not allowed?",
+      [
+       "After ten p.m. on weekdays",
+       "On Sundays",
+       "On Saturdays"
+      ],
+      1
+     ]
+    ]
+   },
+   "read": {
+    "t": "Pre-tender clarification log (giả lập)",
+    "txt": "PRE-TENDER CLARIFICATION LOG\n\nQ1. Is there a topographic survey of the site?\nA1. Yes, there is. It is in Volume 4 of the tender documents.\n\nQ2. Are there any existing piles in the east area?\nA2. There are no records of piles. Bidders should assume there are none.\n\nQ3. Is there a power connection at the boundary?\nA3. There is a 22 kV connection point at the south-west corner. The contractor provides the cable to the main switch room.\n\nQ4. Are there any height restrictions for tower cranes?\nA4. Yes. There is a flight path near the site, so cranes must stay below 45 metres.\n\nQ5. Is there space for a labour camp?\nA5. No, there isn't. Workers must stay outside the industrial park.\n\nQ6. Are there any provisional sums?\nA6. There are two: one for landscaping and one for the client's IT room.",
+    "q": [
+     [
+      "What should bidders assume about existing piles?",
+      [
+       "There are some",
+       "There are none",
+       "There are records in Volume 4"
+      ],
+      1
+     ],
+     [
+      "Why must cranes stay below 45 metres?",
+      [
+       "There is a flight path near the site",
+       "There is a noise limit",
+       "There is a power line"
+      ],
+      0
+     ],
+     [
+      "Is there space for a labour camp?",
+      [
+       "Yes, inside the site",
+       "No, workers stay outside the park",
+       "Yes, near the gate"
+      ],
+      1
+     ],
+     [
+      "How many provisional sums are there?",
+      [
+       "One",
+       "Two",
+       "None"
+      ],
+      1
+     ]
+    ]
+   },
+   "write": {
+    "t": "5 câu RFI với there is / are",
+    "p": "Write five RFI questions (110–150 words in total, with a short opening and closing) about existing conditions on a site: utilities, underground services, restrictions and space for temporary facilities. Use Is there … ? / Are there any … ? in at least four questions.",
+    "min": 110,
+    "max": 150
+   },
+   "speak": {
+    "t": "Hỏi hiện trạng trong buổi site visit",
+    "p": "You are on a site visit. Ask the client's facility manager five questions about existing utilities and restrictions with Is there / Are there any …? Then summarise the answers in 30 seconds with There is / There are.",
+    "prep": 40,
+    "len": 90
+   }
+  },
+  {
+   "id": "B08",
+   "n": 8,
+   "month": 2,
+   "week": 4,
+   "t": "WBS and the site in two minutes",
+   "vi": "Ôn tập tháng 2: WBS và mô tả công trường 2 phút",
+   "grammar": "Ôn tập: số nhiều · mạo từ · There is / are",
+   "pmi": [
+    "work breakdown structure (WBS)",
+    "scope statement",
+    "deliverable"
+   ],
+   "phrases": [
+    "The WBS has five packages at level two.",
+    "Each package has a clear owner.",
+    "There are three main deliverables in the first phase.",
+    "The external works package includes the roads and the drainage.",
+    "Let me walk you through the site from north to south."
+   ],
+   "trap": {
+    "wrong": "The site have many equipment.",
+    "right": "The site has a lot of equipment.",
+    "why": "Hai lỗi cũ cùng lúc: site là số ít → has; equipment không đếm được → a lot of / much, không dùng many."
+   },
+   "listen": {
+    "t": "Planner explains WBS level 2",
+    "kw": [
+     "package",
+     "level",
+     "owner",
+     "external",
+     "commissioning",
+     "milestone"
+    ],
+    "txt": "Let me explain the work breakdown structure for the factory. At level one, there is the whole project. At level two, there are five packages. The first package is the substructure, including the piles and the ground beams. The second package is the steel structure and the roof. The third is the building services, with an electrical and a mechanical team. The fourth is the external works: the roads, the drainage and the fence. The last package is testing and commissioning. Each package has an owner, and the owner reports to the project manager every week. There is also a milestone at the end of each package, and the client pays when it accepts the milestone.",
+    "mcq": [
+     [
+      "How many packages are there at level two?",
+      [
+       "Three",
+       "Five",
+       "Seven"
+      ],
+      1
+     ],
+     [
+      "Which package includes the fence?",
+      [
+       "The substructure",
+       "The external works",
+       "Testing and commissioning"
+      ],
+      1
+     ],
+     [
+      "When does the client pay?",
+      [
+       "Every week",
+       "When it accepts a milestone",
+       "At handover only"
+      ],
+      1
+     ]
+    ]
+   },
+   "read": {
+    "t": "WBS description for a factory (giả lập)",
+    "txt": "WORK BREAKDOWN STRUCTURE: LEVEL 2\nProject: [PROJECT]\n\n1.1 Preliminaries\nThe site office, the temporary power, the temporary water and the site security.\n\n1.2 Substructure\nThe bored piles, the pile caps, the ground beams and the ground-floor slab. There is a hold point after the pile tests.\n\n1.3 Superstructure and envelope\nThe steel frame, the roof sheeting, the wall cladding and the doors.\n\n1.4 Building services\nThe electrical system, the HVAC system, the fire protection and the building management system.\n\n1.5 External works\nThe access road, the car park, the drainage, the landscaping and the boundary fence.\n\n1.6 Testing, commissioning and handover\nThe system tests, the training for the client's staff, the as-built drawings and the operation manuals.\n\nRules\nEach work package has one owner. Each package has a budget and a milestone. Changes to a package need approval from the project manager.",
+    "q": [
+     [
+      "Where is the temporary water?",
+      [
+       "1.1 Preliminaries",
+       "1.4 Building services",
+       "1.5 External works"
+      ],
+      0
+     ],
+     [
+      "What happens after the pile tests?",
+      [
+       "Handover",
+       "A hold point",
+       "Landscaping"
+      ],
+      1
+     ],
+     [
+      "Which package includes training for the client's staff?",
+      [
+       "1.3",
+       "1.5",
+       "1.6"
+      ],
+      2
+     ],
+     [
+      "Who approves changes to a package?",
+      [
+       "The package owner",
+       "The project manager",
+       "The client's staff"
+      ],
+      1
+     ]
+    ]
+   },
+   "write": {
+    "t": "Sản phẩm tháng 2: mô tả công trường",
+    "p": "Month 2 output. Describe a site (anonymised) in 180–230 words for a tender team that has not visited it: location, access, existing structures, utilities, ground and drainage, and three risks. Use there is / are, correct articles and correct plurals.",
+    "min": 180,
+    "max": 230
+   },
+   "speak": {
+    "t": "Sản phẩm tháng 2: mô tả công trường 2 phút",
+    "p": "Month 2 output. Walk the client through a site in 2 minutes, from north to south: access, existing structures, equipment, utilities and two risks. Then name the five level-2 packages of your WBS.",
+    "prep": 60,
+    "len": 120
+   }
+  }
+ ]
+}
